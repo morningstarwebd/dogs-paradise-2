@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${dog.breedName}${dog.name ? ` – ${dog.name}` : ''} | Dogs Paradice`,
     description: dog.description,
     openGraph: {
-      title: `${dog.breedName} Puppy for Sale in Kolkata`,
+      title: `${dog.breedName} Puppy for Sale in Bangalore`,
       description: dog.description,
       images: [{ url: dog.thumbnailImage, width: 800, height: 600 }],
     },

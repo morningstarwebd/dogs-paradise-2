@@ -7,7 +7,7 @@ export const heroSlides: HeroSlide[] = [
     mobileImagePath: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=828&q=80&auto=format&fit=crop',
     heading: 'Find Your Perfect Companion',
     subheading:
-      'Premium, KCI-registered puppies raised with love in Kolkata. Healthy, vaccinated, and ready for their forever homes.',
+      'Premium, KCI-registered puppies raised with love in Bangalore. Healthy, vaccinated, and ready for their forever homes.',
     ctaLabel: 'Browse Breeds →',
     ctaHref: '/breeds',
     eyebrow: 'Welcome to Dogs Paradice',

@@ -84,8 +84,8 @@ function generateResponse(input: string): string {
   }
 
   // Delivery
-  if (/deliver|shipping|transport|send|location|kolkata|outside|pan india|city/i.test(q)) {
-    return `🚚 **Delivery Information:**\n\n**Local (Kolkata):** Free pickup from our facility, or home delivery within the city.\n\n**Pan India:** Safe, climate-controlled pet transport via:\n• Road transport (nearby states)\n• Air cargo (distant cities)\n• Live tracking available\n• Puppy travels with food, water, and care instructions\n\n📍 Our Facility: ${siteConfig.address}, ${siteConfig.city}\n\nDelivery charges depend on distance. WhatsApp us for a quote: ${siteConfig.phone}`;
+  if (/deliver|shipping|transport|send|location|bangalore|outside|pan india|city/i.test(q)) {
+    return `🚚 **Delivery Information:**\n\n**Local (Bangalore):** Free pickup from our facility, or home delivery within the city.\n\n**Pan India:** Safe, climate-controlled pet transport via:\n• Road transport (nearby states)\n• Air cargo (distant cities)\n• Live tracking available\n• Puppy travels with food, water, and care instructions\n\n📍 Our Facility: ${siteConfig.address}, ${siteConfig.city}\n\nDelivery charges depend on distance. WhatsApp us for a quote: ${siteConfig.phone}`;
   }
 
   // Payment

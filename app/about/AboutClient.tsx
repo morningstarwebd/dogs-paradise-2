@@ -51,7 +51,7 @@ export default function AboutClient() {
               Raising Happiness, One Puppy At A Time
             </h1>
             <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-              Dogs Paradice was born from a simple belief: every family deserves a healthy, well-socialized puppy, and every puppy deserves a loving home. Based in Kolkata, West Bengal, we have been connecting premium puppies with wonderful families since 2018.
+              Dogs Paradice was born from a simple belief: every family deserves a healthy, well-socialized puppy, and every puppy deserves a loving home. Based in Bangalore, Karnataka, we have been connecting premium puppies with wonderful families since 2018.
             </p>
           </motion.div>
         </div>
@@ -106,7 +106,7 @@ export default function AboutClient() {
                   We decided to do things differently. Dogs Paradice was founded on the principle that breeding should be a labor of love, not a factory operation. Every puppy we raise grows up in our home, plays in our garden, and is cared for as if it were our own.
                 </p>
                 <p>
-                  Today, we are proud to have placed over 500 healthy, happy puppies with families across Kolkata and Eastern India. But for us, it&apos;s never been about the numbers — it&apos;s about the tail wags.
+                  Today, we are proud to have placed over 500 healthy, happy puppies with families across Bangalore and South India. But for us, it&apos;s never been about the numbers — it&apos;s about the tail wags.
                 </p>
               </div>
             </motion.div>
@@ -126,7 +126,7 @@ export default function AboutClient() {
                     <MapPin size={18} className="shrink-0 mt-0.5" />
                     <div>
                       <p className="font-medium text-white">Location</p>
-                      <p>123 Park Street, Near South City Mall, Kolkata, West Bengal</p>
+                      <p>45 MG Road, Near Garuda Mall, Bangalore, Karnataka</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3 text-sm text-[var(--text-secondary)]">

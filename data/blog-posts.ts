@@ -194,7 +194,7 @@ Reputable breeders stand behind their puppies with health guarantees. If a breed
 
 ## The Dogs Paradice Difference
 
-At Dogs Paradice, we welcome all potential puppy parents to visit our home-based breeding facility in Kolkata. We are fully KCI-registered, provide comprehensive health documentation, and offer lifetime breeder support. We focus on quality over quantity — our breeding dogs are our family first.
+At Dogs Paradice, we welcome all potential puppy parents to visit our home-based breeding facility in Bangalore. We are fully KCI-registered, provide comprehensive health documentation, and offer lifetime breeder support. We focus on quality over quantity — our breeding dogs are our family first.
 
 ---
 
@@ -207,7 +207,7 @@ At Dogs Paradice, we welcome all potential puppy parents to visit our home-based
     seoTitle:
       'How to Choose a Reputable Dog Breeder in India: Complete Guide',
     seoDescription:
-      'Learn how to identify trustworthy dog breeders in India. 10 green flags and red flags to spot puppy mills. Expert guide from Kolkata\'s premium breeder.',
+      'Learn how to identify trustworthy dog breeders in India. 10 green flags and red flags to spot puppy mills. Expert guide from Bangalore\'s premium breeder.',
   },
   {
     id: 'blog-4',
@@ -275,7 +275,7 @@ A fatal disease that can be transmitted to humans. Rabies vaccination is legally
 
 ## The Dogs Paradice Commitment
 
-All puppies from Dogs Paradice come with age-appropriate vaccinations completed. We provide a detailed vaccination card with dates, vaccine brands, and batch numbers. We also provide a suggested schedule for remaining vaccinations and can recommend trusted veterinarians in Kolkata.
+All puppies from Dogs Paradice come with age-appropriate vaccinations completed. We provide a detailed vaccination card with dates, vaccine brands, and batch numbers. We also provide a suggested schedule for remaining vaccinations and can recommend trusted veterinarians in Bangalore.
 
 ---
 

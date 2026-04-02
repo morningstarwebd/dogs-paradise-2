@@ -607,7 +607,7 @@ Cocker Spaniels are often called "the merry cocker" — and for good reason. The
     thumbnailImage: 'https://images.unsplash.com/photo-1612774412771-005ed8e861d2?w=800&h=600&q=80&auto=format&fit=crop',
     description:
       'Majestic harlequin Great Dane — the "Apollo of dogs." Gentle giant with a heart as big as his enormous paws. SOLD.',
-    longDescription: `Zeus was a magnificent harlequin Great Dane who found his forever home with a wonderful family in Kolkata. While Zeus is no longer available, we share his profile to showcase the quality of Great Danes we breed.
+    longDescription: `Zeus was a magnificent harlequin Great Dane who found his forever home with a wonderful family in Bangalore. While Zeus is no longer available, we share his profile to showcase the quality of Great Danes we breed.
 
 Great Danes are known as "gentle giants" — they are the tallest dog breed in the world, yet they are among the most gentle, patient, and loving. Despite their imposing size, they are often called "the world's biggest lap dog" because they truly believe they are tiny enough to sit on your lap.
 

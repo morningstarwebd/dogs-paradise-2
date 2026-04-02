@@ -17,7 +17,7 @@ const faqs = [
     a: 'All puppies receive age-appropriate DHPPi (Distemper, Hepatitis, Parvovirus, Parainfluenza) vaccinations, anti-rabies shots (when age-appropriate), and a complete deworming schedule. A full vaccination card with batch numbers and veterinarian signatures is provided with every puppy.',
   },
   {
-    q: 'Do you deliver puppies outside Kolkata?',
+    q: 'Do you deliver puppies outside Bangalore?',
     a: 'Yes! We arrange safe, climate-controlled delivery across India via trusted pet transport services. Delivery includes a comfortable travel crate, food, water, and live tracking. We also coordinate airport pickups for air-shipped puppies. Delivery charges vary by distance.',
   },
   {
