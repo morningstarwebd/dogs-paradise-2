@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
 import { Playfair_Display, DM_Sans } from 'next/font/google';
+import { ViewTransitions } from 'next-view-transitions';
 import { siteConfig } from '@/data/site-config';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import SmoothScroll from '@/components/layout/SmoothScroll';
 import ChatWidget from '@/components/layout/ChatWidget';
+import FloatingBackground from '@/components/ui/FloatingBackground';
 import './globals.css';
 
 const playfair = Playfair_Display({
@@ -28,7 +30,7 @@ export const metadata: Metadata = {
   },
   description: siteConfig.seo.defaultDescription,
   keywords: siteConfig.seo.keywords,
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://dogsparadice.com'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://dogsparadisebangalore.com'),
   openGraph: {
     title: siteConfig.seo.defaultTitle,
     description: siteConfig.seo.defaultDescription,
@@ -80,13 +82,16 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-[var(--color-bg)] text-[var(--text-primary)]">
-        <SmoothScroll>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </SmoothScroll>
-        <ChatWidget />
+      <body className="min-h-full flex flex-col bg-transparent text-[var(--text-primary)]">
+        <FloatingBackground />
+        <ViewTransitions>
+          <SmoothScroll>
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </SmoothScroll>
+          <ChatWidget />
+        </ViewTransitions>
       </body>
     </html>
   );

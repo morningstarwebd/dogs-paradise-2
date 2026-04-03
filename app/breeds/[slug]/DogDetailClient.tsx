@@ -50,7 +50,7 @@ export default function DogDetailClient({ dog, relatedDogs }: Props) {
     }
   };
 
-  const waMessage = `Hi! I'm interested in the ${dog.breedName}${dog.name ? ` (${dog.name})` : ''} listed at ${formatPrice(dog.price)}. Is it still available?`;
+  const waMessage = `Hi! I'm interested in the ${dog.breedName}${dog.name ? ` (${dog.name})` : ''}. Could you share more details and pricing?`;
 
   const characteristics = [
     { label: 'Size', value: dog.characteristics.size },
@@ -179,16 +179,7 @@ export default function DogDetailClient({ dog, relatedDogs }: Props) {
               ))}
             </div>
 
-            {/* Price */}
-            <div className="glass-card-static p-4 rounded-xl mb-6">
-              <div className="relative z-10 flex items-center justify-between">
-                <div>
-                  <p className="text-xs text-[var(--text-tertiary)] uppercase tracking-wider">Price</p>
-                  <p className="text-2xl font-bold text-gradient">{formatPrice(dog.price)}</p>
-                </div>
-                <Badge status={dog.status} />
-              </div>
-            </div>
+
 
             {/* Description */}
             <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-6">

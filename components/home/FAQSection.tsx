@@ -46,7 +46,7 @@ export default function FAQSection() {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
 
   return (
-    <section className="py-20 lg:py-28 bg-[var(--color-surface)]" id="faq">
+    <section className="py-20 lg:py-28 section-blue" id="faq">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           title="Frequently Asked Questions"

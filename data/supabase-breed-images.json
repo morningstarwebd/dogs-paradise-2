@@ -1,0 +1,252 @@
+{
+  "Golden Retriever": {
+    "sourceFile": "Golden Retriever.jpeg",
+    "images": [
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/golden-retriever/golden-retriever-sm.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/golden-retriever/golden-retriever-md.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/golden-retriever/golden-retriever-lg.webp"
+    ],
+    "thumbnailImage": "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/golden-retriever/golden-retriever-sm.webp",
+    "usedFallback": false
+  },
+  "Labrador Retriever": {
+    "sourceFile": "Labrador.jpeg",
+    "images": [
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/labrador-retriever/labrador-retriever-sm.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/labrador-retriever/labrador-retriever-md.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/labrador-retriever/labrador-retriever-lg.webp"
+    ],
+    "thumbnailImage": "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/labrador-retriever/labrador-retriever-sm.webp",
+    "usedFallback": true
+  },
+  "German Shepherd": {
+    "sourceFile": "German Shepherd.jpeg",
+    "images": [
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/german-shepherd/german-shepherd-sm.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/german-shepherd/german-shepherd-md.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/german-shepherd/german-shepherd-lg.webp"
+    ],
+    "thumbnailImage": "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/german-shepherd/german-shepherd-sm.webp",
+    "usedFallback": false
+  },
+  "Siberian Husky": {
+    "sourceFile": "Husky.jpeg",
+    "images": [
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/siberian-husky/siberian-husky-sm.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/siberian-husky/siberian-husky-md.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/siberian-husky/siberian-husky-lg.webp"
+    ],
+    "thumbnailImage": "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/siberian-husky/siberian-husky-sm.webp",
+    "usedFallback": true
+  },
+  "Rottweiler": {
+    "sourceFile": "Rottweiler.jpeg",
+    "images": [
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/rottweiler/rottweiler-sm.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/rottweiler/rottweiler-md.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/rottweiler/rottweiler-lg.webp"
+    ],
+    "thumbnailImage": "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/rottweiler/rottweiler-sm.webp",
+    "usedFallback": false
+  },
+  "Beagle": {
+    "sourceFile": "Beagle.jpeg",
+    "images": [
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/beagle/beagle-sm.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/beagle/beagle-md.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/beagle/beagle-lg.webp"
+    ],
+    "thumbnailImage": "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/beagle/beagle-sm.webp",
+    "usedFallback": false
+  },
+  "Shih Tzu": {
+    "sourceFile": "Shih Tzu.jpeg",
+    "images": [
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/shih-tzu/shih-tzu-sm.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/shih-tzu/shih-tzu-md.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/shih-tzu/shih-tzu-lg.webp"
+    ],
+    "thumbnailImage": "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/shih-tzu/shih-tzu-sm.webp",
+    "usedFallback": false
+  },
+  "Pomeranian": {
+    "sourceFile": "Bichon Frise.jpeg",
+    "images": [
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/pomeranian/pomeranian-sm.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/pomeranian/pomeranian-md.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/pomeranian/pomeranian-lg.webp"
+    ],
+    "thumbnailImage": "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/pomeranian/pomeranian-sm.webp",
+    "usedFallback": true
+  },
+  "Doberman Pinscher": {
+    "sourceFile": "Doberman.jpeg",
+    "images": [
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/doberman-pinscher/doberman-pinscher-sm.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/doberman-pinscher/doberman-pinscher-md.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/doberman-pinscher/doberman-pinscher-lg.webp"
+    ],
+    "thumbnailImage": "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/doberman-pinscher/doberman-pinscher-sm.webp",
+    "usedFallback": true
+  },
+  "French Bulldog": {
+    "sourceFile": "French Bulldog.jpeg",
+    "images": [
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/french-bulldog/french-bulldog-sm.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/french-bulldog/french-bulldog-md.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/french-bulldog/french-bulldog-lg.webp"
+    ],
+    "thumbnailImage": "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/french-bulldog/french-bulldog-sm.webp",
+    "usedFallback": false
+  },
+  "Cocker Spaniel": {
+    "sourceFile": "Cocker spaniel.jpeg",
+    "images": [
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/cocker-spaniel/cocker-spaniel-sm.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/cocker-spaniel/cocker-spaniel-md.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/cocker-spaniel/cocker-spaniel-lg.webp"
+    ],
+    "thumbnailImage": "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/cocker-spaniel/cocker-spaniel-sm.webp",
+    "usedFallback": true
+  },
+  "Great Dane": {
+    "sourceFile": "Great Dane.jpeg",
+    "images": [
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/great-dane/great-dane-sm.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/great-dane/great-dane-md.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/great-dane/great-dane-lg.webp"
+    ],
+    "thumbnailImage": "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/great-dane/great-dane-sm.webp",
+    "usedFallback": false
+  },
+  "Poodle": {
+    "sourceFile": "Toy Poodle.jpeg",
+    "images": [
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/poodle/poodle-sm.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/poodle/poodle-md.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/poodle/poodle-lg.webp"
+    ],
+    "thumbnailImage": "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/poodle/poodle-sm.webp",
+    "usedFallback": true
+  },
+  "Maltipoo": {
+    "sourceFile": "Maltipoo.jpeg",
+    "images": [
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/maltipoo/maltipoo-sm.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/maltipoo/maltipoo-md.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/maltipoo/maltipoo-lg.webp"
+    ],
+    "thumbnailImage": "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/maltipoo/maltipoo-sm.webp",
+    "usedFallback": false
+  },
+  "Bichon Frise": {
+    "sourceFile": "Bichon Frise.jpeg",
+    "images": [
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/bichon-frise/bichon-frise-sm.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/bichon-frise/bichon-frise-md.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/bichon-frise/bichon-frise-lg.webp"
+    ],
+    "thumbnailImage": "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/bichon-frise/bichon-frise-sm.webp",
+    "usedFallback": false
+  },
+  "Welsh Corgi": {
+    "sourceFile": "Welsh Corgi.jpeg",
+    "images": [
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/welsh-corgi/welsh-corgi-sm.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/welsh-corgi/welsh-corgi-md.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/welsh-corgi/welsh-corgi-lg.webp"
+    ],
+    "thumbnailImage": "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/welsh-corgi/welsh-corgi-sm.webp",
+    "usedFallback": false
+  },
+  "Cavapoo": {
+    "sourceFile": "Cavapoo.jpeg",
+    "images": [
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/cavapoo/cavapoo-sm.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/cavapoo/cavapoo-md.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/cavapoo/cavapoo-lg.webp"
+    ],
+    "thumbnailImage": "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/cavapoo/cavapoo-sm.webp",
+    "usedFallback": false
+  },
+  "Pug": {
+    "sourceFile": "Pug.jpeg",
+    "images": [
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/pug/pug-sm.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/pug/pug-md.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/pug/pug-lg.webp"
+    ],
+    "thumbnailImage": "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/pug/pug-sm.webp",
+    "usedFallback": false
+  },
+  "Chow Chow": {
+    "sourceFile": "Chow chow.jpeg",
+    "images": [
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/chow-chow/chow-chow-sm.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/chow-chow/chow-chow-md.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/chow-chow/chow-chow-lg.webp"
+    ],
+    "thumbnailImage": "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/chow-chow/chow-chow-sm.webp",
+    "usedFallback": true
+  },
+  "St. Bernard": {
+    "sourceFile": "St Bernard.jpeg",
+    "images": [
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/st-bernard/st-bernard-sm.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/st-bernard/st-bernard-md.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/st-bernard/st-bernard-lg.webp"
+    ],
+    "thumbnailImage": "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/st-bernard/st-bernard-sm.webp",
+    "usedFallback": true
+  },
+  "Cavalier King Charles Spaniel": {
+    "sourceFile": "Cavalier King Charles Spaniel.jpeg",
+    "images": [
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/cavalier-king-charles-spaniel/cavalier-king-charles-spaniel-sm.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/cavalier-king-charles-spaniel/cavalier-king-charles-spaniel-md.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/cavalier-king-charles-spaniel/cavalier-king-charles-spaniel-lg.webp"
+    ],
+    "thumbnailImage": "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/cavalier-king-charles-spaniel/cavalier-king-charles-spaniel-sm.webp",
+    "usedFallback": false
+  },
+  "Cane Corso": {
+    "sourceFile": "Cane Corso.jpeg",
+    "images": [
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/cane-corso/cane-corso-sm.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/cane-corso/cane-corso-md.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/cane-corso/cane-corso-lg.webp"
+    ],
+    "thumbnailImage": "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/cane-corso/cane-corso-sm.webp",
+    "usedFallback": false
+  },
+  "Maltese": {
+    "sourceFile": "Maltese.jpeg",
+    "images": [
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/maltese/maltese-sm.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/maltese/maltese-md.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/maltese/maltese-lg.webp"
+    ],
+    "thumbnailImage": "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/maltese/maltese-sm.webp",
+    "usedFallback": false
+  },
+  "Yorkshire Terrier": {
+    "sourceFile": "Yorkshire Terrier And American Bully.jpeg",
+    "images": [
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/yorkshire-terrier/yorkshire-terrier-sm.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/yorkshire-terrier/yorkshire-terrier-md.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/yorkshire-terrier/yorkshire-terrier-lg.webp"
+    ],
+    "thumbnailImage": "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/yorkshire-terrier/yorkshire-terrier-sm.webp",
+    "usedFallback": true
+  },
+  "American Bully": {
+    "sourceFile": "Yorkshire Terrier And American Bully.jpeg",
+    "images": [
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/american-bully/american-bully-sm.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/american-bully/american-bully-md.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/american-bully/american-bully-lg.webp"
+    ],
+    "thumbnailImage": "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/american-bully/american-bully-sm.webp",
+    "usedFallback": true
+  }
+}

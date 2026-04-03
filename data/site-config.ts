@@ -1,23 +1,23 @@
 import type { SiteConfig } from '@/types';
 
 export const siteConfig: SiteConfig = {
-  brandName: 'Dogs Paradice',
+  brandName: 'Dogs Paradise Bangalore',
   tagline: 'Premium Dog Breeds · Healthy · KCI Registered',
-  phone: '+91 9876543210',           // REPLACE before launch
-  whatsappNumber: '919876543210',    // REPLACE (no spaces/+)
-  email: 'hello@dogsparadice.com',   // REPLACE
-  address: '45 MG Road, Near Garuda Mall', // REPLACE
-  city: 'Bangalore',
+  phone: '+91 90663 80952',
+  whatsappNumber: '919066380952',
+  email: 'hello@dogsparadisebangalore.com',
+  address: 'Narayanappa Block, Anjenappa Block, Benson Town',
+  city: 'Bengaluru',
   state: 'Karnataka',
-  googleMapsUrl: 'https://maps.google.com/?q=Bangalore',  // REPLACE
+  googleMapsUrl: 'https://maps.google.com/?q=Narayanappa+Block,+Anjenappa+Block,+Benson+Town,+Bengaluru',
   socialLinks: {
     instagram: null,
     facebook: null,
     youtube: null,
   },
   seo: {
-    defaultTitle: 'Dogs Paradice — Premium Dog Breeds in Bangalore',
-    titleTemplate: '%s | Dogs Paradice',
+    defaultTitle: 'Dogs Paradise Bangalore — Premium KCI Registered Puppies',
+    titleTemplate: '%s | Dogs Paradise Bangalore',
     defaultDescription:
       'Buy healthy, vaccinated, KCI-registered puppies in Bangalore. Golden Retriever, Labrador, Husky, German Shepherd and 20+ breeds available. Home-raised with champion bloodline.',
     keywords: [

@@ -41,9 +41,9 @@ export default function HeroBanner() {
             priority={current === 0}
             sizes="100vw"
           />
-          {/* Dark gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg)] via-[var(--color-bg)]/60 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-bg)]/80 to-transparent" />
+          {/* Premium photographic vignette instead of smoky light overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent" />
         </motion.div>
       </AnimatePresence>
 
@@ -59,13 +59,13 @@ export default function HeroBanner() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="max-w-2xl"
             >
-              <span className="label-badge inline-block px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[var(--text-secondary)] mb-6">
+              <span className="label-badge inline-block px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white mb-6 backdrop-blur-sm">
                 {slide.eyebrow}
               </span>
-              <h1 className="heading-hero text-gradient mb-6">
+              <h1 className="heading-hero text-white mb-6 drop-shadow-lg">
                 {slide.heading}
               </h1>
-              <p className="text-lg sm:text-xl text-[var(--text-secondary)] leading-relaxed mb-8 max-w-xl">
+              <p className="text-lg sm:text-xl text-white/90 leading-relaxed mb-8 max-w-xl drop-shadow-md">
                 {slide.subheading}
               </p>
               <div className="flex flex-wrap gap-4">

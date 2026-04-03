@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { MessageCircle, X, Send, Bot, User, Phone, ExternalLink } from 'lucide-react';
 import { siteConfig } from '@/data/site-config';
 import { dogs } from '@/data/dogs';
-import { getWhatsAppLink, formatPrice } from '@/lib/utils';
+import { getWhatsAppLink } from '@/lib/utils';
 
 interface Message {
   id: string;
@@ -41,11 +41,7 @@ function generateResponse(input: string): string {
 
   // Price / cost
   if (/price|cost|rate|kitna|koto|charge|budget|expensive|cheap|afford/i.test(q)) {
-    const available = dogs.filter(d => d.status === 'available');
-    const prices = available.map(d => d.price).filter((p): p is number => p !== null);
-    const min = Math.min(...prices);
-    const max = Math.max(...prices);
-    return `💰 Our puppy prices range from **${formatPrice(min)}** to **${formatPrice(max)}** depending on breed, quality (pet vs show), and lineage.\n\nAll prices include:\n• KCI registration papers\n• Complete vaccination records\n• Health certificate\n• Deworming schedule\n• Puppy starter kit\n\nWould you like pricing for a specific breed? Or contact us on WhatsApp for current offers: ${siteConfig.phone}`;
+    return `💰 Our puppy prices vary depending on breed, quality (pet vs show), and lineage. We provide customized quotes based on your exact requirements.\n\nAll quoted prices include:\n• KCI registration papers\n• Complete vaccination records\n• Health certificate\n• Deworming schedule\n• Puppy starter kit\n\nPlease contact us on WhatsApp with your preferred breed for a quote: ${siteConfig.phone}`;
   }
 
   // Available breeds / puppies
@@ -58,19 +54,19 @@ function generateResponse(input: string): string {
   // Specific breeds
   if (/golden retriever/i.test(q)) {
     const grs = dogs.filter(d => /golden/i.test(d.breedName));
-    return `🌟 **Golden Retriever** — India's most popular family dog!\n\n• Size: Large (25-34 kg)\n• Lifespan: 10-12 years\n• Great with kids: ✅\n• Energy: High\n• Grooming: Regular brushing needed\n\nWe have **${grs.length}** Golden Retriever(s) available. Starting from ${formatPrice(grs[0]?.price)}.\n\nWant to see them? Visit our [Breeds page](/breeds) or WhatsApp us at ${siteConfig.phone} for live photos! 📸`;
+    return `🌟 **Golden Retriever** — India's most popular family dog!\n\n• Size: Large (25-34 kg)\n• Lifespan: 10-12 years\n• Great with kids: ✅\n• Energy: High\n• Grooming: Regular brushing needed\n\nWe have **${grs.length}** Golden Retriever(s) available.\n\nWant to see them? Visit our [Breeds page](/breeds) or WhatsApp us at ${siteConfig.phone} for live photos! 📸`;
   }
   if (/labrador|lab /i.test(q)) {
     const labs = dogs.filter(d => /labrador/i.test(d.breedName));
-    return `🎾 **Labrador Retriever** — Loyal, playful, and perfect for families!\n\n• Size: Large (25-36 kg)\n• Lifespan: 10-14 years\n• Great with kids: ✅\n• Apartment friendly: Needs space\n• Training: Very easy to train\n\nWe have **${labs.length}** Labrador(s) available. Starting from ${formatPrice(labs[0]?.price)}.\n\nMessage us on WhatsApp for live photos and videos: ${siteConfig.phone}`;
+    return `🎾 **Labrador Retriever** — Loyal, playful, and perfect for families!\n\n• Size: Large (25-36 kg)\n• Lifespan: 10-14 years\n• Great with kids: ✅\n• Apartment friendly: Needs space\n• Training: Very easy to train\n\nWe have **${labs.length}** Labrador(s) available.\n\nMessage us on WhatsApp for live photos and videos: ${siteConfig.phone}`;
   }
   if (/husky|siberian/i.test(q)) {
     const huskies = dogs.filter(d => /husky/i.test(d.breedName));
-    return `❄️ **Siberian Husky** — Stunning, energetic, and majestic!\n\n• Size: Medium-Large\n• Lifespan: 12-14 years\n• Needs AC: Yes (heavy coat)\n• Energy: Very high\n• Vocal: Yes, they "talk" 🗣️\n\nWe have **${huskies.length}** Husky/Huskies available. Starting from ${formatPrice(huskies[0]?.price)}.\n\n⚠️ Huskies need a cool climate or AC rooms in India. Happy to discuss on WhatsApp: ${siteConfig.phone}`;
+    return `❄️ **Siberian Husky** — Stunning, energetic, and majestic!\n\n• Size: Medium-Large\n• Lifespan: 12-14 years\n• Needs AC: Yes (heavy coat)\n• Energy: Very high\n• Vocal: Yes, they "talk" 🗣️\n\nWe have **${huskies.length}** Husky/Huskies available.\n\n⚠️ Huskies need a cool climate or AC rooms in India. Happy to discuss on WhatsApp: ${siteConfig.phone}`;
   }
   if (/german shepherd|gsd|alsatian/i.test(q)) {
     const gsds = dogs.filter(d => /german shepherd/i.test(d.breedName));
-    return `🐺 **German Shepherd** — The king of guard dogs!\n\n• Size: Large (30-40 kg)\n• Lifespan: 9-13 years\n• Guard dog: Excellent ✅\n• Intelligence: Top 3 smartest breeds\n• Training: Highly trainable\n\nWe have **${gsds.length}** German Shepherd(s) available. Starting from ${formatPrice(gsds[0]?.price)}.\n\nContact us for pedigree details: ${siteConfig.phone}`;
+    return `🐺 **German Shepherd** — The king of guard dogs!\n\n• Size: Large (30-40 kg)\n• Lifespan: 9-13 years\n• Guard dog: Excellent ✅\n• Intelligence: Top 3 smartest breeds\n• Training: Highly trainable\n\nWe have **${gsds.length}** German Shepherd(s) available.\n\nContact us for pedigree details: ${siteConfig.phone}`;
   }
 
   // Health / vaccination

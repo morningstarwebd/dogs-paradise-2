@@ -64,12 +64,12 @@ With their short, sleek coat and athletic build, Dobermans are well-suited for I
 ---
 
 *Looking for any of these breeds? Browse our [available puppies](/breeds) or [contact us](/contact) for breed-specific advice.*`,
-    coverImagePath: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&h=675&q=80&auto=format&fit=crop',
+    coverImagePath: 'https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/labrador-retriever/labrador-retriever-lg.webp',
     category: 'Breed Guide',
     readingTime: '5 min read',
     publishedAt: '2025-01-10',
-    author: 'Dogs Paradice Team',
-    seoTitle: 'Top 10 Dog Breeds Suitable for Indian Climate | Dogs Paradice',
+    author: 'Dogs Paradise Bangalore Team',
+    seoTitle: 'Top 10 Dog Breeds Suitable for Indian Climate | Dogs Paradise Bangalore',
     seoDescription:
       'Discover the best dog breeds for Indian weather. Expert guide on Labrador, Beagle, German Shepherd and more breeds that thrive in India\'s tropical climate.',
   },
@@ -117,7 +117,7 @@ Both breeds need regular exercise, but Labs tend to need slightly more physical 
 
 ## Health Considerations
 
-Both breeds are prone to hip dysplasia, which is why it's crucial to buy from a reputable breeder who health-tests their breeding stock. At Dogs Paradice, all our breeding dogs are screened for common genetic conditions.
+Both breeds are prone to hip dysplasia, which is why it's crucial to buy from a reputable breeder who health-tests their breeding stock. At Dogs Paradise Bangalore, all our breeding dogs are screened for common genetic conditions.
 
 ## The Verdict
 
@@ -130,11 +130,11 @@ Both breeds are prone to hip dysplasia, which is why it's crucial to buy from a 
 ---
 
 *Ready to meet our Golden Retriever and Labrador puppies? [Browse available puppies](/breeds) today!*`,
-    coverImagePath: 'https://images.unsplash.com/photo-1552053831-71594a27632d?w=1200&h=675&q=80&auto=format&fit=crop',
+    coverImagePath: 'https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/golden-retriever/golden-retriever-lg.webp',
     category: 'Breed Guide',
     readingTime: '6 min read',
     publishedAt: '2025-01-25',
-    author: 'Dogs Paradice Team',
+    author: 'Dogs Paradise Bangalore Team',
     seoTitle:
       'Golden Retriever vs Labrador: Complete Comparison Guide India 2025',
     seoDescription:
@@ -192,18 +192,18 @@ Reputable breeders stand behind their puppies with health guarantees. If a breed
 4. **Meet the parents** — healthy parents = healthy puppies
 5. **Read online reviews** — check Google, Facebook, and pet forums
 
-## The Dogs Paradice Difference
+## The Dogs Paradise Bangalore Difference
 
-At Dogs Paradice, we welcome all potential puppy parents to visit our home-based breeding facility in Bangalore. We are fully KCI-registered, provide comprehensive health documentation, and offer lifetime breeder support. We focus on quality over quantity — our breeding dogs are our family first.
+At Dogs Paradise Bangalore, we welcome all potential puppy parents to visit our home-based breeding facility in Bangalore. We are fully KCI-registered, provide comprehensive health documentation, and offer lifetime breeder support. We focus on quality over quantity — our breeding dogs are our family first.
 
 ---
 
 *Have questions about our breeding practices? [Get in touch](/contact) — we're happy to answer everything transparently.*`,
-    coverImagePath: 'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=1200&h=675&q=80&auto=format&fit=crop',
+    coverImagePath: 'https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/german-shepherd/german-shepherd-lg.webp',
     category: 'Buying Guide',
     readingTime: '7 min read',
     publishedAt: '2025-02-10',
-    author: 'Dogs Paradice Team',
+    author: 'Dogs Paradise Bangalore Team',
     seoTitle:
       'How to Choose a Reputable Dog Breeder in India: Complete Guide',
     seoDescription:
@@ -273,18 +273,18 @@ A fatal disease that can be transmitted to humans. Rabies vaccination is legally
 | Deworming (per dose) | ₹200 - ₹500 |
 | **Total first year** | **₹5,000 - ₹10,000** |
 
-## The Dogs Paradice Commitment
+## The Dogs Paradise Bangalore Commitment
 
-All puppies from Dogs Paradice come with age-appropriate vaccinations completed. We provide a detailed vaccination card with dates, vaccine brands, and batch numbers. We also provide a suggested schedule for remaining vaccinations and can recommend trusted veterinarians in Bangalore.
+All puppies from Dogs Paradise Bangalore come with age-appropriate vaccinations completed. We provide a detailed vaccination card with dates, vaccine brands, and batch numbers. We also provide a suggested schedule for remaining vaccinations and can recommend trusted veterinarians in Bangalore.
 
 ---
 
 *Getting a new puppy? Check our [available puppies](/breeds) — all come with vaccination records included!*`,
-    coverImagePath: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1200&h=675&q=80&auto=format&fit=crop',
+    coverImagePath: 'https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/rottweiler/rottweiler-lg.webp',
     category: 'Pet Care',
     readingTime: '5 min read',
     publishedAt: '2025-03-01',
-    author: 'Dogs Paradice Team',
+    author: 'Dogs Paradise Bangalore Team',
     seoTitle: 'Puppy Vaccination Schedule India 2025 | Complete Vet Guide',
     seoDescription:
       'Complete puppy vaccination schedule for India 2025. DHPPi, Rabies, deworming timeline, costs, and tips from veterinary experts. Free downloadable chart.',
@@ -377,15 +377,16 @@ ALL puppies bite. It's how they explore. Redirect to toys, and when biting is to
 
 ---
 
-*Getting a puppy from Dogs Paradice? We provide a detailed "New Parent" guide with every puppy, along with a starter food kit. [Contact us](/contact) to learn more!*`,
-    coverImagePath: 'https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?w=1200&h=675&q=80&auto=format&fit=crop',
+*Getting a puppy from Dogs Paradise Bangalore? We provide a detailed "New Parent" guide with every puppy, along with a starter food kit. [Contact us](/contact) to learn more!*`,
+    coverImagePath: 'https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/beagle/beagle-lg.webp',
     category: 'Pet Care',
     readingTime: '8 min read',
     publishedAt: '2025-03-15',
-    author: 'Dogs Paradice Team',
+    author: 'Dogs Paradise Bangalore Team',
     seoTitle:
       'New Puppy First Week Checklist India | Complete Preparation Guide',
     seoDescription:
       'Complete checklist for bringing home a new puppy in India. Supplies, puppy-proofing, first night tips, feeding schedule, and training basics for new pet parents.',
   },
 ];
+

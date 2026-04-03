@@ -44,7 +44,7 @@ export default function BreedExplorer() {
   const filteredDogs = filterDogs(active.filter).slice(0, 4);
 
   return (
-    <section className="py-20 lg:py-28 bg-[var(--color-surface)]" id="breed-explorer">
+    <section className="py-20 lg:py-28 section-amber" id="breed-explorer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           title="Explore By Category"
@@ -143,9 +143,8 @@ function ExplorerCard({ dog }: { dog: typeof dogs[number] }) {
               <p className="text-xs text-white/60 mb-2">
                 {dog.age} · {dog.gender === 'male' ? '♂' : '♀'} · {dog.characteristics.size}
               </p>
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-bold text-gradient">{formatPrice(dog.price)}</span>
-                <span className="text-[10px] text-white/40 group-hover:text-white transition-colors">View →</span>
+              <div className="flex items-center justify-end mt-1">
+                <span className="text-[10px] uppercase font-bold text-white/50 group-hover:text-white transition-colors tracking-wide bg-black/40 px-3 py-1.5 rounded-full border border-white/10">View Details →</span>
               </div>
             </div>
           </div>

@@ -3,19 +3,19 @@ import type { HeroSlide } from '@/types';
 export const heroSlides: HeroSlide[] = [
   {
     id: 'slide-1',
-    imagePath: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1920&q=80&auto=format&fit=crop',
-    mobileImagePath: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=828&q=80&auto=format&fit=crop',
+    imagePath: 'https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/golden-retriever/golden-retriever-lg.webp',
+    mobileImagePath: 'https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/golden-retriever/golden-retriever-md.webp',
     heading: 'Find Your Perfect Companion',
     subheading:
       'Premium, KCI-registered puppies raised with love in Bangalore. Healthy, vaccinated, and ready for their forever homes.',
     ctaLabel: 'Browse Breeds →',
     ctaHref: '/breeds',
-    eyebrow: 'Welcome to Dogs Paradice',
+    eyebrow: 'Welcome to Dogs Paradise Bangalore',
   },
   {
     id: 'slide-2',
-    imagePath: 'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=1920&q=80&auto=format&fit=crop',
-    mobileImagePath: 'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=828&q=80&auto=format&fit=crop',
+    imagePath: 'https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/german-shepherd/german-shepherd-lg.webp',
+    mobileImagePath: 'https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/german-shepherd/german-shepherd-md.webp',
     heading: 'Champion Bloodlines, Healthy Puppies',
     subheading:
       'Every puppy is vet-certified, vaccinated, and comes with complete KCI documentation. Quality you can trust.',
@@ -25,8 +25,8 @@ export const heroSlides: HeroSlide[] = [
   },
   {
     id: 'slide-3',
-    imagePath: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1920&q=80&auto=format&fit=crop',
-    mobileImagePath: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=828&q=80&auto=format&fit=crop',
+    imagePath: 'https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/french-bulldog/french-bulldog-lg.webp',
+    mobileImagePath: 'https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/french-bulldog/french-bulldog-md.webp',
     heading: 'Home-Raised With Love',
     subheading:
       'Our puppies grow up in a warm family environment — not a kennel. Better socialization, happier puppies, stronger bonds.',
@@ -35,3 +35,4 @@ export const heroSlides: HeroSlide[] = [
     eyebrow: 'Trusted Since 2018',
   },
 ];
+

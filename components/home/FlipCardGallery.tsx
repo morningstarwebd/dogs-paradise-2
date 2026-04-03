@@ -127,11 +127,10 @@ function FlipCard({ dog, index }: { dog: typeof flipDogs[number]; index: number 
               <InfoItem label="Grooming" value={dog.characteristics.grooming} />
               <InfoItem label="Lifespan" value={dog.characteristics.lifespan} />
             </div>
-            <div className="mt-auto pt-4 border-t border-[var(--color-border)] flex items-center justify-between">
-              <span className="text-xl font-bold text-gradient">{formatPrice(dog.price)}</span>
+            <div className="mt-auto pt-4 border-t border-[var(--color-border)] flex flex-col">
               <Link
                 href={`/breeds/${dog.slug}`}
-                className="glass-btn px-4 py-2 text-xs font-medium"
+                className="glass-btn px-4 py-2.5 text-sm font-medium w-full text-center"
                 onClick={(e) => e.stopPropagation()}
               >
                 View Details →

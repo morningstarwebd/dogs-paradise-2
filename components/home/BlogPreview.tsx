@@ -12,7 +12,7 @@ const featured = blogPosts.slice(0, 3);
 
 export default function BlogPreview() {
   return (
-    <section className="py-20 lg:py-28 bg-[var(--color-surface)]" id="blog-preview">
+    <section className="py-20 lg:py-28 section-rose" id="blog-preview">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           title="From Our Blog"

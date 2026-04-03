@@ -29,7 +29,7 @@ export default function BreedComparison() {
   const right = compareDogs[rightIdx];
 
   return (
-    <section className="py-20 lg:py-28 bg-[var(--color-surface)]" id="breed-comparison">
+    <section className="py-20 lg:py-28 section-purple" id="breed-comparison">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           title="Compare Breeds"
@@ -157,7 +157,7 @@ function ComparisonCard({ dog, tab, side }: { dog: typeof compareDogs[number]; t
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
           <div className="absolute bottom-4 left-4 right-4">
             <h3 className="text-lg font-display font-bold text-white">{dog.breedName}</h3>
-            <p className="text-sm text-white/60">{formatPrice(dog.price)} · {dog.age}</p>
+            <p className="text-sm text-white/60">{dog.age}</p>
           </div>
         </div>
 

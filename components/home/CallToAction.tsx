@@ -11,7 +11,7 @@ export default function CallToAction() {
   const message = `Hi ${siteConfig.brandName}! I'm interested in your puppies. Can you share more details?`;
 
   return (
-    <section className="py-20 lg:py-28 bg-[var(--color-surface)] relative overflow-hidden" id="cta">
+    <section className="py-20 lg:py-28 section-orange relative overflow-hidden" id="cta">
       {/* Subtle glow effect */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/[0.02] rounded-full blur-3xl pointer-events-none" />
 

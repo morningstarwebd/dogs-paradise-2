@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'motion/react';
-import { cn } from '@/lib/utils';
 import { formatPrice } from '@/lib/utils';
 import Badge from '@/components/ui/Badge';
 import { fadeUpVariant, cardHoverVariant } from '@/lib/animations';
@@ -37,7 +36,7 @@ export default function DogCard({ dog, index = 0 }: DogCardProps) {
           <div className="relative aspect-[4/3] overflow-hidden">
             <Image
               src={dog.thumbnailImage}
-              alt={`${dog.breedName}${dog.name ? ` - ${dog.name}` : ''}`}
+              alt={`${dog.breedName} puppy for sale in Bangalore`}
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-105"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -47,12 +46,7 @@ export default function DogCard({ dog, index = 0 }: DogCardProps) {
             <div className="absolute top-3 left-3 z-10">
               <Badge status={dog.status} />
             </div>
-            {/* Price Tag */}
-            <div className="absolute bottom-3 right-3 z-10">
-              <span className="glass-btn px-3 py-1.5 text-sm font-semibold">
-                {formatPrice(dog.price)}
-              </span>
-            </div>
+
           </div>
 
           {/* Info */}

@@ -5,6 +5,18 @@ export type DogSize = 'toy' | 'small' | 'medium' | 'large' | 'giant';
 export type CoatLength = 'short' | 'medium' | 'long' | 'double' | 'wire';
 export type EnergyLevel = 'low' | 'moderate' | 'high' | 'very_high';
 
+export interface BreedFAQ {
+  question: string;
+  answer: string;
+}
+
+export interface DogVariant {
+  id: string;
+  sizeName: string; // 'Small', 'Medium', 'Large'
+  price: number | null;
+  age: string;
+}
+
 export interface Dog {
   id: string;
   slug: string;
@@ -12,7 +24,7 @@ export interface Dog {
   name: string | null;
   categorySlug: string;
   status: DogStatus;
-  price: number | null;
+  price: number | null; // Keep base footprint, but variations are used primarily
   age: string;
   gender: 'male' | 'female';
   images: string[];
@@ -21,9 +33,11 @@ export interface Dog {
   longDescription: string;
   characteristics: DogCharacteristics;
   healthInfo: HealthInfo;
+  faqs: BreedFAQ[];
   tags: string[];
   featured: boolean;
   createdAt: string;
+  variants: DogVariant[];
 }
 
 export interface DogCharacteristics {

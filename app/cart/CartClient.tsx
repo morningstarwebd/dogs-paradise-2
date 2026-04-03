@@ -15,7 +15,7 @@ export default function CartClient() {
 
   const handleEnquiry = () => {
     const itemList = items
-      .map((item) => `• ${item.breedName}${item.name ? ` (${item.name})` : ''} — ${formatPrice(item.price)}`)
+      .map((item) => `• ${item.breedName}${item.name ? ` (${item.name})` : ''}`)
       .join('\n');
 
     const message = `Hi ${siteConfig.brandName}!\n\nI'm interested in the following puppies:\n\n${itemList}\n\nPlease share more details and availability. Thank you!`;
@@ -89,7 +89,7 @@ export default function CartClient() {
                         {item.name && (
                           <p className="text-xs text-[var(--text-tertiary)]">&ldquo;{item.name}&rdquo;</p>
                         )}
-                        <p className="text-sm font-medium mt-1">{formatPrice(item.price)}</p>
+
                       </div>
                       <button
                         onClick={() => removeItem(item.dogId)}
@@ -113,9 +113,8 @@ export default function CartClient() {
                   <h3 className="heading-card text-white mb-4">Enquiry Summary</h3>
                   <div className="space-y-3 mb-6 pb-6 border-b border-[var(--color-border)]">
                     {items.map((item) => (
-                      <div key={item.dogId} className="flex justify-between text-sm">
-                        <span className="text-[var(--text-secondary)] truncate mr-2">{item.breedName}</span>
-                        <span className="shrink-0">{formatPrice(item.price)}</span>
+                      <div key={item.dogId} className="flex justify-between text-sm py-1">
+                        <span className="text-[var(--text-secondary)] truncate">{item.breedName}</span>
                       </div>
                     ))}
                   </div>

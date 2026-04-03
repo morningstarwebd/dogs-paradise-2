@@ -9,44 +9,57 @@
 
 :root {
   /* Base */
-  --color-bg: #080808;
-  --color-surface: #111111;
-  --color-border: rgba(255, 255, 255, 0.08);
+  --color-bg: #f9f6f0;
+  --color-surface: #ffffff;
+  --color-border: rgba(0, 0, 0, 0.08);
+
+  /* Warm Ember Accents */
+  --accent-primary: #d97706;
+  --accent-secondary: #e11d48;
+  --accent-tertiary: #0f766e;
 
   /* Glass */
-  --glass-bg: rgba(255, 255, 255, 0.04);
-  --glass-bg-hover: rgba(255, 255, 255, 0.07);
-  --glass-border: rgba(255, 255, 255, 0.12);
-  --glass-border-hover: rgba(255, 255, 255, 0.22);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-bg-hover: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(0, 0, 0, 0.05);
+  --glass-border-hover: rgba(0, 0, 0, 0.15);
   --glass-blur: blur(20px);
-  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
 
   /* Accent */
-  --color-accent: #ffffff;
-  --color-accent-muted: rgba(255, 255, 255, 0.6);
-  --color-accent-dim: rgba(255, 255, 255, 0.3);
+  --color-accent: #000000;
+  --color-accent-muted: rgba(0, 0, 0, 0.6);
+  --color-accent-dim: rgba(0, 0, 0, 0.3);
 
   /* Specular */
   --glass-specular: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.8) 0%,
     transparent 50%
   );
 
   /* Text */
-  --text-primary: #f5f5f5;
-  --text-secondary: rgba(255, 255, 255, 0.65);
-  --text-tertiary: rgba(255, 255, 255, 0.35);
+  --text-primary: #1f1a17;
+  --text-secondary: rgba(31, 26, 23, 0.7);
+  --text-tertiary: rgba(31, 26, 23, 0.5);
 
   /* Status */
-  --status-available: #22c55e;
-  --status-sold: #ef4444;
-  --status-coming: #f59e0b;
-  --status-reserved: #a855f7;
+  --status-available: #16a34a;
+  --status-sold: #dc2626;
+  --status-coming: #d97706;
+  --status-reserved: #9333ea;
 
   /* WhatsApp */
   --whatsapp: #25d366;
+
+  /* Colorful Glass Tints */
+  --tint-amber: rgba(217, 119, 6, 0.07);
+  --tint-orange: rgba(234, 88, 12, 0.07);
+  --tint-emerald: rgba(5, 150, 105, 0.07);
+  --tint-blue: rgba(37, 99, 235, 0.07);
+  --tint-purple: rgba(147, 51, 234, 0.07);
+  --tint-rose: rgba(225, 29, 72, 0.07);
 }
 
 /* ── Base ─────────────────────────────────────────────────── */
@@ -60,7 +73,7 @@ html {
 }
 
 body {
-  background: var(--color-bg);
+  background-color: var(--color-bg);
   color: var(--text-primary);
   font-family: var(--font-body), system-ui, -apple-system, sans-serif;
   min-height: 100vh;
@@ -107,44 +120,50 @@ body {
   font-weight: 500;
 }
 
-/* ── Glass Components ─────────────────────────────────────── */
+/* ── Premium Light Glass Components ─────────────────────────────────────── */
 
 .glass-card {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow);
+  background: rgba(255, 255, 255, 0.1); /* Stripped the heavy white smoke */
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    0 4px 24px rgba(0, 0, 0, 0.02),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6);
   position: relative;
   overflow: hidden;
   border-radius: 16px;
-  transition:
-    border-color 0.25s ease,
-    background 0.25s ease,
-    box-shadow 0.25s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-card::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: var(--glass-specular);
+  background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 60%);
+  opacity: 0.1; /* Barely noticeable reflection instead of heavy smoke */
   pointer-events: none;
   border-radius: inherit;
   z-index: 1;
 }
 
 .glass-card:hover {
-  border-color: var(--glass-border-hover);
-  background: var(--glass-bg-hover);
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.8);
+  transform: translateY(-4px);
+  box-shadow: 
+    0 12px 32px rgba(0, 0, 0, 0.04),
+    inset 0 1px 1px rgba(255, 255, 255, 0.8);
 }
 
 .glass-card-static {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    0 4px 24px rgba(0, 0, 0, 0.02),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6);
   position: relative;
   overflow: hidden;
   border-radius: 16px;
@@ -154,7 +173,8 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: var(--glass-specular);
+  background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 60%);
+  opacity: 0.1;
   pointer-events: none;
   border-radius: inherit;
   z-index: 1;
@@ -162,7 +182,7 @@ body {
 
 /* Glass Navbar */
 .glass-nav {
-  background: rgba(8, 8, 8, 0.7);
+  background: rgba(249, 246, 240, 0.85); /* Slightly opaque light theme background */
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--color-border);
@@ -209,6 +229,42 @@ body {
 .whatsapp-btn:hover {
   background: rgba(37, 211, 102, 0.25);
   border-color: rgba(37, 211, 102, 0.5);
+}
+
+/* Colorful Section Tints */
+
+.section-amber,
+.section-orange,
+.section-emerald,
+.section-blue,
+.section-purple,
+.section-rose {
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+}
+
+.section-amber {
+  background: var(--tint-amber);
+}
+
+.section-orange {
+  background: var(--tint-orange);
+}
+
+.section-emerald {
+  background: var(--tint-emerald);
+}
+
+.section-blue {
+  background: var(--tint-blue);
+}
+
+.section-purple {
+  background: var(--tint-purple);
+}
+
+.section-rose {
+  background: var(--tint-rose);
 }
 
 /* ── Status Badges ────────────────────────────────────────── */
@@ -530,6 +586,57 @@ html {
 }
 
 /* Tabular nums for stat counters */
-.tabular-nums {
-  font-variant-numeric: tabular-nums;
+/* ── Contextual Text Color Fix ─────────────────────────────────────── */
+/* In light mode, default white/gray text is flipped to dark */
+html body .text-white,
+html body .text-gray-50,
+html body .text-gray-100 {
+  color: var(--text-primary);
+}
+
+html body .text-gray-200,
+html body .text-gray-300,
+html body .text-gray-400 {
+  color: var(--text-secondary);
+}
+
+html body .text-gray-500 {
+  color: var(--text-tertiary);
+}
+
+/* Force true white text where the background is explicitly dark (buttons, gradients, image overlays) */
+html body .text-true-white,
+html body [class*="bg-black"] .text-white,
+html body [class*="bg-black"].text-white,
+html body [class*="bg-purple"] .text-white,
+html body [class*="bg-purple"].text-white,
+html body [class*="bg-emerald"] .text-white,
+html body [class*="bg-emerald"].text-white,
+html body [class*="bg-blue"] .text-white,
+html body [class*="bg-blue"].text-white,
+html body [class*="from-purple"] .text-white,
+html body [class*="from-blue"] .text-white,
+html body [class*="bg-gradient-to"] .text-white,
+html body .glass-btn,
+html body .glass-btn .text-white,
+html body .absolute .text-white /* Usually overlays on images */ {
+  color: #ffffff !important;
+}
+
+html body [class*="from-"] .text-gray-200,
+html body [class*="bg-black"] .text-gray-200,
+html body .absolute .text-gray-200 {
+  color: rgba(255,255,255,0.8) !important;
+}
+
+html body [class*="from-"] .text-gray-300,
+html body [class*="bg-black"] .text-gray-300,
+html body .absolute .text-gray-300 {
+  color: rgba(255,255,255,0.7) !important;
+}
+
+html body [class*="from-"] .text-gray-400,
+html body [class*="bg-black"] .text-gray-400,
+html body .absolute .text-gray-400 {
+  color: rgba(255,255,255,0.6) !important;
 }

@@ -14,7 +14,7 @@ export default function FeaturedDogs() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [showAll, setShowAll] = useState(false);
 
-  const featuredDogsList = dogs.filter((d) => (d as any).featured);
+  const featuredDogsList = dogs.filter((d) => d.featured);
   const featuredOnly = featuredDogsList.length > 0 ? featuredDogsList : dogs;
 
   const filtered = activeCategory === 'all'
@@ -24,7 +24,7 @@ export default function FeaturedDogs() {
   const displayed = showAll ? filtered : filtered.slice(0, 6);
 
   return (
-    <section className="py-20 lg:py-28" id="featured-dogs">
+    <section className="py-20 lg:py-28 section-blue" id="featured-dogs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           title="Our Puppies"

@@ -69,7 +69,7 @@ export default function StatsCounter() {
   const inView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section className="py-8 relative overflow-hidden" ref={ref}>
+    <section className="py-8 section-amber relative overflow-hidden" ref={ref}>
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[400px] h-[400px] bg-purple-500/[0.03] rounded-full blur-3xl" />
         <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[400px] h-[400px] bg-blue-500/[0.03] rounded-full blur-3xl" />
