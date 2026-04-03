@@ -60,8 +60,8 @@ export default function Navbar() {
                 className={cn(
                   'px-4 py-2 rounded-full text-sm font-medium transition-all duration-200',
                   isActive
-                    ? 'bg-white/10 text-white'
-                    : 'text-[var(--text-secondary)] hover:text-white hover:bg-white/5'
+                    ? 'bg-amber-500/10 text-amber-600'
+                    : 'text-[var(--text-secondary)] hover:text-amber-600 hover:bg-amber-500/5'
                 )}
               >
                 {link.label}
@@ -74,7 +74,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-3">
           <a
             href={`tel:${siteConfig.phone.replace(/\s/g, '')}`}
-            className="glass-btn px-4 py-2 text-sm flex items-center gap-2"
+            className="glass-btn px-4 py-2 text-sm flex items-center gap-2 text-[var(--text-primary)] hover:text-amber-600 hover:bg-amber-500/5"
             aria-label="Call us"
           >
             <Phone size={14} />
@@ -82,7 +82,7 @@ export default function Navbar() {
           </a>
           <Link
             href="/cart"
-            className="relative glass-btn p-2.5"
+            className="relative glass-btn p-2.5 text-[var(--text-primary)] hover:text-amber-600 hover:bg-amber-500/5"
             aria-label={`Cart with ${itemCount} items`}
           >
             <ShoppingBag size={18} />
@@ -90,7 +90,7 @@ export default function Navbar() {
               <motion.span
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
-                className="absolute -top-1 -right-1 w-5 h-5 bg-white text-black rounded-full text-[11px] font-bold flex items-center justify-center"
+                className="absolute -top-1 -right-1 w-5 h-5 bg-amber-600 text-white rounded-full text-[11px] font-bold flex items-center justify-center"
               >
                 {itemCount}
               </motion.span>
@@ -100,17 +100,17 @@ export default function Navbar() {
 
         {/* Mobile Menu Button */}
         <div className="flex md:hidden items-center gap-3">
-          <Link href="/cart" className="relative p-2" aria-label="Cart">
+          <Link href="/cart" className="relative p-2 text-[var(--text-primary)]" aria-label="Cart">
             <ShoppingBag size={20} />
             {itemCount > 0 && (
-              <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-white text-black rounded-full text-[10px] font-bold flex items-center justify-center">
+              <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-amber-600 text-white rounded-full text-[10px] font-bold flex items-center justify-center">
                 {itemCount}
               </span>
             )}
           </Link>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="p-2"
+            className="p-2 text-[var(--text-primary)]"
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
           >
@@ -139,8 +139,8 @@ export default function Navbar() {
                     className={cn(
                       'px-4 py-3 rounded-xl text-base font-medium transition-all',
                       isActive
-                        ? 'bg-white/10 text-white'
-                        : 'text-[var(--text-secondary)] hover:bg-white/5'
+                        ? 'bg-amber-500/10 text-amber-600'
+                        : 'text-[var(--text-secondary)] hover:bg-amber-500/5 hover:text-amber-600'
                     )}
                   >
                     {link.label}

@@ -24,7 +24,7 @@ export default function FeaturedDogs() {
   const displayed = showAll ? filtered : filtered.slice(0, 6);
 
   return (
-    <section className="py-20 lg:py-28 section-blue" id="featured-dogs">
+    <section className="py-20 lg:py-28 section-solid-blue" id="featured-dogs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           title="Our Puppies"

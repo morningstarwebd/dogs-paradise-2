@@ -42,13 +42,13 @@ const features = [
 
 function FeatureCard({ feature }: { feature: typeof features[number] }) {
   return (
-    <GlassCard hover={false} className="p-6 h-full">
+    <GlassCard variant="solid" className="p-6 h-full border-emerald-100/50">
       <div className="relative z-10">
-        <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/80 mb-4">
+        <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-100/50 flex items-center justify-center text-emerald-600 mb-4">
           {feature.icon}
         </div>
-        <h3 className="heading-card text-white mb-2">{feature.title}</h3>
-        <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+        <h3 className="heading-card text-emerald-950 mb-2">{feature.title}</h3>
+        <p className="text-sm text-emerald-800/70 leading-relaxed">
           {feature.description}
         </p>
       </div>
@@ -58,7 +58,7 @@ function FeatureCard({ feature }: { feature: typeof features[number] }) {
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-20 lg:py-28 section-emerald" id="why-choose-us">
+    <section className="py-20 lg:py-28 section-solid-emerald" id="why-choose-us">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           title="Why Dogs Paradice?"

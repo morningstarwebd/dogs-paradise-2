@@ -11,11 +11,10 @@ export default function DogDetailsClient({ dog }: { dog: Dog }) {
   const defaultVariant = dog.variants?.find(v => v.sizeName === 'Medium') || dog.variants?.[0] || null;
   const [selectedVariant, setSelectedVariant] = useState<DogVariant | null>(defaultVariant);
 
-  const displayPrice = selectedVariant?.price ?? dog.price;
   const displayAge = selectedVariant?.age ?? dog.age;
   const displaySizeLabel = selectedVariant?.sizeName ?? '';
 
-  const message = `Hi ${siteConfig.brandName}! I'm interested in the ${displaySizeLabel ? `${displaySizeLabel} size ` : ''}${dog.breedName} puppy listed for ${formatPrice(displayPrice)}. Can you share more details?`;
+  const message = `Hi ${siteConfig.brandName}! I'm interested in the ${displaySizeLabel ? `${displaySizeLabel} size ` : ''}${dog.breedName} puppy. Can you share more details and pricing?`;
 
   return (
     <div className="flex flex-col h-full">
@@ -61,13 +60,6 @@ export default function DogDetailsClient({ dog }: { dog: Dog }) {
       )}
 
       <div className="flex flex-wrap items-center gap-6 mb-8 py-6 border-y border-[var(--color-border)]">
-        <div>
-          <p className="text-xs text-[var(--text-tertiary)] uppercase tracking-wider mb-1">Price</p>
-          <div className="text-3xl font-display font-bold text-[var(--text-primary)]">
-            {formatPrice(displayPrice)}
-          </div>
-        </div>
-        <div className="w-px h-12 bg-[var(--color-border)] hidden sm:block" />
         <div>
           <p className="text-xs text-[var(--text-tertiary)] uppercase tracking-wider mb-1">Age</p>
           <div className="text-lg font-medium text-[var(--text-primary)]">{displayAge}</div>

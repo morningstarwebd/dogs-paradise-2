@@ -54,24 +54,24 @@ const steps = [
 
 function StepCard({ step }: { step: typeof steps[number] }) {
   return (
-    <GlassCard hover className="p-6 h-full relative group">
+    <GlassCard variant="solid" className="p-6 h-full relative group border-purple-100/50">
       <div className="relative z-10">
         <div className="flex items-center gap-3 mb-4">
           <div
             className="w-12 h-12 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
-            style={{ background: `${step.color}15`, color: step.color }}
+            style={{ background: `${step.color}10`, color: step.color }}
           >
             {step.icon}
           </div>
           <span
-            className="text-3xl font-display font-bold opacity-20"
+            className="text-3xl font-display font-bold opacity-30"
             style={{ color: step.color }}
           >
             {String(step.step).padStart(2, '0')}
           </span>
         </div>
-        <h3 className="heading-card text-white mb-2">{step.title}</h3>
-        <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+        <h3 className="heading-card text-slate-900 mb-2">{step.title}</h3>
+        <p className="text-sm text-slate-600 leading-relaxed">
           {step.description}
         </p>
       </div>
@@ -81,7 +81,7 @@ function StepCard({ step }: { step: typeof steps[number] }) {
 
 export default function AdoptionProcess() {
   return (
-    <section className="py-20 lg:py-28 relative overflow-hidden" id="adoption-process">
+    <section className="py-20 lg:py-28 section-solid-purple relative overflow-hidden" id="adoption-process">
       <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-purple-500/[0.03] rounded-full blur-3xl pointer-events-none -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-cyan-500/[0.03] rounded-full blur-3xl pointer-events-none translate-x-1/2 translate-y-1/2" />
 

@@ -34,7 +34,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="py-20 lg:py-28 section-orange" id="testimonials">
+    <section className="py-20 lg:py-28 section-solid-rose" id="testimonials">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           title="Happy Puppy Parents"
@@ -57,7 +57,7 @@ export default function Testimonials() {
 
         {/* Desktop navigation */}
         <div className="hidden lg:flex items-center justify-center gap-4 mt-8">
-          <button onClick={prev} className="glass-btn p-2.5 rounded-full" aria-label="Previous">
+          <button onClick={prev} className="p-2.5 rounded-full border border-rose-200 bg-white shadow-sm hover:shadow-md transition-all text-rose-600" aria-label="Previous">
             <ChevronLeft size={18} />
           </button>
           <div className="flex gap-1.5">
@@ -67,13 +67,13 @@ export default function Testimonials() {
                 onClick={() => setCurrent(i)}
                 className={cn(
                   'rounded-full transition-all duration-300',
-                  i === current ? 'bg-white w-6 h-2' : 'bg-white/20 w-2 h-2'
+                  i === current ? 'bg-rose-500 w-6 h-2' : 'bg-rose-200 w-2 h-2'
                 )}
                 aria-label={`Go to testimonial ${i + 1}`}
               />
             ))}
           </div>
-          <button onClick={next} className="glass-btn p-2.5 rounded-full" aria-label="Next">
+          <button onClick={next} className="p-2.5 rounded-full border border-rose-200 bg-white shadow-sm hover:shadow-md transition-all text-rose-600" aria-label="Next">
             <ChevronRight size={18} />
           </button>
         </div>
@@ -84,7 +84,7 @@ export default function Testimonials() {
 
 function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[number] }) {
   return (
-    <GlassCard hover={false} className="p-6 h-full flex flex-col">
+    <GlassCard variant="solid" className="p-6 h-full flex flex-col border-rose-100/50">
       <div className="relative z-10 flex flex-col flex-1">
         {/* Stars */}
         <div className="flex gap-0.5 mb-4">
@@ -93,25 +93,25 @@ function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[num
               key={i}
               size={14}
               className={cn(
-                i < testimonial.rating ? 'fill-yellow-400 text-yellow-400' : 'text-white/10'
+                i < testimonial.rating ? 'fill-yellow-400 text-yellow-400' : 'text-slate-200'
               )}
             />
           ))}
         </div>
 
         {/* Text */}
-        <p className="text-sm text-[var(--text-secondary)] leading-relaxed flex-1 mb-4">
+        <p className="text-sm text-slate-600 leading-relaxed flex-1 mb-4">
           &ldquo;{testimonial.text}&rdquo;
         </p>
 
         {/* Author */}
-        <div className="flex items-center gap-3 pt-4 border-t border-[var(--color-border)]">
-          <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-sm font-bold text-white/60">
+        <div className="flex items-center gap-3 pt-4 border-t border-rose-50/50">
+          <div className="w-10 h-10 rounded-full bg-rose-500/10 flex items-center justify-center text-sm font-bold text-rose-600">
             {testimonial.authorName.charAt(0)}
           </div>
           <div>
-            <p className="text-sm font-medium text-white">{testimonial.authorName}</p>
-            <p className="text-xs text-[var(--text-tertiary)]">
+            <p className="text-sm font-medium text-slate-900">{testimonial.authorName}</p>
+            <p className="text-xs text-slate-500">
               {testimonial.location} · {testimonial.breedPurchased}
             </p>
           </div>

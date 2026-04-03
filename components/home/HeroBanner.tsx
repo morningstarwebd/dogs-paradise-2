@@ -71,13 +71,13 @@ export default function HeroBanner() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href={slide.ctaHref}
-                  className="glass-btn px-8 py-4 text-base font-medium"
+                  className="glass-btn px-8 py-4 text-base font-medium text-white"
                 >
                   {slide.ctaLabel}
                 </Link>
                 <Link
                   href="/contact"
-                  className="whatsapp-btn px-8 py-4 text-base font-medium flex items-center gap-2"
+                  className="whatsapp-btn px-8 py-4 text-base font-medium flex items-center gap-2 text-white"
                 >
                   💬 WhatsApp Us
                 </Link>

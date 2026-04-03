@@ -46,7 +46,7 @@ export default function FAQSection() {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
 
   return (
-    <section className="py-20 lg:py-28 section-blue" id="faq">
+    <section className="py-20 lg:py-28 section-solid-blue" id="faq">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           title="Frequently Asked Questions"
@@ -62,28 +62,28 @@ export default function FAQSection() {
         >
           {faqs.map((faq, i) => (
             <motion.div key={i} variants={fadeUpVariant}>
-              <div className="glass-card-static overflow-hidden">
+              <div className="bg-white border border-blue-100/50 shadow-sm rounded-2xl overflow-hidden hover:shadow-md transition-shadow duration-300">
                 <button
                   onClick={() => setOpenIdx(openIdx === i ? null : i)}
-                  className="w-full flex items-start gap-3 p-5 text-left group relative z-10"
+                  className="w-full flex items-start gap-4 p-5 text-left group relative z-10"
                   aria-expanded={openIdx === i}
                 >
                   <div className={cn(
                     'w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors duration-200',
-                    openIdx === i ? 'bg-white/10 text-white' : 'bg-white/5 text-white/40'
+                    openIdx === i ? 'bg-blue-600 text-white shadow-lg' : 'bg-blue-50 text-blue-500'
                   )}>
                     <HelpCircle size={16} />
                   </div>
                   <span className={cn(
-                    'flex-1 text-sm font-medium transition-colors duration-200 pt-1',
-                    openIdx === i ? 'text-white' : 'text-[var(--text-secondary)] group-hover:text-white'
+                    'flex-1 text-sm font-semibold transition-colors duration-200 pt-1',
+                    openIdx === i ? 'text-blue-900' : 'text-slate-700 group-hover:text-blue-600'
                   )}>
                     {faq.q}
                   </span>
                   <motion.div
                     animate={{ rotate: openIdx === i ? 180 : 0 }}
                     transition={{ duration: 0.2 }}
-                    className="shrink-0 mt-1 text-[var(--text-tertiary)]"
+                    className="shrink-0 mt-1 text-slate-400"
                   >
                     <ChevronDown size={18} />
                   </motion.div>
@@ -98,8 +98,8 @@ export default function FAQSection() {
                       transition={{ duration: 0.25, ease: 'easeInOut' }}
                       className="overflow-hidden"
                     >
-                      <div className="px-5 pb-5 pl-16 relative z-10">
-                        <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                      <div className="px-5 pb-5 pl-[72px] relative z-10 border-t border-blue-50/50 pt-4">
+                        <p className="text-sm text-slate-600 leading-relaxed font-normal">
                           {faq.a}
                         </p>
                       </div>

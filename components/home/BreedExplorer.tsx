@@ -9,7 +9,6 @@ import MobileCarousel from '@/components/ui/MobileCarousel';
 import { fadeUpVariant } from '@/lib/animations';
 import { cn } from '@/lib/utils';
 import { dogs } from '@/data/dogs';
-import { formatPrice } from '@/lib/utils';
 import { Dog, PawPrint, Shield, Home, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 
@@ -44,7 +43,7 @@ export default function BreedExplorer() {
   const filteredDogs = filterDogs(active.filter).slice(0, 4);
 
   return (
-    <section className="py-20 lg:py-28 section-amber" id="breed-explorer">
+    <section className="py-20 lg:py-28 section-solid-amber" id="breed-explorer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           title="Explore By Category"
@@ -59,7 +58,7 @@ export default function BreedExplorer() {
           viewport={{ once: true }}
           className="flex justify-center mb-10"
         >
-          <div className="inline-flex flex-wrap justify-center gap-2 sm:gap-0 sm:flex-nowrap sm:bg-white/5 sm:rounded-2xl sm:p-1.5 sm:border sm:border-[var(--color-border)]">
+          <div className="inline-flex flex-wrap justify-center gap-2 sm:gap-0 sm:flex-nowrap sm:bg-amber-100/50 sm:rounded-2xl sm:p-1.5 sm:border sm:border-amber-200">
             {exploreCategories.map((cat) => (
               <button
                 key={cat.id}
@@ -67,8 +66,8 @@ export default function BreedExplorer() {
                 className={cn(
                   'flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200',
                   activeTab === cat.id
-                    ? 'bg-white text-black shadow-lg'
-                    : 'text-[var(--text-secondary)] hover:text-white hover:bg-white/5'
+                    ? 'bg-amber-600 text-white shadow-lg shadow-amber-200/50'
+                    : 'text-amber-800/60 hover:text-amber-900 hover:bg-amber-50'
                 )}
               >
                 {cat.icon}

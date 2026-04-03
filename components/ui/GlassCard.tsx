@@ -11,6 +11,7 @@ interface GlassCardProps {
   hover?: boolean;
   onClick?: () => void;
   as?: 'div' | 'article' | 'section';
+  variant?: 'glass' | 'solid';
 }
 
 export default function GlassCard({
@@ -19,13 +20,17 @@ export default function GlassCard({
   hover = true,
   onClick,
   as = 'div',
+  variant = 'glass',
 }: GlassCardProps) {
   const Component = as;
+  const isSolid = variant === 'solid';
+  const baseClass = isSolid ? 'bg-white border-gray-100 shadow-sm' : 'glass-card';
+  const staticClass = isSolid ? 'bg-white border-gray-100 shadow-sm' : 'glass-card-static';
 
   if (hover) {
     return (
       <motion.div
-        className={cn('glass-card', className)}
+        className={cn(baseClass, className)}
         variants={cardHoverVariant}
         initial="rest"
         whileHover="hover"
@@ -39,7 +44,7 @@ export default function GlassCard({
   }
 
   return (
-    <Component className={cn('glass-card-static', className)}>
+    <Component className={cn(staticClass, className)}>
       {children}
     </Component>
   );

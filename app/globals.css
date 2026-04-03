@@ -407,6 +407,13 @@ body {
 /* ── Utilities ────────────────────────────────────────────── */
 
 .text-gradient {
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-white {
   background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.6) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -604,7 +611,28 @@ html body .text-gray-500 {
   color: var(--text-tertiary);
 }
 
-/* Force true white text where the background is explicitly dark (buttons, gradients, image overlays) */
+/* ── Light Solid Backgrounds ───────────────────────────────────────── */
+.section-solid-amber {
+  background-color: #fdfaf3; /* Ultra light champagne */
+}
+.section-solid-purple {
+  background-color: #fafaff; /* Ultra light lavender */
+}
+.section-solid-emerald {
+  background-color: #f7fdfb; /* Ultra light mint */
+}
+.section-solid-blue {
+  background-color: #f2f9ff; /* Ultra light sky */
+}
+.section-solid-rose {
+  background-color: #fff6f8; /* Ultra light blush */
+}
+.section-solid-orange {
+  background-color: #fff9f5; /* Ultra light apricort */
+}
+
+/* ─────────────────────────────────────────────────────────────────── */
+
 html body .text-true-white,
 html body [class*="bg-black"] .text-white,
 html body [class*="bg-black"].text-white,
@@ -617,8 +645,6 @@ html body [class*="bg-blue"].text-white,
 html body [class*="from-purple"] .text-white,
 html body [class*="from-blue"] .text-white,
 html body [class*="bg-gradient-to"] .text-white,
-html body .glass-btn,
-html body .glass-btn .text-white,
 html body .absolute .text-white /* Usually overlays on images */ {
   color: #ffffff !important;
 }

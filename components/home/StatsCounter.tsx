@@ -45,18 +45,18 @@ function AnimatedNumber({ value, suffix, inView }: { value: number; suffix: stri
 
 function StatCard({ stat, inView }: { stat: typeof stats[number]; inView: boolean }) {
   return (
-    <div className="glass-card-static p-5 text-center group hover:border-[var(--glass-border-hover)] transition-all duration-300 h-full">
+    <div className="bg-white border border-amber-100/50 shadow-sm rounded-2xl p-5 text-center group hover:shadow-md transition-all duration-300 h-full">
       <div className="relative z-10">
         <div
           className="w-10 h-10 rounded-xl mx-auto mb-3 flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
-          style={{ background: `${stat.color}15`, color: stat.color }}
+          style={{ background: `${stat.color}10`, color: stat.color }}
         >
           {stat.icon}
         </div>
-        <p className="text-2xl lg:text-3xl font-bold text-gradient mb-1">
+        <p className="text-2xl lg:text-3xl font-bold text-slate-900 mb-1">
           <AnimatedNumber value={stat.value} suffix={stat.suffix} inView={inView} />
         </p>
-        <p className="text-[10px] sm:text-xs text-[var(--text-tertiary)] uppercase tracking-wider">
+        <p className="text-[10px] sm:text-xs text-slate-500 uppercase tracking-wider">
           {stat.label}
         </p>
       </div>
@@ -69,7 +69,7 @@ export default function StatsCounter() {
   const inView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section className="py-8 section-amber relative overflow-hidden" ref={ref}>
+    <section className="py-8 section-solid-amber relative overflow-hidden" ref={ref}>
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[400px] h-[400px] bg-purple-500/[0.03] rounded-full blur-3xl" />
         <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[400px] h-[400px] bg-blue-500/[0.03] rounded-full blur-3xl" />

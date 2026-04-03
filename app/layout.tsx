@@ -7,6 +7,7 @@ import Footer from '@/components/layout/Footer';
 import SmoothScroll from '@/components/layout/SmoothScroll';
 import ChatWidget from '@/components/layout/ChatWidget';
 import FloatingBackground from '@/components/ui/FloatingBackground';
+import InitialLoader from '@/components/layout/InitialLoader';
 import './globals.css';
 
 const playfair = Playfair_Display({
@@ -83,6 +84,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-transparent text-[var(--text-primary)]">
+        <InitialLoader />
         <FloatingBackground />
         <ViewTransitions>
           <SmoothScroll>

@@ -12,7 +12,7 @@ const featured = blogPosts.slice(0, 3);
 
 export default function BlogPreview() {
   return (
-    <section className="py-20 lg:py-28 section-rose" id="blog-preview">
+    <section className="py-20 lg:py-28 section-solid-rose" id="blog-preview">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           title="From Our Blog"
@@ -29,7 +29,7 @@ export default function BlogPreview() {
           {/* Featured Post (large) */}
           <motion.div variants={fadeUpVariant} className="lg:col-span-7">
             <Link href={`/blog/${featured[0].slug}`} className="block group h-full">
-              <div className="glass-card overflow-hidden h-full">
+              <div className="bg-white border border-rose-100/50 shadow-sm rounded-2xl overflow-hidden h-full hover:shadow-md transition-shadow duration-300">
                 <div className="relative aspect-[16/10] lg:aspect-auto lg:h-64 overflow-hidden">
                   <Image
                     src={featured[0].coverImagePath}
@@ -38,23 +38,23 @@ export default function BlogPreview() {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 1024px) 100vw, 58vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4 z-10">
-                    <span className="label-badge inline-flex items-center px-2.5 py-1 rounded-full bg-white/10 border border-white/20 text-white/80 mb-2">
+                    <span className="label-badge inline-flex items-center px-2.5 py-1 rounded-full bg-white/90 border border-white text-rose-600 font-semibold text-[10px] uppercase tracking-wider mb-2">
                       {featured[0].category}
                     </span>
                   </div>
                 </div>
                 <div className="p-6 relative z-10">
-                  <div className="flex items-center gap-3 text-xs text-[var(--text-tertiary)] mb-3">
+                  <div className="flex items-center gap-3 text-xs text-slate-400 mb-3 font-medium">
                     <span className="flex items-center gap-1"><Clock size={12} />{featured[0].readingTime}</span>
                     <span>·</span>
                     <span>{featured[0].publishedAt}</span>
                   </div>
-                  <h3 className="text-lg font-display font-bold text-gradient mb-2">
+                  <h3 className="text-xl font-display font-bold text-slate-900 mb-2 group-hover:text-rose-600 transition-colors">
                     {featured[0].title}
                   </h3>
-                  <p className="text-sm text-[var(--text-secondary)] line-clamp-2">
+                  <p className="text-sm text-slate-600 line-clamp-2 leading-relaxed">
                     {featured[0].excerpt}
                   </p>
                 </div>
@@ -67,7 +67,7 @@ export default function BlogPreview() {
             {featured.slice(1).map((post) => (
               <motion.div key={post.id} variants={fadeUpVariant} className="flex-1">
                 <Link href={`/blog/${post.slug}`} className="block group h-full">
-                  <div className="glass-card overflow-hidden h-full flex flex-col sm:flex-row lg:flex-col">
+                  <div className="bg-white border border-rose-100/50 shadow-sm rounded-2xl overflow-hidden h-full flex flex-col sm:flex-row lg:flex-col hover:shadow-md transition-shadow duration-300">
                     <div className="relative aspect-[16/9] sm:aspect-auto sm:w-48 lg:w-full lg:h-32 shrink-0 overflow-hidden">
                       <Image
                         src={post.coverImagePath}
@@ -78,11 +78,11 @@ export default function BlogPreview() {
                       />
                     </div>
                     <div className="p-4 relative z-10 flex-1">
-                      <div className="flex items-center gap-2 text-[10px] text-[var(--text-tertiary)] mb-2">
-                        <span className="px-2 py-0.5 rounded-full bg-white/5 border border-[var(--color-border)]">{post.category}</span>
+                      <div className="flex items-center gap-2 text-[10px] text-slate-400 font-semibold mb-2">
+                        <span className="px-2 py-0.5 rounded-full bg-rose-50 text-rose-600 border border-rose-100 uppercase tracking-wider">{post.category}</span>
                         <span>{post.readingTime}</span>
                       </div>
-                      <h3 className="text-sm font-display font-semibold text-gradient line-clamp-2 group-hover:opacity-80 transition-opacity">
+                      <h3 className="text-sm font-display font-bold text-slate-900 line-clamp-2 group-hover:text-rose-600 transition-colors">
                         {post.title}
                       </h3>
                     </div>
