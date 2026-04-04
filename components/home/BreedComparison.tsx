@@ -7,7 +7,7 @@ import SectionHeading from '@/components/ui/SectionHeading';
 import GlassCard from '@/components/ui/GlassCard';
 import { fadeUpVariant } from '@/lib/animations';
 import { dogs } from '@/data/dogs';
-import { formatPrice, cn } from '@/lib/utils';
+import { cn } from '@/lib/utils';
 import { Check, X, ArrowLeftRight } from 'lucide-react';
 import Link from 'next/link';
 
@@ -29,7 +29,7 @@ export default function BreedComparison() {
   const right = compareDogs[rightIdx];
 
   return (
-    <section className="py-20 lg:py-28 section-purple" id="breed-comparison">
+    <section className="section-shell section-purple" id="breed-comparison">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           title="Compare Breeds"
@@ -51,7 +51,7 @@ export default function BreedComparison() {
             exclude={rightIdx}
             label="First Breed"
           />
-          <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 shrink-0">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--color-border)] bg-white/70 text-[var(--text-tertiary)]">
             <ArrowLeftRight size={16} />
           </div>
           <BreedSelector
@@ -71,7 +71,7 @@ export default function BreedComparison() {
           viewport={{ once: true }}
           className="flex justify-center mb-8"
         >
-          <div className="inline-flex bg-white/5 rounded-full p-1 border border-[var(--color-border)]">
+          <div className="inline-flex rounded-full border border-[var(--color-border)] bg-white/70 p-1">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
@@ -79,8 +79,8 @@ export default function BreedComparison() {
                 className={cn(
                   'px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200',
                   activeTab === tab.id
-                    ? 'bg-white text-black'
-                    : 'text-[var(--text-secondary)] hover:text-white'
+                    ? 'bg-[var(--accent-primary)] text-white'
+                    : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                 )}
               >
                 {tab.label}
@@ -99,8 +99,8 @@ export default function BreedComparison() {
             transition={{ duration: 0.3 }}
             className="grid grid-cols-1 lg:grid-cols-2 gap-6"
           >
-            <ComparisonCard dog={left} tab={activeTab} side="left" />
-            <ComparisonCard dog={right} tab={activeTab} side="right" />
+            <ComparisonCard dog={left} tab={activeTab} />
+            <ComparisonCard dog={right} tab={activeTab} />
           </motion.div>
         </AnimatePresence>
       </div>
@@ -129,7 +129,7 @@ function BreedSelector({
       <select
         value={selected}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full bg-white/5 border border-[var(--color-border)] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white/30"
+        className="w-full rounded-xl border border-[var(--color-border)] bg-white/75 px-4 py-3 text-sm text-[var(--text-primary)] focus:border-[var(--accent-primary)] focus:outline-none"
       >
         {breedList.map((dog, i) => (
           <option key={dog.id} value={i} disabled={i === exclude} className="bg-[var(--color-surface)]">
@@ -141,7 +141,7 @@ function BreedSelector({
   );
 }
 
-function ComparisonCard({ dog, tab, side }: { dog: typeof compareDogs[number]; tab: string; side: string }) {
+function ComparisonCard({ dog, tab }: { dog: typeof compareDogs[number]; tab: string }) {
   return (
     <GlassCard hover={false} className="p-0 overflow-hidden">
       <div className="relative z-10">

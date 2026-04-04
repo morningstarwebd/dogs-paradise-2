@@ -1,44 +1,45 @@
 'use client';
 
+import { AnimatePresence, motion } from 'motion/react';
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import { fadeUpVariant, staggerContainer } from '@/lib/animations';
+import { siteConfig } from '@/data/site-config';
 import { cn } from '@/lib/utils';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 
 const faqs = [
   {
-    q: 'Are your puppies KCI registered?',
-    a: 'Yes, every puppy comes with verified Kennel Club of India (KCI) registration papers. We provide the original registration certificate with documented pedigree lineage going back at least three generations. KCI papers guarantee the breed authenticity and purity of your puppy.',
+    q: 'Are all of your puppies KCI registered?',
+    a: 'No. KCI registration is available only for select puppies and litters. We clearly confirm the paperwork status for the exact puppy before you book.',
   },
   {
     q: 'What vaccinations do your puppies receive?',
-    a: 'All puppies receive age-appropriate DHPPi (Distemper, Hepatitis, Parvovirus, Parainfluenza) vaccinations, anti-rabies shots (when age-appropriate), and a complete deworming schedule. A full vaccination card with batch numbers and veterinarian signatures is provided with every puppy.',
+    a: 'Puppies leave with age-appropriate vaccination updates, deworming records, and vet health notes. We also guide you on the next due dates after pickup.',
   },
   {
     q: 'Do you deliver puppies outside Bangalore?',
-    a: 'Yes! We arrange safe, climate-controlled delivery across India via trusted pet transport services. Delivery includes a comfortable travel crate, food, water, and live tracking. We also coordinate airport pickups for air-shipped puppies. Delivery charges vary by distance.',
+    a: 'Yes. We help coordinate safe travel across India depending on the puppy, destination, and weather conditions. We explain the process in detail before confirming delivery.',
   },
   {
-    q: 'Can I visit and see the puppy before purchasing?',
-    a: 'Absolutely! We encourage all prospective puppy parents to visit our facility. You can meet the puppy, see the parents, inspect our facilities, and verify all health and registration documents in person. Video calls are also available for outstation buyers.',
+    q: 'Can I visit before choosing a puppy?',
+    a: 'Yes. We encourage visits and video calls so you can understand the puppy, ask questions, and review health details before making a decision.',
   },
   {
-    q: 'What is your health guarantee policy?',
-    a: 'We provide a comprehensive health guarantee with every puppy. If any congenital health issue is detected within the guarantee period, we cover the veterinary costs or provide a replacement puppy. All puppies are vet-certified healthy before going to their new homes.',
+    q: 'What documents do you share at handover?',
+    a: 'We share the health records, vaccination details, feeding guidance, and any paperwork applicable to that puppy. Registration papers are included only where available.',
   },
   {
     q: 'How do I reserve a puppy?',
-    a: 'To reserve a puppy, contact us via WhatsApp to confirm availability. A partial advance payment secures the puppy exclusively for you. The remaining balance is paid upon pickup or before delivery. We provide a receipt and reservation confirmation for every booking.',
+    a: 'Message us on WhatsApp to confirm availability. Once we discuss the puppy and answer your questions, we will guide you through the booking process.',
   },
   {
-    q: 'Do you provide post-purchase support?',
-    a: 'Yes — lifetime! You get a detailed diet chart, vaccination schedule, training tips, and grooming guide. Our WhatsApp support is available for any questions about feeding, behavior, health concerns, or veterinarian recommendations. We are with you through every stage.',
+    q: 'Do you support first-time pet parents?',
+    a: 'Yes. We help with food guidance, settling-in tips, grooming basics, vaccination reminders, and general after-pickup support.',
   },
   {
-    q: 'What is the difference between a pet quality and show quality puppy?',
-    a: 'Pet quality puppies are healthy, purebred dogs perfect for families who want a loving companion. Show quality puppies meet stricter KCI breed standards in terms of structure, coat, color, and conformation — ideal for dog shows and future breeding programs. Both receive the same health care and vaccinations.',
+    q: 'What is the difference between a companion puppy and a paperwork-eligible puppy?',
+    a: 'Companion puppies are matched for healthy family homes, while some puppies may also be available with specific registration or lineage paperwork. We explain the difference case by case so expectations stay clear.',
   },
 ];
 
@@ -46,11 +47,11 @@ export default function FAQSection() {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
 
   return (
-    <section className="py-20 lg:py-28 section-solid-blue" id="faq">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="section-shell bg-[var(--color-surface)]" id="faq">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           title="Frequently Asked Questions"
-          subtitle="Everything you need to know about buying a puppy from Dogs Paradice."
+          subtitle={`Everything you should know before choosing a puppy from ${siteConfig.brandName}.`}
         />
 
         <motion.div
@@ -61,29 +62,37 @@ export default function FAQSection() {
           className="space-y-3"
         >
           {faqs.map((faq, i) => (
-            <motion.div key={i} variants={fadeUpVariant}>
-              <div className="bg-white border border-blue-100/50 shadow-sm rounded-2xl overflow-hidden hover:shadow-md transition-shadow duration-300">
+            <motion.div key={faq.q} variants={fadeUpVariant}>
+              <div className="overflow-hidden rounded-2xl border border-[var(--color-border)] bg-white shadow-sm transition-shadow duration-300 hover:shadow-md">
                 <button
                   onClick={() => setOpenIdx(openIdx === i ? null : i)}
-                  className="w-full flex items-start gap-4 p-5 text-left group relative z-10"
+                  className="relative z-10 flex w-full items-start gap-4 p-5 text-left"
                   aria-expanded={openIdx === i}
                 >
-                  <div className={cn(
-                    'w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors duration-200',
-                    openIdx === i ? 'bg-blue-600 text-white shadow-lg' : 'bg-blue-50 text-blue-500'
-                  )}>
+                  <div
+                    className={cn(
+                      'flex h-9 w-9 shrink-0 items-center justify-center rounded-xl transition-colors duration-200',
+                      openIdx === i
+                        ? 'bg-[var(--accent-primary)] text-white'
+                        : 'bg-[var(--accent-primary)]/10 text-[var(--accent-primary)]'
+                    )}
+                  >
                     <HelpCircle size={16} />
                   </div>
-                  <span className={cn(
-                    'flex-1 text-sm font-semibold transition-colors duration-200 pt-1',
-                    openIdx === i ? 'text-blue-900' : 'text-slate-700 group-hover:text-blue-600'
-                  )}>
+                  <span
+                    className={cn(
+                      'flex-1 pt-1 text-sm font-semibold transition-colors duration-200',
+                      openIdx === i
+                        ? 'text-[var(--text-primary)]'
+                        : 'text-[var(--text-secondary)]'
+                    )}
+                  >
                     {faq.q}
                   </span>
                   <motion.div
                     animate={{ rotate: openIdx === i ? 180 : 0 }}
                     transition={{ duration: 0.2 }}
-                    className="shrink-0 mt-1 text-slate-400"
+                    className="mt-1 shrink-0 text-[var(--text-tertiary)]"
                   >
                     <ChevronDown size={18} />
                   </motion.div>
@@ -98,8 +107,8 @@ export default function FAQSection() {
                       transition={{ duration: 0.25, ease: 'easeInOut' }}
                       className="overflow-hidden"
                     >
-                      <div className="px-5 pb-5 pl-[72px] relative z-10 border-t border-blue-50/50 pt-4">
-                        <p className="text-sm text-slate-600 leading-relaxed font-normal">
+                      <div className="border-t border-[var(--color-border)] px-5 pb-5 pl-[72px] pt-4">
+                        <p className="text-sm leading-relaxed text-[var(--text-secondary)]">
                           {faq.a}
                         </p>
                       </div>

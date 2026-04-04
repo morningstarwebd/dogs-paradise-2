@@ -12,9 +12,9 @@ interface DogGridProps {
 export default function DogGrid({ dogs }: DogGridProps) {
   if (dogs.length === 0) {
     return (
-      <div className="text-center py-20">
-        <p className="text-6xl mb-4">🐾</p>
-        <h3 className="heading-card text-white mb-2">No puppies found</h3>
+      <div className="py-20 text-center">
+        <p className="mb-4 text-5xl text-[var(--text-tertiary)]">P</p>
+        <h3 className="heading-card mb-2 text-[var(--text-primary)]">No puppies found</h3>
         <p className="text-sm text-[var(--text-secondary)]">
           Try adjusting your filters or check back later for new arrivals.
         </p>
@@ -27,10 +27,10 @@ export default function DogGrid({ dogs }: DogGridProps) {
       variants={staggerContainer}
       initial="hidden"
       animate="visible"
-      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+      className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
     >
-      {dogs.map((dog, i) => (
-        <DogCard key={dog.id} dog={dog} index={i} />
+      {dogs.map((dog, index) => (
+        <DogCard key={dog.id} dog={dog} index={index} />
       ))}
     </motion.div>
   );

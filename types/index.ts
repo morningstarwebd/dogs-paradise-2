@@ -93,6 +93,7 @@ export interface HeroSlide {
 export interface Testimonial {
   id: string;
   authorName: string;
+  puppyName?: string;
   location: string;
   rating: number;
   breedPurchased: string;
@@ -130,6 +131,11 @@ export interface SiteConfig {
   city: string;
   state: string;
   googleMapsUrl: string;
+  registrationNote: string;
+  businessHours: {
+    days: string;
+    hours: string;
+  }[];
   socialLinks: {
     instagram: string | null;
     facebook: string | null;

@@ -1,78 +1,77 @@
+// Homepage sections
+
+// 17 Sections from components/home (MarqueeBanner and CategoryStrip were previously deleted)
 import HeroBanner from '@/components/home/HeroBanner';
-import StatsCounter from '@/components/home/StatsCounter';
-import MarqueeBanner from '@/components/home/MarqueeBanner';
 import FeaturedDogs from '@/components/home/FeaturedDogs';
-import FlipCardGallery from '@/components/home/FlipCardGallery';
 import BreedExplorer from '@/components/home/BreedExplorer';
-import BreedComparison from '@/components/home/BreedComparison';
-import WhyChooseUs from '@/components/home/WhyChooseUs';
 import ImageHotspot from '@/components/home/ImageHotspot';
+import StatsCounter from '@/components/home/StatsCounter';
+import WhyChooseUs from '@/components/home/WhyChooseUs';
 import AdoptionProcess from '@/components/home/AdoptionProcess';
-import TrustBadges from '@/components/home/TrustBadges';
 import PuppyCareTips from '@/components/home/PuppyCareTips';
-import Testimonials from '@/components/home/Testimonials';
+import TrustBadges from '@/components/home/TrustBadges';
 import InstagramFeed from '@/components/home/InstagramFeed';
 import BlogPreview from '@/components/home/BlogPreview';
 import FAQSection from '@/components/home/FAQSection';
 import NewsletterCTA from '@/components/home/NewsletterCTA';
 import CallToAction from '@/components/home/CallToAction';
 
+// Premium sections
+import HappyStories from '@/components/home/HappyStories';
+import AboutPreview from '@/components/home/AboutPreview';
+
 export default function HomePage() {
   return (
-    <>
-      {/* 1. Hero — Full-screen slider */}
+    <main className="overflow-x-hidden bg-[#302b63]">
+      {/* 1. Hero — The visual hook */}
       <HeroBanner />
 
-      {/* 2. Stats Counter — Animated numbers */}
-      <StatsCounter />
-
-      {/* 3. Marquee Banner — Scrolling trust strip */}
-      <MarqueeBanner />
-
-      {/* 4. Featured Dogs — Category filter + dog cards */}
+      {/* 2. Featured Dogs — Lifestyle categories (Formerly 'Our Collection' / 'Explore Breeds') */}
       <FeaturedDogs />
 
-      {/* 5. Flip Card Gallery — Book-page flip breed cards */}
-      <FlipCardGallery />
-
-      {/* 6. Breed Explorer — Tab-based category exploration */}
+      {/* 3. Breed Explorer — The centerpiece selection */}
       <BreedExplorer />
 
-      {/* 7. Breed Comparison — Side-by-side with tabs */}
-      <BreedComparison />
+      {/* 4. Happy Stories — Premium customer reviews with photos */}
+      <HappyStories />
 
-      {/* 8. Why Choose Us — Trust features grid */}
-      <WhyChooseUs />
+      {/* About Preview — Owner intro right below testimonials */}
+      <AboutPreview />
 
-      {/* 9. Health Hotspot — Interactive 6-point inspection */}
+      {/* 5. Image Hotspot — Interactive anatomy/features */}
       <ImageHotspot />
 
-      {/* 10. Adoption Process — 6-step how-it-works */}
+      {/* 6. Stats Counter — Social proof numbers */}
+      <StatsCounter />
+
+      {/* 7. Why Dogs Paradise Bangalore? — Competitive advantage */}
+      <WhyChooseUs />
+
+
+
+      {/* 10. Adoption Process — The path to ownership */}
       <AdoptionProcess />
 
-      {/* 11. Trust Badges — Credentials strip */}
-      <TrustBadges />
-
-      {/* 12. Puppy Care Tips — 5-tab care guide */}
+      {/* 11. Puppy Care Tips — Educational value */}
       <PuppyCareTips />
 
-      {/* 13. Testimonials — Carousel */}
-      <Testimonials />
+      {/* 12. Trust Badges — Detailed certifications */}
+      <TrustBadges />
 
-      {/* 14. Instagram Gallery — Parallax photo rows */}
+      {/* 13. Instagram Feed — Social presence */}
       <InstagramFeed />
 
-      {/* 15. Blog Preview — Featured articles */}
+      {/* 15. Blog Preview — Thought leadership and SEO */}
       <BlogPreview />
 
-      {/* 16. FAQ — Accordion */}
+      {/* 16. FAQ Section — Overcoming objections */}
       <FAQSection />
 
-      {/* 17. Newsletter — WhatsApp subscribe */}
+      {/* 17. Newsletter CTA — Lead nurture */}
       <NewsletterCTA />
 
-      {/* 18. Final CTA — WhatsApp + Browse */}
+      {/* 18. Final Call to Action — Conversion focus */}
       <CallToAction />
-    </>
+    </main>
   );
 }

@@ -6,17 +6,17 @@ import { motion } from 'motion/react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import { fadeUpVariant, staggerContainer } from '@/lib/animations';
 import { blogPosts } from '@/data/blog-posts';
-import { Clock, ArrowRight } from 'lucide-react';
+import { ArrowRight, Clock } from 'lucide-react';
 
 const featured = blogPosts.slice(0, 3);
 
 export default function BlogPreview() {
   return (
-    <section className="py-20 lg:py-28 section-solid-rose" id="blog-preview">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="section-shell section-solid-rose" id="blog-preview">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           title="From Our Blog"
-          subtitle="Expert guides, breed comparisons, and puppy care tips from the Dogs Paradice team."
+          subtitle="Expert guides, breed comparisons, and puppy care tips from the Dogs Paradise Bangalore team."
         />
 
         <motion.div
@@ -24,13 +24,12 @@ export default function BlogPreview() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-6"
+          className="grid grid-cols-1 gap-6 lg:grid-cols-12"
         >
-          {/* Featured Post (large) */}
           <motion.div variants={fadeUpVariant} className="lg:col-span-7">
-            <Link href={`/blog/${featured[0].slug}`} className="block group h-full">
-              <div className="bg-white border border-rose-100/50 shadow-sm rounded-2xl overflow-hidden h-full hover:shadow-md transition-shadow duration-300">
-                <div className="relative aspect-[16/10] lg:aspect-auto lg:h-64 overflow-hidden">
+            <Link href={`/blog/${featured[0].slug}`} className="group block h-full">
+              <div className="h-full overflow-hidden rounded-2xl border border-rose-100/50 bg-white shadow-sm transition-shadow duration-300 hover:shadow-md">
+                <div className="relative aspect-[16/10] overflow-hidden lg:h-64 lg:aspect-auto">
                   <Image
                     src={featured[0].coverImagePath}
                     alt={featured[0].title}
@@ -40,21 +39,24 @@ export default function BlogPreview() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4 z-10">
-                    <span className="label-badge inline-flex items-center px-2.5 py-1 rounded-full bg-white/90 border border-white text-rose-600 font-semibold text-[10px] uppercase tracking-wider mb-2">
+                    <span className="label-badge inline-flex rounded-full border border-white bg-white/90 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-rose-600">
                       {featured[0].category}
                     </span>
                   </div>
                 </div>
-                <div className="p-6 relative z-10">
-                  <div className="flex items-center gap-3 text-xs text-slate-400 mb-3 font-medium">
-                    <span className="flex items-center gap-1"><Clock size={12} />{featured[0].readingTime}</span>
-                    <span>·</span>
+                <div className="relative z-10 p-6">
+                  <div className="mb-3 flex items-center gap-3 text-xs font-medium text-slate-400">
+                    <span className="flex items-center gap-1">
+                      <Clock size={12} />
+                      {featured[0].readingTime}
+                    </span>
+                    <span>/</span>
                     <span>{featured[0].publishedAt}</span>
                   </div>
-                  <h3 className="text-xl font-display font-bold text-slate-900 mb-2 group-hover:text-rose-600 transition-colors">
+                  <h3 className="mb-2 text-xl font-display font-bold text-slate-900 transition-colors group-hover:text-rose-600">
                     {featured[0].title}
                   </h3>
-                  <p className="text-sm text-slate-600 line-clamp-2 leading-relaxed">
+                  <p className="line-clamp-2 text-sm leading-relaxed text-slate-600">
                     {featured[0].excerpt}
                   </p>
                 </div>
@@ -62,13 +64,12 @@ export default function BlogPreview() {
             </Link>
           </motion.div>
 
-          {/* Side Posts (stacked) */}
-          <div className="lg:col-span-5 flex flex-col gap-6">
+          <div className="flex flex-col gap-6 lg:col-span-5">
             {featured.slice(1).map((post) => (
               <motion.div key={post.id} variants={fadeUpVariant} className="flex-1">
-                <Link href={`/blog/${post.slug}`} className="block group h-full">
-                  <div className="bg-white border border-rose-100/50 shadow-sm rounded-2xl overflow-hidden h-full flex flex-col sm:flex-row lg:flex-col hover:shadow-md transition-shadow duration-300">
-                    <div className="relative aspect-[16/9] sm:aspect-auto sm:w-48 lg:w-full lg:h-32 shrink-0 overflow-hidden">
+                <Link href={`/blog/${post.slug}`} className="group block h-full">
+                  <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-rose-100/50 bg-white shadow-sm transition-shadow duration-300 hover:shadow-md sm:flex-row lg:flex-col">
+                    <div className="relative aspect-[16/9] shrink-0 overflow-hidden sm:w-48 sm:aspect-auto lg:h-32 lg:w-full">
                       <Image
                         src={post.coverImagePath}
                         alt={post.title}
@@ -77,12 +78,14 @@ export default function BlogPreview() {
                         sizes="(max-width: 640px) 100vw, 200px"
                       />
                     </div>
-                    <div className="p-4 relative z-10 flex-1">
-                      <div className="flex items-center gap-2 text-[10px] text-slate-400 font-semibold mb-2">
-                        <span className="px-2 py-0.5 rounded-full bg-rose-50 text-rose-600 border border-rose-100 uppercase tracking-wider">{post.category}</span>
+                    <div className="relative z-10 flex-1 p-4">
+                      <div className="mb-2 flex items-center gap-2 text-[10px] font-semibold text-slate-400">
+                        <span className="rounded-full border border-rose-100 bg-rose-50 px-2 py-0.5 uppercase tracking-wider text-rose-600">
+                          {post.category}
+                        </span>
                         <span>{post.readingTime}</span>
                       </div>
-                      <h3 className="text-sm font-display font-bold text-slate-900 line-clamp-2 group-hover:text-rose-600 transition-colors">
+                      <h3 className="line-clamp-2 text-sm font-display font-bold text-slate-900 transition-colors group-hover:text-rose-600">
                         {post.title}
                       </h3>
                     </div>
@@ -93,7 +96,6 @@ export default function BlogPreview() {
           </div>
         </motion.div>
 
-        {/* View All CTA */}
         <motion.div
           variants={fadeUpVariant}
           initial="hidden"
@@ -103,7 +105,7 @@ export default function BlogPreview() {
         >
           <Link
             href="/blog"
-            className="glass-btn px-8 py-3 text-sm font-medium inline-flex items-center gap-2"
+            className="glass-btn inline-flex items-center gap-2 px-8 py-3 text-sm font-medium"
           >
             View All Articles
             <ArrowRight size={16} />

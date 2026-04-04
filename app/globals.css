@@ -8,41 +8,40 @@
 }
 
 :root {
-  /* Base */
-  --color-bg: #f9f6f0;
+  /* Base - Clean White */
+  --color-bg: #ffffff;
   --color-surface: #ffffff;
-  --color-border: rgba(0, 0, 0, 0.08);
+  --color-border: rgba(79, 45, 39, 0.10);
 
-  /* Warm Ember Accents */
-  --accent-primary: #d97706;
-  --accent-secondary: #e11d48;
-  --accent-tertiary: #0f766e;
+  /* Rich Brand Colorful Accents */
+  --accent-primary: #d4604a;
+  /* Warm coral-terracotta */
+  --accent-secondary: #2a9d8f;
+  /* Vibrant teal */
+  --accent-tertiary: #c25490;
+  /* Bright berry-pink */
 
-  /* Glass */
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-bg-hover: rgba(255, 255, 255, 0.9);
-  --glass-border: rgba(0, 0, 0, 0.05);
-  --glass-border-hover: rgba(0, 0, 0, 0.15);
-  --glass-blur: blur(20px);
-  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  /* Surface / Card */
+  --glass-bg: #ffffff;
+  --glass-bg-hover: #fefefe;
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-border-hover: rgba(0, 0, 0, 0.14);
+  --glass-blur: none;
+  --glass-shadow: 0 8px 24px rgba(0, 0, 0, 0.06),
+    0 2px 6px rgba(0, 0, 0, 0.04);
 
   /* Accent */
-  --color-accent: #000000;
-  --color-accent-muted: rgba(0, 0, 0, 0.6);
-  --color-accent-dim: rgba(0, 0, 0, 0.3);
+  --color-accent: #1a1a1a;
+  --color-accent-muted: rgba(26, 26, 26, 0.6);
+  --color-accent-dim: rgba(26, 26, 26, 0.3);
 
   /* Specular */
-  --glass-specular: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.8) 0%,
-    transparent 50%
-  );
+  --glass-specular: none;
 
   /* Text */
-  --text-primary: #1f1a17;
-  --text-secondary: rgba(31, 26, 23, 0.7);
-  --text-tertiary: rgba(31, 26, 23, 0.5);
+  --text-primary: #1a1a1a;
+  --text-secondary: #4a4a4a;
+  --text-tertiary: #7a7a7a;
 
   /* Status */
   --status-available: #16a34a;
@@ -53,13 +52,19 @@
   /* WhatsApp */
   --whatsapp: #25d366;
 
-  /* Colorful Glass Tints */
-  --tint-amber: rgba(217, 119, 6, 0.07);
-  --tint-orange: rgba(234, 88, 12, 0.07);
-  --tint-emerald: rgba(5, 150, 105, 0.07);
-  --tint-blue: rgba(37, 99, 235, 0.07);
-  --tint-purple: rgba(147, 51, 234, 0.07);
-  --tint-rose: rgba(225, 29, 72, 0.07);
+  /* ✨ Colorful Bright Section Backgrounds */
+  --tint-amber: #FFF8E7;
+  /* Warm golden */
+  --tint-orange: #FFF3E8;
+  /* Soft peach */
+  --tint-emerald: #E8FFF4;
+  /* Fresh mint */
+  --tint-blue: #E8F4FF;
+  /* Sky blue */
+  --tint-purple: #F3E8FF;
+  /* Soft lavender */
+  --tint-rose: #FFE8EE;
+  /* Blush pink */
 }
 
 /* ── Base ─────────────────────────────────────────────────── */
@@ -70,15 +75,31 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   background-color: var(--color-bg);
+  background-image: none;
+  /* Fully solid background */
   color: var(--text-primary);
   font-family: var(--font-body), system-ui, -apple-system, sans-serif;
   min-height: 100vh;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  overflow-x: clip;
+}
+
+.section-shell {
+  padding-block: clamp(2.5rem, 6vw, 7rem);
+}
+
+.section-shell-tight {
+  padding-block: clamp(2rem, 5vw, 5rem);
 }
 
 /* ── Typography ───────────────────────────────────────────── */
@@ -93,7 +114,7 @@ body {
 
 .heading-hero {
   font-family: var(--font-display), Georgia, serif;
-  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-size: clamp(2rem, 8vw, 5rem);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -101,7 +122,7 @@ body {
 
 .heading-section {
   font-family: var(--font-display), Georgia, serif;
-  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-size: clamp(1.6rem, 5vw, 3rem);
   font-weight: 600;
   line-height: 1.2;
 }
@@ -123,13 +144,15 @@ body {
 /* ── Premium Light Glass Components ─────────────────────────────────────── */
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.1); /* Stripped the heavy white smoke */
+  background: linear-gradient(145deg,
+      rgba(255, 247, 241, 0.82),
+      rgba(247, 232, 223, 0.68));
   backdrop-filter: blur(12px) saturate(140%);
   -webkit-backdrop-filter: blur(12px) saturate(140%);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 
-    0 4px 24px rgba(0, 0, 0, 0.02),
-    inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 247, 241, 0.72);
+  box-shadow:
+    0 14px 34px rgba(97, 55, 46, 0.09),
+    inset 0 1px 1px rgba(255, 255, 255, 0.62);
   position: relative;
   overflow: hidden;
   border-radius: 16px;
@@ -140,29 +163,34 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 60%);
-  opacity: 0.1; /* Barely noticeable reflection instead of heavy smoke */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, transparent 60%);
+  opacity: 0.1;
+  /* Barely noticeable reflection instead of heavy smoke */
   pointer-events: none;
   border-radius: inherit;
   z-index: 1;
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.25);
-  border-color: rgba(255, 255, 255, 0.8);
+  background: linear-gradient(145deg,
+      rgba(255, 248, 242, 0.96),
+      rgba(249, 236, 228, 0.86));
+  border-color: rgba(255, 248, 242, 0.94);
   transform: translateY(-4px);
-  box-shadow: 
-    0 12px 32px rgba(0, 0, 0, 0.04),
-    inset 0 1px 1px rgba(255, 255, 255, 0.8);
+  box-shadow:
+    0 18px 40px rgba(97, 55, 46, 0.14),
+    inset 0 1px 1px rgba(255, 255, 255, 0.76);
 }
 
 .glass-card-static {
-  background: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(145deg,
+      rgba(255, 247, 241, 0.78),
+      rgba(247, 232, 223, 0.66));
   backdrop-filter: blur(12px) saturate(140%);
   -webkit-backdrop-filter: blur(12px) saturate(140%);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 
-    0 4px 24px rgba(0, 0, 0, 0.02),
+  border: 1px solid rgba(255, 247, 241, 0.68);
+  box-shadow:
+    0 12px 32px rgba(97, 55, 46, 0.08),
     inset 0 1px 1px rgba(255, 255, 255, 0.6);
   position: relative;
   overflow: hidden;
@@ -173,7 +201,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 60%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, transparent 60%);
   opacity: 0.1;
   pointer-events: none;
   border-radius: inherit;
@@ -182,7 +210,9 @@ body {
 
 /* Glass Navbar */
 .glass-nav {
-  background: rgba(249, 246, 240, 0.85); /* Slightly opaque light theme background */
+  background: linear-gradient(135deg,
+      rgba(248, 236, 228, 0.94),
+      rgba(237, 220, 215, 0.94));
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--color-border);
@@ -190,7 +220,9 @@ body {
 
 /* Glass Button */
 .glass-btn {
-  background: var(--glass-bg);
+  background: linear-gradient(135deg,
+      rgba(255, 247, 241, 0.95),
+      rgba(244, 229, 220, 0.92));
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--glass-border);
@@ -213,22 +245,27 @@ body {
 
 .glass-btn:hover {
   border-color: var(--glass-border-hover);
-  background: var(--glass-bg-hover);
+  background: linear-gradient(135deg,
+      rgba(255, 249, 244, 0.98),
+      rgba(248, 235, 226, 0.96));
+  box-shadow: 0 10px 24px rgba(97, 55, 46, 0.12);
 }
 
 /* WhatsApp Button */
 .whatsapp-btn {
-  background: rgba(37, 211, 102, 0.15);
-  border: 1px solid rgba(37, 211, 102, 0.3);
-  color: var(--whatsapp);
+  background: linear-gradient(135deg, #22b36d 0%, #1d8c74 100%);
+  border: 1px solid rgba(26, 109, 87, 0.25);
+  color: #ffffff;
   border-radius: 9999px;
   cursor: pointer;
   transition: all 0.2s ease;
+  box-shadow: 0 12px 24px rgba(29, 140, 116, 0.2);
 }
 
 .whatsapp-btn:hover {
-  background: rgba(37, 211, 102, 0.25);
-  border-color: rgba(37, 211, 102, 0.5);
+  background: linear-gradient(135deg, #1fa564 0%, #1a7764 100%);
+  border-color: rgba(26, 109, 87, 0.36);
+  box-shadow: 0 14px 28px rgba(29, 140, 116, 0.26);
 }
 
 /* Colorful Section Tints */
@@ -270,27 +307,27 @@ body {
 /* ── Status Badges ────────────────────────────────────────── */
 
 .badge-available {
-  background: rgba(34, 197, 94, 0.2);
-  border: 1px solid rgba(34, 197, 94, 0.4);
-  color: #86efac;
+  background: color-mix(in srgb, var(--status-available) 20%, transparent);
+  border: 1px solid color-mix(in srgb, var(--status-available) 40%, transparent);
+  color: var(--status-available);
 }
 
 .badge-sold {
-  background: rgba(239, 68, 68, 0.2);
-  border: 1px solid rgba(239, 68, 68, 0.4);
-  color: #fca5a5;
+  background: color-mix(in srgb, var(--status-sold) 20%, transparent);
+  border: 1px solid color-mix(in srgb, var(--status-sold) 40%, transparent);
+  color: var(--status-sold);
 }
 
 .badge-coming_soon {
-  background: rgba(245, 158, 11, 0.2);
-  border: 1px solid rgba(245, 158, 11, 0.4);
-  color: #fcd34d;
+  background: color-mix(in srgb, var(--status-coming) 20%, transparent);
+  border: 1px solid color-mix(in srgb, var(--status-coming) 40%, transparent);
+  color: var(--status-coming);
 }
 
 .badge-reserved {
-  background: rgba(168, 85, 247, 0.2);
-  border: 1px solid rgba(168, 85, 247, 0.4);
-  color: #d8b4fe;
+  background: color-mix(in srgb, var(--status-reserved) 20%, transparent);
+  border: 1px solid color-mix(in srgb, var(--status-reserved) 40%, transparent);
+  color: var(--status-reserved);
 }
 
 /* ── Scrollbar Hiding ─────────────────────────────────────── */
@@ -302,6 +339,11 @@ body {
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+/* Tabular nums for stat counters */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
 }
 
 /* ── Prose (Blog) ─────────────────────────────────────────── */
@@ -407,7 +449,10 @@ body {
 /* ── Utilities ────────────────────────────────────────────── */
 
 .text-gradient {
-  background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+  background: linear-gradient(135deg,
+      var(--accent-tertiary) 0%,
+      var(--accent-primary) 50%,
+      var(--accent-secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -440,18 +485,24 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  height: 2px;
-  background: var(--text-primary);
-  z-index: 100;
+  height: 3px;
+  background: linear-gradient(90deg,
+      var(--accent-primary),
+      var(--accent-secondary),
+      #31544f);
+  z-index: 9999;
   transition: width 0.1s linear;
 }
 
 /* ── Animations ───────────────────────────────────────────── */
 
 @keyframes pulse-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 8px rgba(37, 211, 102, 0.3);
   }
+
   50% {
     box-shadow: 0 0 20px rgba(37, 211, 102, 0.6);
   }
@@ -461,6 +512,15 @@ body {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
 /* Mobile sticky CTA */
 .sticky-cta {
   position: fixed;
@@ -468,134 +528,22 @@ body {
   left: 0;
   right: 0;
   z-index: 40;
-  padding: 12px 16px;
-  background: rgba(8, 8, 8, 0.95);
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+  background: linear-gradient(135deg,
+      rgba(164, 77, 63, 0.94),
+      rgba(153, 80, 115, 0.92));
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid var(--color-border);
 }
 
-/* Reading progress bar */
-.reading-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #a855f7, #3b82f6, #06b6d4);
-  z-index: 9999;
-  transition: width 0.1s linear;
-}
-
-/* Hide scrollbar utility */
-.hide-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-/* Blog prose styling */
-.prose-dark {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.85;
-}
-.prose-dark h2 {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: white;
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
-  background: linear-gradient(135deg, #ffffff, #b0b0b0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.prose-dark h3 {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: white;
-  margin-top: 2rem;
-  margin-bottom: 0.75rem;
-}
-.prose-dark p {
-  margin-bottom: 1.25rem;
-}
-.prose-dark strong {
-  color: white;
-  font-weight: 600;
-}
-.prose-dark a {
-  color: #a855f7;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: color 0.2s;
-}
-.prose-dark a:hover {
-  color: #c084fc;
-}
-.prose-dark ul,
-.prose-dark ol {
-  padding-left: 1.5rem;
-  margin-bottom: 1.25rem;
-}
-.prose-dark ul {
-  list-style: disc;
-}
-.prose-dark ol {
-  list-style: decimal;
-}
-.prose-dark li {
-  margin-bottom: 0.5rem;
-}
-.prose-dark code {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--color-border);
-  border-radius: 6px;
-  padding: 2px 6px;
-  font-size: 0.85em;
-  color: #c084fc;
-}
-.prose-dark hr {
-  border: none;
-  height: 1px;
-  background: var(--color-border);
-  margin: 2rem 0;
-}
-.prose-dark table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1.5rem 0;
-  font-size: 0.875rem;
-}
-.prose-dark th {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 10px 14px;
-  text-align: left;
-  font-weight: 600;
-  color: white;
-  border-bottom: 1px solid var(--color-border);
-}
-.prose-dark td {
-  padding: 10px 14px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-}
-.prose-dark tr:hover td {
-  background: rgba(255, 255, 255, 0.02);
-}
-
-/* Smooth scroll */
-html {
-  scroll-behavior: smooth;
-}
+/* (Duplicate sections removed — see above for canonical definitions) */
 
 /* Tabular nums for stat counters */
 /* ── Contextual Text Color Fix ─────────────────────────────────────── */
-/* In light mode, default white/gray text is flipped to dark */
-html body .text-white,
+/* In light mode, gray text utilities are flipped to warm theme colors.
+   IMPORTANT: .text-white is NO LONGER overridden globally because it breaks
+   intentional white text (hero, overlays, badges). Only gray shades change. */
 html body .text-gray-50,
 html body .text-gray-100 {
   color: var(--text-primary);
@@ -611,29 +559,71 @@ html body .text-gray-500 {
   color: var(--text-tertiary);
 }
 
-/* ── Light Solid Backgrounds ───────────────────────────────────────── */
+/* ── Colorful Bright Section Backgrounds ───────────────────────────── */
 .section-solid-amber {
-  background-color: #fdfaf3; /* Ultra light champagne */
+  background-color: var(--tint-amber);
 }
+
 .section-solid-purple {
-  background-color: #fafaff; /* Ultra light lavender */
+  background-color: var(--tint-purple);
 }
+
 .section-solid-emerald {
-  background-color: #f7fdfb; /* Ultra light mint */
+  background-color: var(--tint-emerald);
 }
+
 .section-solid-blue {
-  background-color: #f2f9ff; /* Ultra light sky */
+  background-color: var(--tint-blue);
 }
+
 .section-solid-rose {
-  background-color: #fff6f8; /* Ultra light blush */
+  background-color: var(--tint-rose);
 }
+
 .section-solid-orange {
-  background-color: #fff9f5; /* Ultra light apricort */
+  background-color: var(--tint-orange);
+}
+
+.book-shell {
+  background: linear-gradient(135deg,
+      rgba(255, 248, 242, 0.98),
+      rgba(245, 230, 220, 0.95));
+  border: 1px solid rgba(79, 45, 39, 0.12);
+  box-shadow:
+    0 26px 60px rgba(97, 55, 46, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.book-cover {
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.12), transparent 25%),
+    linear-gradient(145deg, var(--accent-primary), var(--accent-tertiary));
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 22px 42px rgba(112, 57, 65, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.book-page {
+  background:
+    linear-gradient(180deg, rgba(255, 252, 248, 0.98), rgba(246, 236, 227, 0.94));
+  position: relative;
+  overflow: hidden;
+}
+
+.book-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(164, 77, 63, 0.04), transparent 14%, transparent 86%, rgba(35, 108, 113, 0.04));
+  pointer-events: none;
 }
 
 /* ─────────────────────────────────────────────────────────────────── */
 
-html body .text-true-white,
+html body .text-force-white,
+html body .dark-overlay .text-white,
 html body [class*="bg-black"] .text-white,
 html body [class*="bg-black"].text-white,
 html body [class*="bg-purple"] .text-white,
@@ -644,25 +634,24 @@ html body [class*="bg-blue"] .text-white,
 html body [class*="bg-blue"].text-white,
 html body [class*="from-purple"] .text-white,
 html body [class*="from-blue"] .text-white,
-html body [class*="bg-gradient-to"] .text-white,
-html body .absolute .text-white /* Usually overlays on images */ {
+html body [class*="bg-gradient-to"] .text-white {
   color: #ffffff !important;
 }
 
+html body .dark-overlay .text-gray-200,
 html body [class*="from-"] .text-gray-200,
-html body [class*="bg-black"] .text-gray-200,
-html body .absolute .text-gray-200 {
-  color: rgba(255,255,255,0.8) !important;
+html body [class*="bg-black"] .text-gray-200 {
+  color: rgba(255, 255, 255, 0.8) !important;
 }
 
+html body .dark-overlay .text-gray-300,
 html body [class*="from-"] .text-gray-300,
-html body [class*="bg-black"] .text-gray-300,
-html body .absolute .text-gray-300 {
-  color: rgba(255,255,255,0.7) !important;
+html body [class*="bg-black"] .text-gray-300 {
+  color: rgba(255, 255, 255, 0.7) !important;
 }
 
+html body .dark-overlay .text-gray-400,
 html body [class*="from-"] .text-gray-400,
-html body [class*="bg-black"] .text-gray-400,
-html body .absolute .text-gray-400 {
-  color: rgba(255,255,255,0.6) !important;
+html body [class*="bg-black"] .text-gray-400 {
+  color: rgba(255, 255, 255, 0.6) !important;
 }

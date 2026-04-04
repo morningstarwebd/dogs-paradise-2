@@ -17,9 +17,9 @@ export default function NewsletterCTA() {
   };
 
   return (
-    <section className="py-20 lg:py-28 relative overflow-hidden bg-[#f8fafc]" id="newsletter">
+    <section className="section-shell relative overflow-hidden bg-[#302b63]" id="newsletter">
       {/* Background effects */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="hidden md:block absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/[0.03] rounded-full blur-3xl" />
         <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-purple-600/[0.03] rounded-full blur-3xl" />
       </div>
@@ -31,7 +31,7 @@ export default function NewsletterCTA() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <GlassCard hover={false} variant="solid" className="p-8 sm:p-14 border-slate-200/60 shadow-xl shadow-blue-900/5">
+          <GlassCard hover={false} variant="solid" className="border-slate-200/60 p-6 shadow-xl shadow-blue-900/5 sm:p-10 lg:p-14">
             <div className="relative z-10 text-center">
               {/* Icon cluster */}
               <div className="flex items-center justify-center gap-4 mb-8">
@@ -59,7 +59,7 @@ export default function NewsletterCTA() {
                   name="phone"
                   required
                   placeholder="WhatsApp Number"
-                  className="flex-1 bg-slate-50 border border-slate-200 rounded-full px-6 py-4 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-medium"
+                  className="flex-1 bg-[#302b63] border border-slate-200 rounded-full px-6 py-4 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-medium"
                 />
                 <button
                   type="submit"

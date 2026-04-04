@@ -64,7 +64,7 @@ function StepCard({ step }: { step: typeof steps[number] }) {
             {step.icon}
           </div>
           <span
-            className="text-3xl font-display font-bold opacity-30"
+            className="text-whitexl font-display font-bold opacity-30"
             style={{ color: step.color }}
           >
             {String(step.step).padStart(2, '0')}
@@ -81,9 +81,11 @@ function StepCard({ step }: { step: typeof steps[number] }) {
 
 export default function AdoptionProcess() {
   return (
-    <section className="py-20 lg:py-28 section-solid-purple relative overflow-hidden" id="adoption-process">
-      <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-purple-500/[0.03] rounded-full blur-3xl pointer-events-none -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-cyan-500/[0.03] rounded-full blur-3xl pointer-events-none translate-x-1/2 translate-y-1/2" />
+    <section className="section-shell section-solid-purple relative overflow-hidden" id="adoption-process">
+      <div className="hidden md:block">
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-purple-500/[0.03] rounded-full blur-3xl pointer-events-none -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-cyan-500/[0.03] rounded-full blur-3xl pointer-events-none translate-x-1/2 translate-y-1/2" />
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeading

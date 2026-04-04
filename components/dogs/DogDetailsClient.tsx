@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Dog, DogVariant } from '@/types';
-import { formatPrice, getWhatsAppLink } from '@/lib/utils';
+import { getWhatsAppLink } from '@/lib/utils';
 import { MessageCircle, ShieldCheck } from 'lucide-react';
 import { siteConfig } from '@/data/site-config';
 

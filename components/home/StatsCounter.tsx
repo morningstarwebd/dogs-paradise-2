@@ -7,12 +7,12 @@ import MobileCarousel from '@/components/ui/MobileCarousel';
 import { Dog, Users, Award, Heart, Star, ShieldCheck } from 'lucide-react';
 
 const stats = [
-  { value: 500, suffix: '+', label: 'Happy Families', icon: <Users size={24} />, color: '#22c55e' },
-  { value: 25, suffix: '+', label: 'Breeds Available', icon: <Dog size={24} />, color: '#a855f7' },
-  { value: 100, suffix: '%', label: 'Health Guarantee', icon: <ShieldCheck size={24} />, color: '#3b82f6' },
-  { value: 6, suffix: '+', label: 'Years Experience', icon: <Award size={24} />, color: '#f59e0b' },
+  { value: 2000, suffix: '+', label: 'Happy Families', icon: <Users size={24} />, color: '#16a34a' },
+  { value: 25, suffix: '+', label: 'Breeds Available', icon: <Dog size={24} />, color: '#9333ea' },
+  { value: 100, suffix: '%', label: 'Health Guarantee', icon: <ShieldCheck size={24} />, color: '#2563eb' },
+  { value: 12, suffix: '+', label: 'Years Experience', icon: <Award size={24} />, color: '#d97706' },
   { value: 4.9, suffix: '★', label: 'Google Rating', icon: <Star size={24} />, color: '#eab308' },
-  { value: 1000, suffix: '+', label: 'Puppies Delivered', icon: <Heart size={24} />, color: '#ef4444' },
+  { value: 1500, suffix: '+', label: 'Puppies Delivered', icon: <Heart size={24} />, color: '#dc2626' },
 ];
 
 function AnimatedNumber({ value, suffix, inView }: { value: number; suffix: string; inView: boolean }) {
@@ -53,7 +53,7 @@ function StatCard({ stat, inView }: { stat: typeof stats[number]; inView: boolea
         >
           {stat.icon}
         </div>
-        <p className="text-2xl lg:text-3xl font-bold text-slate-900 mb-1">
+        <p className="text-whitexl lg:text-whitexl font-bold text-slate-900 mb-1">
           <AnimatedNumber value={stat.value} suffix={stat.suffix} inView={inView} />
         </p>
         <p className="text-[10px] sm:text-xs text-slate-500 uppercase tracking-wider">
@@ -70,7 +70,7 @@ export default function StatsCounter() {
 
   return (
     <section className="py-8 section-solid-amber relative overflow-hidden" ref={ref}>
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="hidden md:block absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[400px] h-[400px] bg-purple-500/[0.03] rounded-full blur-3xl" />
         <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[400px] h-[400px] bg-blue-500/[0.03] rounded-full blur-3xl" />
       </div>

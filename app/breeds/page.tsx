@@ -4,7 +4,7 @@ import BreedsClient from './BreedsClient';
 export const metadata: Metadata = {
   title: 'All Dog Breeds for Sale in Bangalore',
   description:
-    'Browse 25+ KCI-registered dog breeds in Bangalore. Healthy, vaccinated, home-raised puppies available at Dogs Paradise Bangalore.',
+    'Browse 25+ dog breeds in Bangalore. Healthy, vaccinated, home-raised puppies are available, with select litters offering KCI registration.',
 };
 
 export default function BreedsPage() {

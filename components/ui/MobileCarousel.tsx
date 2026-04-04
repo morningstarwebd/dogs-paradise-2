@@ -124,9 +124,13 @@ export default function MobileCarousel({
               className={cn(
                 'rounded-full transition-all duration-300',
                 i === activeIndex
-                  ? 'w-6 h-2 bg-white'
-                  : 'w-2 h-2 bg-white/20 hover:bg-white/40'
+                  ? 'h-2 w-6'
+                  : 'h-2 w-2'
               )}
+              style={{
+                background:
+                  i === activeIndex ? 'var(--accent-primary)' : 'rgba(164, 77, 63, 0.24)',
+              }}
               aria-label={`Go to slide ${i + 1}`}
             />
           ))}

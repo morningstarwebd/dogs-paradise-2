@@ -7,16 +7,16 @@ import SectionHeading from '@/components/ui/SectionHeading';
 import MobileCarousel from '@/components/ui/MobileCarousel';
 import { fadeUpVariant, staggerContainer } from '@/lib/animations';
 import { dogs } from '@/data/dogs';
-import { formatPrice, cn } from '@/lib/utils';
+import { cn } from '@/lib/utils';
 import Badge from '@/components/ui/Badge';
 import Link from 'next/link';
 
-const featuredDogsList = dogs.filter((d) => (d as any).featured);
+const featuredDogsList = dogs.filter((d) => d.featured);
 const flipDogs = (featuredDogsList.length > 0 ? featuredDogsList : dogs).slice(0, 6);
 
 export default function FlipCardGallery() {
   return (
-    <section className="py-20 lg:py-28 relative overflow-hidden">
+    <section className="section-shell relative overflow-hidden" id="flip-discover">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-purple-500/[0.04] to-transparent rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -27,8 +27,8 @@ export default function FlipCardGallery() {
 
         {/* Mobile Carousel */}
         <MobileCarousel autoPlay autoPlayInterval={4000} itemWidth="large">
-          {flipDogs.map((dog, i) => (
-            <FlipCard key={dog.id} dog={dog} index={i} />
+          {flipDogs.map((dog) => (
+            <FlipCard key={dog.id} dog={dog} />
           ))}
         </MobileCarousel>
 
@@ -40,9 +40,9 @@ export default function FlipCardGallery() {
           viewport={{ once: true, margin: '-60px' }}
           className="hidden lg:grid lg:grid-cols-3 gap-8"
         >
-          {flipDogs.map((dog, i) => (
+          {flipDogs.map((dog) => (
             <motion.div key={dog.id} variants={fadeUpVariant}>
-              <FlipCard dog={dog} index={i} />
+              <FlipCard dog={dog} />
             </motion.div>
           ))}
         </motion.div>
@@ -51,13 +51,13 @@ export default function FlipCardGallery() {
   );
 }
 
-function FlipCard({ dog, index }: { dog: typeof flipDogs[number]; index: number }) {
+function FlipCard({ dog }: { dog: typeof flipDogs[number] }) {
   const [flipped, setFlipped] = useState(false);
 
   return (
     <div
       className={cn(
-        "relative w-full h-[400px] cursor-pointer group",
+        'relative h-[340px] w-full cursor-pointer group sm:h-[380px] lg:h-[400px]',
         flipped ? "z-50" : "z-0 hover:z-20"
       )}
       style={{ perspective: '1000px' }}

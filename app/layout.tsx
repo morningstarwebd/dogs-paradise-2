@@ -85,7 +85,6 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col bg-transparent text-[var(--text-primary)]">
         <InitialLoader />
-        <FloatingBackground />
         <ViewTransitions>
           <SmoothScroll>
             <Navbar />

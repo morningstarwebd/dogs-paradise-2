@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'motion/react';
-import { formatPrice } from '@/lib/utils';
 import Badge from '@/components/ui/Badge';
 import { fadeUpVariant, cardHoverVariant } from '@/lib/animations';
 import type { Dog } from '@/types';

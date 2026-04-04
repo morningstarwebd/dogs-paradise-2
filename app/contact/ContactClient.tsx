@@ -1,12 +1,20 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type FormEvent, type ReactNode } from 'react';
 import { motion } from 'motion/react';
-import { fadeUpVariant } from '@/lib/animations';
 import GlassCard from '@/components/ui/GlassCard';
+import { fadeUpVariant } from '@/lib/animations';
 import { siteConfig } from '@/data/site-config';
 import { getWhatsAppLink } from '@/lib/utils';
-import { Phone, Mail, MapPin, MessageCircle, Send, Clock } from 'lucide-react';
+import {
+  Clock,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Phone,
+  Send,
+  ShieldCheck,
+} from 'lucide-react';
 
 export default function ContactClient() {
   const [form, setForm] = useState({
@@ -16,135 +24,142 @@ export default function ContactClient() {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const msg = `Hi ${siteConfig.brandName}!\n\nName: ${form.name}\nPhone: ${form.phone}\nInterested in: ${form.breed}\n\nMessage: ${form.message}`;
-    window.open(getWhatsAppLink(siteConfig.whatsappNumber, msg), '_blank');
+
+    const message = [
+      `Hi ${siteConfig.brandName}!`,
+      '',
+      `Name: ${form.name}`,
+      `Phone: ${form.phone}`,
+      `Interested in: ${form.breed || 'Not sure yet'}`,
+      '',
+      `Message: ${form.message}`,
+    ].join('\n');
+
+    window.open(getWhatsAppLink(siteConfig.whatsappNumber, message), '_blank');
   };
 
   return (
-    <div className="pt-24 pb-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          variants={fadeUpVariant}
-          initial="hidden"
-          animate="visible"
-          className="text-center mb-16"
-        >
-          <h1 className="heading-hero text-gradient mb-4">Get In Touch</h1>
-          <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
-            Ready to bring home your new best friend? WhatsApp us for the fastest response, or fill out the form below.
-          </p>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-5 gap-10">
-          {/* Form */}
+    <div className="pb-20 pt-24 lg:pt-28">
+      <section className="section-shell-tight">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={fadeUpVariant}
             initial="hidden"
             animate="visible"
-            className="lg:col-span-3"
+            className="mx-auto mb-12 max-w-3xl text-center"
           >
-            <GlassCard hover={false} className="p-6 sm:p-8">
-              <form onSubmit={handleSubmit} className="relative z-10 space-y-6">
-                <div className="grid sm:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-xs text-[var(--text-tertiary)] uppercase tracking-wider mb-2">
-                      Your Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      required
-                      value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      className="w-full bg-white/5 border border-[var(--color-border)] rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-white/30 transition-colors"
-                      placeholder="John Doe"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="phone" className="block text-xs text-[var(--text-tertiary)] uppercase tracking-wider mb-2">
-                      Phone Number *
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      required
-                      value={form.phone}
-                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                      className="w-full bg-white/5 border border-[var(--color-border)] rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-white/30 transition-colors"
-                      placeholder="+91 98765 43210"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="breed" className="block text-xs text-[var(--text-tertiary)] uppercase tracking-wider mb-2">
-                    Interested Breed
-                  </label>
-                  <select
-                    id="breed"
-                    value={form.breed}
-                    onChange={(e) => setForm({ ...form, breed: e.target.value })}
-                    className="w-full bg-white/5 border border-[var(--color-border)] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white/30 transition-colors"
-                  >
-                    <option value="" className="bg-[var(--color-surface)]">Select a breed (optional)</option>
-                    <option value="Golden Retriever" className="bg-[var(--color-surface)]">Golden Retriever</option>
-                    <option value="Labrador Retriever" className="bg-[var(--color-surface)]">Labrador Retriever</option>
-                    <option value="German Shepherd" className="bg-[var(--color-surface)]">German Shepherd</option>
-                    <option value="Siberian Husky" className="bg-[var(--color-surface)]">Siberian Husky</option>
-                    <option value="Rottweiler" className="bg-[var(--color-surface)]">Rottweiler</option>
-                    <option value="Beagle" className="bg-[var(--color-surface)]">Beagle</option>
-                    <option value="Shih Tzu" className="bg-[var(--color-surface)]">Shih Tzu</option>
-                    <option value="Pomeranian" className="bg-[var(--color-surface)]">Pomeranian</option>
-                    <option value="Doberman Pinscher" className="bg-[var(--color-surface)]">Doberman Pinscher</option>
-                    <option value="French Bulldog" className="bg-[var(--color-surface)]">French Bulldog</option>
-                    <option value="Other" className="bg-[var(--color-surface)]">Other / Not Sure</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-xs text-[var(--text-tertiary)] uppercase tracking-wider mb-2">
-                    Your Message *
-                  </label>
-                  <textarea
-                    id="message"
-                    required
-                    rows={4}
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    className="w-full bg-white/5 border border-[var(--color-border)] rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-white/30 transition-colors resize-none"
-                    placeholder="Tell us about your requirements, preferred gender, budget, etc."
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="whatsapp-btn w-full px-6 py-4 text-base font-medium flex items-center justify-center gap-2"
-                >
-                  <Send size={18} />
-                  Send via WhatsApp
-                </button>
-
-                <p className="text-xs text-[var(--text-tertiary)] text-center">
-                  This form opens WhatsApp with your enquiry. We typically respond within 30 minutes.
-                </p>
-              </form>
-            </GlassCard>
+            <span className="label-badge mb-5 inline-block rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-1 text-[var(--text-secondary)]">
+              Contact Us
+            </span>
+            <h1 className="heading-hero mb-5 text-gradient">Let&apos;s Find the Right Puppy for Your Home</h1>
+            <p className="text-lg leading-relaxed text-[var(--text-secondary)]">
+              WhatsApp is the fastest way to reach us. Tell us the breed you like, the size you
+              prefer, and whether you are looking for a companion puppy or a puppy with specific
+              paperwork options.
+            </p>
           </motion.div>
 
-          {/* Contact Info */}
-          <motion.div
-            variants={fadeUpVariant}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 0.15 }}
-            className="lg:col-span-2 space-y-6"
-          >
-            <GlassCard hover={false} className="p-6">
-              <div className="relative z-10">
-                <h3 className="heading-card text-white mb-6">Contact Information</h3>
+          <div className="grid gap-8 lg:grid-cols-5 lg:gap-10">
+            <motion.div
+              variants={fadeUpVariant}
+              initial="hidden"
+              animate="visible"
+              className="lg:col-span-3"
+            >
+              <GlassCard hover={false} variant="solid" className="p-6 sm:p-8">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <FieldLabel htmlFor="name" label="Your Name *" />
+                    <FieldLabel htmlFor="phone" label="Phone Number *" />
+                  </div>
+
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <input
+                      id="name"
+                      type="text"
+                      required
+                      value={form.name}
+                      onChange={(e) => setForm((prev) => ({ ...prev, name: e.target.value }))}
+                      className={inputClassName}
+                      placeholder="Your full name"
+                    />
+                    <input
+                      id="phone"
+                      type="tel"
+                      required
+                      value={form.phone}
+                      onChange={(e) => setForm((prev) => ({ ...prev, phone: e.target.value }))}
+                      className={inputClassName}
+                      placeholder={siteConfig.phone}
+                    />
+                  </div>
+
+                  <div>
+                    <FieldLabel htmlFor="breed" label="Interested Breed" />
+                    <select
+                      id="breed"
+                      value={form.breed}
+                      onChange={(e) => setForm((prev) => ({ ...prev, breed: e.target.value }))}
+                      className={inputClassName}
+                    >
+                      <option value="">Select a breed (optional)</option>
+                      <option value="Golden Retriever">Golden Retriever</option>
+                      <option value="Labrador Retriever">Labrador Retriever</option>
+                      <option value="German Shepherd">German Shepherd</option>
+                      <option value="Siberian Husky">Siberian Husky</option>
+                      <option value="Rottweiler">Rottweiler</option>
+                      <option value="Beagle">Beagle</option>
+                      <option value="Shih Tzu">Shih Tzu</option>
+                      <option value="Pomeranian">Pomeranian</option>
+                      <option value="Doberman Pinscher">Doberman Pinscher</option>
+                      <option value="French Bulldog">French Bulldog</option>
+                      <option value="Other">Other / Not Sure</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <FieldLabel htmlFor="message" label="Your Message *" />
+                    <textarea
+                      id="message"
+                      required
+                      rows={5}
+                      value={form.message}
+                      onChange={(e) => setForm((prev) => ({ ...prev, message: e.target.value }))}
+                      className={`${inputClassName} resize-none`}
+                      placeholder="Tell us about your home, preferred gender, age, budget, or any specific questions."
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="whatsapp-btn flex w-full items-center justify-center gap-2 px-6 py-4 text-base font-medium"
+                  >
+                    <Send size={18} />
+                    Send on WhatsApp
+                  </button>
+
+                  <div className="rounded-2xl border border-[var(--accent-primary)]/10 bg-[var(--accent-primary)]/5 p-4 text-sm leading-relaxed text-[var(--text-secondary)]">
+                    <div className="mb-2 flex items-center gap-2 text-[var(--text-primary)]">
+                      <ShieldCheck size={16} className="text-[var(--accent-primary)]" />
+                      <span className="font-medium">Documentation note</span>
+                    </div>
+                    {siteConfig.registrationNote}
+                  </div>
+                </form>
+              </GlassCard>
+            </motion.div>
+
+            <motion.div
+              variants={fadeUpVariant}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 0.15 }}
+              className="space-y-6 lg:col-span-2"
+            >
+              <GlassCard hover={false} variant="solid" className="p-6">
+                <h2 className="heading-card mb-5 text-[var(--text-primary)]">Contact Information</h2>
                 <div className="space-y-5">
                   <ContactItem
                     icon={<Phone size={18} />}
@@ -155,8 +170,11 @@ export default function ContactClient() {
                   <ContactItem
                     icon={<MessageCircle size={18} />}
                     label="WhatsApp"
-                    value="Chat with us"
-                    href={getWhatsAppLink(siteConfig.whatsappNumber, 'Hi! I have a question about your puppies.')}
+                    value="Chat with us directly"
+                    href={getWhatsAppLink(
+                      siteConfig.whatsappNumber,
+                      'Hi, I would like to know more about your puppies.'
+                    )}
                     external
                   />
                   <ContactItem
@@ -173,35 +191,50 @@ export default function ContactClient() {
                     external
                   />
                 </div>
-              </div>
-            </GlassCard>
+              </GlassCard>
 
-            <GlassCard hover={false} className="p-6">
-              <div className="relative z-10">
-                <div className="flex items-center gap-2 mb-4">
-                  <Clock size={18} />
-                  <h3 className="heading-card text-white">Business Hours</h3>
+              <GlassCard hover={false} variant="solid" className="p-6">
+                <div className="mb-4 flex items-center gap-2">
+                  <Clock size={18} className="text-[var(--accent-primary)]" />
+                  <h2 className="heading-card text-[var(--text-primary)]">Business Hours</h2>
                 </div>
-                <div className="space-y-2 text-sm text-[var(--text-secondary)]">
-                  <div className="flex justify-between">
-                    <span>Monday – Friday</span>
-                    <span className="text-white">10 AM – 7 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Saturday</span>
-                    <span className="text-white">10 AM – 5 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Sunday</span>
-                    <span className="text-[var(--text-tertiary)]">By Appointment</span>
-                  </div>
+                <div className="space-y-3 text-sm text-[var(--text-secondary)]">
+                  {siteConfig.businessHours.map((item) => (
+                    <div
+                      key={item.days}
+                      className="flex items-start justify-between gap-4 border-b border-[var(--color-border)] pb-3 last:border-b-0 last:pb-0"
+                    >
+                      <span>{item.days}</span>
+                      <span className="text-right font-medium text-[var(--text-primary)]">
+                        {item.hours}
+                      </span>
+                    </div>
+                  ))}
                 </div>
-              </div>
-            </GlassCard>
-          </motion.div>
+                <p className="mt-5 text-xs leading-relaxed text-[var(--text-tertiary)]">
+                  We recommend sending a WhatsApp message before visiting so we can prepare the
+                  right puppy options for you.
+                </p>
+              </GlassCard>
+            </motion.div>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
+  );
+}
+
+const inputClassName =
+  'w-full rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] focus:outline-none focus:border-[var(--accent-primary)] focus:ring-2 focus:ring-[var(--accent-primary)]/10 transition-colors';
+
+function FieldLabel({ htmlFor, label }: { htmlFor: string; label: string }) {
+  return (
+    <label
+      htmlFor={htmlFor}
+      className="block text-xs uppercase tracking-[0.18em] text-[var(--text-tertiary)]"
+    >
+      {label}
+    </label>
   );
 }
 
@@ -212,7 +245,7 @@ function ContactItem({
   href,
   external,
 }: {
-  icon: React.ReactNode;
+  icon: ReactNode;
   label: string;
   value: string;
   href: string;
@@ -223,14 +256,14 @@ function ContactItem({
       href={href}
       target={external ? '_blank' : undefined}
       rel={external ? 'noopener noreferrer' : undefined}
-      className="flex items-start gap-3 group"
+      className="group flex items-start gap-3"
     >
-      <div className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white/60 shrink-0 group-hover:text-white transition-colors">
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] transition-transform group-hover:scale-105">
         {icon}
       </div>
       <div>
-        <p className="text-xs text-[var(--text-tertiary)]">{label}</p>
-        <p className="text-sm text-[var(--text-secondary)] group-hover:text-white transition-colors">
+        <p className="text-xs uppercase tracking-[0.16em] text-[var(--text-tertiary)]">{label}</p>
+        <p className="mt-1 text-sm leading-relaxed text-[var(--text-secondary)] transition-colors group-hover:text-[var(--text-primary)]">
           {value}
         </p>
       </div>

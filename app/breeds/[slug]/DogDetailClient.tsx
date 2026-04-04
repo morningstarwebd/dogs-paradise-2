@@ -20,7 +20,7 @@ import GlassCard from '@/components/ui/GlassCard';
 import DogCard from '@/components/dogs/DogCard';
 import SectionHeading from '@/components/ui/SectionHeading';
 import { fadeUpVariant, staggerContainer } from '@/lib/animations';
-import { formatPrice, getWhatsAppLink, cn } from '@/lib/utils';
+import { getWhatsAppLink, cn } from '@/lib/utils';
 import { siteConfig } from '@/data/site-config';
 import { useCartStore } from '@/lib/store/cart';
 import type { Dog } from '@/types';

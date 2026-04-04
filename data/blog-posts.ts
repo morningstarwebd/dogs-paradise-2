@@ -194,7 +194,7 @@ Reputable breeders stand behind their puppies with health guarantees. If a breed
 
 ## The Dogs Paradise Bangalore Difference
 
-At Dogs Paradise Bangalore, we welcome all potential puppy parents to visit our home-based breeding facility in Bangalore. We are fully KCI-registered, provide comprehensive health documentation, and offer lifetime breeder support. We focus on quality over quantity — our breeding dogs are our family first.
+At Dogs Paradise Bangalore, we welcome potential puppy parents to visit our home-based setup in Bangalore. We provide comprehensive health documentation, clearly explain paperwork availability, and offer lifetime breeder support. We focus on quality over quantity — our dogs are family first.
 
 ---
 
@@ -389,4 +389,3 @@ ALL puppies bite. It's how they explore. Redirect to toys, and when biting is to
       'Complete checklist for bringing home a new puppy in India. Supplies, puppy-proofing, first night tips, feeding schedule, and training basics for new pet parents.',
   },
 ];
-

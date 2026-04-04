@@ -7,20 +7,13 @@ export default function InitialLoader() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const hasLoaded = sessionStorage.getItem('site_loaded');
-    // For development/demo purposes, we might want it to load every time,
-    // but in production it's better to only show once per session.
-    // However, to make it consistently visible for testing by the user right now, 
-    // let's comment out the early return but keep the state update.
-    
-    /* 
-    if (hasLoaded) {
+    // Check if previously loaded to skip animation
+    if (sessionStorage.getItem('site_loaded') === 'true') {
       setIsLoading(false);
       return;
     }
-    */
 
-    // Lock body scroll
+    // Lock body scroll during animation
     document.body.style.overflow = 'hidden';
 
     const timer = setTimeout(() => {
@@ -33,7 +26,7 @@ export default function InitialLoader() {
       clearTimeout(timer);
       document.body.style.overflow = 'unset';
     };
-  }, []);
+  }, [isLoading]);
 
   return (
     <AnimatePresence>
@@ -43,14 +36,14 @@ export default function InitialLoader() {
           initial={{ y: 0 }}
           exit={{ y: '-100%', borderBottomLeftRadius: '50%', borderBottomRightRadius: '50%' }}
           transition={{ duration: 0.9, ease: [0.76, 0, 0.24, 1] }}
-          className="fixed inset-0 z-[9999] bg-white/60 backdrop-blur-md flex flex-col items-center justify-center p-4 shadow-2xl"
+          className="fixed inset-0 z-[9999] bg-[var(--color-surface)]/80 backdrop-blur-md flex flex-col items-center justify-center p-4 shadow-2xl"
         >
           <div className="overflow-hidden mb-4">
             <motion.div
               initial={{ y: '100%' }}
               animate={{ y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.33, 1, 0.68, 1] }}
-              className="flex flex-wrap justify-center items-center gap-2 md:gap-3 text-5xl sm:text-6xl md:text-7xl font-display font-medium text-slate-900 tracking-tight"
+              className="flex flex-wrap justify-center items-center gap-2 md:gap-3 text-5xl sm:text-6xl md:text-7xl font-display font-medium text-[var(--text-primary)] tracking-tight"
             >
               <span>Dogs</span>
               <span className="text-amber-500 italic">Paradise</span>
@@ -62,7 +55,7 @@ export default function InitialLoader() {
               initial={{ y: '100%', opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4, ease: [0.33, 1, 0.68, 1] }}
-              className="text-slate-600 font-bold tracking-[0.2em] md:tracking-[0.3em] uppercase text-[10px] md:text-sm"
+              className="text-[var(--text-secondary)] font-bold tracking-[0.2em] md:tracking-[0.3em] uppercase text-[10px] md:text-sm"
             >
               Premium Puppies • Bangalore
             </motion.p>

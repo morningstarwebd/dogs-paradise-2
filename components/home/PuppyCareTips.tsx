@@ -7,7 +7,7 @@ import GlassCard from '@/components/ui/GlassCard';
 import MobileCarousel from '@/components/ui/MobileCarousel';
 import { fadeUpVariant } from '@/lib/animations';
 import { cn } from '@/lib/utils';
-import { Utensils, Dumbbell, Heart, Scissors, Syringe, Brain } from 'lucide-react';
+import { Utensils, Dumbbell, Scissors, Syringe, Brain } from 'lucide-react';
 
 const careTabs = [
   {
@@ -85,7 +85,7 @@ function TipCard({ tip, index, color }: { tip: { heading: string; text: string }
           </span>
           <div className="h-px flex-1 bg-gradient-to-r from-[var(--color-border)] to-transparent" />
         </div>
-        <h4 className="text-sm font-display font-semibold text-white mb-2">{tip.heading}</h4>
+        <h4 className="mb-2 text-sm font-display font-semibold text-[var(--text-primary)]">{tip.heading}</h4>
         <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{tip.text}</p>
       </div>
     </GlassCard>
@@ -97,7 +97,7 @@ export default function PuppyCareTips() {
   const active = careTabs.find((t) => t.id === activeTab)!;
 
   return (
-    <section className="py-20 lg:py-28" id="puppy-care">
+    <section className="section-shell" id="puppy-care">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           title="Puppy Care Guide"
@@ -114,8 +114,8 @@ export default function PuppyCareTips() {
                 className={cn(
                   'flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-medium whitespace-nowrap transition-all duration-200 shrink-0 border',
                   activeTab === tab.id
-                    ? 'bg-white text-black border-white shadow-lg shadow-white/5'
-                    : 'bg-white/5 text-[var(--text-secondary)] border-[var(--color-border)] hover:text-white hover:bg-white/10'
+                    ? 'border-[var(--accent-primary)] bg-[var(--accent-primary)] text-white shadow-lg shadow-[var(--accent-primary)]/10'
+                    : 'border-[var(--color-border)] bg-white/70 text-[var(--text-secondary)] hover:bg-white hover:text-[var(--text-primary)]'
                 )}
               >
                 {tab.icon}

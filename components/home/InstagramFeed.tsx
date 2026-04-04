@@ -20,7 +20,7 @@ export default function InstagramFeed() {
   const x2 = useTransform(scrollYProgress, [0, 1], ['-15%', '0%']);
 
   return (
-    <section className="py-20 lg:py-28 overflow-hidden bg-white" id="photo-gallery" ref={containerRef}>
+    <section className="section-shell overflow-hidden bg-[#302b63]" id="photo-gallery" ref={containerRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <div className="text-center">
           <motion.h2
@@ -89,7 +89,7 @@ export default function InstagramFeed() {
 
 function GalleryItem({ src, index }: { src: string; index: number }) {
   return (
-    <div className="relative w-[250px] h-[250px] sm:w-[280px] sm:h-[280px] rounded-2xl overflow-hidden shrink-0 group">
+    <div className="relative h-[190px] w-[190px] shrink-0 overflow-hidden rounded-2xl group sm:h-[240px] sm:w-[240px] lg:h-[280px] lg:w-[280px]">
       <Image
         src={src}
         alt={`Puppy gallery photo ${index + 1}`}

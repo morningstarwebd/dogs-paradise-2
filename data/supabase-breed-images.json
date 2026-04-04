@@ -248,5 +248,15 @@
     ],
     "thumbnailImage": "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/american-bully/american-bully-sm.webp",
     "usedFallback": true
+  },
+  "Boxer": {
+    "sourceFile": "Boxer.jpeg",
+    "images": [
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/golden-retriever/golden-retriever-sm.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/golden-retriever/golden-retriever-md.webp",
+      "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/golden-retriever/golden-retriever-lg.webp"
+    ],
+    "thumbnailImage": "https://eysndjacdnenldnihalh.supabase.co/storage/v1/object/public/dogs-images/breeds/golden-retriever/golden-retriever-sm.webp",
+    "usedFallback": true
   }
 }

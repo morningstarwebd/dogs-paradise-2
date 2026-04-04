@@ -11,9 +11,9 @@ export default function CallToAction() {
   const message = `Hi ${siteConfig.brandName}! I'm interested in your puppies. Can you share more details?`;
 
   return (
-    <section className="py-20 lg:py-28 section-solid-orange relative overflow-hidden" id="cta">
+    <section className="section-shell section-solid-orange relative overflow-hidden" id="cta">
       {/* Subtle glow effect */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-orange-500/[0.05] rounded-full blur-3xl pointer-events-none" />
+      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-orange-500/[0.05] rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -35,14 +35,14 @@ export default function CallToAction() {
               href={getWhatsAppLink(siteConfig.whatsappNumber, message)}
               target="_blank"
               rel="noopener noreferrer"
-              className="whatsapp-btn px-8 py-4 text-base font-medium inline-flex items-center justify-center gap-2 pulse-glow"
+              className="whatsapp-btn px-8 py-4 text-whitease font-medium inline-flex items-center justify-center gap-2 pulse-glow"
             >
               <MessageCircle size={20} />
               WhatsApp Us Now
             </a>
             <Link
               href="/breeds"
-              className="glass-btn px-8 py-4 text-base font-medium inline-flex items-center justify-center gap-2"
+              className="glass-btn px-8 py-4 text-whitease font-medium inline-flex items-center justify-center gap-2"
             >
               Browse All Breeds
               <ArrowRight size={18} />

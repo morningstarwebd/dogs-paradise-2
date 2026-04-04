@@ -1,67 +1,68 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, ShoppingBag, Phone } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { AnimatePresence, motion } from 'motion/react';
+import { Menu, Phone, X } from 'lucide-react';
 import { siteConfig } from '@/data/site-config';
-import { useCartStore } from '@/lib/store/cart';
+import { cn } from '@/lib/utils';
 
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/breeds', label: 'Breeds' },
+  { href: '/happy-customers', label: 'Happy Customers' },
   { href: '/about', label: 'About' },
-  { href: '/blog', label: 'Blog' },
   { href: '/contact', label: 'Contact' },
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
-  const itemCount = useCartStore((s) => s.items.length);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
 
   return (
-    <header
-      className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        scrolled ? 'glass-nav py-3' : 'py-5 bg-transparent'
-      )}
-    >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+    <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 py-3">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group" aria-label="Dogs Paradice Home">
-          <span className="text-2xl">🐾</span>
-          <span className="font-display text-xl font-bold tracking-tight text-gradient">
-            {siteConfig.brandName}
+        <Link
+          href="/"
+          className="group flex items-center gap-2.5"
+          aria-label={`${siteConfig.brandName} Home`}
+        >
+          <span
+            className="flex h-10 w-10 items-center justify-center rounded-xl text-sm font-bold text-white shadow-md"
+            style={{
+              background: 'linear-gradient(135deg, #ea728c, #302b63)',
+            }}
+          >
+            🐾
           </span>
+          <div className="flex flex-col">
+            <span className="font-display text-base sm:text-lg font-bold tracking-tight text-gray-900 leading-tight">
+              Dogs Paradise
+            </span>
+            <span className="text-[10px] sm:text-xs text-gray-400 font-medium tracking-wider uppercase leading-none">
+              Bangalore
+            </span>
+          </div>
         </Link>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-1">
+        {/* Desktop Nav Links */}
+        <div className="hidden items-center gap-1 md:flex">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
+            const isActive =
+              pathname === link.href ||
+              (link.href !== '/' && pathname.startsWith(link.href));
+
             return (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'px-4 py-2 rounded-full text-sm font-medium transition-all duration-200',
+                  'rounded-full px-4 py-2 text-sm font-medium transition-all duration-200',
                   isActive
-                    ? 'bg-amber-500/10 text-amber-600'
-                    : 'text-[var(--text-secondary)] hover:text-amber-600 hover:bg-amber-500/5'
+                    ? 'bg-gradient-to-r from-[#d4604a]/10 to-[#2a9d8f]/10 text-[#d4604a] font-semibold'
+                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                 )}
               >
                 {link.label}
@@ -70,51 +71,42 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* Desktop Right Actions */}
-        <div className="hidden md:flex items-center gap-3">
+        {/* Desktop CTA */}
+        <div className="hidden items-center gap-3 md:flex">
           <a
             href={`tel:${siteConfig.phone.replace(/\s/g, '')}`}
-            className="glass-btn px-4 py-2 text-sm flex items-center gap-2 text-[var(--text-primary)] hover:text-amber-600 hover:bg-amber-500/5"
+            className="flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:shadow-lg hover:bg-[#d66880] bg-[#ea728c]"
             aria-label="Call us"
           >
             <Phone size={14} />
-            <span className="hidden lg:inline">Call Now</span>
+            <span>Call Now</span>
           </a>
-          <Link
-            href="/cart"
-            className="relative glass-btn p-2.5 text-[var(--text-primary)] hover:text-amber-600 hover:bg-amber-500/5"
-            aria-label={`Cart with ${itemCount} items`}
+          <a
+            href={`https://wa.me/${siteConfig.whatsappNumber}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:shadow-lg hover:bg-[#20ba5c] bg-[#25d366]"
           >
-            <ShoppingBag size={18} />
-            {itemCount > 0 && (
-              <motion.span
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                className="absolute -top-1 -right-1 w-5 h-5 bg-amber-600 text-white rounded-full text-[11px] font-bold flex items-center justify-center"
-              >
-                {itemCount}
-              </motion.span>
-            )}
-          </Link>
+            💬 WhatsApp
+          </a>
         </div>
 
-        {/* Mobile Menu Button */}
-        <div className="flex md:hidden items-center gap-3">
-          <Link href="/cart" className="relative p-2 text-[var(--text-primary)]" aria-label="Cart">
-            <ShoppingBag size={20} />
-            {itemCount > 0 && (
-              <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-amber-600 text-white rounded-full text-[10px] font-bold flex items-center justify-center">
-                {itemCount}
-              </span>
-            )}
-          </Link>
+        {/* Mobile Menu Toggle */}
+        <div className="flex items-center gap-2 md:hidden">
+          <a
+            href={`tel:${siteConfig.phone.replace(/\s/g, '')}`}
+            className="flex h-10 w-10 items-center justify-center rounded-full text-white bg-[#ea728c]"
+            aria-label="Call"
+          >
+            <Phone size={16} />
+          </a>
           <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="p-2 text-[var(--text-primary)]"
+            onClick={() => setMobileOpen((open) => !open)}
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200"
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
           >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </nav>
@@ -126,21 +118,25 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden glass-nav border-t border-[var(--color-border)] overflow-hidden"
+            transition={{ duration: 0.25 }}
+            className="overflow-hidden border-t border-gray-100 bg-white md:hidden"
           >
-            <div className="px-4 py-4 flex flex-col gap-1">
+            <div className="flex flex-col gap-1 px-4 py-4">
               {navLinks.map((link) => {
-                const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
+                const isActive =
+                  pathname === link.href ||
+                  (link.href !== '/' && pathname.startsWith(link.href));
+
                 return (
                   <Link
                     key={link.href}
                     href={link.href}
+                    onClick={() => setMobileOpen(false)}
                     className={cn(
-                      'px-4 py-3 rounded-xl text-base font-medium transition-all',
+                      'rounded-xl px-4 py-3 text-base font-medium transition-all',
                       isActive
-                        ? 'bg-amber-500/10 text-amber-600'
-                        : 'text-[var(--text-secondary)] hover:bg-amber-500/5 hover:text-amber-600'
+                        ? 'bg-[#ea728c]/10 text-[#ea728c] font-semibold'
+                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                     )}
                   >
                     {link.label}
@@ -148,11 +144,12 @@ export default function Navbar() {
                 );
               })}
               <a
-                href={`tel:${siteConfig.phone.replace(/\s/g, '')}`}
-                className="mt-2 whatsapp-btn px-4 py-3 rounded-xl text-base font-medium text-center flex items-center justify-center gap-2"
+                href={`https://wa.me/${siteConfig.whatsappNumber}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-center text-base font-semibold text-white bg-[#25d366] active:bg-[#20ba5c]"
               >
-                <Phone size={16} />
-                Call Now
+                💬 WhatsApp Us
               </a>
             </div>
           </motion.div>

@@ -1,37 +1,36 @@
 'use client';
 
 export default function FloatingBackground() {
-  const elements = Array.from({ length: 15 });
+  const elements = Array.from({ length: 12 });
 
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none z-[-1] bg-[#fdfaf5]">
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-[-1]">
       {elements.map((_, i) => {
         // Deterministic pseudo-random values based on index to prevent SSR hydration errors
-        const size = ((i * 17) % 80) + 40; // 40px to 120px
-        const left = (i * 23) % 100; // 0% to 100% width
-        const delay = (i * 7) % 10; // 0s to 10s delay
-        const duration = ((i * 13) % 15) + 15; // 15s to 30s float time
-        
+        const size = ((i * 17) % 80) + 40;
+        const left = (i * 23) % 100;
+        const delay = (i * 7) % 10;
+        const duration = ((i * 13) % 15) + 18;
+
         return (
           <div
             key={i}
-            className="absolute rounded-full opacity-60 mix-blend-multiply"
+            className="absolute rounded-full mix-blend-multiply"
             style={{
               width: `${size}px`,
               height: `${size}px`,
               left: `${left}%`,
               bottom: `-${size}px`,
+              opacity: 0.35,
               background: `radial-gradient(circle at 30% 30%, ${
-                ['rgba(217,119,6,0.15)', 'rgba(225,29,72,0.1)', 'rgba(15,118,110,0.1)'][i % 3]
+                ['rgba(217,119,6,0.18)', 'rgba(225,29,72,0.12)', 'rgba(15,118,110,0.12)'][i % 3]
               }, transparent)`,
-              boxShadow: 'inset -5px -5px 15px rgba(0,0,0,0.02), inset 5px 5px 15px rgba(255,255,255,0.5)', // 3D bevel effect
               animation: `floatUp ${duration}s linear ${delay}s infinite`,
             }}
           />
         );
       })}
 
-      {/* Global CSS for the animation */}
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes floatUp {
           0% {
@@ -39,13 +38,13 @@ export default function FloatingBackground() {
             opacity: 0;
           }
           10% {
-            opacity: 1;
+            opacity: 0.35;
           }
           90% {
-            opacity: 1;
+            opacity: 0.35;
           }
           100% {
-            transform: translateY(-110vh) scale(1.5) rotate(360deg);
+            transform: translateY(-110vh) scale(1.3) rotate(360deg);
             opacity: 0;
           }
         }
