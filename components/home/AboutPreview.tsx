@@ -7,7 +7,7 @@ import { motion } from 'motion/react';
 import { Quote } from 'lucide-react';
 import { fadeUpVariant } from '@/lib/animations';
 import { isGradientColorValue, normalizeDecorativeColorValue } from '@/lib/decorative-color';
-import { buildSectionStyle, resolveColorToken } from '@/lib/gradient-style';
+import { buildSectionStyle, resolveBackgroundStyle, resolveColorToken } from '@/lib/gradient-style';
 import { toStorageOnlyImage } from '@/lib/storage-only-images';
 
 type RawBlock = {
@@ -22,21 +22,30 @@ type AboutActionButton = {
   url: string;
   style: 'filled' | 'outline';
   color: string;
+  textColor: string;
   openNewTab: boolean;
 };
 
 type AboutPreviewProps = {
   badge_text?: string;
   badge_text_size_px?: number | string;
+  badge_text_color?: string;
   heading_line1?: string;
   heading_highlight?: string;
+  heading_text_color?: string;
+  heading_highlight_color?: string;
   heading_text_size_px?: number | string;
   author_name?: string;
   description?: string;
   description_text_size_px?: number | string;
+  description_text_color?: string;
   primary_btn_text?: string;
   quote_text?: string;
+  quote_accent_color?: string;
   owner_image?: string;
+  owner_image_border_color?: string;
+  owner_image_frame_bg_color?: string;
+  owner_card_backdrop_color?: string;
   founding_year?: string;
   blocks?: RawBlock[];
   section_bg_color?: string;
@@ -94,12 +103,15 @@ function buildActionButtons(blocks: RawBlock[]): AboutActionButton[] {
     .map((block, index) => {
       const settings = block.settings as Record<string, unknown>;
       const style = toText(settings.style, 'filled').toLowerCase();
+      const baseButtonColor = toText(settings.color, '#ea728c');
+      const defaultTextColor = style === 'outline' ? baseButtonColor : '#ffffff';
       return {
         id: block.id || `about_action_${index}`,
-        text: toText(settings.text, 'Read More'),
+        text: toText(settings.text, toText(settings.button_text, 'Read More')),
         url: toText(settings.url, '/about'),
         style: style === 'outline' ? 'outline' : 'filled',
-        color: toText(settings.color, '#ea728c'),
+        color: baseButtonColor,
+        textColor: toText(settings.text_color, defaultTextColor),
         openNewTab: Boolean(settings.open_new_tab),
       };
     });
@@ -108,15 +120,23 @@ function buildActionButtons(blocks: RawBlock[]): AboutActionButton[] {
 export default function AboutPreview({
   badge_text = 'Meet The Founder',
   badge_text_size_px = 14,
+  badge_text_color = '#ea728c',
   heading_line1 = 'Meet Richard – Founder of',
   heading_highlight = 'Dogs Paradise Bangalore',
+  heading_text_color,
+  heading_highlight_color = '#ea728c',
   heading_text_size_px = 56,
   author_name = 'Richard',
   description = 'What started as a simple journey of being a pet parent slowly grew into a deep passion. Over the years, I found myself becoming more involved in the beautiful process of responsible breeding, caring for newborn puppies, and helping them find safe, loving homes.',
   description_text_size_px = 16,
+  description_text_color,
   primary_btn_text = 'Read My Full Story',
   quote_text = 'For me, every puppy deserves a good home, and every family deserves a healthy, well-raised companion. That belief became my purpose.',
+  quote_accent_color = '#ea728c',
   owner_image,
+  owner_image_border_color = '#ffffff',
+  owner_image_frame_bg_color = '#ffffff',
+  owner_card_backdrop_color,
   founding_year = '2017',
   blocks = [],
   section_bg_color,
@@ -139,6 +159,14 @@ export default function AboutPreview({
     marginBottom: section_margin_bottom,
   });
   const sectionTextColor = resolveColorToken(section_text_color);
+  const badgeTextColor = resolveColorToken(badge_text_color, '#ea728c');
+  const headingTextColor = resolveColorToken(heading_text_color, sectionTextColor || '#FFF0D9');
+  const headingHighlightColor = resolveColorToken(heading_highlight_color, '#ea728c');
+  const descriptionTextColor = resolveColorToken(description_text_color, sectionTextColor || '#FFF0D9');
+  const quoteAccentColor = resolveColorToken(quote_accent_color, '#ea728c');
+  const ownerImageBorderColor = resolveColorToken(owner_image_border_color, '#ffffff');
+  const ownerImageFrameBgColor = resolveColorToken(owner_image_frame_bg_color, '#ffffff');
+  const ownerCardBackdropColor = toText(owner_card_backdrop_color, decorative_blob_color);
 
   const badgeSizeDesktop = clamp(toNumber(badge_text_size_px, 14), 10, 32);
   const badgeSizeMobile = clamp(Math.round(badgeSizeDesktop * 0.9), 10, badgeSizeDesktop);
@@ -174,6 +202,7 @@ export default function AboutPreview({
             url: '/about',
             style: 'filled',
             color: '#ea728c',
+            textColor: '#ffffff',
             openNewTab: false,
           },
         ];
@@ -198,12 +227,12 @@ export default function AboutPreview({
           >
             {/* Header pattern matching recent sections */}
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-[2px] bg-[#ea728c]" />
+              <div className="w-8 h-[2px]" style={badgeTextColor ? { backgroundColor: badgeTextColor } : undefined} />
               <span
                 className="text-[#ea728c] font-bold uppercase tracking-[0.2em]"
                 style={{
                   ...badgeTextStyle,
-                  ...(sectionTextColor ? { color: sectionTextColor } : undefined),
+                  color: badgeTextColor || sectionTextColor || undefined,
                 }}
               >
                 {badge_text}
@@ -214,10 +243,10 @@ export default function AboutPreview({
               className="font-display text-4xl sm:text-4xl lg:text-5xl font-bold text-[#FFF0D9] leading-tight mb-8"
               style={{
                 ...headingTextStyle,
-                ...(sectionTextColor ? { color: sectionTextColor } : undefined),
+                color: headingTextColor || sectionTextColor || undefined,
               }}
             >
-              {heading_line1} <span className="text-[#ea728c]">{heading_highlight}</span>
+              {heading_line1} <span style={headingHighlightColor ? { color: headingHighlightColor } : undefined}>{heading_highlight}</span>
             </h2>
 
             <div className="space-y-5 text-[#FFF0D9] text-[15px] sm:text-base leading-relaxed mb-10" style={sectionTextColor ? { color: sectionTextColor } : undefined}>
@@ -226,12 +255,28 @@ export default function AboutPreview({
               </p>
 
               <p>
-                <span style={descriptionTextStyle}>{description}</span>
+                <span
+                  style={{
+                    ...descriptionTextStyle,
+                    color: descriptionTextColor || sectionTextColor || undefined,
+                  }}
+                >
+                  {description}
+                </span>
               </p>
 
               <div className="relative py-4 my-6">
-                <Quote className="absolute -top-1 -left-2 w-10 h-10 text-[#ea728c]/10 -z-10 transform -rotate-12" />
-                <p className="text-[#FFF0D9] text-lg font-medium italic border-l-4 border-[#ea728c]/30 pl-4" style={sectionTextColor ? { color: sectionTextColor } : undefined}>
+                <Quote
+                  className="absolute -top-1 -left-2 w-10 h-10 -z-10 transform -rotate-12"
+                  style={{ color: toRgba(quoteAccentColor, 0.12) }}
+                />
+                <p
+                  className="text-[#FFF0D9] text-lg font-medium italic border-l-4 pl-4"
+                  style={{
+                    borderLeftColor: toRgba(quoteAccentColor, 0.3),
+                    ...(sectionTextColor ? { color: sectionTextColor } : undefined),
+                  }}
+                >
                   &quot;{quote_text}&quot;
                 </p>
               </div>
@@ -239,9 +284,21 @@ export default function AboutPreview({
               <div className="pt-4 flex flex-wrap gap-3">
                 {actionButtons.map((button) => {
                   const commonClass = 'inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-bold transition-all duration-300 hover:-translate-y-1 group';
+                  const buttonColorToken = resolveColorToken(button.color, '#ea728c');
+                  const buttonTextColor = resolveColorToken(
+                    button.textColor,
+                    button.style === 'outline' ? buttonColorToken : '#ffffff',
+                  );
                   const style = button.style === 'outline'
-                    ? { borderColor: button.color, color: button.color }
-                    : { backgroundColor: button.color, color: '#ffffff' };
+                    ? {
+                        borderColor: buttonColorToken || '#ea728c',
+                        color: buttonTextColor || buttonColorToken || '#ea728c',
+                      }
+                    : {
+                        ...resolveBackgroundStyle(button.color, '#ea728c'),
+                        color: buttonTextColor || '#ffffff',
+                        borderColor: buttonColorToken || undefined,
+                      };
                   const className = `${commonClass} ${button.style === 'outline' ? 'border-2 bg-transparent hover:bg-white/10' : 'shadow-lg'}`;
                   const content = (
                     <>
@@ -278,7 +335,13 @@ export default function AboutPreview({
           >
             <div className="relative mx-auto max-w-sm lg:max-w-none">
               {/* Image Frame */}
-              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(42,23,18,0.15)] border-8 border-white/80 bg-white z-10 transform rotate-1 hover:rotate-0 transition-transform duration-500">
+              <div
+                className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(42,23,18,0.15)] border-8 bg-white z-10 transform rotate-1 hover:rotate-0 transition-transform duration-500"
+                style={{
+                  borderColor: ownerImageBorderColor || '#ffffff',
+                  backgroundColor: ownerImageFrameBgColor || '#ffffff',
+                }}
+              >
                 <Image
                   src={toStorageOnlyImage(owner_image)}
                   alt="Richard - Founder of Dogs Paradise Bangalore"
@@ -294,7 +357,7 @@ export default function AboutPreview({
                 <div
                   className="absolute -inset-4 rounded-2xl -z-10 transform -rotate-3"
                   style={{
-                    background: getDecorativeBlobBackground(decorative_blob_color),
+                    background: getDecorativeBlobBackground(ownerCardBackdropColor),
                     transform: `scale(${blobScale}) rotate(-3deg)`,
                     transformOrigin: 'top left',
                   }}

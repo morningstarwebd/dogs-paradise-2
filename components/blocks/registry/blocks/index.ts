@@ -1,0 +1,18 @@
+// Re-export all block schemas
+export { heroBlocks } from './hero-blocks';
+export { statsCounterBlocks } from './stats-blocks';
+export { faqBlocks } from './faq-blocks';
+export { whyChooseBlocks } from './why-choose-blocks';
+export { trustBadgeBlocks } from './trust-badge-blocks';
+export { adoptionProcessBlocks } from './adoption-process-blocks';
+export { featuredBreedBlocks } from './featured-breed-blocks';
+export { breedExplorerCardBlocks } from './breed-explorer-blocks';
+export { happyStoryBlocks } from './happy-story-blocks';
+export { aboutActionBlocks } from './about-action-blocks';
+export { imageHotspotBlocks } from './image-hotspot-blocks';
+export { puppyCareBlocks } from './puppy-care-blocks';
+export { instagramGalleryBlocks } from './instagram-gallery-blocks';
+export { blogCardBlocks } from './blog-card-blocks';
+export { newsletterIconBlocks } from './newsletter-icon-blocks';
+export { ctaButtonBlocks } from './cta-button-blocks';
+export { headerBlocks } from './header-blocks';
