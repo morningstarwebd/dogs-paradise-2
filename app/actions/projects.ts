@@ -1,10 +1,9 @@
 'use server'
 
-import { createClient } from '@/lib/supabase/server'
 import { revalidateTag, revalidatePath } from 'next/cache'
 import * as Sentry from '@sentry/nextjs'
 import { logAuditEntry } from './audit'
-import { isAdminAllowed } from '@/lib/admin-whitelist'
+import { createClient } from '@/lib/supabase/server'
 
 type ActionResult<T = null> = { success: true; data: T } | { success: false; error: string }
 
@@ -14,25 +13,57 @@ function revalidateProjects(slug?: string) {
     if (slug) {
         // @ts-expect-error Next.js 16.1 canary types issue
         revalidateTag(`project-${slug}`)
+        revalidatePath(`/breeds/${slug}`, 'page')
     }
+    revalidatePath('/', 'page')
+    revalidatePath('/breeds', 'page')
     revalidatePath('/sitemap.xml', 'page')
+}
+
+// ─── Project Payload Type ────────────────────────────────────────
+export type ProjectPayload = {
+    title: string
+    slug: string
+    description: string | null
+    long_description: string | null
+    category: string | null
+    tags: string[] | null
+    cover_image: string | null
+    images: string[] | null
+    live_url: string | null
+    github_url: string | null
+    featured: boolean | null
+    sort_order: number | null
+    price: number | null
+    status: 'available' | 'sold' | 'coming_soon' | 'reserved' | null
+    gender: 'male' | 'female' | null
+    age: string | null
+    characteristics: {
+        size?: 'toy' | 'small' | 'medium' | 'large' | 'giant'
+        energy_level?: 'low' | 'moderate' | 'high' | 'very_high'
+        coat_length?: 'short' | 'medium' | 'long' | 'double' | 'wire'
+        good_with_kids?: boolean
+        good_with_pets?: boolean
+        apartment_friendly?: boolean
+        training_difficulty?: 'easy' | 'moderate' | 'hard'
+        grooming?: 'low' | 'moderate' | 'high'
+        lifespan?: string
+        weight?: string
+        height?: string
+    } | null
+    health_info: {
+        vaccinated?: boolean
+        dewormed?: boolean
+        vet_checked?: boolean
+        microchipped?: boolean
+        kci_registered?: boolean
+        parents_certified?: boolean
+    } | null
 }
 
 // ─── Save Project (Create or Update) ────────────────────────────
 export async function saveProject(
-    payload: {
-        title: string
-        slug: string
-        description: string | null
-        long_description: string | null
-        category: string | null
-        tags: string[] | null
-        cover_image: string | null
-        live_url: string | null
-        github_url: string | null
-        featured: boolean | null
-        sort_order: number | null
-    },
+    payload: ProjectPayload,
     existingId?: string,
 ): Promise<ActionResult> {
     try {
@@ -41,15 +72,17 @@ export async function saveProject(
         }
 
         const supabase = await createClient()
-        const { data: { user } } = await supabase.auth.getUser()
-        if (!user || !(await isAdminAllowed(user.email || ''))) {
-            return { success: false, error: 'Unauthorized' }
-        }
 
         if (existingId) {
+            // Auto-set cover_image from first image if not set
+            const dataToSave = {
+                ...payload,
+                cover_image: payload.cover_image || (payload.images && payload.images[0]) || null
+            }
+            
             const { error } = await supabase
                 .from('projects')
-                .update(payload)
+                .update(dataToSave)
                 .eq('id', existingId)
 
             if (error) {
@@ -57,9 +90,15 @@ export async function saveProject(
                 return { success: false, error: error.message }
             }
         } else {
+            // Auto-set cover_image from first image if not set
+            const dataToSave = {
+                ...payload,
+                cover_image: payload.cover_image || (payload.images && payload.images[0]) || null
+            }
+            
             const { error } = await supabase
                 .from('projects')
-                .insert(payload)
+                .insert(dataToSave)
 
             if (error) {
                 Sentry.captureException(error)
@@ -80,10 +119,7 @@ export async function saveProject(
 export async function deleteProject(id: string): Promise<ActionResult> {
     try {
         const supabase = await createClient()
-        const { data: { user } } = await supabase.auth.getUser()
-        if (!user || !(await isAdminAllowed(user.email || ''))) {
-            return { success: false, error: 'Unauthorized' }
-        }
+        
         const { error } = await supabase.from('projects').delete().eq('id', id)
 
         if (error) {

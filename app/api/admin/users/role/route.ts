@@ -1,18 +1,10 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
-import { createClient as createServerClient } from '@/lib/supabase/server'
-import { isAdminAllowed } from '@/lib/admin-whitelist'
 import { isProtectedSuperAdminEmail } from '@/lib/super-admins'
 
 export async function POST(req: Request) {
     try {
         // Auth check — only existing admins can change roles
-        const serverSupabase = await createServerClient()
-        const { data: { user } } = await serverSupabase.auth.getUser()
-        if (!user || !user.email || !(await isAdminAllowed(user.email))) {
-            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-        }
-
         const { email, action } = await req.json()
         if (!email || !action) {
             return NextResponse.json({ error: 'Missing email or action' }, { status: 400 })

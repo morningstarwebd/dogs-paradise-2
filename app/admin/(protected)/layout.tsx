@@ -1,23 +1,8 @@
-import { redirect } from "next/navigation";
 import { AdminSidebar } from "@/components/admin/AdminSidebar";
 import { MobileNav } from "@/components/admin/MobileNav";
 import { AiSearchBar } from "@/components/admin/AiSearchBar";
-import { createClient } from "@/lib/supabase/server";
-import { isAdminAllowed } from "@/lib/admin-whitelist";
 
 export default async function ProtectedAdminLayout({ children }: { children: React.ReactNode }) {
-    const supabase = await createClient();
-    const { data: { user } } = await supabase.auth.getUser();
-
-    // TEMPORARILY DISABLED AUTHENTICATION AS REQUESTED BY USER
-    // if (!user) {
-    //     redirect("/admin/login");
-    // }
-
-    // if (!user.email || !(await isAdminAllowed(user.email))) {
-    //     redirect("/admin/login?error=unauthorized");
-    // }
-
     return (
         <div className="min-h-screen bg-background flex">
             <AdminSidebar />
@@ -35,4 +20,3 @@ export default async function ProtectedAdminLayout({ children }: { children: Rea
         </div>
     );
 }
-

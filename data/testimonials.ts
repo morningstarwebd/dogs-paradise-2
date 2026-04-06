@@ -1,4 +1,5 @@
 import type { Testimonial } from '@/types';
+import { STORAGE_ONLY_IMAGE_PLACEHOLDER } from '@/lib/storage-only-images';
 
 export const testimonials: Testimonial[] = [
   {
@@ -9,7 +10,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     breedPurchased: 'Golden Retriever',
     text: 'I had an absolutely wonderful experience adopting my Golden Retriever from Dogs Paradise. Richard was incredibly patient, knowledgeable, and always willing to guide me through every small doubt. I adopted my baby boy Mango when he was just 35 days old, and today he is a happy, healthy, and beautiful 2-year-old. Even after the adoption, Richard continued to guide me. Forever grateful for Mango — he has filled our lives with unconditional love and happiness 🐾💛',
-    avatarPath: '/images/customers/mayanka-banga.jpg',
+    avatarPath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     date: '2025-12-15',
   },
   {
@@ -20,7 +21,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     breedPurchased: 'Toy Poodle',
     text: 'We got our male Toy Poodle puppy, Rio, from Richard at Dogs Paradise, and we couldn\'t be happier. Rio is a healthy, energetic, and playful pup. As first-time pet parents, we had numerous questions and Richard was incredibly helpful and patient in addressing all of them. We\'re truly grateful for his support and highly recommend him.',
-    avatarPath: '/images/customers/abirami-poodle-1.jpg',
+    avatarPath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     date: '2025-11-20',
   },
   {
@@ -31,7 +32,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     breedPurchased: 'Maltese & Maltipoo',
     text: 'This is the 3rd Puppy I have adopted from Richard, and trust me they all are leading a great healthy life. I have adopted 2 Maltese Puppies and just adopted a Maltipoo. Richard takes it personally before handing over the puppy to you, and he really means it when he says "I will check for the health of the puppy and then recommend you". Really happy about the care and service!',
-    avatarPath: '/images/customers/bilbo-maltipoo-1.jpg',
+    avatarPath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     date: '2025-10-10',
   },
   {
@@ -41,7 +42,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     breedPurchased: 'Great Dane',
     text: 'We got our adorable Great Dane pup from Dogs Paradise and we couldn\'t be happier! From the first interaction, everything was smooth and professional. Our puppy is healthy, active, and clearly well taken care of. Richie was transparent, shared all necessary health details, and even followed up after delivery. Highly recommend!',
-    avatarPath: '/images/customers/sonali-greatdane-1.jpg',
+    avatarPath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     date: '2025-09-05',
   },
   {
@@ -51,7 +52,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     breedPurchased: 'Poodle',
     text: 'I had a great experience with breeder Richard. The poodle puppy I received was healthy, active, and well cared for. Richard was responsive, answered my questions patiently, and shared helpful guidance about feeding and basic care. It\'s clear they genuinely care about their puppies. Very happy with my decision!',
-    avatarPath: '/images/customers/monica-poodle.jpg',
+    avatarPath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     date: '2025-08-18',
   },
   {
@@ -61,7 +62,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     breedPurchased: 'Beagle',
     text: 'I recently adopted a Beagle, he is so cute and healthy. They helped me understand all his needs and requirements. In comparison with others they offered me the best price. They even get in touch after sale. The owner is very kind and supportive, making sure owners don\'t face any difficulty. Highly recommended and Satisfied.',
-    avatarPath: '/images/customers/harshit-beagle.jpg',
+    avatarPath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     date: '2025-07-22',
   },
   {
@@ -71,7 +72,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     breedPurchased: 'Bichon Frise',
     text: 'We had a wonderful experience! We got a female Bichon Frise puppy and instantly fell in love. Richard was incredibly kind and helpful — he let us walk in to see the puppies and took the time to explain the different breeds. He also guided us on the food and essentials as first-time pet parents. Highly recommend!',
-    avatarPath: '/images/customers/pooja-bichon.jpg',
+    avatarPath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     date: '2025-06-15',
   },
   {
@@ -81,7 +82,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     breedPurchased: 'Shih Tzu',
     text: 'I got two beautiful Shih Tzu puppies from Richard. Both are incredibly healthy, playful, and of true show quality. What stood out was the guidance Richard offered — he was extremely knowledgeable and supportive. He has a calm, trustworthy presence and it\'s clear he genuinely cares. I wholeheartedly recommend Richard!',
-    avatarPath: '/images/customers/sowmya-shihtzu.jpg',
+    avatarPath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     date: '2025-05-10',
   },
   {
@@ -91,7 +92,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     breedPurchased: 'Golden Retriever',
     text: 'I was hunting for a top pedigree golden retriever puppy but failed to find one. That\'s where I came across Dogs Paradise on Google and got in contact with Richard. He explained every pros and cons about the breed and provided me with a show lineage puppy. Thank you for your guidance — I got my companion!',
-    avatarPath: '/images/customers/vicky-golden-1.jpg',
+    avatarPath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     date: '2025-04-02',
   },
   {
@@ -101,7 +102,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     breedPurchased: 'Maltese',
     text: 'We contacted Richard for a Maltese Puppy and found a perfect pup as expected with zero patches on the white puppy. Our puppy is very healthy and playful. I would highly recommend Dogs Paradise to anyone looking for a toy breed.',
-    avatarPath: '/images/customers/john-golden.jpg',
+    avatarPath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     date: '2025-03-18',
   },
 ];

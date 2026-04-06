@@ -1,19 +1,9 @@
 'use client'
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { LayoutDashboard, FileText, LogOut, MessageSquare, Image as ImageIcon, AlertTriangle, Dog } from "lucide-react";
+import { LayoutDashboard, FileText, Globe, MessageSquare, Image as ImageIcon, AlertTriangle, Dog } from "lucide-react";
 
 export function AdminSidebar() {
-    const pathname = usePathname();
-
-    const handleSignOut = async () => {
-        const { createClient } = await import('@/lib/supabase/client');
-        const supabase = createClient();
-        await supabase.auth.signOut();
-        window.location.href = '/admin/login';
-    };
-
     return (
         <aside className="w-64 bg-card border-r border-border shrink-0 flex flex-col hidden md:flex">
             <div className="h-16 flex items-center px-6 border-b border-border shrink-0">
@@ -54,13 +44,13 @@ export function AdminSidebar() {
             </nav>
 
             <div className="p-4 border-t border-border">
-                <button
-                    onClick={handleSignOut}
-                    className="flex flex-row items-center gap-3 px-4 py-3 rounded-lg hover:bg-destructive/10 hover:text-destructive transition-colors text-sm font-medium w-full text-left cursor-pointer"
+                <Link
+                    href="/"
+                    className="flex flex-row items-center gap-3 px-4 py-3 rounded-lg hover:bg-secondary transition-colors text-sm font-medium w-full text-left"
                 >
-                    <LogOut size={18} />
-                    Sign Out
-                </button>
+                    <Globe size={18} />
+                    Open Website
+                </Link>
             </div>
         </aside>
     );

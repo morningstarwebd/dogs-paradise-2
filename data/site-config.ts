@@ -1,4 +1,5 @@
 import type { SiteConfig } from '@/types';
+import { STORAGE_ONLY_IMAGE_PLACEHOLDER } from '@/lib/storage-only-images';
 
 export const siteConfig: SiteConfig = {
   brandName: 'Dogs Paradise Bangalore',
@@ -51,6 +52,6 @@ export const siteConfig: SiteConfig = {
       'premium dog breeds india',
       'dogs paradise bangalore',
     ],
-    ogImage: '/images/og/default.webp',
+    ogImage: STORAGE_ONLY_IMAGE_PLACEHOLDER,
   },
 };

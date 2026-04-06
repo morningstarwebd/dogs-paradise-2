@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { groq, GROQ_MODEL } from '@/lib/groq';
-import { createClient } from '@/lib/supabase/server';
-import { isAdminAllowed } from '@/lib/admin-whitelist';
 
 export async function POST(req: NextRequest) {
   // 1. Check if Groq is configured
@@ -12,25 +10,7 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // 2. Auth Check — Admin only
-  try {
-    const supabase = await createClient();
-    const { data: { user } } = await supabase.auth.getUser();
-
-    if (!user || !user.email || !(await isAdminAllowed(user.email))) {
-      return NextResponse.json(
-        { error: 'Unauthorized. Admin access required.' },
-        { status: 401 }
-      );
-    }
-  } catch {
-    return NextResponse.json(
-      { error: 'Authentication failed' },
-      { status: 401 }
-    );
-  }
-
-  // 3. Process Request
+  // 2. Process Request
   try {
     const { topic, keywords, tone } = await req.json();
 

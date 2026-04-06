@@ -1,9 +1,23 @@
 ﻿import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { blogPosts as fallbackPosts } from "@/data/blog-posts";
+import { siteConfig } from "@/data/site-config";
+import { toStorageOnlyImage } from "@/lib/storage-only-images";
 import { createStaticClient } from "@/lib/supabase/server";
 import type { BlogPost } from "@/types";
 import BlogPostClient from "./BlogPostClient";
+
+type BlogPostRow = {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string | null;
+  content: string | null;
+  cover_image: string | null;
+  category: string | null;
+  reading_time: number | null;
+  created_at: string;
+};
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -29,7 +43,7 @@ async function getPost(slug: string): Promise<BlogPost | null> {
             title: data.title,
             excerpt: data.excerpt || "",
             content: data.content || "",
-            coverImagePath: data.cover_image || "/images/placeholder.jpg",
+            coverImagePath: toStorageOnlyImage(data.cover_image, siteConfig.seo.ogImage),
             category: data.category || "General",
             readingTime: `${data.reading_time || 5} min read`,
             publishedAt: new Date(data.created_at).toLocaleDateString("en-US", {
@@ -59,13 +73,13 @@ async function getRelatedPosts(category: string, excludeId: string): Promise<Blo
             .limit(3);
 
         if (!data || data.length === 0) return [];
-        return data.map((d: any) => ({
+        return data.map((d: BlogPostRow) => ({
             id: d.id,
             slug: d.slug,
             title: d.title,
             excerpt: d.excerpt || "",
             content: d.content || "",
-            coverImagePath: d.cover_image || "/images/placeholder.jpg",
+            coverImagePath: toStorageOnlyImage(d.cover_image, siteConfig.seo.ogImage),
             category: d.category || "General",
             readingTime: `${d.reading_time || 5} min read`,
             publishedAt: new Date(d.created_at).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" }),

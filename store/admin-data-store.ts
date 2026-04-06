@@ -1,6 +1,29 @@
 import { create } from 'zustand'
 
 
+export interface ProjectCharacteristics {
+    size?: 'toy' | 'small' | 'medium' | 'large' | 'giant'
+    energy_level?: 'low' | 'moderate' | 'high' | 'very_high'
+    coat_length?: 'short' | 'medium' | 'long' | 'double' | 'wire'
+    good_with_kids?: boolean
+    good_with_pets?: boolean
+    apartment_friendly?: boolean
+    training_difficulty?: 'easy' | 'moderate' | 'hard'
+    grooming?: 'low' | 'moderate' | 'high'
+    lifespan?: string
+    weight?: string
+    height?: string
+}
+
+export interface ProjectHealthInfo {
+    vaccinated?: boolean
+    dewormed?: boolean
+    vet_checked?: boolean
+    microchipped?: boolean
+    kci_registered?: boolean
+    parents_certified?: boolean
+}
+
 export interface Project {
     id: string
     title: string
@@ -10,10 +33,17 @@ export interface Project {
     category: string | null
     tags: string[] | null
     cover_image: string | null
+    images: string[] | null
     live_url: string | null
     github_url: string | null
     featured: boolean | null
     sort_order: number | null
+    price: number | null
+    status: 'available' | 'sold' | 'coming_soon' | 'reserved' | null
+    gender: 'male' | 'female' | null
+    age: string | null
+    characteristics: ProjectCharacteristics | null
+    health_info: ProjectHealthInfo | null
     created_at: string | null
 }
 

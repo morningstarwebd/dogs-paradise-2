@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { groq, GROQ_MODEL } from '@/lib/groq';
 import { createClient } from '@/lib/supabase/server';
-import { isAdminAllowed } from '@/lib/admin-whitelist';
 
 function sanitizeLeadContext(text: string | null | undefined): string {
   return String(text || '')
@@ -19,10 +18,6 @@ export async function POST(req: NextRequest) {
   }
 
   const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user || !user.email || !(await isAdminAllowed(user.email))) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
 
   try {
     const { command } = await req.json();

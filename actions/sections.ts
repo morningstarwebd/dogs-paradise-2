@@ -1,7 +1,14 @@
 'use server'
 
 import { createClient } from '@/lib/supabase/server'
-import { revalidatePath } from 'next/cache'
+import { revalidatePath, revalidateTag } from 'next/cache'
+
+function revalidateWebsite() {
+    // @ts-expect-error Next.js 16.2 tag types lag runtime support
+    revalidateTag('website-content')
+    revalidatePath('/', 'page')
+    revalidatePath('/sitemap.xml', 'page')
+}
 
 export async function saveSectionContent(id: string, content: Record<string, unknown>) {
     const supabase = await createClient()
@@ -12,6 +19,7 @@ export async function saveSectionContent(id: string, content: Record<string, unk
         .eq('id', id)
 
     if (error) return { success: false, error: error.message }
+    revalidateWebsite()
     return { success: true }
 }
 
@@ -24,8 +32,7 @@ export async function toggleSectionVisibility(id: string, visible: boolean) {
         .eq('id', id)
 
     if (error) return { success: false, error: error.message }
-    
-    revalidatePath('/')
+    revalidateWebsite()
     return { success: true }
 }
 
@@ -40,7 +47,7 @@ export async function reorderSections(orderedSections: { id: string; sortOrder: 
             .eq('id', section.id)
     }
 
-    revalidatePath('/')
+    revalidateWebsite()
     return { success: true }
 }
 
@@ -61,8 +68,7 @@ export async function addSection(sectionId: string, label: string, sortOrder: nu
         .single()
 
     if (error) return { success: false, error: error.message }
-    
-    revalidatePath('/')
+    revalidateWebsite()
     return { success: true, data }
 }
 
@@ -75,8 +81,7 @@ export async function deleteSection(id: string) {
         .eq('id', id)
 
     if (error) return { success: false, error: error.message }
-    
-    revalidatePath('/')
+    revalidateWebsite()
     return { success: true }
 }
 
@@ -89,8 +94,7 @@ export async function publishSection(id: string) {
         .eq('id', id)
         
     if (error) return { success: false, error: error.message }
-    
-    revalidatePath('/')
+    revalidateWebsite()
     return { success: true }
 }
 
@@ -103,7 +107,6 @@ export async function unpublishSection(id: string) {
         .eq('id', id)
         
     if (error) return { success: false, error: error.message }
-    
-    revalidatePath('/')
+    revalidateWebsite()
     return { success: true }
 }

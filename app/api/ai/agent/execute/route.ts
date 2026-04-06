@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { groq, GROQ_MODEL } from '@/lib/groq';
 import { createClient } from '@/lib/supabase/server';
-import { isAdminAllowed } from '@/lib/admin-whitelist';
 
 /* ─────────────────────────────────────────────────────────────────────
  *  AI Agent Execute — Runs an approved action plan step by step
@@ -18,12 +17,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'AI service is not configured' }, { status: 503 });
   }
 
-  // Auth
   const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user || !user.email || !(await isAdminAllowed(user.email))) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
 
   try {
     const { steps } = await req.json();

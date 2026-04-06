@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { dogs } from '@/data/dogs';
 import { buildSectionStyle, resolveColorToken } from '@/lib/gradient-style';
+import { toStorageOnlyImage } from '@/lib/storage-only-images';
 
 type RawBlock = {
   id?: string;
@@ -49,7 +50,7 @@ function buildGalleryItems(blocks: RawBlock[]): GalleryImageItem[] {
       const row = toText(settings.row, index % 2 === 0 ? 'top' : 'bottom').toLowerCase();
       return {
         id: block.id || `gallery_image_${index}`,
-        src: toText(settings.image, '/images/breeds/golden-retriever.jpg'),
+        src: toStorageOnlyImage(settings.image),
         alt: toText(settings.alt_text, `Gallery image ${index + 1}`),
         row: row === 'bottom' ? 'bottom' : 'top',
         url: toText(settings.url, ''),

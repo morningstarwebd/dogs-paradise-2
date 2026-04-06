@@ -1,4 +1,5 @@
 import type { BreedFAQ, Dog, DogCharacteristics, HealthInfo } from '@/types';
+import { STORAGE_ONLY_IMAGE_PLACEHOLDER } from '@/lib/storage-only-images';
 import { siteConfig } from './site-config';
 
 interface BreedSeed {
@@ -11,7 +12,7 @@ interface BreedSeed {
   summary: string;
   characteristics: DogCharacteristics;
   tags: string[];
-  localImagePath: string;
+  seedImagePath: string;
 }
 
 function toSlug(value: string): string {
@@ -74,7 +75,7 @@ const breedSeeds: BreedSeed[] = [
     age: '8 weeks',
     featured: true,
     summary: 'Intelligent, highly trainable, and incredibly cute Toy Poodle puppies. Ideal companions for apartment living.',
-    localImagePath: '/images/breeds/toy-poodle.jpg',
+    seedImagePath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     characteristics: {
       size: 'toy',
       coatLength: 'long',
@@ -98,7 +99,7 @@ const breedSeeds: BreedSeed[] = [
     age: '8 weeks',
     featured: true,
     summary: 'A charming cross between Maltese and Poodle, perfect for families looking for a low-shedding companion.',
-    localImagePath: '/images/breeds/maltipoo.jpg',
+    seedImagePath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     characteristics: {
       size: 'toy',
       coatLength: 'long',
@@ -122,7 +123,7 @@ const breedSeeds: BreedSeed[] = [
     age: '8 weeks',
     featured: true,
     summary: 'Friendly, gentle, and eager to please. Our Golden Retrievers come from healthy bloodlines and are well-socialized.',
-    localImagePath: '/images/breeds/golden-retriever.jpg',
+    seedImagePath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     characteristics: {
       size: 'large',
       coatLength: 'long',
@@ -146,7 +147,7 @@ const breedSeeds: BreedSeed[] = [
     age: '8 weeks',
     featured: true,
     summary: 'Affectionate and happy Shih Tzu puppies, known for their beautiful long coats and sweet temperament.',
-    localImagePath: '/images/breeds/shih-tzu.jpg',
+    seedImagePath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     characteristics: {
       size: 'toy',
       coatLength: 'long',
@@ -170,7 +171,7 @@ const breedSeeds: BreedSeed[] = [
     age: '9 weeks',
     featured: true,
     summary: 'Cheerful, white-coated Bichon Frise puppies. They are resilient and love to be part of the family action.',
-    localImagePath: '/images/breeds/bichon-frise.jpg',
+    seedImagePath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     characteristics: {
       size: 'small',
       coatLength: 'medium',
@@ -194,7 +195,7 @@ const breedSeeds: BreedSeed[] = [
     age: '10 weeks',
     featured: true,
     summary: 'Stunning Siberian Husky puppies with vibrant eyes and energetic personalities. Active homes preferred.',
-    localImagePath: '/images/breeds/husky.jpg',
+    seedImagePath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     characteristics: {
       size: 'large',
       coatLength: 'double',
@@ -218,7 +219,7 @@ const breedSeeds: BreedSeed[] = [
     age: '8 weeks',
     featured: false,
     summary: 'The ultimate family dog. Playful, loving, and easy to train. Great with kids and other pets.',
-    localImagePath: '/images/breeds/labrador.jpg',
+    seedImagePath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     characteristics: {
       size: 'large',
       coatLength: 'short',
@@ -242,7 +243,7 @@ const breedSeeds: BreedSeed[] = [
     age: '10 weeks',
     featured: false,
     summary: 'Intelligent and courageous. German Shepherds are excellent guard dogs and loyal companions.',
-    localImagePath: '/images/breeds/german-shepherd.jpg',
+    seedImagePath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     characteristics: {
       size: 'large',
       coatLength: 'medium',
@@ -266,7 +267,7 @@ const breedSeeds: BreedSeed[] = [
     age: '11 weeks',
     featured: false,
     summary: 'Confident and protective guardians. Our Rottweilers are from well-behaved champion bloodlines.',
-    localImagePath: '/images/breeds/rottweiler.jpg',
+    seedImagePath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     characteristics: {
       size: 'large',
       coatLength: 'short',
@@ -290,7 +291,7 @@ const breedSeeds: BreedSeed[] = [
     age: '9 weeks',
     featured: false,
     summary: 'Adaptable, playful, and smart. Frenchies are the perfect city companions.',
-    localImagePath: '/images/breeds/french-bulldog.jpg',
+    seedImagePath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     characteristics: {
       size: 'small',
       coatLength: 'short',
@@ -314,7 +315,7 @@ const breedSeeds: BreedSeed[] = [
     age: '9 weeks',
     featured: false,
     summary: 'A highly intelligent and active herding dog with a big personality in a small, sturdy frame.',
-    localImagePath: '/images/breeds/welsh-corgi.jpg',
+    seedImagePath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     characteristics: {
       size: 'small',
       coatLength: 'medium',
@@ -338,7 +339,7 @@ const breedSeeds: BreedSeed[] = [
     age: '8 weeks',
     featured: false,
     summary: 'A delightful cross between a Cavalier King Charles Spaniel and a Poodle, known for being incredibly affectionate and friendly.',
-    localImagePath: '/images/breeds/cavapoo.jpg',
+    seedImagePath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     characteristics: {
       size: 'small',
       coatLength: 'medium',
@@ -362,7 +363,7 @@ const breedSeeds: BreedSeed[] = [
     age: '10 weeks',
     featured: false,
     summary: 'Merry and sturdy, the Cocker Spaniel makes a wonderful family companion with their beautiful expressive eyes.',
-    localImagePath: '/images/breeds/cocker-spaniel.jpg',
+    seedImagePath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     characteristics: {
       size: 'small',
       coatLength: 'long',
@@ -386,7 +387,7 @@ const breedSeeds: BreedSeed[] = [
     age: '8 weeks',
     featured: false,
     summary: 'Charming, loving, and mischievous. Pugs are the perfect companions for those looking for a laid-back buddy.',
-    localImagePath: '/images/breeds/pug.jpg',
+    seedImagePath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     characteristics: {
       size: 'small',
       coatLength: 'short',
@@ -410,7 +411,7 @@ const breedSeeds: BreedSeed[] = [
     age: '12 weeks',
     featured: false,
     summary: 'An elite guard dog of Italian origin, highly protective, intelligent, and deeply loyal to their family.',
-    localImagePath: '/images/breeds/cane-corso.jpg',
+    seedImagePath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     characteristics: {
       size: 'large',
       coatLength: 'short',
@@ -434,7 +435,7 @@ const breedSeeds: BreedSeed[] = [
     age: '9 weeks',
     featured: false,
     summary: 'Playful, patient, and stoic. Boxers are incredible family protectors that love to play and bound around.',
-    localImagePath: '/images/breeds/boxer.jpg',
+    seedImagePath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     characteristics: {
       size: 'large',
       coatLength: 'short',
@@ -458,7 +459,7 @@ const breedSeeds: BreedSeed[] = [
     age: '8 weeks',
     featured: false,
     summary: 'Gentle, affectionate, and elegant. Known for their show-stopping white coat and sweet disposition.',
-    localImagePath: '/images/breeds/maltese.jpg',
+    seedImagePath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     characteristics: {
       size: 'toy',
       coatLength: 'long',
@@ -482,7 +483,7 @@ const breedSeeds: BreedSeed[] = [
     age: '10 weeks',
     featured: false,
     summary: 'Affectionate, gentle, and graceful. These beautiful spaniels make loving lap dogs and wonderful family pets.',
-    localImagePath: '/images/breeds/cavalier-king-charles.jpg',
+    seedImagePath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     characteristics: {
       size: 'small',
       coatLength: 'medium',
@@ -506,7 +507,7 @@ const breedSeeds: BreedSeed[] = [
     age: '9 weeks',
     featured: false,
     summary: 'Sprightly, tomboyish, and affectionate. Yorkies pack a big personality into a tiny, silken package.',
-    localImagePath: '/images/breeds/yorkshire-terrier.jpg',
+    seedImagePath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     characteristics: {
       size: 'toy',
       coatLength: 'long',
@@ -530,7 +531,7 @@ const breedSeeds: BreedSeed[] = [
     age: '11 weeks',
     featured: false,
     summary: 'Strong, loyal, and confident. Despite their fierce appearance, they are excellent and loving family dogs.',
-    localImagePath: '/images/breeds/american-bully.jpg',
+    seedImagePath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     characteristics: {
       size: 'medium',
       coatLength: 'short',
@@ -554,7 +555,7 @@ const breedSeeds: BreedSeed[] = [
     age: '9 weeks',
     featured: false,
     summary: 'Dignified, serious-minded, and aloof. Known for their unique blue-black tongue and lion-like mane.',
-    localImagePath: '/images/breeds/chow-chow.jpg',
+    seedImagePath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     characteristics: {
       size: 'large',
       coatLength: 'double',
@@ -578,7 +579,7 @@ const breedSeeds: BreedSeed[] = [
     age: '10 weeks',
     featured: false,
     summary: 'Sleek, powerful, and highly intelligent. The Doberman Pinscher is unofficially considered the ultimate guard dog.',
-    localImagePath: '/images/breeds/doberman.jpg',
+    seedImagePath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     characteristics: {
       size: 'large',
       coatLength: 'short',
@@ -602,7 +603,7 @@ const breedSeeds: BreedSeed[] = [
     age: '10 weeks',
     featured: false,
     summary: 'A massive, muscular, and famous mountain rescue dog with a patient and gentle temperament.',
-    localImagePath: '/images/breeds/st-bernard.jpg',
+    seedImagePath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     characteristics: {
       size: 'large',
       coatLength: 'long',
@@ -626,7 +627,7 @@ const breedSeeds: BreedSeed[] = [
     age: '8 weeks',
     featured: false,
     summary: 'Happy-go-lucky, funny, and incredibly cute tracking dogs that make fantastic family members.',
-    localImagePath: '/images/breeds/beagle.jpg',
+    seedImagePath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     characteristics: {
       size: 'small',
       coatLength: 'short',
@@ -650,7 +651,7 @@ const breedSeeds: BreedSeed[] = [
     age: '11 weeks',
     featured: false,
     summary: 'Often referred to as the "Apollo of Dogs," the Great Dane is sweet, eager to please, and highly impressive.',
-    localImagePath: '/images/breeds/great-dane.jpg',
+    seedImagePath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     characteristics: {
       size: 'large',
       coatLength: 'short',
@@ -682,8 +683,8 @@ export const dogs: Dog[] = breedSeeds.map((seed, index) => {
     price: 0, // Customer insisted: "Price is not required"
     age: seed.age,
     gender: seed.gender,
-    images: [seed.localImagePath],
-    thumbnailImage: seed.localImagePath,
+    images: [seed.seedImagePath],
+    thumbnailImage: seed.seedImagePath,
     description: seed.summary,
     longDescription: `${seed.breedName} puppies at ${siteConfig.brandName} are home-raised with absolute care.\n\n${seed.summary}\n\n${
       healthInfo.kciRegistered

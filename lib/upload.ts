@@ -5,10 +5,16 @@ const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif']
 const WEBP_QUALITY = 0.82
 const MAX_DIMENSION = 4096 // px — downscale if either side exceeds this
+const EXPECTED_BUCKETS_LABEL = STORAGE_BUCKET_CANDIDATES.join(', ')
 
 function isBucketNotFoundMessage(message: string): boolean {
     const lower = message.toLowerCase()
     return lower.includes('bucket') && lower.includes('not found')
+}
+
+function isMissingMediaTableMessage(message: string): boolean {
+    const lower = message.toLowerCase()
+    return lower.includes('media_files') && lower.includes('does not exist')
 }
 
 /**
@@ -127,7 +133,11 @@ export async function uploadToSupabase(file: File, folder: string = 'general'): 
     }
 
     if (!uploaded) {
-        throw new Error(`Upload failed: ${uploadFailedMessage ?? 'Bucket not found'}`)
+        if (uploadFailedMessage && isBucketNotFoundMessage(uploadFailedMessage)) {
+            throw new Error(`Upload failed: Storage bucket not configured in Supabase. Expected one of: ${EXPECTED_BUCKETS_LABEL}`)
+        }
+
+        throw new Error(`Upload failed: ${uploadFailedMessage ?? 'Unknown storage error'}`)
     }
 
     const { data: urlData } = supabase.storage
@@ -145,7 +155,7 @@ export async function uploadToSupabase(file: File, folder: string = 'general'): 
         file_size: uploadBlob.size,
     }, { onConflict: 'url' })
 
-    if (mediaError) {
+    if (mediaError && !isMissingMediaTableMessage(mediaError.message)) {
         // Metadata sync should not block a completed file upload.
         console.warn('Failed to save media metadata:', mediaError.message)
     }

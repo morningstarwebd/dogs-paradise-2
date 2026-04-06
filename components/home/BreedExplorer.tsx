@@ -9,6 +9,7 @@ import { dogs } from '@/data/dogs';
 import { ArrowRight, ChevronLeft, ChevronRight, Star, Heart } from 'lucide-react';
 import { getDecorativeBlobStyle } from '@/lib/decorative-color';
 import { buildSectionStyle, resolveColorToken } from '@/lib/gradient-style';
+import { toStorageOnlyImage } from '@/lib/storage-only-images';
 
 type RawBlock = {
   id?: string;
@@ -87,7 +88,7 @@ function buildBreedCards(blocks: RawBlock[]): BreedCardItem[] {
         id: block.id || `breed_card_${index}`,
         title: toText(settings.title, `Breed ${index + 1}`),
         url: toText(settings.url, '/breeds'),
-        image: toText(settings.image, '/images/breeds/golden-retriever.jpg'),
+        image: toStorageOnlyImage(settings.image),
         gender: rawGender === 'female' ? 'female' : 'male',
         isBestSeller: Boolean(settings.is_best_seller),
         badgeText: toText(settings.badge_text, 'Best Seller'),
@@ -146,7 +147,7 @@ export default function BreedExplorer({
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
-  const sectionStyle: CSSProperties = buildSectionStyle({
+  const sectionStyle = buildSectionStyle({
     background: section_bg_color,
     backgroundFallback: '#302b63',
     text: section_text_color,
@@ -154,7 +155,7 @@ export default function BreedExplorer({
     paddingBottom: section_padding_bottom,
     marginTop: section_margin_top,
     marginBottom: section_margin_bottom,
-  });
+  }) as CSSProperties & Record<string, string | number | undefined>;
   const sectionTextColor = resolveColorToken(section_text_color);
   const sectionAccentColor = resolveColorToken(accent_color, '#ea728c') || '#ea728c';
   const sectionAccentBackgroundColor =
@@ -164,9 +165,9 @@ export default function BreedExplorer({
   const sectionAccentHoverColor =
     explicitAccentHoverColor || sectionAccentColor;
   const cardBorderColor = resolveColorToken(card_border_color, '#ffffff') || '#ffffff';
-  sectionStyle['--section-accent' as const] = sectionAccentColor;
-  sectionStyle['--section-accent-bg' as const] = sectionAccentBackgroundColor;
-  sectionStyle['--section-accent-hover' as const] = sectionAccentHoverColor;
+  sectionStyle['--section-accent'] = sectionAccentColor;
+  sectionStyle['--section-accent-bg'] = sectionAccentBackgroundColor;
+  sectionStyle['--section-accent-hover'] = sectionAccentHoverColor;
 
   const parsedBlobScale =
     typeof decorative_blob_size_scale === 'number'

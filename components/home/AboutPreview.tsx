@@ -8,6 +8,7 @@ import { Quote } from 'lucide-react';
 import { fadeUpVariant } from '@/lib/animations';
 import { isGradientColorValue, normalizeDecorativeColorValue } from '@/lib/decorative-color';
 import { buildSectionStyle, resolveColorToken } from '@/lib/gradient-style';
+import { toStorageOnlyImage } from '@/lib/storage-only-images';
 
 type RawBlock = {
   id?: string;
@@ -279,7 +280,7 @@ export default function AboutPreview({
               {/* Image Frame */}
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(42,23,18,0.15)] border-8 border-white/80 bg-white z-10 transform rotate-1 hover:rotate-0 transition-transform duration-500">
                 <Image
-                  src={owner_image || '/images/owner/richard.jpg'}
+                  src={toStorageOnlyImage(owner_image)}
                   alt="Richard - Founder of Dogs Paradise Bangalore"
                   fill
                   className="object-cover object-top"
@@ -315,4 +316,3 @@ export default function AboutPreview({
     </section>
   );
 }
-

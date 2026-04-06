@@ -5,7 +5,13 @@ import { AnimatePresence, motion, useMotionValue, useTransform } from 'motion/re
 import dynamic from 'next/dynamic';
 import type { Testimonial } from '@/types';
 
-// @ts-ignore
+type FlipBookHandle = {
+  pageFlip: () => {
+    flipNext: () => void;
+    flipPrev: () => void;
+  };
+};
+
 const HTMLFlipBook = dynamic(() => import('react-pageflip'), { ssr: false });
 import {
   BookOpen,
@@ -22,12 +28,6 @@ type BookPage =
       id: string;
       type: 'story';
       testimonial: Testimonial;
-    }
-  | {
-      id: string;
-      type: 'photo';
-      imageUrl: string;
-      label: string;
     }
   | {
       id: string;
@@ -53,12 +53,12 @@ export default function HappyCustomersBook({
     }));
 
     const photoPages: BookPage[] = Array.from({ length: 22 }).map((_, i) => {
-      const num = String(i + 1).padStart(2, '0');
+      const label = familyPlaceholders[i] || `Family Moment ${String(i + 1).padStart(2, '0')}`;
       return {
-        id: `photo-${num}`,
-        type: 'photo',
-        imageUrl: `/images/families/family-${num}.jpeg`,
-        label: `Happy Family Moment`,
+        id: `family-placeholder-${i + 1}`,
+        type: 'placeholder',
+        label,
+        note: 'Upload this family photo through the admin panel so it is stored in Supabase Storage.',
       };
     });
 
@@ -84,7 +84,7 @@ export default function HappyCustomersBook({
   const [mobileIndex, setMobileIndex] = useState(0);
   const [mobileDirection, setMobileDirection] = useState(1);
   const [isDesktopOpen, setIsDesktopOpen] = useState(false);
-  const bookRef = useRef<any>(null);
+  const bookRef = useRef<FlipBookHandle | null>(null);
 
   const maxMobileIndex = pages.length - 1;
 
@@ -172,7 +172,7 @@ export default function HappyCustomersBook({
             </div>
 
             <div className="relative mx-auto flex justify-center max-w-5xl my-10">
-              {/* @ts-ignore - types require all props even if they have defaults */}
+              {/* @ts-expect-error react-pageflip types do not fully model the runtime props/ref */}
               <HTMLFlipBook
                 width={480}
                 height={620}
@@ -331,8 +331,6 @@ function BookPageView({
 
       {page.type === 'story' ? (
         <StoryPage page={page.testimonial} side={side} />
-      ) : page.type === 'photo' ? (
-        <PhotoPage imageUrl={page.imageUrl} label={page.label} />
       ) : (
         <PlaceholderPage label={page.label} note={page.note} />
       )}
@@ -429,13 +427,3 @@ const FlipBookPageNode = forwardRef<HTMLDivElement, { page: BookPage; index: num
   );
 });
 FlipBookPageNode.displayName = 'FlipBookPageNode';
-
-function PhotoPage({ imageUrl, label }: { imageUrl: string; label: string }) {
-  return (
-    <div className="flex h-full flex-col items-center justify-center p-2">
-      <div className="relative w-full h-full min-h-[350px] overflow-hidden rounded-[20px] shadow-sm">
-        <img src={imageUrl} alt={label} className="absolute inset-0 w-full h-full object-cover" />
-      </div>
-    </div>
-  );
-}

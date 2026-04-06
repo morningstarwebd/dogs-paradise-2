@@ -5,7 +5,6 @@ import { revalidateTag, revalidatePath } from 'next/cache'
 import { sanitizeContent } from '@/lib/content-pipeline'
 import * as Sentry from '@sentry/nextjs'
 import { logAuditEntry } from './audit'
-import { isAdminAllowed } from '@/lib/admin-whitelist'
 
 type ActionResult<T = null> = { success: true; data: T } | { success: false; error: string }
 
@@ -38,11 +37,6 @@ export async function savePage(
         }
 
         const supabase = await createClient()
-        const { data: { user } } = await supabase.auth.getUser()
-        if (!user || !(await isAdminAllowed(user.email || ''))) {
-            return { success: false, error: 'Unauthorized' }
-        }
-
         const sanitizedPayload = {
             ...payload,
             content: sanitizeContent(payload.content),
@@ -93,10 +87,6 @@ export async function savePage(
 export async function deletePage(id: string): Promise<ActionResult> {
     try {
         const supabase = await createClient()
-        const { data: { user } } = await supabase.auth.getUser()
-        if (!user || !(await isAdminAllowed(user.email || ''))) {
-            return { success: false, error: 'Unauthorized' }
-        }
         const { error } = await supabase.from('pages').delete().eq('id', id)
 
         if (error) {
@@ -121,10 +111,6 @@ export async function togglePagePublished(
 ): Promise<ActionResult> {
     try {
         const supabase = await createClient()
-        const { data: { user } } = await supabase.auth.getUser()
-        if (!user || !(await isAdminAllowed(user.email || ''))) {
-            return { success: false, error: 'Unauthorized' }
-        }
         const { error } = await supabase
             .from('pages')
             .update({ published })

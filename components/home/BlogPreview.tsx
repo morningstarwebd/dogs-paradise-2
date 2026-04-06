@@ -9,6 +9,7 @@ import { fadeUpVariant, staggerContainer } from '@/lib/animations';
 import { blogPosts } from '@/data/blog-posts';
 import { ArrowRight, Clock } from 'lucide-react';
 import { buildSectionStyle, resolveColorToken } from '@/lib/gradient-style';
+import { toStorageOnlyImage } from '@/lib/storage-only-images';
 
 type RawBlock = {
   id?: string;
@@ -58,7 +59,7 @@ function buildBlogCards(blocks: RawBlock[]): BlogCardItem[] {
         readingTime: toText(settings.reading_time, '5 min read'),
         publishedAt: toText(settings.published_at, 'Recently'),
         url: toText(settings.url, '/blog'),
-        image: toText(settings.image, '/images/blog/default.jpg'),
+        image: toStorageOnlyImage(settings.image),
         featured: Boolean(settings.featured),
       };
     });

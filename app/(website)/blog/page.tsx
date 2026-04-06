@@ -2,8 +2,22 @@
 import SectionHeading from "@/components/ui/SectionHeading";
 import BlogGrid from "@/components/blog/BlogGrid";
 import { blogPosts as fallbackPosts } from "@/data/blog-posts";
+import { siteConfig } from "@/data/site-config";
+import { toStorageOnlyImage } from "@/lib/storage-only-images";
 import { createStaticClient } from "@/lib/supabase/server";
 import type { BlogPost } from "@/types";
+
+type BlogPostRow = {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string | null;
+  content: string | null;
+  cover_image: string | null;
+  category: string | null;
+  reading_time: number | null;
+  created_at: string;
+};
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -25,13 +39,13 @@ async function getPosts(): Promise<BlogPost[]> {
             return fallbackPosts;
         }
 
-        return data.map((post: any) => ({
+        return data.map((post: BlogPostRow) => ({
             id: post.id,
             slug: post.slug,
             title: post.title,
             excerpt: post.excerpt || "",
             content: post.content || "",
-            coverImagePath: post.cover_image || "/images/placeholder.jpg",
+            coverImagePath: toStorageOnlyImage(post.cover_image, siteConfig.seo.ogImage),
             category: post.category || "General",
             readingTime: `${post.reading_time || 5} min read`,
             publishedAt: new Date(post.created_at).toLocaleDateString("en-US", {

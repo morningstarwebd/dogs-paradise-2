@@ -4,7 +4,6 @@ import { createClient } from '@/lib/supabase/server'
 import { revalidateTag, revalidatePath } from 'next/cache'
 import * as Sentry from '@sentry/nextjs'
 import { logAuditEntry } from './audit'
-import { isAdminAllowed } from '@/lib/admin-whitelist'
 import type { SectionData } from '@/types/schema.types'
 
 type ActionResult<T = null> = { success: true; data: T } | { success: false; error: string }
@@ -12,6 +11,7 @@ type ActionResult<T = null> = { success: true; data: T } | { success: false; err
 function revalidateWebsite() {
     // @ts-expect-error Next.js 16.1 canary types issue
     revalidateTag('website-content')
+    revalidatePath('/', 'page')
     revalidatePath('/sitemap.xml', 'page')
 }
 
@@ -23,11 +23,6 @@ export async function saveSectionContent(
 ): Promise<ActionResult> {
     try {
         const supabase = await createClient()
-        const { data: { user } } = await supabase.auth.getUser()
-        if (!user || !(await isAdminAllowed(user.email || ''))) {
-            return { success: false, error: 'Unauthorized' }
-        }
-
         // Content size governance — 500KB hard limit
         const contentSize = new TextEncoder().encode(JSON.stringify(content)).length
         if (contentSize > 512000) {
@@ -71,10 +66,6 @@ export async function toggleSectionVisibility(
 ): Promise<ActionResult> {
     try {
         const supabase = await createClient()
-        const { data: { user } } = await supabase.auth.getUser()
-        if (!user || !(await isAdminAllowed(user.email || ''))) {
-            return { success: false, error: 'Unauthorized' }
-        }
         const { error } = await supabase
             .from('website_sections')
             .update({ is_visible: visible })
@@ -98,10 +89,6 @@ export async function toggleSectionVisibility(
 export async function publishSection(sectionId: string): Promise<ActionResult> {
     try {
         const supabase = await createClient()
-        const { data: { user } } = await supabase.auth.getUser()
-        if (!user || !(await isAdminAllowed(user.email || ''))) {
-            return { success: false, error: 'Unauthorized' }
-        }
         const { error } = await supabase
             .from('website_sections')
             .update({ status: 'published', updated_at: new Date().toISOString() })
@@ -125,10 +112,6 @@ export async function publishSection(sectionId: string): Promise<ActionResult> {
 export async function unpublishSection(sectionId: string): Promise<ActionResult> {
     try {
         const supabase = await createClient()
-        const { data: { user } } = await supabase.auth.getUser()
-        if (!user || !(await isAdminAllowed(user.email || ''))) {
-            return { success: false, error: 'Unauthorized' }
-        }
         const { error } = await supabase
             .from('website_sections')
             .update({ status: 'draft', updated_at: new Date().toISOString() })
@@ -152,10 +135,6 @@ export async function unpublishSection(sectionId: string): Promise<ActionResult>
 export async function deleteSection(sectionId: string): Promise<ActionResult> {
     try {
         const supabase = await createClient()
-        const { data: { user } } = await supabase.auth.getUser()
-        if (!user || !(await isAdminAllowed(user.email || ''))) {
-            return { success: false, error: 'Unauthorized' }
-        }
         const { error } = await supabase
             .from('website_sections')
             .delete()
@@ -181,11 +160,6 @@ export async function reorderSections(
 ): Promise<ActionResult> {
     try {
         const supabase = await createClient()
-        const { data: { user } } = await supabase.auth.getUser()
-        if (!user || !(await isAdminAllowed(user.email || ''))) {
-            return { success: false, error: 'Unauthorized' }
-        }
-
         // Parallel updates for performance
         const results = await Promise.all(
             updates.map(({ id, sortOrder }) =>
@@ -219,10 +193,6 @@ export async function addSection(
 ): Promise<ActionResult<SectionData>> {
     try {
         const supabase = await createClient()
-        const { data: { user } } = await supabase.auth.getUser()
-        if (!user || !(await isAdminAllowed(user.email || ''))) {
-            return { success: false, error: 'Unauthorized' }
-        }
         const { data, error } = await supabase
             .from('website_sections')
             .insert({

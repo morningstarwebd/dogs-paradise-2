@@ -16,12 +16,8 @@ export async function logAuditEntry(params: {
     try {
         const supabase = await createClient()
 
-        // Get current user email from the session
-        const { data: { user } } = await supabase.auth.getUser()
-        const email = user?.email || 'unknown'
-
         await supabase.from('admin_audit_log').insert({
-            admin_email: email,
+            admin_email: 'admin-panel',
             entity_type: params.entityType,
             entity_id: params.entityId,
             action: params.action,

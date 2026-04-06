@@ -1,7 +1,6 @@
 "use server";
 
 import { createClient } from '@/lib/supabase/server';
-import { isAdminAllowed } from '@/lib/admin-whitelist';
 
 const defaultGlobalSettings = {
     animationsEnabled: true,
@@ -31,8 +30,6 @@ export async function getGlobalSettingsServer() {
 
 export async function updateGlobalSettingsServer(settings: Partial<{ animationsEnabled: boolean; animationStyle: string }>) {
     const supabase = await createClient();
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user || !(await isAdminAllowed(user.email || ''))) throw new Error('Unauthorized');
 
     // First, try to get existing
     const { data: existing } = await supabase

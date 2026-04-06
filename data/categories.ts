@@ -1,11 +1,12 @@
 import type { BreedCategory } from '@/types';
+import { STORAGE_ONLY_IMAGE_PLACEHOLDER } from '@/lib/storage-only-images';
 
 export const categories: BreedCategory[] = [
   {
     id: 'cat-1',
     slug: 'all',
     name: 'All Breeds',
-    iconPath: '/images/breeds/all.svg',
+    iconPath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     description: 'Browse all available puppies',
     count: 0,
   },
@@ -13,7 +14,7 @@ export const categories: BreedCategory[] = [
     id: 'cat-2',
     slug: 'large-breeds',
     name: 'Large Breeds',
-    iconPath: '/images/breeds/large.svg',
+    iconPath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     description: 'German Shepherd, Labrador, Golden Retriever',
     count: 0,
   },
@@ -21,7 +22,7 @@ export const categories: BreedCategory[] = [
     id: 'cat-3',
     slug: 'small-breeds',
     name: 'Small Breeds',
-    iconPath: '/images/breeds/small.svg',
+    iconPath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     description: 'Shih Tzu, Beagle, Cocker Spaniel',
     count: 0,
   },
@@ -29,7 +30,7 @@ export const categories: BreedCategory[] = [
     id: 'cat-4',
     slug: 'guard-dogs',
     name: 'Guard Dogs',
-    iconPath: '/images/breeds/guard.svg',
+    iconPath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     description: 'Rottweiler, Doberman, German Shepherd',
     count: 0,
   },
@@ -37,7 +38,7 @@ export const categories: BreedCategory[] = [
     id: 'cat-5',
     slug: 'family-dogs',
     name: 'Family Dogs',
-    iconPath: '/images/breeds/family.svg',
+    iconPath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     description: 'Golden Retriever, Labrador, Beagle',
     count: 0,
   },
@@ -45,7 +46,7 @@ export const categories: BreedCategory[] = [
     id: 'cat-6',
     slug: 'toy-breeds',
     name: 'Toy Breeds',
-    iconPath: '/images/breeds/toy.svg',
+    iconPath: STORAGE_ONLY_IMAGE_PLACEHOLDER,
     description: 'Pomeranian, Shih Tzu, French Bulldog',
     count: 0,
   },

@@ -4,8 +4,8 @@ import { useAdminPresence } from '@/hooks/use-admin-presence'
 import { Users } from 'lucide-react'
 
 /**
- * Non-blocking banner showing other admins currently editing the same content.
- * Renders nothing if no other admins are present.
+ * Non-blocking banner showing other editors currently editing the same content.
+ * Renders nothing if no other editors are present.
  */
 export function PresenceBanner({
     entityType,

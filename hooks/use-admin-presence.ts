@@ -4,19 +4,34 @@ import { useEffect, useState, useRef, useCallback } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import type { RealtimeChannel } from '@supabase/supabase-js'
 
+const PRESENCE_STORAGE_KEY = 'dogs-paradise-editor-presence-key'
+
 export type PresenceUser = {
     email: string
     editing_at: string
     entity_label?: string
 }
 
+function getPresenceEditorId(): string {
+    if (typeof window === 'undefined') {
+        return 'editor'
+    }
+
+    const existing = window.localStorage.getItem(PRESENCE_STORAGE_KEY)
+    if (existing) return existing
+
+    const generated = `editor-${crypto.randomUUID().slice(0, 8)}`
+    window.localStorage.setItem(PRESENCE_STORAGE_KEY, generated)
+    return generated
+}
+
 /**
  * Tracks admin presence on a specific entity (section, page, etc.)
- * Shows which other admins are currently editing the same content.
+ * Shows which other editors are currently editing the same content.
  *
  * - Subscribes to a Realtime Presence channel scoped to entity type + ID
- * - Tracks the current admin's email + optional entity label
- * - Returns a list of OTHER admins currently present
+ * - Tracks the current browser/editor key + optional entity label
+ * - Returns a list of OTHER editors currently present
  * - Auto-untracks on tab blur (debounced — skips if hidden < 30s)
  * - Cleans up properly even if the async getUser() hasn't resolved yet
  */
@@ -51,60 +66,57 @@ export function useAdminPresence(
         const supabase = createClient()
         const channelName = `presence:${entityType}:${entityId}`
 
-        supabase.auth.getUser().then(({ data: { user } }) => {
-            if (!user?.email || !mounted) return
-            emailRef.current = user.email
+        const editorId = getPresenceEditorId()
+        emailRef.current = editorId
 
-            const channel = supabase.channel(channelName, {
-                config: { presence: { key: user.email } },
+        const channel = supabase.channel(channelName, {
+            config: { presence: { key: editorId } },
+        })
+
+        channel
+            .on('presence', { event: 'sync' }, () => {
+                const state = channel.presenceState<PresenceUser>()
+                const otherUsers: PresenceUser[] = []
+
+                for (const [key, presences] of Object.entries(state)) {
+                    if (key !== emailRef.current && presences.length > 0) {
+                        const p = presences[0] as PresenceUser
+                        otherUsers.push({
+                            email: key,
+                            editing_at: p.editing_at,
+                            entity_label: p.entity_label,
+                        })
+                    }
+                }
+                if (mounted) setOthers(otherUsers)
+            })
+            .subscribe(async (status) => {
+                if (status !== 'SUBSCRIBED' || !mounted) return
+                trackSelf(channel, editorId)
             })
 
-            channel
-                .on('presence', { event: 'sync' }, () => {
-                    const state = channel.presenceState<PresenceUser>()
-                    const otherUsers: PresenceUser[] = []
+        channelRef.current = channel
 
-                    for (const [key, presences] of Object.entries(state)) {
-                        if (key !== emailRef.current && presences.length > 0) {
-                            const p = presences[0] as PresenceUser
-                            otherUsers.push({
-                                email: key,
-                                editing_at: p.editing_at,
-                                entity_label: p.entity_label,
-                            })
-                        }
+        // Pause tracking when tab is hidden, resume on focus.
+        // Debounce: skip untrack if hidden < 30s (server keeps presence ~30s)
+        const handleVisibility = () => {
+            if (document.hidden) {
+                hiddenAtRef.current = Date.now()
+                // Don't untrack immediately — wait for prolonged hide
+                setTimeout(() => {
+                    if (document.hidden && hiddenAtRef.current) {
+                        channel.untrack()
                     }
-                    if (mounted) setOthers(otherUsers)
-                })
-                .subscribe(async (status) => {
-                    if (status !== 'SUBSCRIBED' || !mounted) return
-                    trackSelf(channel, user.email!)
-                })
-
-            channelRef.current = channel
-
-            // Pause tracking when tab is hidden, resume on focus.
-            // Debounce: skip untrack if hidden < 30s (server keeps presence ~30s)
-            const handleVisibility = () => {
-                if (document.hidden) {
-                    hiddenAtRef.current = Date.now()
-                    // Don't untrack immediately — wait for prolonged hide
-                    setTimeout(() => {
-                        if (document.hidden && hiddenAtRef.current) {
-                            channel.untrack()
-                        }
-                    }, 30_000)
-                } else {
-                    hiddenAtRef.current = null
-                    trackSelf(channel, user.email!)
-                }
+                }, 30_000)
+            } else {
+                hiddenAtRef.current = null
+                trackSelf(channel, editorId)
             }
-            document.addEventListener('visibilitychange', handleVisibility)
+        }
+        document.addEventListener('visibilitychange', handleVisibility)
 
-            channelRef.current = channel
-                // Store the handler reference for cleanup
-                ; visibilityHandlerRef.current = handleVisibility
-        })
+        channelRef.current = channel
+        visibilityHandlerRef.current = handleVisibility
 
         return () => {
             mounted = false

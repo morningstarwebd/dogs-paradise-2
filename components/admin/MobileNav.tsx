@@ -3,19 +3,11 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, LayoutDashboard, FileText, Briefcase, LogOut, Globe, Search, MessageSquare, Image as ImageIcon, Shield, AlertTriangle, Bot } from "lucide-react";
+import { Menu, X, LayoutDashboard, FileText, Briefcase, Globe, Search, MessageSquare, Image as ImageIcon, Shield, AlertTriangle, Bot } from "lucide-react";
 
 export function MobileNav() {
     const [isOpen, setIsOpen] = useState(false);
     const pathname = usePathname();
-
-
-
-    // Close the sidebar when navigation happens
-    useEffect(() => {
-        setIsOpen(false);
-    }, [pathname]);
-
     // Prevent scrolling when the drawer is open
     useEffect(() => {
         if (isOpen) {
@@ -25,13 +17,6 @@ export function MobileNav() {
         }
         return () => { document.body.style.overflow = ""; };
     }, [isOpen]);
-
-    const handleSignOut = async () => {
-        const { createClient } = await import('@/lib/supabase/client');
-        const supabase = createClient();
-        await supabase.auth.signOut();
-        window.location.href = '/admin/login';
-    };
 
     const links = [
         { href: "/admin", icon: LayoutDashboard, label: "Dashboard" },
@@ -93,6 +78,7 @@ export function MobileNav() {
                         <Link
                             key={link.href}
                             href={link.href}
+                            onClick={() => setIsOpen(false)}
                             className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors text-sm font-medium ${pathname === link.href ? 'bg-secondary text-foreground' : 'hover:bg-secondary/50 text-foreground/80'}`}
                         >
                             <link.icon size={18} />
@@ -102,13 +88,14 @@ export function MobileNav() {
                 </nav>
 
                 <div className="p-4 border-t border-border mt-auto">
-                    <button
-                        onClick={handleSignOut}
-                        className="flex flex-row items-center gap-3 px-4 py-3 rounded-lg hover:bg-destructive/10 hover:text-destructive transition-colors text-sm font-medium w-full text-left"
+                    <Link
+                        href="/"
+                        onClick={() => setIsOpen(false)}
+                        className="flex flex-row items-center gap-3 px-4 py-3 rounded-lg hover:bg-secondary transition-colors text-sm font-medium w-full text-left"
                     >
-                        <LogOut size={18} />
-                        Sign Out
-                    </button>
+                        <Globe size={18} />
+                        Open Website
+                    </Link>
                 </div>
             </div>
         </>

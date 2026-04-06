@@ -9,6 +9,7 @@ import { Star, ChevronLeft, ChevronRight, MapPin, Quote, ArrowRight, BadgeCheck 
 import { cn } from '@/lib/utils';
 import { getDecorativeBlobStyle } from '@/lib/decorative-color';
 import { buildSectionStyle, resolveColorToken } from '@/lib/gradient-style';
+import { toStorageOnlyImage } from '@/lib/storage-only-images';
 
 type RawBlock = {
   id?: string;
@@ -87,7 +88,7 @@ function buildStoryItems(blocks: RawBlock[]): StoryItem[] {
         breedPurchased: toText(settings.breed, 'Puppy'),
         rating: toNumber(settings.rating, 5),
         text: toText(settings.text, 'Wonderful experience with Dogs Paradise.'),
-        avatarPath: toText(settings.image, '/images/testimonials/default.jpg'),
+        avatarPath: toStorageOnlyImage(settings.image),
       };
     });
 }
@@ -139,10 +140,10 @@ export default function HappyStories({
           breedPurchased: item.breedPurchased,
           rating: typeof item.rating === 'number' ? item.rating : 5,
           text: item.text,
-          avatarPath: item.avatarPath || '/images/testimonials/default.jpg',
+          avatarPath: toStorageOnlyImage(item.avatarPath),
         }));
 
-  const sectionStyle: CSSProperties = buildSectionStyle({
+  const sectionStyle = buildSectionStyle({
     background: section_bg_color,
     backgroundFallback: '#302b63',
     text: section_text_color,
@@ -150,12 +151,12 @@ export default function HappyStories({
     paddingBottom: section_padding_bottom,
     marginTop: section_margin_top,
     marginBottom: section_margin_bottom,
-  });
+  }) as CSSProperties & Record<string, string | number | undefined>;
   const sectionTextColor = resolveColorToken(section_text_color);
   const sectionAccentColor = resolveColorToken(accent_color, '#ea728c') || '#ea728c';
   const storyCardBorderColor =
     resolveColorToken(card_border_color || card_background_color, '#ffffff') || '#ffffff';
-  sectionStyle['--section-accent' as const] = sectionAccentColor;
+  sectionStyle['--section-accent'] = sectionAccentColor;
 
   const badgeSizeDesktop = clamp(toNumber(badge_text_size_px, 14), 10, 32);
   const badgeSizeMobile = clamp(Math.round(badgeSizeDesktop * 0.9), 10, badgeSizeDesktop);
@@ -559,7 +560,7 @@ function StoryCard({
           {/* Steady Portrait Image */}
           <div className="h-full w-full relative">
             <Image
-              src={story.avatarPath || ''}
+              src={toStorageOnlyImage(story.avatarPath)}
               alt={story.authorName}
               fill
               className="object-cover object-top"
@@ -658,4 +659,3 @@ function StoryCard({
     </motion.div>
   );
 }
-

@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { Dog } from '@/types';
 import { buildSectionStyle, resolveColorToken } from '@/lib/gradient-style';
+import { toStorageOnlyImage } from '@/lib/storage-only-images';
 
 type RawBlock = {
   id?: string;
@@ -96,7 +97,7 @@ function buildFeaturedBreedItems(blocks: RawBlock[], fallbackAccentColor: string
         id: block.id || `featured_breed_${index}`,
         title: toText(settings.title, `Featured Breed ${index + 1}`),
         url: toText(settings.url, '/breeds'),
-        image: toText(settings.image, '/images/breeds/golden-retriever.jpg'),
+        image: toStorageOnlyImage(settings.image),
         accentColor: usesLegacyDefaultAccent
           ? fallbackAccentColor
           : configuredAccentColor || fallbackAccentColor,
@@ -150,7 +151,7 @@ export default function FeaturedDogs({
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isAutoScrolling, setIsAutoScrolling] = useState(true);
 
-  const sectionStyle: CSSProperties = {
+  const sectionStyle = {
     ...buildSectionStyle({
     background: section_bg_color,
     backgroundFallback: '#302b63',
@@ -160,7 +161,7 @@ export default function FeaturedDogs({
     marginTop: section_margin_top,
     marginBottom: section_margin_bottom,
     }),
-  };
+  } as CSSProperties & Record<string, string | number | undefined>;
   const sectionTextColor = resolveColorToken(section_text_color);
   const sectionAccentColor =
     resolveColorToken(accent_color || priority_badge_bg_color, '#ea728c') || '#ea728c';
@@ -195,12 +196,12 @@ export default function FeaturedDogs({
     show_badge_text && typeof badge_text === 'string' && badge_text.trim().length > 0;
   const shouldShowBadgeLine = show_badge_line;
 
-  sectionStyle['--section-accent' as string] = sectionAccentColor;
-  sectionStyle['--section-accent-bg' as string] = sectionAccentBackgroundColor;
-  sectionStyle['--section-accent-hover' as string] = sectionAccentHoverColor;
-  sectionStyle['--featured-badge-color' as string] = badgeTextColor;
-  sectionStyle['--featured-view-all-color' as string] = viewAllButtonColor;
-  sectionStyle['--featured-breed-title-color' as string] = breedTitleTextColor;
+  sectionStyle['--section-accent'] = sectionAccentColor;
+  sectionStyle['--section-accent-bg'] = sectionAccentBackgroundColor;
+  sectionStyle['--section-accent-hover'] = sectionAccentHoverColor;
+  sectionStyle['--featured-badge-color'] = badgeTextColor;
+  sectionStyle['--featured-view-all-color'] = viewAllButtonColor;
+  sectionStyle['--featured-breed-title-color'] = breedTitleTextColor;
 
   const parsedBadgeSizePx = toNumber(badge_text_size_px);
   const parsedHeadingSizePx = toNumber(heading_text_size_px);
