@@ -9,6 +9,7 @@ interface SectionHeadingProps {
   subtitle?: string;
   centered?: boolean;
   className?: string;
+  useGradientTitle?: boolean;
 }
 
 export default function SectionHeading({
@@ -16,6 +17,7 @@ export default function SectionHeading({
   subtitle,
   centered = true,
   className,
+  useGradientTitle = true,
 }: SectionHeadingProps) {
   return (
     <motion.div
@@ -25,7 +27,9 @@ export default function SectionHeading({
       whileInView="visible"
       viewport={{ once: true, margin: '-80px' }}
     >
-      <h2 className="heading-section text-gradient">{title}</h2>
+      <h2 className={cn('heading-section', useGradientTitle ? 'text-gradient' : 'text-[var(--text-primary)]')}>
+        {title}
+      </h2>
       {subtitle && (
         <p className="mt-3 text-base max-w-2xl text-[var(--text-secondary)] mx-auto">
           {subtitle}

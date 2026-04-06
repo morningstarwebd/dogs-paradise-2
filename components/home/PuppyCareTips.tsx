@@ -1,15 +1,57 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type CSSProperties, type ReactNode } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import GlassCard from '@/components/ui/GlassCard';
 import MobileCarousel from '@/components/ui/MobileCarousel';
 import { fadeUpVariant } from '@/lib/animations';
 import { cn } from '@/lib/utils';
+import { buildSectionStyle, resolveColorToken } from '@/lib/gradient-style';
 import { Utensils, Dumbbell, Scissors, Syringe, Brain } from 'lucide-react';
 
-const careTabs = [
+type RawBlock = {
+  id?: string;
+  type?: string;
+  settings?: Record<string, unknown>;
+};
+
+type TipItem = { heading: string; text: string };
+
+type CareTabItem = {
+  id: string;
+  icon: ReactNode;
+  label: string;
+  title: string;
+  tips: TipItem[];
+  color: string;
+};
+
+const tabIconMap = {
+  Utensils: <Utensils size={18} />,
+  Dumbbell: <Dumbbell size={18} />,
+  Scissors: <Scissors size={18} />,
+  Syringe: <Syringe size={18} />,
+  Brain: <Brain size={18} />,
+};
+
+function toText(value: unknown, fallback: string): string {
+  return typeof value === 'string' && value.trim() ? value : fallback;
+}
+
+function toTabId(value: unknown, fallback: string): string {
+  const raw = toText(value, fallback).toLowerCase().trim();
+  return raw.replace(/\s+/g, '-');
+}
+
+function resolveTabIcon(value: unknown) {
+  if (typeof value === 'string' && value in tabIconMap) {
+    return tabIconMap[value as keyof typeof tabIconMap];
+  }
+  return <Utensils size={18} />;
+}
+
+const careTabs: CareTabItem[] = [
   {
     id: 'feeding',
     icon: <Utensils size={18} />,
@@ -72,6 +114,18 @@ const careTabs = [
   },
 ];
 
+type SectionDesignProps = {
+  heading?: string;
+  subheading?: string;
+  blocks?: RawBlock[];
+  section_bg_color?: string;
+  section_text_color?: string;
+  section_padding_top?: string;
+  section_padding_bottom?: string;
+  section_margin_top?: string;
+  section_margin_bottom?: string;
+};
+
 function TipCard({ tip, index, color }: { tip: { heading: string; text: string }; index: number; color: string }) {
   return (
     <GlassCard hover className="p-6 h-full group">
@@ -92,28 +146,86 @@ function TipCard({ tip, index, color }: { tip: { heading: string; text: string }
   );
 }
 
-export default function PuppyCareTips() {
-  const [activeTab, setActiveTab] = useState(careTabs[0].id);
-  const active = careTabs.find((t) => t.id === activeTab)!;
+export default function PuppyCareTips({
+  heading = 'Puppy Care Guide',
+  subheading = 'Expert tips from our team to help you raise a happy, healthy puppy.',
+  blocks = [],
+  section_bg_color,
+  section_text_color,
+  section_padding_top,
+  section_padding_bottom,
+  section_margin_top,
+  section_margin_bottom,
+}: SectionDesignProps) {
+  const blockTabs = blocks
+    .filter((block) => block?.type === 'care_tab' && block.settings)
+    .map((block, index) => {
+      const settings = block.settings as Record<string, unknown>;
+      const id = toTabId(settings.tab_id, `tab-${index + 1}`);
+      return {
+        id,
+        icon: resolveTabIcon(settings.icon),
+        label: toText(settings.label, `Tab ${index + 1}`),
+        title: toText(settings.title, `Care Guide ${index + 1}`),
+        color: toText(settings.color, '#f59e0b'),
+      };
+    });
+
+  const blockTips = blocks
+    .filter((block) => block?.type === 'care_tip' && block.settings)
+    .map((block, index) => {
+      const settings = block.settings as Record<string, unknown>;
+      return {
+        id: block.id || `care_tip_${index}`,
+        tabId: toTabId(settings.tab_id, ''),
+        heading: toText(settings.heading, `Tip ${index + 1}`),
+        text: toText(settings.text, 'Helpful puppy care tip.'),
+      };
+    });
+
+  const tabs: CareTabItem[] =
+    blockTabs.length > 0
+      ? blockTabs.map((tab) => ({
+          ...tab,
+          tips: blockTips
+            .filter((tip) => tip.tabId === tab.id)
+            .map((tip) => ({ heading: tip.heading, text: tip.text })),
+        }))
+      : careTabs;
+
+  const [activeTab, setActiveTab] = useState(tabs[0].id);
+  const safeActiveTab = tabs.some((tab) => tab.id === activeTab) ? activeTab : tabs[0].id;
+  const active = tabs.find((t) => t.id === safeActiveTab) || tabs[0];
+
+  const sectionStyle: CSSProperties = buildSectionStyle({
+    background: section_bg_color,
+    text: section_text_color,
+    paddingTop: section_padding_top,
+    paddingBottom: section_padding_bottom,
+    marginTop: section_margin_top,
+    marginBottom: section_margin_bottom,
+  });
+  const sectionTextColor = resolveColorToken(section_text_color);
 
   return (
-    <section className="section-shell" id="puppy-care">
+    <section className="section-shell" id="puppy-care" style={sectionStyle}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          title="Puppy Care Guide"
-          subtitle="Expert tips from our team to help you raise a happy, healthy puppy."
+          title={heading}
+          subtitle={subheading}
+          useGradientTitle={!sectionTextColor}
         />
 
         <motion.div variants={fadeUpVariant} initial="hidden" whileInView="visible" viewport={{ once: true }}>
           {/* Tab Bar — scrollable on mobile */}
           <div className="flex overflow-x-auto hide-scrollbar gap-2 mb-8 pb-2">
-            {careTabs.map((tab) => (
+            {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={cn(
                   'flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-medium whitespace-nowrap transition-all duration-200 shrink-0 border',
-                  activeTab === tab.id
+                  safeActiveTab === tab.id
                     ? 'border-[var(--accent-primary)] bg-[var(--accent-primary)] text-white shadow-lg shadow-[var(--accent-primary)]/10'
                     : 'border-[var(--color-border)] bg-white/70 text-[var(--text-secondary)] hover:bg-white hover:text-[var(--text-primary)]'
                 )}
@@ -127,7 +239,7 @@ export default function PuppyCareTips() {
           {/* Content */}
           <AnimatePresence mode="wait">
             <motion.div
-              key={activeTab}
+              key={safeActiveTab}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}

@@ -25,3 +25,19 @@ export function getWhatsAppLink(phone: string, message: string): string {
 export function getPhoneLink(phone: string): string {
   return `tel:${phone.replace(/\s/g, '')}`;
 }
+
+export function isValidImageUrl(url: string | null | undefined): boolean {
+  if (!url || typeof url !== 'string') return false;
+  if (url.startsWith('/')) return true;
+  if (url.startsWith('http://') || url.startsWith('https://')) {
+    try {
+      new URL(url);
+      return true;
+    } catch {
+      return false;
+    }
+  }
+  if (url.startsWith('data:image/')) return true;
+  if (url.startsWith('blob:')) return true;
+  return false;
+}

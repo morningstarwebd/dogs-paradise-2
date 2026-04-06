@@ -1,30 +1,243 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useCallback, type CSSProperties } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
 import { testimonials } from '@/data/testimonials';
-import { Star, ChevronLeft, ChevronRight, Heart, MapPin, Quote, ArrowRight, CheckCircle2, BadgeCheck } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight, MapPin, Quote, ArrowRight, BadgeCheck } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { getDecorativeBlobStyle } from '@/lib/decorative-color';
+import { buildSectionStyle, resolveColorToken } from '@/lib/gradient-style';
 
-// Smoother, rounder organic blob shapes — gentler curves that don't crop faces
-const blobShapes = [
-  ["48% 52% 45% 55% / 52% 48% 55% 45%", "52% 48% 55% 45% / 48% 52% 45% 55%", "48% 52% 45% 55% / 52% 48% 55% 45%"],
-  ["45% 55% 50% 50% / 50% 45% 55% 50%", "55% 45% 45% 55% / 45% 55% 50% 50%", "45% 55% 50% 50% / 50% 45% 55% 50%"],
-  ["50% 50% 45% 55% / 48% 52% 50% 50%", "47% 53% 52% 48% / 52% 48% 48% 52%", "50% 50% 45% 55% / 48% 52% 50% 50%"],
-  ["52% 48% 48% 52% / 45% 55% 52% 48%", "48% 52% 52% 48% / 55% 45% 48% 52%", "52% 48% 48% 52% / 45% 55% 52% 48%"],
-  ["46% 54% 52% 48% / 54% 46% 48% 52%", "54% 46% 48% 52% / 46% 54% 52% 48%", "46% 54% 52% 48% / 54% 46% 48% 52%"],
-  ["50% 50% 47% 53% / 53% 47% 50% 50%", "53% 47% 50% 50% / 47% 53% 53% 47%", "50% 50% 47% 53% / 53% 47% 50% 50%"],
-];
+type RawBlock = {
+  id?: string;
+  type?: string;
+  settings?: Record<string, unknown>;
+};
 
-export default function HappyStories() {
+type StoryItem = {
+  id: string;
+  authorName: string;
+  location: string;
+  breedPurchased: string;
+  rating: number;
+  text: string;
+  avatarPath: string;
+};
+
+type HappyStoriesProps = {
+  badge_text?: string;
+  heading?: string;
+  heading_highlight?: string;
+  accent_color?: string;
+  card_border_color?: string;
+  card_background_color?: string;
+  subheading?: string;
+  badge_text_size_px?: number | string;
+  heading_text_size_px?: number | string;
+  description_text_size_px?: number | string;
+  blocks?: RawBlock[];
+  section_bg_color?: string;
+  section_text_color?: string;
+  decorative_blob_enabled?: boolean;
+  decorative_blob_color?: string;
+  decorative_blob_size_scale?: number | string;
+  decorative_shape_top_offset_x?: number | string;
+  decorative_shape_top_offset_y?: number | string;
+  decorative_shape_bottom_offset_x?: number | string;
+  decorative_shape_bottom_offset_y?: number | string;
+  decorative_shape_offset_x?: number | string;
+  decorative_shape_offset_y?: number | string;
+  decorative_outline_enabled?: boolean;
+  decorative_outline_color?: string;
+  decorative_outline_size_scale?: number | string;
+  section_padding_top?: string;
+  section_padding_bottom?: string;
+  section_margin_top?: string;
+  section_margin_bottom?: string;
+};
+
+function toText(value: unknown, fallback: string): string {
+  return typeof value === 'string' && value.trim() ? value : fallback;
+}
+
+function toNumber(value: unknown, fallback: number): number {
+  if (typeof value === 'number' && !Number.isNaN(value)) return value;
+  if (typeof value === 'string') {
+    const parsed = Number(value);
+    if (!Number.isNaN(parsed)) return parsed;
+  }
+  return fallback;
+}
+
+function clamp(value: number, min: number, max: number): number {
+  return Math.min(max, Math.max(min, value));
+}
+
+function buildStoryItems(blocks: RawBlock[]): StoryItem[] {
+  return blocks
+    .filter((block) => block?.type === 'story_item' && block.settings)
+    .map((block, index) => {
+      const settings = block.settings as Record<string, unknown>;
+      return {
+        id: block.id || `story_item_${index}`,
+        authorName: toText(settings.author_name, `Family ${index + 1}`),
+        location: toText(settings.location, 'Bangalore'),
+        breedPurchased: toText(settings.breed, 'Puppy'),
+        rating: toNumber(settings.rating, 5),
+        text: toText(settings.text, 'Wonderful experience with Dogs Paradise.'),
+        avatarPath: toText(settings.image, '/images/testimonials/default.jpg'),
+      };
+    });
+}
+
+export default function HappyStories({
+  badge_text = 'Real Customer Reviews',
+  heading = 'Happy',
+  heading_highlight = 'Stories',
+  accent_color = '#ea728c',
+  card_border_color = '#ffffff',
+  card_background_color,
+  subheading = 'Real families, real puppies, real love. Hear from our happy puppy parents across India.',
+  badge_text_size_px = 14,
+  heading_text_size_px = 56,
+  description_text_size_px = 16,
+  blocks = [],
+  section_bg_color,
+  section_text_color,
+  decorative_blob_enabled = true,
+  decorative_blob_color = '#ea728c',
+  decorative_blob_size_scale = 1,
+  decorative_shape_top_offset_x = 0,
+  decorative_shape_top_offset_y = 0,
+  decorative_shape_bottom_offset_x = 0,
+  decorative_shape_bottom_offset_y = 0,
+  decorative_shape_offset_x = 0,
+  decorative_shape_offset_y = 0,
+  decorative_outline_enabled = true,
+  decorative_outline_color = '#f5c842',
+  decorative_outline_size_scale = 1,
+  section_padding_top,
+  section_padding_bottom,
+  section_margin_top,
+  section_margin_bottom,
+}: HappyStoriesProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
-  const checkScroll = () => {
+  const blockStories = buildStoryItems(blocks);
+  const stories: StoryItem[] =
+    blockStories.length > 0
+      ? blockStories
+      : testimonials.map((item, index) => ({
+          id: item.id || `testimonial_${index}`,
+          authorName: item.authorName,
+          location: item.location,
+          breedPurchased: item.breedPurchased,
+          rating: typeof item.rating === 'number' ? item.rating : 5,
+          text: item.text,
+          avatarPath: item.avatarPath || '/images/testimonials/default.jpg',
+        }));
+
+  const sectionStyle: CSSProperties = buildSectionStyle({
+    background: section_bg_color,
+    backgroundFallback: '#302b63',
+    text: section_text_color,
+    paddingTop: section_padding_top,
+    paddingBottom: section_padding_bottom,
+    marginTop: section_margin_top,
+    marginBottom: section_margin_bottom,
+  });
+  const sectionTextColor = resolveColorToken(section_text_color);
+  const sectionAccentColor = resolveColorToken(accent_color, '#ea728c') || '#ea728c';
+  const storyCardBorderColor =
+    resolveColorToken(card_border_color || card_background_color, '#ffffff') || '#ffffff';
+  sectionStyle['--section-accent' as const] = sectionAccentColor;
+
+  const badgeSizeDesktop = clamp(toNumber(badge_text_size_px, 14), 10, 32);
+  const badgeSizeMobile = clamp(Math.round(badgeSizeDesktop * 0.9), 10, badgeSizeDesktop);
+  const headingSizeDesktop = clamp(toNumber(heading_text_size_px, 56), 24, 96);
+  const headingSizeMobile = clamp(Math.round(headingSizeDesktop * 0.72), 20, headingSizeDesktop);
+  const descriptionSizeDesktop = clamp(toNumber(description_text_size_px, 16), 12, 36);
+  const descriptionSizeMobile = clamp(Math.round(descriptionSizeDesktop * 0.9), 12, descriptionSizeDesktop);
+
+  const badgeTextStyle: CSSProperties = {
+    fontSize: `clamp(${badgeSizeMobile}px, calc(${badgeSizeMobile - 1}px + 0.4vw), ${badgeSizeDesktop}px)`,
+  };
+  const headingTextStyle: CSSProperties = {
+    fontSize: `clamp(${headingSizeMobile}px, calc(${headingSizeMobile - 4}px + 1.2vw), ${headingSizeDesktop}px)`,
+  };
+  const descriptionTextStyle: CSSProperties = {
+    fontSize: `clamp(${descriptionSizeMobile}px, calc(${descriptionSizeMobile - 1}px + 0.3vw), ${descriptionSizeDesktop}px)`,
+  };
+
+  const parsedBlobScale =
+    typeof decorative_blob_size_scale === 'number'
+      ? decorative_blob_size_scale
+      : Number(decorative_blob_size_scale);
+  const blobScaleRaw = Number.isFinite(parsedBlobScale) && parsedBlobScale > 0 ? parsedBlobScale : 1;
+  const blobScale = Math.min(2.5, Math.max(0.5, blobScaleRaw));
+
+  const parsedTopShapeOffsetX =
+    typeof decorative_shape_top_offset_x === 'number'
+      ? decorative_shape_top_offset_x
+      : Number(decorative_shape_top_offset_x);
+  const parsedTopShapeOffsetY =
+    typeof decorative_shape_top_offset_y === 'number'
+      ? decorative_shape_top_offset_y
+      : Number(decorative_shape_top_offset_y);
+  const parsedBottomShapeOffsetX =
+    typeof decorative_shape_bottom_offset_x === 'number'
+      ? decorative_shape_bottom_offset_x
+      : Number(decorative_shape_bottom_offset_x);
+  const parsedBottomShapeOffsetY =
+    typeof decorative_shape_bottom_offset_y === 'number'
+      ? decorative_shape_bottom_offset_y
+      : Number(decorative_shape_bottom_offset_y);
+  const parsedLegacyShapeOffsetX =
+    typeof decorative_shape_offset_x === 'number'
+      ? decorative_shape_offset_x
+      : Number(decorative_shape_offset_x);
+  const parsedLegacyShapeOffsetY =
+    typeof decorative_shape_offset_y === 'number'
+      ? decorative_shape_offset_y
+      : Number(decorative_shape_offset_y);
+  const topShapeOffsetXRaw = Number.isFinite(parsedTopShapeOffsetX)
+    ? parsedTopShapeOffsetX
+    : Number.isFinite(parsedLegacyShapeOffsetX)
+      ? parsedLegacyShapeOffsetX
+      : 0;
+  const topShapeOffsetYRaw = Number.isFinite(parsedTopShapeOffsetY)
+    ? parsedTopShapeOffsetY
+    : Number.isFinite(parsedLegacyShapeOffsetY)
+      ? parsedLegacyShapeOffsetY
+      : 0;
+  const bottomShapeOffsetXRaw = Number.isFinite(parsedBottomShapeOffsetX)
+    ? parsedBottomShapeOffsetX
+    : Number.isFinite(parsedLegacyShapeOffsetX)
+      ? parsedLegacyShapeOffsetX
+      : 0;
+  const bottomShapeOffsetYRaw = Number.isFinite(parsedBottomShapeOffsetY)
+    ? parsedBottomShapeOffsetY
+    : Number.isFinite(parsedLegacyShapeOffsetY)
+      ? parsedLegacyShapeOffsetY
+      : 0;
+  const topShapeOffsetX = Math.min(200, Math.max(-200, topShapeOffsetXRaw));
+  const topShapeOffsetY = Math.min(200, Math.max(-200, topShapeOffsetYRaw));
+  const bottomShapeOffsetX = Math.min(200, Math.max(-200, bottomShapeOffsetXRaw));
+  const bottomShapeOffsetY = Math.min(200, Math.max(-200, bottomShapeOffsetYRaw));
+
+  const parsedOutlineScale =
+    typeof decorative_outline_size_scale === 'number'
+      ? decorative_outline_size_scale
+      : Number(decorative_outline_size_scale);
+  const outlineScaleRaw = Number.isFinite(parsedOutlineScale) && parsedOutlineScale > 0 ? parsedOutlineScale : 1;
+  const outlineScale = Math.min(2.5, Math.max(0.5, outlineScaleRaw));
+
+  const checkScroll = useCallback(() => {
     if (scrollRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
       setCanScrollLeft(scrollLeft > 10);
@@ -32,9 +245,9 @@ export default function HappyStories() {
       const card = scrollRef.current.querySelector('[data-card]');
       const cardWidth = card ? card.clientWidth + 24 : 300;
       const newIndex = Math.round(scrollLeft / cardWidth);
-      setActiveIndex(Math.min(newIndex, testimonials.length - 1));
+      setActiveIndex(Math.min(newIndex, stories.length - 1));
     }
-  };
+  }, [stories.length]);
 
   useEffect(() => {
     checkScroll();
@@ -47,7 +260,7 @@ export default function HappyStories() {
         window.removeEventListener('resize', checkScroll);
       };
     }
-  }, []);
+  }, [checkScroll]);
 
   const scroll = (dir: 'left' | 'right') => {
     if (scrollRef.current) {
@@ -63,22 +276,56 @@ export default function HappyStories() {
     <section
       className="relative overflow-hidden pt-6 pb-16 sm:pt-10 sm:pb-24"
       id="happy-stories"
-      style={{ backgroundColor: '#302b63' }}
+      style={sectionStyle}
     >
       {/* Background Decorative Blobs — same style as BreedExplorer */}
-      <div className="hidden md:block absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Bottom-left pink blob — original correct shape */}
-        <div className="absolute bottom-0 left-0 w-48 h-48 sm:w-64 sm:h-64 md:w-[500px] md:h-[500px] bg-[#ea728c] rounded-full rounded-tr-[80px] sm:rounded-tr-[100px] md:rounded-tr-[200px]" />
+      {(decorative_blob_enabled || decorative_outline_enabled) && (
+        <div className="hidden md:block absolute inset-0 overflow-hidden pointer-events-none">
+          {decorative_blob_enabled && (
+            <>
+              <div
+                className="absolute bottom-0 left-0 w-48 h-48 sm:w-64 sm:h-64 md:w-[500px] md:h-[500px] rounded-full rounded-tr-[80px] sm:rounded-tr-[100px] md:rounded-tr-[200px]"
+                style={{
+                  ...getDecorativeBlobStyle(decorative_blob_color, '#ea728c'),
+                  transform: `translate(${bottomShapeOffsetX}px, ${bottomShapeOffsetY}px) scale(${blobScale})`,
+                  transformOrigin: 'bottom left',
+                }}
+              />
 
-        {/* Top-right pink blob — exact mirror of bottom-left */}
-        <div className="absolute top-0 right-0 w-48 h-48 sm:w-64 sm:h-64 md:w-[500px] md:h-[500px] bg-[#ea728c] rounded-full rounded-bl-[80px] sm:rounded-bl-[100px] md:rounded-bl-[200px]" />
+              <div
+                className="absolute top-0 right-0 w-48 h-48 sm:w-64 sm:h-64 md:w-[500px] md:h-[500px] rounded-full rounded-bl-[80px] sm:rounded-bl-[100px] md:rounded-bl-[200px]"
+                style={{
+                  ...getDecorativeBlobStyle(decorative_blob_color, '#ea728c'),
+                  transform: `translate(${topShapeOffsetX}px, ${topShapeOffsetY}px) scale(${blobScale})`,
+                  transformOrigin: 'top right',
+                }}
+              />
+            </>
+          )}
 
-        {/* Yellow decorative outline — bottom-left */}
-        <div className="absolute -bottom-8 -left-8 sm:-bottom-[16px] sm:-left-[16px] md:-bottom-[25px] md:-left-[25px] w-[208px] h-[208px] sm:w-[288px] sm:h-[288px] md:w-[550px] md:h-[550px] border-[3px] sm:border-[4px] border-[#f5c842] rounded-full rounded-tr-[80px] sm:rounded-tr-[100px] md:rounded-tr-[200px] opacity-80" />
+          {decorative_outline_enabled && (
+            <>
+              <div
+                className="absolute -bottom-8 -left-8 sm:-bottom-[16px] sm:-left-[16px] md:-bottom-[25px] md:-left-[25px] w-[208px] h-[208px] sm:w-[288px] sm:h-[288px] md:w-[550px] md:h-[550px] border-[3px] sm:border-[4px] rounded-full rounded-tr-[80px] sm:rounded-tr-[100px] md:rounded-tr-[200px] opacity-80"
+                style={{
+                  borderColor: decorative_outline_color,
+                  transform: `translate(${bottomShapeOffsetX}px, ${bottomShapeOffsetY}px) scale(${outlineScale})`,
+                  transformOrigin: 'bottom left',
+                }}
+              />
 
-        {/* Yellow decorative outline — top-right (mirror) */}
-        <div className="absolute -top-8 -right-8 sm:-top-[16px] sm:-right-[16px] md:-top-[25px] md:-right-[25px] w-[208px] h-[208px] sm:w-[288px] sm:h-[288px] md:w-[550px] md:h-[550px] border-[3px] sm:border-[4px] border-[#f5c842] rounded-full rounded-bl-[80px] sm:rounded-bl-[100px] md:rounded-bl-[200px] opacity-80" />
-      </div>
+              <div
+                className="absolute -top-8 -right-8 sm:-top-[16px] sm:-right-[16px] md:-top-[25px] md:-right-[25px] w-[208px] h-[208px] sm:w-[288px] sm:h-[288px] md:w-[550px] md:h-[550px] border-[3px] sm:border-[4px] rounded-full rounded-bl-[80px] sm:rounded-bl-[100px] md:rounded-bl-[200px] opacity-80"
+                style={{
+                  borderColor: decorative_outline_color,
+                  transform: `translate(${topShapeOffsetX}px, ${topShapeOffsetY}px) scale(${outlineScale})`,
+                  transformOrigin: 'top right',
+                }}
+              />
+            </>
+          )}
+        </div>
+      )}
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* ━━━ Section Header — Same pattern as BreedExplorer ━━━ */}
@@ -91,18 +338,18 @@ export default function HappyStories() {
               className="flex items-center justify-between gap-3 mb-4"
             >
               <div className="flex items-center gap-3">
-                <div className="w-8 h-[2px] bg-[#ea728c]" />
-                <span className="text-[#ea728c] font-bold text-xs sm:text-sm uppercase tracking-[0.2em]">
-                  Real Customer Reviews
+                <div className="w-8 h-[2px] bg-[var(--section-accent)]" />
+                <span className="text-[var(--section-accent)] font-bold uppercase tracking-[0.2em]" style={badgeTextStyle}>
+                  {badge_text}
                 </span>
               </div>
 
               {/* View All - MOBILE ONLY */}
               <Link
                 href="#flip-discover"
-                className="lg:hidden text-sm font-bold text-[#ea728c] hover:text-[#ea728c] transition-all flex items-center gap-1 group/link"
+                className="lg:hidden text-sm font-bold text-[var(--section-accent)] hover:text-[var(--section-accent)] transition-all flex items-center gap-1 group/link"
               >
-                <span className="border-b-2 border-transparent group-hover/link:border-[#ea728c] pb-0.5 transition-all">
+                <span className="border-b-2 border-transparent group-hover/link:border-[var(--section-accent)] pb-0.5 transition-all">
                   View All
                 </span>
                 <ArrowRight size={14} className="transition-transform group-hover/link:translate-x-1" />
@@ -113,18 +360,26 @@ export default function HappyStories() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.05 }}
-              className="font-display text-whitexl sm:text-4xl lg:text-whitexl font-bold text-[#FFF0D9] leading-tight"
+              className="font-display text-4xl sm:text-4xl lg:text-5xl font-bold text-[#FFF0D9] leading-tight"
+              style={{
+                ...headingTextStyle,
+                ...(sectionTextColor ? { color: sectionTextColor } : undefined),
+              }}
             >
-              Happy <span className="text-[#ea728c]">Stories</span>
+              {heading} <span className="text-[var(--section-accent)]">{heading_highlight}</span>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="mt-4 text-[#FFF0D9] text-sm sm:text-whitease max-w-lg font-medium"
+              className="mt-4 text-[#FFF0D9] text-sm sm:text-base max-w-lg font-medium"
+              style={{
+                ...descriptionTextStyle,
+                ...(sectionTextColor ? { color: sectionTextColor } : undefined),
+              }}
             >
-              Real families, real puppies, real love. Hear from our happy puppy parents across India.
+              {subheading}
             </motion.p>
           </div>
 
@@ -143,7 +398,7 @@ export default function HappyStories() {
                 className={cn(
                   "p-2.5 rounded-2xl border-2 transition-all duration-200",
                   canScrollLeft
-                    ? "border-[#ea728c]/30 text-[#ea728c] hover:bg-[#ea728c] hover:text-white hover:border-[#ea728c]"
+                    ? "border-[color:var(--section-accent)] text-[var(--section-accent)] hover:bg-[var(--section-accent)] hover:text-white hover:border-[var(--section-accent)]"
                     : "border-[#c4a882]/30 text-[#c4a882] cursor-default"
                 )}
                 aria-label="Scroll left"
@@ -156,7 +411,7 @@ export default function HappyStories() {
                 className={cn(
                   "p-2.5 rounded-2xl border-2 transition-all duration-200",
                   canScrollRight
-                    ? "border-[#ea728c]/30 text-[#ea728c] hover:bg-[#ea728c] hover:text-white hover:border-[#ea728c]"
+                    ? "border-[color:var(--section-accent)] text-[var(--section-accent)] hover:bg-[var(--section-accent)] hover:text-white hover:border-[var(--section-accent)]"
                     : "border-[#c4a882]/30 text-[#c4a882] cursor-default"
                 )}
                 aria-label="Scroll right"
@@ -168,9 +423,9 @@ export default function HappyStories() {
             {/* View All - DESKTOP ONLY */}
             <Link
               href="#flip-discover"
-              className="hidden lg:flex text-sm font-bold text-[#ea728c] hover:text-[#ea728c] transition-all items-center gap-2 group/link-desktop"
+              className="hidden lg:flex text-sm font-bold text-[var(--section-accent)] hover:text-[var(--section-accent)] transition-all items-center gap-2 group/link-desktop"
             >
-              <span className="border-b-2 border-transparent group-hover/link-desktop:border-[#ea728c] pb-0.5 transition-all">
+              <span className="border-b-2 border-transparent group-hover/link-desktop:border-[var(--section-accent)] pb-0.5 transition-all">
                 View All
               </span>
               <ArrowRight size={16} className="transition-transform group-hover/link-desktop:translate-x-1" />
@@ -189,7 +444,7 @@ export default function HappyStories() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.8 }}
                   onClick={() => scroll('left')}
-                  className="pointer-events-auto p-2 rounded-2xl bg-white/60 border border-white/80 backdrop-blur-md text-[#ea728c] shadow-lg ml-1"
+                  className="pointer-events-auto p-2 rounded-2xl bg-white/60 border border-white/80 backdrop-blur-md text-[var(--section-accent)] shadow-lg ml-1"
                 >
                   <ChevronLeft size={22} />
                 </motion.button>
@@ -202,7 +457,7 @@ export default function HappyStories() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.8 }}
                   onClick={() => scroll('right')}
-                  className="pointer-events-auto p-2 rounded-2xl bg-white/60 border border-white/80 backdrop-blur-md text-[#ea728c] shadow-lg mr-1"
+                  className="pointer-events-auto p-2 rounded-2xl bg-white/60 border border-white/80 backdrop-blur-md text-[var(--section-accent)] shadow-lg mr-1"
                 >
                   <ChevronRight size={22} />
                 </motion.button>
@@ -215,9 +470,9 @@ export default function HappyStories() {
             ref={scrollRef}
             className="flex gap-6 sm:gap-10 overflow-x-auto hide-scrollbar pb-10 snap-x snap-mandatory -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0"
           >
-            {testimonials.map((testimonial, index) => (
+            {stories.map((story, index) => (
               <motion.div
-                key={testimonial.id}
+                key={story.id}
                 data-card
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -225,14 +480,18 @@ export default function HappyStories() {
                 transition={{ delay: Math.min(index * 0.08, 0.4), duration: 0.6 }}
                 className="shrink-0 w-[340px] sm:w-[480px] lg:w-[calc(33.33%-20px)] snap-start px-4"
               >
-                <StoryCard testimonial={testimonial} index={index} />
+                <StoryCard
+                  story={story}
+                  index={index}
+                  cardBorderColor={storyCardBorderColor}
+                />
               </motion.div>
             ))}
           </div>
 
           {/* Progress Indicators (Mobile) */}
           <div className="flex justify-center gap-2 mt-4 lg:hidden">
-            {testimonials.map((_, i) => (
+            {stories.map((_, i) => (
               <button
                 key={i}
                 onClick={() => {
@@ -259,14 +518,22 @@ export default function HappyStories() {
 }
 
 /* ━━━━━━━━━━ Story Card — Modern Editorial Bento ━━━━━━━━━━ */
-function StoryCard({ testimonial, index }: { testimonial: typeof testimonials[number]; index: number }) {
+function StoryCard({
+  story,
+  index,
+  cardBorderColor,
+}: {
+  story: StoryItem;
+  index: number;
+  cardBorderColor: string;
+}) {
   const [isExpanded, setIsExpanded] = useState(false);
   
   // Auras based on breed "personality" or just variety
   const auras = ['bg-[#ea728c]/15', 'bg-[#4caf50]/15', 'bg-[#ffa600]/15', 'bg-[#9333ea]/15'];
   const auraColor = auras[index % auras.length];
 
-  const isLongText = testimonial.text.length > 120;
+  const isLongText = story.text.length > 120;
 
   return (
     <motion.div 
@@ -284,13 +551,16 @@ function StoryCard({ testimonial, index }: { testimonial: typeof testimonials[nu
       <div className="relative w-full aspect-[4/5] max-w-[420px] mx-auto z-10 isolate">
         
         {/* Main Image Container — High-end rounded corners */}
-        <div className="absolute inset-0 overflow-hidden rounded-2xl border-[10px] border-white shadow-[0_20px_50px_rgba(0,0,0,0.12)] bg-[#FFF0D9] transition-all duration-700 group-hover:shadow-[0_40px_80px_rgba(212,96,74,0.15)]">
+        <div
+          className="absolute inset-0 overflow-hidden rounded-2xl border-[10px] bg-[#FFF0D9] shadow-[0_20px_50px_rgba(0,0,0,0.12)] transition-all duration-700 group-hover:shadow-[0_40px_80px_rgba(212,96,74,0.15)]"
+          style={{ borderColor: cardBorderColor }}
+        >
           
           {/* Steady Portrait Image */}
           <div className="h-full w-full relative">
             <Image
-              src={testimonial.avatarPath || ''}
-              alt={testimonial.authorName}
+              src={story.avatarPath || ''}
+              alt={story.authorName}
               fill
               className="object-cover object-top"
               sizes="(max-width: 640px) 400px, 500px"
@@ -311,7 +581,7 @@ function StoryCard({ testimonial, index }: { testimonial: typeof testimonials[nu
           <div className="absolute top-6 right-6 z-20">
             <div className="bg-white/95 shadow-[0_8px_20px_rgba(0,0,0,0.12)] rounded-2xl px-3.5 py-2 flex items-center gap-1.5 border border-white">
               <Star size={14} className="fill-[#ffa600] text-[#ffa600]" />
-              <span className="text-[15px] font-black text-[#FFF0D9]">{testimonial.rating}.0</span>
+              <span className="text-[15px] font-black text-[#FFF0D9]">{story.rating}.0</span>
             </div>
           </div>
 
@@ -322,11 +592,11 @@ function StoryCard({ testimonial, index }: { testimonial: typeof testimonials[nu
           <div className="absolute bottom-6 left-6 z-20">
             <div className="flex flex-col items-start text-left translate-y-2">
               <span className="text-white text-xl font-black leading-tight tracking-tight drop-shadow-md">
-                {testimonial.authorName}
+                {story.authorName}
               </span>
               <div className="flex items-center gap-1.5 mt-1.5 opacity-90 transition-opacity group-hover:opacity-100">
                  <MapPin size={10} className="text-[#ea728c]" />
-                 <span className="text-white text-[10px] font-bold uppercase tracking-[0.25em]">{testimonial.location}</span>
+                 <span className="text-white text-[10px] font-bold uppercase tracking-[0.25em]">{story.location}</span>
               </div>
             </div>
           </div>
@@ -335,7 +605,7 @@ function StoryCard({ testimonial, index }: { testimonial: typeof testimonials[nu
           <div className="absolute bottom-6 right-6 z-20">
             <div className="bg-white/10 backdrop-blur-md rounded-2xl px-3 py-1.5 border border-white/30 transition-transform group-hover:scale-105">
               <span className="text-[10px] font-black text-white uppercase tracking-wider drop-shadow-sm">
-                {testimonial.breedPurchased}
+                {story.breedPurchased}
               </span>
             </div>
           </div>
@@ -361,7 +631,7 @@ function StoryCard({ testimonial, index }: { testimonial: typeof testimonials[nu
                !isExpanded && isLongText && "line-clamp-3 italic opacity-80"
             )}
           >
-            "{testimonial.text}"
+            &quot;{story.text}&quot;
           </motion.p>
 
           {/* Interactive Toggle Button */}

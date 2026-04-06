@@ -102,6 +102,14 @@ main {
   padding-block: clamp(2rem, 5vw, 5rem);
 }
 
+/* Desktop only: reduce excessive side-gaps on large screens for website sections.
+   Scoped to public website wrapper so admin screens remain unchanged. */
+@media (min-width: 1024px) {
+  .website-shell .max-w-7xl {
+    max-width: min(96rem, calc(100vw - 3rem));
+  }
+}
+
 /* ── Typography ───────────────────────────────────────────── */
 
 .font-display {
@@ -302,6 +310,48 @@ main {
 
 .section-rose {
   background: var(--tint-rose);
+}
+
+/* Global Rising Gold Dust Overlay */
+.gold-dust-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 18;
+}
+
+.gold-dust-particle {
+  position: absolute;
+  bottom: -18px;
+  border-radius: 9999px;
+  opacity: 0;
+  filter: blur(0.2px);
+  will-change: transform, opacity;
+  animation-name: gold-dust-rise;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes gold-dust-rise {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.55);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: var(--gold-dust-opacity, 0.4);
+  }
+
+  56% {
+    transform: translate3d(var(--gold-dust-drift-x, 10px), -52vh, 0) scale(0.95);
+    opacity: calc(var(--gold-dust-opacity, 0.4) * 0.85);
+  }
+
+  100% {
+    transform: translate3d(calc(var(--gold-dust-drift-x, 10px) * -0.65), -115vh, 0) scale(1.15);
+    opacity: 0;
+  }
 }
 
 /* ── Status Badges ────────────────────────────────────────── */

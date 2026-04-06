@@ -2,13 +2,31 @@
 
 import { AnimatePresence, motion } from 'motion/react';
 import { useState } from 'react';
+import type { CSSProperties } from 'react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import { fadeUpVariant, staggerContainer } from '@/lib/animations';
 import { siteConfig } from '@/data/site-config';
 import { cn } from '@/lib/utils';
 import { ChevronDown, HelpCircle } from 'lucide-react';
+import { InlineEditable } from '@/components/admin/InlineEditable';
+import { buildSectionStyle, resolveColorToken } from '@/lib/gradient-style';
 
-const faqs = [
+type RawBlock = {
+  id?: string;
+  type?: string;
+  settings?: Record<string, unknown>;
+};
+
+type FAQItem = {
+  id: string;
+  question: string;
+  answer: string;
+  blockId?: string;
+  questionKey: string;
+  answerKey: string;
+};
+
+const fallbackFaqs = [
   {
     q: 'Are all of your puppies KCI registered?',
     a: 'No. KCI registration is available only for select puppies and litters. We clearly confirm the paperwork status for the exact puppy before you book.',
@@ -43,16 +61,79 @@ const faqs = [
   },
 ];
 
-export default function FAQSection() {
+function toText(value: unknown, fallback: string): string {
+  return typeof value === 'string' && value.trim() ? value : fallback;
+}
+
+function buildFaqItems(blocks: RawBlock[]): FAQItem[] {
+  return blocks
+    .filter((block) => block?.type === 'faq_item' && block.settings)
+    .map((block, index) => {
+      const settings = block.settings as Record<string, unknown>;
+      return {
+        id: block.id || `faq_item_${index}`,
+        question: toText(settings.question, `Question ${index + 1}`),
+        answer: toText(settings.answer, 'Add your answer here.'),
+        blockId: block.id,
+        questionKey: 'question',
+        answerKey: 'answer',
+      };
+    });
+}
+
+export default function FAQSection({
+  heading = 'Frequently Asked Questions',
+  subheading = `Everything you should know before choosing a puppy from ${siteConfig.brandName}.`,
+  blocks = [],
+  sectionId,
+  isEditorMode = false,
+  section_bg_color,
+  section_text_color,
+  section_padding_top,
+  section_padding_bottom,
+  section_margin_top,
+  section_margin_bottom,
+}: {
+  heading?: string;
+  subheading?: string;
+  blocks?: RawBlock[];
+  sectionId?: string;
+  isEditorMode?: boolean;
+  section_bg_color?: string;
+  section_text_color?: string;
+  section_padding_top?: string;
+  section_padding_bottom?: string;
+  section_margin_top?: string;
+  section_margin_bottom?: string;
+}) {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
+  const blockItems = buildFaqItems(blocks);
+
+  const faqItems: FAQItem[] =
+    blockItems.length > 0
+      ? blockItems
+      : fallbackFaqs.map((faq, index) => ({
+          id: `legacy_faq_${index}`,
+          question: faq.q,
+          answer: faq.a,
+          questionKey: `faq_${index}_question`,
+          answerKey: `faq_${index}_answer`,
+        }));
+
+  const sectionStyle: CSSProperties = buildSectionStyle({
+    background: section_bg_color,
+    text: section_text_color,
+    paddingTop: section_padding_top,
+    paddingBottom: section_padding_bottom,
+    marginTop: section_margin_top,
+    marginBottom: section_margin_bottom,
+  });
+  const sectionTextColor = resolveColorToken(section_text_color);
 
   return (
-    <section className="section-shell bg-[var(--color-surface)]" id="faq">
+    <section className="section-shell bg-[var(--color-surface)]" id="faq" style={sectionStyle}>
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          title="Frequently Asked Questions"
-          subtitle={`Everything you should know before choosing a puppy from ${siteConfig.brandName}.`}
-        />
+        <SectionHeading title={heading} subtitle={subheading} useGradientTitle={!sectionTextColor} />
 
         <motion.div
           variants={staggerContainer}
@@ -61,8 +142,8 @@ export default function FAQSection() {
           viewport={{ once: true, margin: '-60px' }}
           className="space-y-3"
         >
-          {faqs.map((faq, i) => (
-            <motion.div key={faq.q} variants={fadeUpVariant}>
+          {faqItems.map((faq, i) => (
+            <motion.div key={faq.id} variants={fadeUpVariant}>
               <div className="overflow-hidden rounded-2xl border border-[var(--color-border)] bg-white shadow-sm transition-shadow duration-300 hover:shadow-md">
                 <button
                   onClick={() => setOpenIdx(openIdx === i ? null : i)}
@@ -82,12 +163,24 @@ export default function FAQSection() {
                   <span
                     className={cn(
                       'flex-1 pt-1 text-sm font-semibold transition-colors duration-200',
-                      openIdx === i
+                      !sectionTextColor && openIdx === i
                         ? 'text-[var(--text-primary)]'
-                        : 'text-[var(--text-secondary)]'
+                        : !sectionTextColor
+                          ? 'text-[var(--text-secondary)]'
+                          : ''
                     )}
+                    style={sectionTextColor ? { color: sectionTextColor } : undefined}
                   >
-                    {faq.q}
+                    <InlineEditable
+                      isEditorMode={isEditorMode}
+                      sectionId={sectionId}
+                      propKey={faq.questionKey}
+                      editType="text"
+                      blockId={faq.blockId}
+                      as="span"
+                    >
+                      {faq.question}
+                    </InlineEditable>
                   </span>
                   <motion.div
                     animate={{ rotate: openIdx === i ? 180 : 0 }}
@@ -108,9 +201,17 @@ export default function FAQSection() {
                       className="overflow-hidden"
                     >
                       <div className="border-t border-[var(--color-border)] px-5 pb-5 pl-[72px] pt-4">
-                        <p className="text-sm leading-relaxed text-[var(--text-secondary)]">
-                          {faq.a}
-                        </p>
+                        <InlineEditable
+                          isEditorMode={isEditorMode}
+                          sectionId={sectionId}
+                          propKey={faq.answerKey}
+                          editType="textarea"
+                          blockId={faq.blockId}
+                          as="p"
+                          className={cn('text-sm leading-relaxed', !sectionTextColor ? 'text-[var(--text-secondary)]' : '')}
+                        >
+                          <span style={sectionTextColor ? { color: sectionTextColor } : undefined}>{faq.answer}</span>
+                        </InlineEditable>
                       </div>
                     </motion.div>
                   )}
