@@ -576,7 +576,8 @@ function BreedCard({
               alt={card.title}
               fill
               className="object-cover"
-              sizes="(max-width: 640px) 280px, 320px"
+              quality={95}
+              sizes="(max-width: 640px) 72vw, (max-width: 1024px) 320px, 33vw"
             />
 
             {/* Subtle bottom gradient gradient for general depth */}

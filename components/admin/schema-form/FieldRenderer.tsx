@@ -3,6 +3,7 @@
 import type React from 'react';
 import { ImageUpload } from '@/components/admin/ImageUpload';
 import type { SchemaField } from '@/types/schema.types';
+import { BreedLookupField } from './BreedLookupField';
 import { ColorInputWithLibrary } from './color-library';
 import { ImageField } from './ImageField';
 import { RepeaterField } from './RepeaterField';
@@ -11,6 +12,7 @@ type FieldRendererProps = {
   field: SchemaField;
   imageUploadFolder?: string;
   onChange: (key: string, value: unknown) => void;
+  onAutoFill?: (updates: Record<string, unknown>) => void;
   onRememberColor: (colorValue: string) => void;
   savedColors: string[];
   setUploadingState: React.Dispatch<React.SetStateAction<Record<string, boolean>>>;
@@ -23,6 +25,7 @@ export function FieldRenderer({
   field,
   imageUploadFolder,
   onChange,
+  onAutoFill,
   onRememberColor,
   savedColors,
   setUploadingState,
@@ -33,6 +36,7 @@ export function FieldRenderer({
   return (
     <div id={`field-${field.key}`} className="mx-[-8px] flex flex-col rounded-lg p-2 transition-all duration-500 space-y-1.5">
       <label className="text-xs font-semibold uppercase tracking-wider text-gray-300">{field.label}</label>
+      {field.type === 'breed_lookup' ? <BreedLookupField placeholder={field.placeholder} onSelect={(result) => { if (onAutoFill && field.autoFillMap) { const updates: Record<string, unknown> = {}; for (const [resultKey, fieldKey] of Object.entries(field.autoFillMap)) { updates[fieldKey] = result[resultKey as keyof typeof result]; } onAutoFill(updates); } }} /> : null}
       {field.type === 'repeater' ? <RepeaterField field={field} onChange={onChange} onRememberColor={onRememberColor} savedColors={savedColors} value={value} /> : null}
       {field.type === 'text' ? <input type="text" value={String(value)} onChange={(event) => onChange(field.key, event.target.value)} placeholder={field.placeholder} className="w-full rounded-lg border border-[#ea728c]/30 bg-[#1b1836] px-4 py-2.5 text-sm text-white placeholder:text-gray-600 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#ea728c]" /> : null}
       {field.type === 'image' ? (useMediaLibraryForImage ? <ImageUpload value={typeof value === 'string' ? value : ''} onChange={(url) => onChange(field.key, url)} folder={imageUploadFolder || 'sections'} /> : <ImageField fieldKey={field.key} value={value} onChange={(nextValue) => onChange(field.key, nextValue)} uploading={uploadingState[field.key]} setUploading={(nextValue) => setUploadingState((previous) => ({ ...previous, [field.key]: nextValue }))} />) : null}

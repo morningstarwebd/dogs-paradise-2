@@ -27,6 +27,7 @@ export type NavbarViewModel = {
   headerBorderColor: string;
   headerShadow: boolean;
   headerTextColor: string;
+  headerTransparent: boolean;
   isDropdownMobileMenu: boolean;
   isLeftDrawerMobileMenu: boolean;
   isSideDrawerMobileMenu: boolean;
@@ -36,10 +37,27 @@ export type NavbarViewModel = {
   mobileMenuBackdropEnabled: boolean;
   mobileMenuBackdropOpacity: number;
   mobileMenuBgColor: string;
+  mobileMenuCardBgColor: string;
+  mobileMenuCardBorderColor: string;
+  mobileMenuEnableActiveHighlight: boolean;
+  mobileMenuActiveBgColor: string;
+  mobileMenuActiveTextColor: string;
+  mobileMenuIconBgColor: string;
+  mobileMenuIconColor: string;
+  mobileMenuIconActiveBgColor: string;
+  mobileMenuIconActiveColor: string;
   mobileMenuIcon: string;
   mobileMenuRadius: number;
   mobileMenuText?: string;
+  mobileMenuBrandName: string;
+  mobileMenuLogoImage: string;
+  mobileMenuSubtitle: string;
   mobileMenuTitle: string;
+  mobileMenuPrimaryCtaText: string;
+  mobileMenuPrimaryCtaUrl: string;
+  mobileMenuWhatsappUrl: string;
+  mobileMenuInstagramUrl: string;
+  mobileMenuYoutubeUrl: string;
   mobileMenuWidth: number;
   mobilePaddingClass: string;
   navAlignmentClass: string;
@@ -48,8 +66,16 @@ export type NavbarViewModel = {
   navTextSize: number;
   navTextTransformStyle: 'none' | 'uppercase' | 'capitalize';
   navWeightClass: string;
+  showBrandText: boolean;
   stickyHeader: boolean;
 };
+
+const DEFAULT_NAV_LINKS: NavLinkItem[] = [
+  { label: 'Home', href: '/', icon: 'Home' },
+  { label: 'Breeds', href: '/breeds', icon: 'Dog' },
+  { label: 'About', href: '/about', icon: 'Info' },
+  { label: 'Contact', href: '/contact', icon: 'Phone' },
+];
 
 export function isHeaderSection(section: LiveSectionPayload): boolean {
   return section.section_id === 'header' || section.block_type === 'header';
@@ -68,14 +94,17 @@ export function buildNavbarViewModel(
   const desktopBlocks = shouldFallbackDesktopLinks ? getHeaderBlocks(desktopContent.blocks) : [];
   const navLinks =
     currentViewportLinks.length > 0 ? currentViewportLinks : getNavLinks(desktopContent, desktopBlocks);
-  const { logoImage, brandName } = getBrandValues(headerContent, headerBlocks);
+  const effectiveNavLinks = navLinks.length > 0 ? navLinks : DEFAULT_NAV_LINKS;
+  const { logoImage, brandName, showBrandText } = getBrandValues(headerContent, headerBlocks);
   const headerBgColor = getStringValue(headerContent.header_bg_color);
   const headerTextColor = resolveColorToken(getStringValue(headerContent.header_text_color));
   const mobileMenuMode = getChoiceValue(
     headerContent.mobile_menu_mode,
     ['dropdown', 'left-drawer', 'right-drawer', 'front-panel'],
-    'right-drawer'
+    'left-drawer'
   );
+  const normalizedMobileMenuMode =
+    mobileMenuMode === 'dropdown' ? 'left-drawer' : mobileMenuMode;
   const mobileMenuTextColor = resolveColorToken(getStringValue(headerContent.mobile_menu_text_color));
 
   return {
@@ -84,7 +113,7 @@ export function buildNavbarViewModel(
       getChoiceValue(headerContent.brand_font_weight, ['normal', 'medium', 'semibold', 'bold'], 'bold'),
       'font-bold'
     ),
-    canRenderMobileMenu: navLinks.length > 0,
+    canRenderMobileMenu: effectiveNavLinks.length > 0,
     computedLogoImageAlt: brandName || 'Site logo',
     desktopPaddingClass:
       getChoiceValue(headerContent.desktop_padding_y, ['compact', 'default', 'spacious'], 'default') === 'compact'
@@ -98,13 +127,15 @@ export function buildNavbarViewModel(
       getStringValue(headerContent.header_border_color),
       'var(--color-border)'
     ),
+    headerTransparent: getBooleanValue(headerContent.header_bg_transparent, false),
     headerShadow: getBooleanValue(headerContent.header_shadow_enabled, true),
     headerTextColor,
-    isDropdownMobileMenu: mobileMenuMode === 'dropdown',
-    isLeftDrawerMobileMenu: mobileMenuMode === 'left-drawer',
-    isSideDrawerMobileMenu: mobileMenuMode === 'left-drawer' || mobileMenuMode === 'right-drawer',
+    isDropdownMobileMenu: false,
+    isLeftDrawerMobileMenu: normalizedMobileMenuMode === 'left-drawer',
+    isSideDrawerMobileMenu:
+      normalizedMobileMenuMode === 'left-drawer' || normalizedMobileMenuMode === 'right-drawer',
     logoImage,
-    logoSize: getNumberValue(headerContent.logo_size, 40, 24, 64),
+    logoSize: getNumberValue(headerContent.logo_size, 40, 24, 160),
     mobileMenuBackdropColor: getStringValue(headerContent.mobile_menu_backdrop_color) || '#0f172a',
     mobileMenuBackdropEnabled: getBooleanValue(headerContent.mobile_menu_backdrop_enabled, true),
     mobileMenuBackdropOpacity: getNumberValue(
@@ -114,16 +145,44 @@ export function buildNavbarViewModel(
       0.9
     ),
     mobileMenuBgColor:
-      getStringValue(headerContent.mobile_menu_bg_color) || headerBgColor || 'var(--color-surface)',
+      getStringValue(headerContent.mobile_menu_bg_color) || '#050505',
+    mobileMenuCardBgColor:
+      getStringValue(headerContent.mobile_menu_card_bg_color) || 'rgba(255,255,255,0.05)',
+    mobileMenuCardBorderColor:
+      getStringValue(headerContent.mobile_menu_card_border_color) || 'rgba(255,255,255,0.16)',
+    mobileMenuEnableActiveHighlight: getBooleanValue(
+      headerContent.mobile_menu_enable_active_highlight,
+      true
+    ),
+    mobileMenuActiveBgColor:
+      getStringValue(headerContent.mobile_menu_active_bg_color) || '#f97316',
+    mobileMenuActiveTextColor:
+      getStringValue(headerContent.mobile_menu_active_text_color) || '#ffffff',
+    mobileMenuIconBgColor:
+      getStringValue(headerContent.mobile_menu_icon_bg_color) || '#060f2b',
+    mobileMenuIconColor:
+      getStringValue(headerContent.mobile_menu_icon_color) || '#8f9bb3',
+    mobileMenuIconActiveBgColor:
+      getStringValue(headerContent.mobile_menu_icon_active_bg_color) || '#f7944d',
+    mobileMenuIconActiveColor:
+      getStringValue(headerContent.mobile_menu_icon_active_color) || '#ffffff',
     mobileMenuIcon: getChoiceValue(
       headerContent.mobile_menu_icon,
       ['hamburger', 'three-dot'],
       'three-dot'
     ),
-    mobileMenuRadius: getNumberValue(headerContent.mobile_menu_radius, 20, 0, 36),
-    mobileMenuText: resolveColorToken(mobileMenuTextColor || headerTextColor) || undefined,
-    mobileMenuTitle: getStringValue(headerContent.mobile_menu_title) || 'Menu',
-    mobileMenuWidth: getNumberValue(headerContent.mobile_menu_width, 300, 220, 420),
+    mobileMenuRadius: getNumberValue(headerContent.mobile_menu_radius, 0, 0, 36),
+    mobileMenuText: resolveColorToken(mobileMenuTextColor || '#f8fafc') || undefined,
+    mobileMenuBrandName: brandName,
+    mobileMenuLogoImage: logoImage,
+    mobileMenuTitle: getStringValue(headerContent.mobile_menu_title),
+    mobileMenuSubtitle: getStringValue(headerContent.mobile_menu_subtitle),
+    mobileMenuPrimaryCtaText: getStringValue(headerContent.mobile_menu_primary_cta_text),
+    mobileMenuPrimaryCtaUrl: getStringValue(headerContent.mobile_menu_primary_cta_url),
+    mobileMenuWhatsappUrl: getStringValue(headerContent.mobile_menu_whatsapp_url),
+    mobileMenuInstagramUrl: getStringValue(headerContent.mobile_menu_instagram_url),
+    mobileMenuYoutubeUrl: getStringValue(headerContent.mobile_menu_youtube_url),
+    mobileMenuWidth: getNumberValue(headerContent.mobile_menu_width, 340, 220, 420),
     mobilePaddingClass:
       getChoiceValue(headerContent.mobile_padding_y, ['compact', 'default', 'spacious'], 'default') === 'compact'
         ? 'py-2'
@@ -137,7 +196,7 @@ export function buildNavbarViewModel(
           ? 'justify-center'
           : 'justify-end',
     navLetterSpacing: getNumberValue(headerContent.nav_letter_spacing, 0, -0.05, 0.2),
-    navLinks,
+    navLinks: effectiveNavLinks,
     navTextSize: getNumberValue(headerContent.nav_text_size, 15, 12, 24),
     navTextTransformStyle: getChoiceValue(
       headerContent.nav_text_transform,
@@ -148,6 +207,10 @@ export function buildNavbarViewModel(
       getChoiceValue(headerContent.nav_weight, ['normal', 'medium', 'semibold', 'bold'], 'medium'),
       'font-medium'
     ),
-    stickyHeader: getBooleanValue(headerContent.sticky_header, true),
+    stickyHeader: getBooleanValue(
+      headerContent.sticky_header,
+      getBooleanValue(headerContent.sticky, true)
+    ),
+    showBrandText,
   };
 }

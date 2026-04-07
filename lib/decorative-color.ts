@@ -13,6 +13,12 @@ const GLITTER_PRESETS: Record<string, string> = {
     'glitter-silver': 'linear-gradient(135deg, #5f6670 0%, #dfe6ef 35%, #f8fbff 50%, #c3ccd8 68%, #5f6670 100%)',
 }
 
+const COLOR_KEYWORD_ALIASES: Record<string, string> = {
+    gold: 'var(--brand-gold-solid)',
+    golden: 'var(--brand-gold-solid)',
+    'logo-gold': 'var(--brand-gold-solid)',
+}
+
 function normalizeColorValue(value: string | undefined, fallbackColor: string): string {
     const trimmed = typeof value === 'string' ? value.trim() : ''
     return trimmed || fallbackColor
@@ -36,9 +42,16 @@ export function normalizeDecorativeColorValue(
     const resolved = normalizeColorValue(value, fallbackColor)
     if (!resolved) return resolved
 
-    const preset = GLITTER_PRESETS[resolved.toLowerCase()]
+    const resolvedLower = resolved.toLowerCase()
+
+    const preset = GLITTER_PRESETS[resolvedLower]
     if (preset) {
         return preset
+    }
+
+    const alias = COLOR_KEYWORD_ALIASES[resolvedLower]
+    if (alias) {
+        return alias
     }
 
     if (GRADIENT_PATTERN.test(resolved)) {

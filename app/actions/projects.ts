@@ -59,6 +59,10 @@ export type ProjectPayload = {
         kci_registered?: boolean
         parents_certified?: boolean
     } | null
+    faqs: {
+        question: string
+        answer: string
+    }[] | null
 }
 
 // ─── Save Project (Create or Update) ────────────────────────────

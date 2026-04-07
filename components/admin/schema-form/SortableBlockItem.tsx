@@ -64,6 +64,7 @@ export function SortableBlockItem({
               field={{ ...field, key: `${block.id}__${field.key}` }}
               value={block.settings[field.key] ?? field.default ?? ''}
               onChange={(_, nextValue) => onUpdate({ [field.key]: nextValue })}
+              onAutoFill={(updates) => onUpdate(updates)}
               uploadingState={uploadingState}
               setUploadingState={setUploadingState}
               useMediaLibraryForImage={useMediaLibraryForImage}

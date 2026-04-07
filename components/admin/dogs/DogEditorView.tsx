@@ -5,6 +5,7 @@ import { DogCharacteristicsSection } from './DogCharacteristicsSection';
 import { DogHealthSection } from './DogHealthSection';
 import { DogMediaSidebar } from './DogMediaSidebar';
 import { DogPricingSection } from './DogPricingSection';
+import { DogFaqSection } from './DogFaqSection';
 import type { DogFormSetter, DogFormState } from './dogs-constants';
 
 type DogEditorViewProps = {
@@ -92,6 +93,7 @@ export function DogEditorView({
             <DogCharacteristicsSection form={form} setForm={setForm} />
             <DogHealthSection form={form} setForm={setForm} />
             <DogPricingSection form={form} setForm={setForm} />
+            <DogFaqSection form={form} setForm={setForm} />
           </div>
         </div>
       </div>

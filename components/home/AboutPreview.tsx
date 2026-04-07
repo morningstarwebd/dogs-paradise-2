@@ -209,11 +209,6 @@ export default function AboutPreview({
 
   return (
     <section className="relative overflow-hidden pt-16 pb-20 sm:pt-24 sm:pb-28" id="about-preview" style={sectionStyle}>
-      {/* Background Decorative Blobs */}
-      <div className="hidden md:block absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-16 -left-16 md:-top-32 md:-left-32 w-48 h-48 md:w-96 md:h-96 bg-[#302b63] rounded-full" />
-      </div>
-
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
 

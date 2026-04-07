@@ -133,8 +133,9 @@ export function ImageUpload({ value, onChange, folder = 'sections' }: ImageUploa
             <MediaPickerModal
                 open={showPicker}
                 onClose={() => setShowPicker(false)}
-                onSelect={(url) => {
-                    onChange(url)
+                onSelect={(val) => {
+                    const url = Array.isArray(val) ? val[0] : val
+                    if (url) onChange(url)
                     setShowPicker(false)
                 }}
                 folder={folder}

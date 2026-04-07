@@ -101,4 +101,5 @@ export const emptyDogForm: DogFormState = {
     kci_registered: false,
     parents_certified: false,
   },
+  faqs: [],
 };

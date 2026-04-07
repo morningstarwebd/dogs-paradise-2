@@ -9,6 +9,8 @@ export type FieldType =
     | 'number'
     | 'repeater'
     | 'range'
+    | 'breed_lookup'
+
 
 export type SchemaField = {
     key: string
@@ -23,6 +25,7 @@ export type SchemaField = {
     step?: number // for range
     default?: number | string | boolean // for range and text toggles
     showIf?: (values: Record<string, unknown>) => boolean // for conditional rendering
+    autoFillMap?: Record<string, string> // for breed_lookup: maps result keys to sibling field keys
 }
 
 // Shopify-style block type definition (defines what blocks a section supports)

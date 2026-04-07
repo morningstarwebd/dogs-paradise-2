@@ -30,6 +30,7 @@ export function DesktopNavLinks({
   return (
     <div className={cn('hidden flex-1 items-center gap-1 md:flex', navAlignmentClass)}>
       {navLinks.map((link, index) => {
+        const linkTextColor = link.textColor || headerTextColor;
         const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
 
         return (
@@ -37,7 +38,7 @@ export function DesktopNavLinks({
             key={`${link.href}-${link.label}-${index}`}
             href={link.href}
             style={{
-              color: headerTextColor || undefined,
+              color: linkTextColor || undefined,
               fontSize: `${navTextSize}px`,
               letterSpacing: `${navLetterSpacing}em`,
               textTransform: navTextTransformStyle,
@@ -46,10 +47,10 @@ export function DesktopNavLinks({
               'rounded-lg px-3 py-2 transition-all duration-200',
               navWeightClass,
               isActive
-                ? headerTextColor
+                ? linkTextColor
                   ? 'bg-black/10 font-semibold'
                   : 'bg-gradient-to-r from-[#d4604a]/10 to-[#2a9d8f]/10 font-semibold text-[#d4604a]'
-                : headerTextColor
+                : linkTextColor
                   ? 'hover:bg-black/5'
                   : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
             )}

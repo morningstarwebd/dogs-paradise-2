@@ -1,6 +1,11 @@
 import { create } from 'zustand'
 
 
+export interface ProjectFAQ {
+    question: string
+    answer: string
+}
+
 export interface ProjectCharacteristics {
     size?: 'toy' | 'small' | 'medium' | 'large' | 'giant'
     energy_level?: 'low' | 'moderate' | 'high' | 'very_high'
@@ -44,6 +49,7 @@ export interface Project {
     age: string | null
     characteristics: ProjectCharacteristics | null
     health_info: ProjectHealthInfo | null
+    faqs: ProjectFAQ[] | null
     created_at: string | null
 }
 

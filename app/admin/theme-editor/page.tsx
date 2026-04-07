@@ -28,6 +28,7 @@ export default function ThemeEditorPage() {
   const [activePage, setActivePage] = useState('home');
   const [isPageSelectorOpen, setIsPageSelectorOpen] = useState(false);
   const [activeTemplateSection, setActiveTemplateSection] = useState<TemplateEditorTabId>('sections');
+  const [selectedProductBlockId, setSelectedProductBlockId] = useState<string | null>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const supabase = useMemo(() => createClient(), []);
 
@@ -38,7 +39,7 @@ export default function ThemeEditorPage() {
 
   useThemeEditorSectionsLoad({ activeSectionId, setActiveSection, setLoading, setSections, supabase });
 
-  const { templateSaveStatus, templateSettings, updateTemplateField } = useThemeEditorTemplate({
+  const { templateSaveStatus, templateSettings, updateTemplateField, handleProductBlocksChange } = useThemeEditorTemplate({
     activePage,
     iframeRef,
   });
@@ -126,6 +127,11 @@ export default function ThemeEditorPage() {
         setIsAddMenuOpen={setIsAddMenuOpen}
         tabs={TEMPLATE_EDITOR_TABS}
         templateSaveStatus={templateSaveStatus}
+        // Product Template
+        templateSettings={templateSettings}
+        selectedProductBlockId={selectedProductBlockId}
+        onSelectProductBlock={setSelectedProductBlockId}
+        onProductBlocksChange={handleProductBlocksChange}
       />
 
       <ThemeEditorPreviewPane
@@ -170,6 +176,8 @@ export default function ThemeEditorPage() {
             templateSaveStatus={templateSaveStatus}
             templateSettings={templateSettings}
             updateTemplateField={updateTemplateField}
+            onProductBlocksChange={handleProductBlocksChange}
+            selectedProductBlockId={selectedProductBlockId}
           />
         )}
       </div>

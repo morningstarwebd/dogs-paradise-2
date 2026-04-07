@@ -4,6 +4,7 @@ export { statsCounterBlocks } from './stats-blocks';
 export { faqBlocks } from './faq-blocks';
 export { whyChooseBlocks } from './why-choose-blocks';
 export { trustBadgeBlocks } from './trust-badge-blocks';
+export { credibilityStripBlocks } from './credibility-strip-blocks';
 export { adoptionProcessBlocks } from './adoption-process-blocks';
 export { featuredBreedBlocks } from './featured-breed-blocks';
 export { breedExplorerCardBlocks } from './breed-explorer-blocks';

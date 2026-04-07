@@ -9,6 +9,7 @@ export const featuredBreedBlocks: BlockTypeSchema[] = [
         titleField: 'title',
         previewImageField: 'image',
         schema: [
+            { key: 'breed_search', label: '🔍 Search Breed', type: 'breed_lookup', placeholder: 'Type breed name to auto-fill...', autoFillMap: { title: 'title', url: 'url', image: 'image' } },
             { key: 'title', label: 'Breed Title', type: 'text', placeholder: 'Toy Poodle' },
             { key: 'url', label: 'Breed URL', type: 'text', placeholder: '/breeds/toy-poodle' },
             { key: 'image', label: 'Breed Image', type: 'image' },

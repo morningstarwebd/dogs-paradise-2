@@ -56,6 +56,7 @@ export function buildFormFromProject(project: Project, emptyDogForm: DogFormStat
     age: project.age || '',
     characteristics: project.characteristics || emptyDogForm.characteristics,
     health_info: project.health_info || emptyDogForm.health_info,
+    faqs: project.faqs || [],
   };
 }
 
@@ -91,6 +92,7 @@ export function buildProjectPayload(
     age: form.age || null,
     characteristics: form.characteristics || null,
     health_info: form.health_info || null,
+    faqs: form.faqs || [],
   };
 }
 

@@ -3,8 +3,9 @@ import { STORAGE_BUCKET, STORAGE_BUCKET_CANDIDATES } from '@/lib/storage'
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif']
-const WEBP_QUALITY = 0.82
-const MAX_DIMENSION = 4096 // px — downscale if either side exceeds this
+const WEBP_QUALITY = 0.95
+const MAX_DIMENSION = 7680 // px — downscale only extremely large images
+const NON_REENCODE_TYPES = new Set(['image/png', 'image/gif', 'image/webp'])
 const EXPECTED_BUCKETS_LABEL = STORAGE_BUCKET_CANDIDATES.join(', ')
 
 function isBucketNotFoundMessage(message: string): boolean {
@@ -80,16 +81,28 @@ export async function uploadToSupabase(file: File, folder: string = 'general'): 
         throw new Error('Only JPG, PNG, WebP, and GIF files are allowed')
     }
 
-    // Convert to WebP (also gives us dimensions)
+    // Convert to WebP for photo-like inputs only.
+    // Keep PNG/GIF/WEBP as-is so logos and line-art stay crisp.
     let uploadBlob: Blob | File = file
     let dimensions: { width: number; height: number } | null = null
+    const shouldConvertToWebP = !NON_REENCODE_TYPES.has(file.type)
 
-    try {
-        const result = await convertToWebP(file)
-        uploadBlob = result.blob
-        dimensions = { width: result.width, height: result.height }
-    } catch {
-        // Fallback: upload original file if conversion fails
+    if (shouldConvertToWebP) {
+        try {
+            const result = await convertToWebP(file)
+            uploadBlob = result.blob
+            dimensions = { width: result.width, height: result.height }
+        } catch {
+            // Fallback: upload original file if conversion fails
+            try {
+                const img = await loadImage(file)
+                dimensions = { width: img.naturalWidth, height: img.naturalHeight }
+                URL.revokeObjectURL(img.src)
+            } catch {
+                // Non-fatal: proceed without dimensions
+            }
+        }
+    } else {
         try {
             const img = await loadImage(file)
             dimensions = { width: img.naturalWidth, height: img.naturalHeight }
@@ -100,11 +113,13 @@ export async function uploadToSupabase(file: File, folder: string = 'general'): 
     }
 
     const supabase = createClient()
-    const timestamp = Date.now()
+    
     // Always use .webp extension when converted, otherwise keep original
+    // Use the original filename without prepending a code/timestamp
     const baseName = file.name.replace(/\.[^.]+$/, '').replace(/[^a-zA-Z0-9.-]/g, '_')
-    const ext = uploadBlob instanceof Blob && !(uploadBlob instanceof File) ? 'webp' : file.name.split('.').pop()
-    const filePath = `${folder}/${timestamp}-${baseName}.${ext}`
+    const convertedToWebP = uploadBlob instanceof Blob && !(uploadBlob instanceof File)
+    const ext = convertedToWebP ? 'webp' : (file.name.split('.').pop() || 'jpg')
+    const filePath = `${folder}/${baseName}.${ext}`
 
     let uploadedBucket = STORAGE_BUCKET
     let uploadFailedMessage: string | null = null
@@ -114,9 +129,9 @@ export async function uploadToSupabase(file: File, folder: string = 'general'): 
         const { error } = await supabase.storage
             .from(candidateBucket)
             .upload(filePath, uploadBlob, {
-                cacheControl: '31536000', // 1 year — immutable assets
-                contentType: uploadBlob instanceof Blob && !(uploadBlob instanceof File) ? 'image/webp' : file.type,
-                upsert: false,
+                cacheControl: '3600', // 1 hour — avoids stale image after admin replacements
+                contentType: convertedToWebP ? 'image/webp' : file.type,
+                upsert: true, // Allow overwriting files with the exact same name
             })
 
         if (!error) {

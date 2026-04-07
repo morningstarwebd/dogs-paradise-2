@@ -52,6 +52,14 @@
   /* WhatsApp */
   --whatsapp: #25d366;
 
+  /* Brand Gold (logo-matched) */
+  --brand-gold-deep: #584020;
+  --brand-gold-soft: #c09850;
+  --brand-gold-solid: #d0b060;
+  --brand-gold-mid: #e0c070;
+  --brand-gold-highlight: #f8e098;
+  --brand-gold-gradient: linear-gradient(135deg, #584020 0%, #c09850 26%, #e0c070 45%, #f8e098 58%, #d0b060 72%, #584020 100%);
+
   /* ✨ Colorful Bright Section Backgrounds */
   --tint-amber: #FFF8E7;
   /* Warm golden */

@@ -17,62 +17,61 @@ export interface PageTemplate {
 
 export async function getPageTemplate(pageType: string): Promise<PageTemplate | null> {
     const supabase = await createClient()
-    
+
     const { data, error } = await supabase
         .from('page_templates')
         .select('*')
         .eq('page_type', pageType)
         .single()
-    
+
     if (error) {
         console.error('Error fetching template:', error)
         return null
     }
-    
+
     return data as PageTemplate
 }
 
 export async function getAllPageTemplates(): Promise<PageTemplate[]> {
     const supabase = await createClient()
-    
+
     const { data, error } = await supabase
         .from('page_templates')
         .select('*')
         .order('page_type')
-    
+
     if (error) {
         console.error('Error fetching templates:', error)
         return []
     }
-    
+
     return data as PageTemplate[]
 }
 
 export async function updatePageTemplate(
-    pageType: string, 
+    pageType: string,
     settings: PageTemplateSettings
 ): Promise<{ success: boolean; error?: string }> {
     const supabase = await createClient()
-    
+
     const { error } = await supabase
         .from('page_templates')
-        .update({ 
+        .update({
             settings,
             updated_at: new Date().toISOString()
         })
         .eq('page_type', pageType)
-    
+
     if (error) {
         console.error('Error updating template:', error)
         return { success: false, error: error.message }
     }
-    
-    // Revalidate breed pages to apply new template
+
     revalidatePath('/', 'page')
     revalidatePath('/breeds/[slug]', 'page')
     revalidatePath('/breeds', 'page')
     revalidatePath('/sitemap.xml', 'page')
-    
+
     return { success: true }
 }
 
@@ -82,44 +81,39 @@ export async function updateTemplateSectionVisibility(
     visible: boolean
 ): Promise<{ success: boolean; error?: string }> {
     const supabase = await createClient()
-    
-    // First get current settings
+
     const { data: current, error: fetchError } = await supabase
         .from('page_templates')
         .select('settings')
         .eq('page_type', pageType)
         .single()
-    
+
     if (fetchError) {
         return { success: false, error: fetchError.message }
     }
-    
-    // Update the specific section
+
     const settings = current.settings as PageTemplateSettings
-    if (!settings.sections) settings.sections = {}
-    
-    const sectionSettings = settings.sections[sectionKey as keyof typeof settings.sections]
-    if (sectionSettings) {
-        (sectionSettings as { visible?: boolean }).visible = visible
-    } else {
-        (settings.sections as Record<string, { visible: boolean }>)[sectionKey] = { visible }
+
+    // New block array format: toggle block visibility by type or id
+    if (Array.isArray(settings.sections)) {
+        const block = settings.sections.find((b) => b.type === sectionKey || b.id === sectionKey)
+        if (block) block.visible = visible
     }
-    
-    // Save back
+
     const { error } = await supabase
         .from('page_templates')
-        .update({ 
+        .update({
             settings,
             updated_at: new Date().toISOString()
         })
         .eq('page_type', pageType)
-    
+
     if (error) {
         return { success: false, error: error.message }
     }
-    
+
     revalidatePath('/breeds/[slug]', 'page')
     revalidatePath('/breeds', 'page')
-    
+
     return { success: true }
 }

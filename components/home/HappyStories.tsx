@@ -34,6 +34,15 @@ type HappyStoriesProps = {
   accent_color?: string;
   card_border_color?: string;
   card_background_color?: string;
+  author_name_text_size_px?: number | string;
+  author_name_text_color?: string;
+  location_text_size_px?: number | string;
+  location_text_color?: string;
+  breed_text_size_px?: number | string;
+  breed_text_color?: string;
+  rating_text_size_px?: number | string;
+  rating_text_color?: string;
+  rating_star_color?: string;
   subheading?: string;
   badge_text_size_px?: number | string;
   heading_text_size_px?: number | string;
@@ -57,6 +66,8 @@ type HappyStoriesProps = {
   section_padding_bottom?: string;
   section_margin_top?: string;
   section_margin_bottom?: string;
+  mobile_dot_active_color?: string;
+  mobile_dot_inactive_color?: string;
 };
 
 function toText(value: unknown, fallback: string): string {
@@ -100,6 +111,15 @@ export default function HappyStories({
   accent_color = '#ea728c',
   card_border_color = '#ffffff',
   card_background_color,
+  author_name_text_size_px = 20,
+  author_name_text_color,
+  location_text_size_px = 10,
+  location_text_color,
+  breed_text_size_px = 10,
+  breed_text_color,
+  rating_text_size_px = 15,
+  rating_text_color,
+  rating_star_color,
   subheading = 'Real families, real puppies, real love. Hear from our happy puppy parents across India.',
   badge_text_size_px = 14,
   heading_text_size_px = 56,
@@ -123,6 +143,8 @@ export default function HappyStories({
   section_padding_bottom,
   section_margin_top,
   section_margin_bottom,
+  mobile_dot_active_color,
+  mobile_dot_inactive_color,
 }: HappyStoriesProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -154,6 +176,16 @@ export default function HappyStories({
   }) as CSSProperties & Record<string, string | number | undefined>;
   const sectionTextColor = resolveColorToken(section_text_color);
   const sectionAccentColor = resolveColorToken(accent_color, '#ea728c') || '#ea728c';
+  const authorNameTextColor = resolveColorToken(author_name_text_color, '#ffffff') || '#ffffff';
+  const locationTextColor = resolveColorToken(location_text_color, '#ffffff') || '#ffffff';
+  const breedTextColor = resolveColorToken(breed_text_color, '#ffffff') || '#ffffff';
+  const ratingTextColor = resolveColorToken(rating_text_color, '#FFF0D9') || '#FFF0D9';
+  const ratingStarColor = resolveColorToken(rating_star_color, '#ffa600') || '#ffa600';
+  const mobileDotActiveColor =
+    resolveColorToken(mobile_dot_active_color, sectionAccentColor) || sectionAccentColor;
+  const resolvedInactiveDotColor = resolveColorToken(mobile_dot_inactive_color);
+  const mobileDotInactiveColor = resolvedInactiveDotColor || mobileDotActiveColor;
+  const mobileDotInactiveOpacity = resolvedInactiveDotColor ? 1 : 0.24;
   const storyCardBorderColor =
     resolveColorToken(card_border_color || card_background_color, '#ffffff') || '#ffffff';
   sectionStyle['--section-accent'] = sectionAccentColor;
@@ -164,6 +196,14 @@ export default function HappyStories({
   const headingSizeMobile = clamp(Math.round(headingSizeDesktop * 0.72), 20, headingSizeDesktop);
   const descriptionSizeDesktop = clamp(toNumber(description_text_size_px, 16), 12, 36);
   const descriptionSizeMobile = clamp(Math.round(descriptionSizeDesktop * 0.9), 12, descriptionSizeDesktop);
+  const authorNameSizeDesktop = clamp(toNumber(author_name_text_size_px, 20), 12, 42);
+  const authorNameSizeMobile = clamp(Math.round(authorNameSizeDesktop * 0.9), 10, authorNameSizeDesktop);
+  const locationSizeDesktop = clamp(toNumber(location_text_size_px, 10), 8, 24);
+  const locationSizeMobile = clamp(Math.round(locationSizeDesktop * 0.95), 8, locationSizeDesktop);
+  const breedSizeDesktop = clamp(toNumber(breed_text_size_px, 10), 8, 24);
+  const breedSizeMobile = clamp(Math.round(breedSizeDesktop * 0.95), 8, breedSizeDesktop);
+  const ratingSizeDesktop = clamp(toNumber(rating_text_size_px, 15), 10, 28);
+  const ratingSizeMobile = clamp(Math.round(ratingSizeDesktop * 0.95), 10, ratingSizeDesktop);
 
   const badgeTextStyle: CSSProperties = {
     fontSize: `clamp(${badgeSizeMobile}px, calc(${badgeSizeMobile - 1}px + 0.4vw), ${badgeSizeDesktop}px)`,
@@ -173,6 +213,18 @@ export default function HappyStories({
   };
   const descriptionTextStyle: CSSProperties = {
     fontSize: `clamp(${descriptionSizeMobile}px, calc(${descriptionSizeMobile - 1}px + 0.3vw), ${descriptionSizeDesktop}px)`,
+  };
+  const authorNameTextStyle: CSSProperties = {
+    fontSize: `clamp(${authorNameSizeMobile}px, calc(${authorNameSizeMobile - 1}px + 0.35vw), ${authorNameSizeDesktop}px)`,
+  };
+  const locationTextStyle: CSSProperties = {
+    fontSize: `clamp(${locationSizeMobile}px, calc(${locationSizeMobile - 1}px + 0.2vw), ${locationSizeDesktop}px)`,
+  };
+  const breedTextStyle: CSSProperties = {
+    fontSize: `clamp(${breedSizeMobile}px, calc(${breedSizeMobile - 1}px + 0.2vw), ${breedSizeDesktop}px)`,
+  };
+  const ratingTextStyle: CSSProperties = {
+    fontSize: `clamp(${ratingSizeMobile}px, calc(${ratingSizeMobile - 1}px + 0.2vw), ${ratingSizeDesktop}px)`,
   };
 
   const parsedBlobScale =
@@ -437,7 +489,7 @@ export default function HappyStories({
         {/* ━━━ Cards Carousel ━━━ */}
         <div className="relative group/carousel">
           {/* Mobile Navigation Arrows */}
-          <div className="lg:hidden pointer-events-none absolute inset-y-0 inset-x-[-14px] z-30 flex items-center justify-between px-2">
+          <div className="lg:hidden pointer-events-none absolute inset-x-[-14px] top-0 z-30 flex h-[50%] items-center justify-between px-2">
             <AnimatePresence>
               {canScrollLeft && (
                 <motion.button
@@ -485,6 +537,16 @@ export default function HappyStories({
                   story={story}
                   index={index}
                   cardBorderColor={storyCardBorderColor}
+                  accentColor={sectionAccentColor}
+                  authorNameTextColor={authorNameTextColor}
+                  authorNameTextStyle={authorNameTextStyle}
+                  locationTextColor={locationTextColor}
+                  locationTextStyle={locationTextStyle}
+                  breedTextColor={breedTextColor}
+                  breedTextStyle={breedTextStyle}
+                  ratingTextColor={ratingTextColor}
+                  ratingTextStyle={ratingTextStyle}
+                  ratingStarColor={ratingStarColor}
                 />
               </motion.div>
             ))}
@@ -506,9 +568,13 @@ export default function HappyStories({
                   }
                 }}
                 className={cn(
-                  "h-1.5 rounded-2xl transition-all duration-300",
-                  activeIndex === i ? "w-8 bg-[#ea728c]" : "w-1.5 bg-[#ea728c]/20"
+                  'h-1.5 rounded-2xl transition-all duration-300',
+                  activeIndex === i ? 'w-8' : 'w-1.5'
                 )}
+                style={{
+                  backgroundColor: activeIndex === i ? mobileDotActiveColor : mobileDotInactiveColor,
+                  opacity: activeIndex === i ? 1 : mobileDotInactiveOpacity,
+                }}
               />
             ))}
           </div>
@@ -523,10 +589,30 @@ function StoryCard({
   story,
   index,
   cardBorderColor,
+  accentColor,
+  authorNameTextColor,
+  authorNameTextStyle,
+  locationTextColor,
+  locationTextStyle,
+  breedTextColor,
+  breedTextStyle,
+  ratingTextColor,
+  ratingTextStyle,
+  ratingStarColor,
 }: {
   story: StoryItem;
   index: number;
   cardBorderColor: string;
+  accentColor: string;
+  authorNameTextColor: string;
+  authorNameTextStyle: CSSProperties;
+  locationTextColor: string;
+  locationTextStyle: CSSProperties;
+  breedTextColor: string;
+  breedTextStyle: CSSProperties;
+  ratingTextColor: string;
+  ratingTextStyle: CSSProperties;
+  ratingStarColor: string;
 }) {
   const [isExpanded, setIsExpanded] = useState(false);
   
@@ -581,8 +667,10 @@ function StoryCard({
           {/* 2. Rating — Top Right */}
           <div className="absolute top-6 right-6 z-20">
             <div className="bg-white/95 shadow-[0_8px_20px_rgba(0,0,0,0.12)] rounded-2xl px-3.5 py-2 flex items-center gap-1.5 border border-white">
-              <Star size={14} className="fill-[#ffa600] text-[#ffa600]" />
-              <span className="text-[15px] font-black text-[#FFF0D9]">{story.rating}.0</span>
+              <Star size={14} style={{ color: ratingStarColor, fill: ratingStarColor }} />
+              <span className="font-black" style={{ ...ratingTextStyle, color: ratingTextColor }}>
+                {story.rating}.0
+              </span>
             </div>
           </div>
 
@@ -592,12 +680,17 @@ function StoryCard({
           {/* 3a. Name & Location — Bottom Left (Matches User Request) */}
           <div className="absolute bottom-6 left-6 z-20">
             <div className="flex flex-col items-start text-left translate-y-2">
-              <span className="text-white text-xl font-black leading-tight tracking-tight drop-shadow-md">
+              <span
+                className="font-black leading-tight tracking-tight drop-shadow-md"
+                style={{ ...authorNameTextStyle, color: authorNameTextColor }}
+              >
                 {story.authorName}
               </span>
               <div className="flex items-center gap-1.5 mt-1.5 opacity-90 transition-opacity group-hover:opacity-100">
-                 <MapPin size={10} className="text-[#ea728c]" />
-                 <span className="text-white text-[10px] font-bold uppercase tracking-[0.25em]">{story.location}</span>
+                  <MapPin size={10} style={{ color: locationTextColor || accentColor }} />
+                 <span className="font-bold uppercase tracking-[0.25em]" style={{ ...locationTextStyle, color: locationTextColor }}>
+                   {story.location}
+                 </span>
               </div>
             </div>
           </div>
@@ -605,7 +698,7 @@ function StoryCard({
           {/* 3b. Breed — Bottom Right */}
           <div className="absolute bottom-6 right-6 z-20">
             <div className="bg-white/10 backdrop-blur-md rounded-2xl px-3 py-1.5 border border-white/30 transition-transform group-hover:scale-105">
-              <span className="text-[10px] font-black text-white uppercase tracking-wider drop-shadow-sm">
+              <span className="font-black uppercase tracking-wider drop-shadow-sm" style={{ ...breedTextStyle, color: breedTextColor }}>
                 {story.breedPurchased}
               </span>
             </div>
@@ -621,7 +714,7 @@ function StoryCard({
         >
           {/* Decorative Minimal Quote */}
           <div className="relative inline-block mb-3 opacity-100">
-             <Quote size={24} className="text-[#ea728c]" fill="currentColor" />
+             <Quote size={24} fill="currentColor" style={{ color: accentColor }} />
           </div>
 
           {/* The Story Paragraph with Line-Clamp */}
@@ -639,7 +732,8 @@ function StoryCard({
           {isLongText && (
              <motion.button
                onClick={() => setIsExpanded(!isExpanded)}
-               className="mt-4 text-[11px] font-black uppercase tracking-widest text-[#ea728c] hover:text-[#ea728c] transition-colors flex items-center gap-1.5 mx-auto py-1 px-4 rounded-2xl bg-[#ea728c]/5 hover:bg-[#ea728c]/10"
+               className="mt-4 text-[11px] font-black uppercase tracking-widest transition-colors flex items-center gap-1.5 mx-auto py-1 px-4 rounded-2xl bg-white/5 hover:bg-white/10"
+               style={{ color: accentColor }}
                whileHover={{ scale: 1.05 }}
                whileTap={{ scale: 0.95 }}
              >
@@ -653,7 +747,7 @@ function StoryCard({
              </motion.button>
           )}
 
-          <div className="w-8 h-[2px] bg-[#ea728c]/20 mx-auto mt-6 rounded-full" />
+          <div className="w-8 h-[2px] mx-auto mt-6 rounded-full" style={{ backgroundColor: accentColor, opacity: 0.24 }} />
         </motion.div>
       </div>
     </motion.div>

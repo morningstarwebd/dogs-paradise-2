@@ -9,9 +9,8 @@ export const trustBadgeBlocks: BlockTypeSchema[] = [
         titleField: 'title',
         schema: [
             { key: 'title', label: 'Title', type: 'text', placeholder: 'KCI Guidance' },
-            { key: 'subtitle', label: 'Subtitle', type: 'text', placeholder: 'Breeding best practices' },
-            { key: 'icon', label: 'Icon', type: 'select', options: ['ShieldCheck', 'Stethoscope', 'FileCheck', 'Award', 'BadgeCheck', 'Star'] },
-            { key: 'color', label: 'Icon Color', type: 'color', default: '#ea728c' },
+            { key: 'subtitle', label: 'Subtitle', type: 'textarea', placeholder: 'Breeding best practices' },
+            { key: 'icon', label: 'Icon', type: 'select', options: ['ShieldCheck', 'Stethoscope', 'FileCheck', 'Award', 'BadgeCheck', 'Star', 'GraduationCap', 'Briefcase', 'ThumbsUp'] },
         ],
     },
 ];

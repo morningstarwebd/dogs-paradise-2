@@ -30,6 +30,7 @@ export function DogMediaSidebar({
           onPrimaryChange={setPrimaryImageIndex}
           folder="projects"
           maxImages={10}
+          initialSearchQuery={form.title}
         />
         <p className="mt-3 text-xs text-muted-foreground">
           First image or starred image will be used as cover photo

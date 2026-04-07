@@ -1,11 +1,7 @@
 import { AlertCircle, Check, Eye, Loader2 } from 'lucide-react';
-import type { PageTemplateSettings } from '@/types/page-template';
+import type { PageTemplateSettings, ProductTemplateBlock } from '@/types/page-template';
 import type { TemplateEditorTab, TemplateEditorTabId, ThemeEditorPageConfig } from '../theme-editor-config';
-import { TemplateCharacteristicsControls } from './TemplateCharacteristicsControls';
-import { TemplateGalleryControls } from './TemplateGalleryControls';
-import { TemplateLayoutControls } from './TemplateLayoutControls';
-import { TemplateSectionsControls } from './TemplateSectionsControls';
-import { TemplateStylingControls } from './TemplateStylingControls';
+import { ThemeEditorProductInspector } from './ThemeEditorProductInspector';
 
 type ThemeEditorTemplateInspectorProps = {
   activePageData: ThemeEditorPageConfig;
@@ -15,6 +11,8 @@ type ThemeEditorTemplateInspectorProps = {
   templateSaveStatus: 'idle' | 'saving' | 'saved' | 'error';
   templateSettings: PageTemplateSettings | null;
   updateTemplateField: (category: 'layout' | 'sections' | 'styling', key: string, subKey: string | null, value: unknown) => void;
+  onProductBlocksChange?: (blocks: ProductTemplateBlock[]) => void;
+  selectedProductBlockId?: string | null;
 };
 
 export function ThemeEditorTemplateInspector({
@@ -25,6 +23,8 @@ export function ThemeEditorTemplateInspector({
   templateSaveStatus,
   templateSettings,
   updateTemplateField,
+  onProductBlocksChange,
+  selectedProductBlockId,
 }: ThemeEditorTemplateInspectorProps) {
   if (!activePageData.editable || !isTemplateEditorPage) {
     return (
@@ -36,6 +36,20 @@ export function ThemeEditorTemplateInspector({
     );
   }
 
+  // ─── Product Template: Block settings in right panel ────────────────
+  if (activePageData.id === 'product' && onProductBlocksChange) {
+    return (
+      <ThemeEditorProductInspector
+        templateSettings={templateSettings}
+        templateSaveStatus={templateSaveStatus}
+        updateTemplateField={updateTemplateField}
+        onBlocksChange={onProductBlocksChange}
+        selectedBlockId={selectedProductBlockId ?? null}
+      />
+    );
+  }
+
+  // ─── Other Templates: Legacy tab-based inspector ─────────────────
   return (
     <>
       <div className="border-b border-[#ea728c]/20 bg-[#1b1836] p-5">
@@ -52,11 +66,6 @@ export function ThemeEditorTemplateInspector({
       <div className="flex-1 overflow-y-auto p-5 custom-scrollbar">
         {templateSettings ? (
           <div className="space-y-4">
-            {activeTemplateSection === 'sections' ? <TemplateSectionsControls settings={templateSettings} updateTemplateField={updateTemplateField} /> : null}
-            {activeTemplateSection === 'layout' ? <TemplateLayoutControls settings={templateSettings} updateTemplateField={updateTemplateField} /> : null}
-            {activeTemplateSection === 'styling' ? <TemplateStylingControls settings={templateSettings} updateTemplateField={updateTemplateField} /> : null}
-            {activeTemplateSection === 'gallery' ? <TemplateGalleryControls settings={templateSettings} updateTemplateField={updateTemplateField} /> : null}
-            {activeTemplateSection === 'characteristics' ? <TemplateCharacteristicsControls settings={templateSettings} updateTemplateField={updateTemplateField} /> : null}
             <div className="border-t border-[#ea728c]/10 pt-3"><p className="text-center text-[10px] italic text-gray-500">Changes apply to all template pages instantly.</p></div>
           </div>
         ) : (

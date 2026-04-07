@@ -1,6 +1,12 @@
 export type NavLinkItem = {
   href: string;
   label: string;
+  textColor?: string;
+  icon?: string;
+  iconColor?: string;
+  iconBgColor?: string;
+  activeBgColor?: string;
+  activeTextColor?: string;
 };
 
 type HeaderBlockItem = {
@@ -72,10 +78,25 @@ function getRepeaterNavLinks(value: unknown): NavLinkItem[] {
     .map((entry) => {
       if (!entry || typeof entry !== 'object') return null;
       const item = entry as Record<string, unknown>;
-      const label = getStringValue(item.label);
-      const href = getStringValue(item.url || item.href) || '/';
+      const label = getStringValue(item.label || item.title || item.text || item.name);
+      const href = getStringValue(item.url || item.href || item.link || item.path) || '/';
+      const textColor = getStringValue(item.text_color || item.color);
+      const icon = getStringValue(item.icon);
+      const iconColor = getStringValue(item.icon_color);
+      const iconBgColor = getStringValue(item.icon_bg_color);
+      const activeBgColor = getStringValue(item.active_bg_color);
+      const activeTextColor = getStringValue(item.active_text_color);
       if (!label) return null;
-      return { label, href };
+      return {
+        label,
+        href,
+        ...(textColor ? { textColor } : {}),
+        ...(icon ? { icon } : {}),
+        ...(iconColor ? { iconColor } : {}),
+        ...(iconBgColor ? { iconBgColor } : {}),
+        ...(activeBgColor ? { activeBgColor } : {}),
+        ...(activeTextColor ? { activeTextColor } : {}),
+      };
     })
     .filter((item): item is NavLinkItem => item !== null);
 }
@@ -84,10 +105,30 @@ function getBlockNavLinks(blocks: HeaderBlockItem[]): NavLinkItem[] {
   return blocks
     .filter((block) => block.type === 'header_nav_link')
     .map((block) => {
-      const label = getStringValue(block.settings.label);
-      const href = getStringValue(block.settings.url || block.settings.href) || '/';
+      const label = getStringValue(
+        block.settings.label || block.settings.title || block.settings.text || block.settings.name
+      );
+      const href =
+        getStringValue(
+          block.settings.url || block.settings.href || block.settings.link || block.settings.path
+        ) || '/';
+      const textColor = getStringValue(block.settings.text_color || block.settings.color);
+      const icon = getStringValue(block.settings.icon);
+      const iconColor = getStringValue(block.settings.icon_color);
+      const iconBgColor = getStringValue(block.settings.icon_bg_color);
+      const activeBgColor = getStringValue(block.settings.active_bg_color);
+      const activeTextColor = getStringValue(block.settings.active_text_color);
       if (!label) return null;
-      return { label, href };
+      return {
+        label,
+        href,
+        ...(textColor ? { textColor } : {}),
+        ...(icon ? { icon } : {}),
+        ...(iconColor ? { iconColor } : {}),
+        ...(iconBgColor ? { iconBgColor } : {}),
+        ...(activeBgColor ? { activeBgColor } : {}),
+        ...(activeTextColor ? { activeTextColor } : {}),
+      };
     })
     .filter((item): item is NavLinkItem => item !== null);
 }
@@ -95,13 +136,19 @@ function getBlockNavLinks(blocks: HeaderBlockItem[]): NavLinkItem[] {
 export function getBrandValues(content: Record<string, unknown>, blocks: HeaderBlockItem[]) {
   const brandBlock = blocks.find((block) => block.type === 'header_brand');
   const brandSettings = brandBlock?.settings || {};
+  const logoImage = getStringValue(brandSettings.logo_image || content.logo_image);
   const brandName = getStringValue(
     brandSettings.logo_text || brandSettings.brand_name || content.logo_text || content.brand_name
   );
+  const showBrandText = getBooleanValue(
+    brandSettings.show_brand_text ?? content.show_brand_text,
+    !logoImage
+  );
 
   return {
-    logoImage: getStringValue(brandSettings.logo_image || content.logo_image),
+    logoImage,
     brandName,
+    showBrandText,
   };
 }
 
@@ -117,9 +164,36 @@ export function getNavLinks(
 
   return Array.from({ length: 8 }, (_, index) => index + 1)
     .map((itemIndex) => {
-      const label = getStringValue(content[`nav_link_${itemIndex}_label`]);
-      const href = getStringValue(content[`nav_link_${itemIndex}_url`]);
-      return label ? { label, href: href || '/' } : null;
+      const label = getStringValue(
+        content[`nav_link_${itemIndex}_label`] ||
+          content[`nav_link_${itemIndex}_title`] ||
+          content[`nav_link_${itemIndex}_text`] ||
+          content[`nav_link_${itemIndex}_name`]
+      );
+      const href = getStringValue(
+        content[`nav_link_${itemIndex}_url`] ||
+          content[`nav_link_${itemIndex}_href`] ||
+          content[`nav_link_${itemIndex}_link`] ||
+          content[`nav_link_${itemIndex}_path`]
+      );
+      const textColor = getStringValue(content[`nav_link_${itemIndex}_text_color`]);
+      const icon = getStringValue(content[`nav_link_${itemIndex}_icon`]);
+      const iconColor = getStringValue(content[`nav_link_${itemIndex}_icon_color`]);
+      const iconBgColor = getStringValue(content[`nav_link_${itemIndex}_icon_bg_color`]);
+      const activeBgColor = getStringValue(content[`nav_link_${itemIndex}_active_bg_color`]);
+      const activeTextColor = getStringValue(content[`nav_link_${itemIndex}_active_text_color`]);
+      return label
+        ? {
+            label,
+            href: href || '/',
+            ...(textColor ? { textColor } : {}),
+            ...(icon ? { icon } : {}),
+            ...(iconColor ? { iconColor } : {}),
+            ...(iconBgColor ? { iconBgColor } : {}),
+            ...(activeBgColor ? { activeBgColor } : {}),
+            ...(activeTextColor ? { activeTextColor } : {}),
+          }
+        : null;
     })
     .filter((item): item is NavLinkItem => item !== null);
 }

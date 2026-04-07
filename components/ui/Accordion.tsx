@@ -14,29 +14,38 @@ interface AccordionItem {
 interface AccordionProps {
   items: AccordionItem[];
   className?: string;
+  variant?: 'bordered' | 'separated' | 'minimal';
+  expandFirst?: boolean;
 }
 
-export default function Accordion({ items, className }: AccordionProps) {
-  const [openId, setOpenId] = useState<string | null>(null);
+export default function Accordion({ items, className, variant = 'bordered', expandFirst = false }: AccordionProps) {
+  const [openId, setOpenId] = useState<string | null>(expandFirst && items.length > 0 ? items[0].id : null);
 
   const toggle = (id: string) => {
     setOpenId(openId === id ? null : id);
   };
 
   return (
-    <div className={cn('space-y-4', className)}>
+    <div className={cn(
+      variant === 'separated' ? 'space-y-4' : 'divide-y divide-[var(--color-border)] rounded-2xl border border-[var(--color-border)] overflow-hidden',
+      className
+    )}>
       {items.map((item) => {
         const isOpen = openId === item.id;
 
         return (
           <div
             key={item.id}
-            className="glass-card overflow-hidden border border-[var(--color-border)]"
+            className={cn(
+              'transition-all duration-300',
+              variant === 'separated' ? 'glass-card border border-[var(--color-border)] rounded-2xl overflow-hidden' : 'bg-transparent',
+              isOpen && variant === 'separated' && 'ring-2 ring-purple-500/10'
+            )}
           >
             <button
               type="button"
               onClick={() => toggle(item.id)}
-              className="w-full flex items-center justify-between p-5 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/50 rounded-xl"
+              className="w-full flex items-center justify-between p-5 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/50"
               aria-expanded={isOpen}
             >
               <span className="font-semibold text-lg text-gradient">{item.question}</span>

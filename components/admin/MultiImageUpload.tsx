@@ -19,6 +19,7 @@ export function MultiImageUpload({
     onPrimaryChange,
     folder = 'projects',
     maxImages = 10,
+    initialSearchQuery,
 }: MultiImageUploadProps) {
     const [uploading, setUploading] = useState(false)
     const [uploadProgress, setUploadProgress] = useState(0)
@@ -121,11 +122,16 @@ export function MultiImageUpload({
             <MediaPickerModal
                 open={showPicker}
                 onClose={() => setShowPicker(false)}
-                onSelect={(url) => {
-                    if (value.length < maxImages) onChange([...value, url])
+                multiple={true}
+                onSelect={(urls) => {
+                    const selectedUrls = Array.isArray(urls) ? urls : [urls]
+                    const remainingSlots = maxImages - value.length
+                    const toAdd = selectedUrls.slice(0, remainingSlots)
+                    if (toAdd.length > 0) onChange([...value, ...toAdd])
                     setShowPicker(false)
                 }}
                 folder={folder}
+                initialSearchQuery={initialSearchQuery}
             />
         </div>
     )

@@ -12,6 +12,7 @@ export const WhyChooseUs = dynamic(() => import("@/components/home/WhyChooseUs")
 export const AdoptionProcess = dynamic(() => import("@/components/home/AdoptionProcess"), { ssr: true });
 export const PuppyCareTips = dynamic(() => import("@/components/home/PuppyCareTips"), { ssr: true });
 export const TrustBadges = dynamic(() => import("@/components/home/TrustBadges"), { ssr: true });
+export const CredibilityStrip = dynamic(() => import("@/components/home/CredibilityStrip"), { ssr: true });
 export const InstagramFeed = dynamic(() => import("@/components/home/InstagramFeed"), { ssr: true });
 export const BlogPreview = dynamic(() => import("@/components/home/BlogPreview"), { ssr: true });
 export const FAQSection = dynamic(() => import("@/components/home/FAQSection"), { ssr: true });

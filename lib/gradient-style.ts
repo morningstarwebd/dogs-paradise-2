@@ -22,6 +22,11 @@ const NON_COLOR_STOP_TOKENS = new Set([
   'farthest-corner',
 ]);
 const STYLE_DECLARATION_PREFIX_PATTERN = /^(?:(?:background(?:-image|-color)?|color)\s*:\s*)+/i;
+const COLOR_KEYWORD_ALIASES: Record<string, string> = {
+  gold: 'var(--brand-gold-solid)',
+  golden: 'var(--brand-gold-solid)',
+  'logo-gold': 'var(--brand-gold-solid)',
+};
 
 function normalizeString(value: unknown): string {
   if (typeof value !== 'string') return '';
@@ -35,6 +40,11 @@ function normalizeString(value: unknown): string {
 
   // Trailing semicolons make React warn and can invalidate parsing paths.
   normalized = normalized.replace(/;+\s*$/g, '').trim();
+
+  const alias = COLOR_KEYWORD_ALIASES[normalized.toLowerCase()];
+  if (alias) {
+    return alias;
+  }
 
   return normalized;
 }

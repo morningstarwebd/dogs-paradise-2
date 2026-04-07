@@ -1,0 +1,670 @@
+
+> dogs-paradice@0.1.0 dev
+> next dev --webpack
+
+▲ Next.js 16.2.2 (webpack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.124:3000
+- Environments: .env.local
+✓ Ready in 879ms
+
+○ Compiling / ...
+ GET / 200 in 8.2s (next.js: 6.3s, application-code: 1951ms)
+ GET / 200 in 949ms (next.js: 6ms, application-code: 944ms)
+ GET /admin 200 in 3.2s (next.js: 2.0s, application-code: 1201ms)
+ GET / 200 in 1096ms (next.js: 42ms, application-code: 1054ms)
+ GET /admin/dogs 200 in 4.2s (next.js: 3.8s, application-code: 361ms)
+ GET / 200 in 296ms (next.js: 38ms, application-code: 259ms)
+ GET /admin/dogs 200 in 68ms (next.js: 5ms, application-code: 63ms)
+ POST /admin/dogs 200 in 658ms (next.js: 3ms, application-code: 655ms)
+  └─ ƒ deleteProject("0feccda3-9455-4aab-8959-46df72070388") in 415ms ..//app/actions/projects.ts
+ GET /admin 200 in 1031ms (next.js: 14ms, application-code: 1016ms)
+ GET /admin/theme-editor 200 in 3.2s (next.js: 2.8s, application-code: 405ms)
+ GET / 200 in 369ms (next.js: 30ms, application-code: 339ms)
+ GET /admin/theme-editor 200 in 35ms (next.js: 3ms, application-code: 31ms)
+ GET /?preview=true 200 in 697ms (next.js: 3ms, application-code: 694ms)
+ GET /admin/theme-editor 200 in 203ms (next.js: 6ms, application-code: 197ms)
+ GET / 200 in 694ms (next.js: 6ms, application-code: 688ms)
+ GET /?preview=true 200 in 721ms (next.js: 7ms, application-code: 713ms)
+ GET / 200 in 775ms (next.js: 7ms, application-code: 768ms)
+ GET /admin 200 in 774ms (next.js: 24ms, application-code: 749ms)
+ GET /admin/theme-editor 200 in 25ms (next.js: 3ms, application-code: 22ms)
+ GET /?preview=true 200 in 902ms (next.js: 3ms, application-code: 899ms)
+ POST /admin/theme-editor 200 in 687ms (next.js: 6ms, application-code: 681ms)
+  └─ ƒ saveSectionContent("32191fc4-4b2e-40a6-9d6b-baa82e90efa6", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"blocks":["[Object]","[Object]"],"...":"24 items not stringified"}) in 542ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 30ms (next.js: 3ms, application-code: 27ms)
+  └─ ƒ listMediaFiles("sections") in 17ms ..//app/actions/media.ts
+ POST /admin/theme-editor 200 in 20ms (next.js: 4ms, application-code: 16ms)
+  └─ ƒ listMediaFiles("hero") in 2ms ..//app/actions/media.ts
+ POST /admin/theme-editor 200 in 29ms (next.js: 6ms, application-code: 22ms)
+  └─ ƒ listMediaFiles("") in 7ms ..//app/actions/media.ts
+ POST /admin/theme-editor 200 in 27ms (next.js: 5ms, application-code: 22ms)
+  └─ ƒ listMediaFiles("hero") in 9ms ..//app/actions/media.ts
+ POST /admin/theme-editor 200 in 24ms (next.js: 4ms, application-code: 19ms)
+  └─ ƒ listMediaFiles("sections") in 5ms ..//app/actions/media.ts
+ GET / 200 in 1272ms (next.js: 12ms, application-code: 1260ms)
+ POST /admin/theme-editor 200 in 1202ms (next.js: 3ms, application-code: 1199ms)
+  └─ ƒ getPageTemplate("product") in 1180ms ..//actions/templates.ts
+ GET /breeds/french-bulldog?preview=true 200 in 4.9s
+ GET /admin/theme-editor 200 in 1010ms (next.js: 33ms, application-code: 977ms)
+ GET /?preview=true 200 in 922ms (next.js: 44ms, application-code: 878ms)
+ GET /?preview=true 200 in 1581ms (next.js: 3ms, application-code: 1577ms)
+ GET /admin/theme-editor 200 in 280ms (next.js: 7ms, application-code: 274ms)
+ GET /?preview=true 200 in 647ms (next.js: 3ms, application-code: 645ms)
+ POST /admin/theme-editor 200 in 770ms (next.js: 7ms, application-code: 764ms)
+  └─ ƒ saveSectionContent("091e238f-e5c9-45ef-bf4f-08d9d3e4f45d", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold","...":"47 items not stringified"}) in 628ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 305ms (next.js: 3ms, application-code: 302ms)
+  └─ ƒ saveSectionContent("091e238f-e5c9-45ef-bf4f-08d9d3e4f45d", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold","...":"47 items not stringified"}) in 292ms ..//actions/sections.ts
+ GET /?preview=true 200 in 2.7s (next.js: 588ms, proxy.ts: 311ms, application-code: 1834ms)
+ GET /admin/login 200 in 2.6s (next.js: 2.5s, proxy.ts: 38ms, application-code: 38ms)
+ GET /admin/login 200 in 90ms (next.js: 45ms, proxy.ts: 12ms, application-code: 33ms)
+ GET /admin/login 200 in 162ms (next.js: 85ms, proxy.ts: 13ms, application-code: 64ms)
+ GET /admin/login 200 in 2.3s (next.js: 11ms, proxy.ts: 42ms, application-code: 2.2s)
+ GET /admin/login 200 in 26ms (next.js: 4ms, proxy.ts: 11ms, application-code: 11ms)
+ GET /admin/login 200 in 54ms (next.js: 7ms, proxy.ts: 13ms, application-code: 35ms)
+ GET /admin/login 200 in 57ms (next.js: 4ms, proxy.ts: 10ms, application-code: 42ms)
+ GET /admin/login 200 in 55ms (next.js: 7ms, proxy.ts: 18ms, application-code: 30ms)
+ GET /admin/login 200 in 69ms (next.js: 35ms, proxy.ts: 9ms, application-code: 25ms)
+ GET /admin/login 200 in 56ms (next.js: 3ms, proxy.ts: 9ms, application-code: 43ms)
+ GET /admin/login 200 in 296ms (next.js: 176ms, proxy.ts: 32ms, application-code: 88ms)
+ GET /admin/login 200 in 23ms (next.js: 5ms, proxy.ts: 9ms, application-code: 10ms)
+ GET /admin/login 200 in 54ms (next.js: 5ms, proxy.ts: 12ms, application-code: 37ms)
+ GET /admin/login 200 in 1450ms (next.js: 27ms, proxy.ts: 120ms, application-code: 1303ms)
+ GET /admin/login 200 in 553ms (next.js: 288ms, proxy.ts: 60ms, application-code: 205ms)
+ GET /admin/login 200 in 25ms (next.js: 6ms, proxy.ts: 8ms, application-code: 11ms)
+ GET /admin/login 200 in 46ms (next.js: 5ms, proxy.ts: 8ms, application-code: 32ms)
+ GET /admin/login 200 in 269ms (next.js: 4ms, proxy.ts: 10ms, application-code: 254ms)
+ GET /admin/login 200 in 99ms (next.js: 14ms, proxy.ts: 23ms, application-code: 62ms)
+ GET /admin/login 200 in 586ms (next.js: 84ms, proxy.ts: 451ms, application-code: 51ms)
+ GET /admin/login 200 in 838ms (next.js: 33ms, proxy.ts: 59ms, application-code: 746ms)
+ GET /admin/login 200 in 149ms (next.js: 20ms, proxy.ts: 27ms, application-code: 102ms)
+ GET /admin/login 200 in 233ms (next.js: 154ms, proxy.ts: 15ms, application-code: 65ms)
+ GET /admin/login 200 in 67ms (next.js: 35ms, proxy.ts: 5ms, application-code: 27ms)
+ GET / 200 in 1893ms (next.js: 48ms, proxy.ts: 11ms, application-code: 1834ms)
+ GET /admin/login 200 in 149ms (next.js: 7ms, proxy.ts: 17ms, application-code: 125ms)
+ GET / 200 in 778ms (next.js: 9ms, proxy.ts: 16ms, application-code: 753ms)
+ GET /api/admin/users 401 in 1991ms (next.js: 1958ms, proxy.ts: 13ms, application-code: 21ms)
+ GET /api/admin/users 401 in 19ms (next.js: 3ms, proxy.ts: 7ms, application-code: 9ms)
+ GET /admin/login 200 in 227ms (next.js: 103ms, proxy.ts: 24ms, application-code: 101ms)
+ GET /admin/login 200 in 39ms (next.js: 7ms, proxy.ts: 8ms, application-code: 24ms)
+ GET /admin/login 200 in 60ms (next.js: 6ms, proxy.ts: 7ms, application-code: 47ms)
+ GET /admin/login 200 in 245ms (next.js: 5ms, proxy.ts: 8ms, application-code: 231ms)
+ GET /admin/login 200 in 969ms (next.js: 284ms, proxy.ts: 594ms, application-code: 91ms)
+ GET /admin 200 in 1147ms (next.js: 62ms, proxy.ts: 16ms, application-code: 1069ms)
+ GET /admin 200 in 571ms (next.js: 28ms, proxy.ts: 183ms, application-code: 361ms)
+ GET /admin/login? 200 in 548ms (next.js: 28ms, proxy.ts: 25ms, application-code: 495ms)
+ GET /admin 200 in 698ms (next.js: 11ms, proxy.ts: 15ms, application-code: 672ms)
+ GET /admin 200 in 953ms (next.js: 17ms, proxy.ts: 26ms, application-code: 910ms)
+ GET /admin/login 200 in 346ms (next.js: 33ms, proxy.ts: 38ms, application-code: 274ms)
+ GET /admin 200 in 795ms (next.js: 42ms, proxy.ts: 54ms, application-code: 699ms)
+ GET /admin 200 in 362ms (next.js: 47ms, proxy.ts: 57ms, application-code: 258ms)
+ GET /admin/login 200 in 404ms (next.js: 19ms, proxy.ts: 36ms, application-code: 349ms)
+ GET /admin 200 in 1303ms (next.js: 9ms, proxy.ts: 20ms, application-code: 1274ms)
+ GET /admin 200 in 55ms (next.js: 6ms, proxy.ts: 11ms, application-code: 37ms)
+ GET /admin 200 in 772ms (next.js: 9ms, proxy.ts: 22ms, application-code: 742ms)
+ GET /admin 200 in 43ms (next.js: 6ms, proxy.ts: 9ms, application-code: 27ms)
+ GET /admin 200 in 640ms (next.js: 8ms, proxy.ts: 9ms, application-code: 623ms)
+ GET /admin/dogs 200 in 199ms (next.js: 103ms, proxy.ts: 8ms, application-code: 88ms)
+ GET /admin/theme-editor 200 in 101ms (next.js: 52ms, proxy.ts: 6ms, application-code: 43ms)
+ GET /?preview=true 200 in 2.7s (next.js: 190ms, proxy.ts: 13ms, application-code: 2.5s)
+ GET /admin/theme-editor 200 in 576ms (next.js: 5ms, proxy.ts: 20ms, application-code: 550ms)
+ GET /?preview=true 200 in 2.3s (next.js: 7ms, proxy.ts: 11ms, application-code: 2.2s)
+ GET /admin/theme-editor 200 in 1348ms (next.js: 427ms, proxy.ts: 23ms, application-code: 898ms)
+ GET /?preview=true 200 in 762ms (next.js: 73ms, proxy.ts: 15ms, application-code: 675ms)
+ GET /admin/theme-editor 200 in 1710ms (next.js: 10ms, proxy.ts: 20ms, application-code: 1680ms)
+ GET /admin/theme-editor 200 in 1448ms (next.js: 27ms, proxy.ts: 1282ms, application-code: 139ms)
+ GET /?preview=true 200 in 3.0s (next.js: 23ms, proxy.ts: 38ms, application-code: 3.0s)
+ GET /admin/theme-editor 200 in 194ms (next.js: 12ms, proxy.ts: 18ms, application-code: 164ms)
+ GET /?preview=true 200 in 1093ms (next.js: 5ms, proxy.ts: 10ms, application-code: 1079ms)
+ GET /admin/theme-editor 200 in 1418ms (next.js: 63ms, proxy.ts: 112ms, application-code: 1244ms)
+ GET /?preview=true 200 in 1463ms (next.js: 402ms, proxy.ts: 116ms, application-code: 944ms)
+ GET /admin/theme-editor 200 in 377ms (next.js: 43ms, proxy.ts: 35ms, application-code: 299ms)
+ GET /?preview=true 200 in 366ms (next.js: 167ms, proxy.ts: 42ms, application-code: 157ms)
+ GET /admin/theme-editor 200 in 14.7s (next.js: 956ms, proxy.ts: 92ms, application-code: 13.7s)
+ GET /?preview=true 200 in 14.8s (next.js: 1328ms, proxy.ts: 94ms, application-code: 13.3s)
+ GET /admin/theme-editor 200 in 2.9s (next.js: 550ms, proxy.ts: 26ms, application-code: 2.3s)
+ GET /?preview=true 200 in 2.9s (next.js: 122ms, proxy.ts: 771ms, application-code: 2.0s)
+ GET /admin/theme-editor 200 in 943ms (next.js: 131ms, proxy.ts: 27ms, application-code: 785ms)
+ GET /?preview=true 200 in 751ms (next.js: 51ms, proxy.ts: 14ms, application-code: 686ms)
+ GET /admin/theme-editor 200 in 8.9s (next.js: 245ms, proxy.ts: 30ms, application-code: 8.6s)
+ GET /?preview=true 200 in 8.9s (next.js: 394ms, proxy.ts: 30ms, application-code: 8.5s)
+ POST /admin/theme-editor 200 in 3.3s (next.js: 16ms, proxy.ts: 14ms, application-code: 3.3s)
+  └─ ƒ listMediaFiles("sections") in 2463ms ..//app/actions/media.ts
+ POST /admin/theme-editor 200 in 627ms (next.js: 14ms, proxy.ts: 21ms, application-code: 593ms)
+  └─ ƒ listMediaFiles("hero") in 565ms ..//app/actions/media.ts
+ POST /admin/theme-editor 200 in 590ms (next.js: 12ms, proxy.ts: 23ms, application-code: 555ms)
+  └─ ƒ listMediaFiles("") in 521ms ..//app/actions/media.ts
+ POST /admin/theme-editor 200 in 752ms (next.js: 13ms, proxy.ts: 31ms, application-code: 708ms)
+  └─ ƒ saveSectionContent("32191fc4-4b2e-40a6-9d6b-baa82e90efa6", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"blocks":["[Object]","[Object]"],"...":"24 items not stringified"}) in 607ms ..//actions/sections.ts
+ GET /admin/theme-editor 200 in 912ms (next.js: 12ms, proxy.ts: 18ms, application-code: 882ms)
+ GET /?preview=true 200 in 2.1s (next.js: 8ms, proxy.ts: 10ms, application-code: 2.1s)
+ GET /admin/theme-editor 200 in 874ms (next.js: 616ms, proxy.ts: 33ms, application-code: 225ms)
+ GET /admin/theme-editor 200 in 1157ms (next.js: 25ms, proxy.ts: 28ms, application-code: 1104ms)
+ GET /?preview=true 200 in 9.2s (next.js: 180ms, proxy.ts: 49ms, application-code: 8.9s)
+ GET /admin/theme-editor 200 in 1102ms (next.js: 41ms, proxy.ts: 89ms, application-code: 972ms)
+ GET /?preview=true 200 in 1219ms (next.js: 50ms, proxy.ts: 521ms, application-code: 648ms)
+ GET /admin/theme-editor 200 in 1296ms (next.js: 35ms, proxy.ts: 41ms, application-code: 1220ms)
+ GET /admin/theme-editor 200 in 564ms (next.js: 43ms, proxy.ts: 44ms, application-code: 477ms)
+ GET /?preview=true 200 in 2.8s (next.js: 151ms, proxy.ts: 42ms, application-code: 2.6s)
+ GET /?preview=true 200 in 715ms (next.js: 258ms, proxy.ts: 44ms, application-code: 413ms)
+ GET /admin/theme-editor 200 in 602ms (next.js: 19ms, proxy.ts: 33ms, application-code: 550ms)
+ GET /?preview=true 200 in 730ms (next.js: 184ms, proxy.ts: 33ms, application-code: 513ms)
+ GET /admin/theme-editor 200 in 5.7s (next.js: 2.1s, proxy.ts: 42ms, application-code: 3.6s)
+ GET /?preview=true 200 in 5.9s (next.js: 3.0s, proxy.ts: 41ms, application-code: 2.9s)
+ GET /admin/theme-editor 200 in 498ms (next.js: 40ms, proxy.ts: 43ms, application-code: 415ms)
+ GET /admin/theme-editor 200 in 401ms (next.js: 51ms, proxy.ts: 51ms, application-code: 299ms)
+ GET /?preview=true 200 in 2.0s (next.js: 158ms, proxy.ts: 45ms, application-code: 1837ms)
+ GET /?preview=true 200 in 509ms (next.js: 144ms, proxy.ts: 63ms, application-code: 302ms)
+ GET /admin 200 in 4.5s (next.js: 472ms, proxy.ts: 15ms, application-code: 4.0s)
+ GET / 200 in 13.7s (next.js: 8ms, proxy.ts: 15ms, application-code: 13.7s)
+ GET /blog 200 in 14.5s (next.js: 12.1s, proxy.ts: 15ms, application-code: 2.3s)
+ GET /auth/callback?next=%2Fadmin 307 in 8.0s (next.js: 7.2s, proxy.ts: 776ms, application-code: 32ms)
+ GET /images/breeds/golden-retriever.jpg 404 in 9.3s (next.js: 8.3s, application-code: 1016ms)
+ GET /admin/theme-editor 200 in 881ms (next.js: 92ms, proxy.ts: 14ms, application-code: 776ms)
+ GET /?preview=true 200 in 1008ms (next.js: 270ms, proxy.ts: 14ms, application-code: 724ms)
+ GET /api/admin/users 200 in 9.7s (next.js: 8.2s, proxy.ts: 58ms, application-code: 1407ms)
+ GET /admin/theme-editor 200 in 7.0s (next.js: 2.4s, proxy.ts: 61ms, application-code: 4.6s)
+ GET /?preview=true 200 in 7.2s (next.js: 180ms, proxy.ts: 2.8s, application-code: 4.3s)
+ GET /admin/theme-editor 200 in 339ms (next.js: 123ms, proxy.ts: 36ms, application-code: 180ms)
+ GET /?preview=true 200 in 416ms (next.js: 17ms, proxy.ts: 36ms, application-code: 363ms)
+ GET /admin/theme-editor 200 in 748ms (next.js: 44ms, proxy.ts: 50ms, application-code: 654ms)
+ GET /?preview=true 200 in 843ms (next.js: 20ms, proxy.ts: 222ms, application-code: 601ms)
+ GET /admin/theme-editor 200 in 2.2s (next.js: 544ms, proxy.ts: 26ms, application-code: 1639ms)
+ GET /?preview=true 200 in 2.3s (next.js: 780ms, proxy.ts: 27ms, application-code: 1456ms)
+ GET /admin/theme-editor 200 in 590ms (next.js: 280ms, proxy.ts: 31ms, application-code: 279ms)
+ GET /admin/theme-editor 200 in 265ms (next.js: 23ms, proxy.ts: 41ms, application-code: 201ms)
+ GET /?preview=true 200 in 1105ms (next.js: 23ms, proxy.ts: 40ms, application-code: 1042ms)
+ GET /?preview=true 200 in 320ms (next.js: 97ms, proxy.ts: 42ms, application-code: 182ms)
+ GET /admin/theme-editor 200 in 1173ms (next.js: 1095ms, proxy.ts: 13ms, application-code: 66ms)
+ GET /?preview=true 200 in 1203ms (next.js: 344ms, proxy.ts: 12ms, application-code: 847ms)
+ GET /admin/theme-editor 200 in 114ms (next.js: 7ms, proxy.ts: 6ms, application-code: 101ms)
+ GET /?preview=true 200 in 152ms (next.js: 35ms, proxy.ts: 6ms, application-code: 111ms)
+ GET /admin/login 307 in 341ms (next.js: 26ms, proxy.ts: 6ms, application-code: 308ms)
+ GET /admin/theme-editor 200 in 268ms (next.js: 15ms, proxy.ts: 15ms, application-code: 238ms)
+ GET /?preview=true 200 in 297ms (next.js: 86ms, proxy.ts: 15ms, application-code: 195ms)
+ GET /admin/theme-editor 200 in 214ms (next.js: 11ms, proxy.ts: 19ms, application-code: 184ms)
+ GET /?preview=true 200 in 275ms (next.js: 74ms, proxy.ts: 19ms, application-code: 183ms)
+ GET /admin/theme-editor 200 in 160ms (next.js: 6ms, proxy.ts: 12ms, application-code: 142ms)
+ GET /?preview=true 200 in 182ms (next.js: 43ms, proxy.ts: 12ms, application-code: 127ms)
+ GET /admin/theme-editor 200 in 973ms (next.js: 171ms, proxy.ts: 11ms, application-code: 791ms)
+ GET /?preview=true 200 in 1012ms (next.js: 276ms, proxy.ts: 11ms, application-code: 725ms)
+ GET /admin/login 307 in 800ms (next.js: 17ms, proxy.ts: 6ms, application-code: 778ms)
+ GET / 200 in 1666ms (next.js: 7ms, proxy.ts: 15ms, application-code: 1644ms)
+ GET /images/breeds/golden-retriever.jpg 404 in 4.2s (next.js: 3.8s, application-code: 402ms)
+ GET /admin/theme-editor 200 in 323ms (next.js: 251ms, proxy.ts: 16ms, application-code: 56ms)
+ GET /?preview=true 200 in 357ms (next.js: 64ms, proxy.ts: 16ms, application-code: 277ms)
+ GET /admin/theme-editor 200 in 537ms (next.js: 61ms, proxy.ts: 13ms, application-code: 462ms)
+ GET /admin/theme-editor 200 in 102ms (next.js: 4ms, proxy.ts: 6ms, application-code: 91ms)
+ GET /?preview=true 200 in 859ms (next.js: 158ms, proxy.ts: 13ms, application-code: 688ms)
+ GET /?preview=true 200 in 129ms (next.js: 27ms, proxy.ts: 6ms, application-code: 95ms)
+ GET / 200 in 1343ms (next.js: 10ms, proxy.ts: 13ms, application-code: 1320ms)
+ POST /admin/theme-editor 200 in 1183ms (next.js: 13ms, proxy.ts: 24ms, application-code: 1145ms)
+  └─ ƒ saveSectionContent("091e238f-e5c9-45ef-bf4f-08d9d3e4f45d", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold","...":"47 items not stringified"}) in 741ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 440ms (next.js: 7ms, proxy.ts: 11ms, application-code: 423ms)
+  └─ ƒ saveSectionContent("091e238f-e5c9-45ef-bf4f-08d9d3e4f45d", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold","...":"47 items not stringified"}) in 374ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 698ms (next.js: 12ms, proxy.ts: 11ms, application-code: 675ms)
+  └─ ƒ saveSectionContent("091e238f-e5c9-45ef-bf4f-08d9d3e4f45d", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold","...":"47 items not stringified"}) in 628ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 655ms (next.js: 16ms, proxy.ts: 13ms, application-code: 626ms)
+  └─ ƒ saveSectionContent("091e238f-e5c9-45ef-bf4f-08d9d3e4f45d", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold","...":"47 items not stringified"}) in 546ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 699ms (next.js: 8ms, proxy.ts: 15ms, application-code: 675ms)
+  └─ ƒ saveSectionContent("091e238f-e5c9-45ef-bf4f-08d9d3e4f45d", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold","...":"47 items not stringified"}) in 609ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 1169ms (next.js: 5ms, proxy.ts: 10ms, application-code: 1154ms)
+  └─ ƒ listMediaFiles("hero") in 1137ms ..//app/actions/media.ts
+ POST /admin/theme-editor 200 in 1034ms (next.js: 19ms, proxy.ts: 13ms, application-code: 1001ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 919ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 708ms (next.js: 5ms, proxy.ts: 12ms, application-code: 691ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 646ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 453ms (next.js: 6ms, proxy.ts: 7ms, application-code: 441ms)
+  └─ ƒ saveSectionContent("091e238f-e5c9-45ef-bf4f-08d9d3e4f45d", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold","...":"47 items not stringified"}) in 384ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 672ms (next.js: 13ms, proxy.ts: 14ms, application-code: 645ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 584ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 362ms (next.js: 37ms, proxy.ts: 11ms, application-code: 315ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 264ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 311ms (next.js: 7ms, proxy.ts: 14ms, application-code: 291ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 243ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 348ms (next.js: 11ms, proxy.ts: 14ms, application-code: 323ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 270ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 330ms (next.js: 16ms, proxy.ts: 11ms, application-code: 302ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 258ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 328ms (next.js: 6ms, proxy.ts: 11ms, application-code: 310ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 245ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 317ms (next.js: 10ms, proxy.ts: 11ms, application-code: 296ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 244ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 663ms (next.js: 8ms, proxy.ts: 14ms, application-code: 641ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 586ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 843ms (next.js: 8ms, proxy.ts: 7ms, application-code: 827ms)
+  └─ ƒ listMediaFiles("sections") in 810ms ..//app/actions/media.ts
+ POST /admin/theme-editor 200 in 603ms (next.js: 7ms, proxy.ts: 13ms, application-code: 583ms)
+  └─ ƒ listMediaFiles("hero") in 552ms ..//app/actions/media.ts
+ POST /admin/theme-editor 200 in 392ms (next.js: 6ms, proxy.ts: 7ms, application-code: 380ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 339ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 660ms (next.js: 12ms, proxy.ts: 14ms, application-code: 634ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 588ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 307ms (next.js: 9ms, proxy.ts: 12ms, application-code: 286ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 242ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 315ms (next.js: 9ms, proxy.ts: 11ms, application-code: 295ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 255ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 746ms (next.js: 4ms, proxy.ts: 10ms, application-code: 732ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 686ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 310ms (next.js: 9ms, proxy.ts: 15ms, application-code: 286ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 247ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 310ms (next.js: 6ms, proxy.ts: 11ms, application-code: 293ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 244ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 310ms (next.js: 7ms, proxy.ts: 10ms, application-code: 294ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 251ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 405ms (next.js: 6ms, proxy.ts: 12ms, application-code: 387ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 349ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 315ms (next.js: 8ms, proxy.ts: 12ms, application-code: 296ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 255ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 642ms (next.js: 4ms, proxy.ts: 11ms, application-code: 627ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 580ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 674ms (next.js: 7ms, proxy.ts: 16ms, application-code: 651ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 595ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 335ms (next.js: 12ms, proxy.ts: 19ms, application-code: 303ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 253ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 320ms (next.js: 7ms, proxy.ts: 11ms, application-code: 301ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 257ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 780ms (next.js: 12ms, proxy.ts: 11ms, application-code: 757ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 716ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 1207ms (next.js: 7ms, proxy.ts: 13ms, application-code: 1186ms)
+  └─ ƒ listMediaFiles("sections") in 1165ms ..//app/actions/media.ts
+ POST /admin/theme-editor 200 in 547ms (next.js: 8ms, proxy.ts: 13ms, application-code: 526ms)
+  └─ ƒ listMediaFiles("general") in 485ms ..//app/actions/media.ts
+ POST /admin/theme-editor 200 in 541ms (next.js: 4ms, proxy.ts: 20ms, application-code: 516ms)
+  └─ ƒ listMediaFiles("hero") in 503ms ..//app/actions/media.ts
+ POST /admin/theme-editor 200 in 478ms (next.js: 4ms, proxy.ts: 13ms, application-code: 461ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 412ms ..//actions/sections.ts
+ GET /admin/theme-editor 200 in 488ms (next.js: 7ms, proxy.ts: 12ms, application-code: 469ms)
+ GET /?preview=true 200 in 1577ms (next.js: 9ms, proxy.ts: 8ms, application-code: 1560ms)
+ GET /admin/theme-editor 200 in 334ms (next.js: 34ms, proxy.ts: 12ms, application-code: 288ms)
+ GET /admin/theme-editor 200 in 113ms (next.js: 49ms, proxy.ts: 23ms, application-code: 40ms)
+ GET /breeds 200 in 749ms (next.js: 73ms, proxy.ts: 12ms, application-code: 664ms)
+ GET /breeds 200 in 11.7s (next.js: 10.2s, proxy.ts: 8ms, application-code: 1463ms)
+ GET /breeds 200 in 178ms (next.js: 7ms, proxy.ts: 23ms, application-code: 148ms)
+ GET / 200 in 676ms (next.js: 120ms, proxy.ts: 6ms, application-code: 550ms)
+ GET / 200 in 1643ms (next.js: 13ms, proxy.ts: 14ms, application-code: 1617ms)
+ GET / 200 in 450ms (next.js: 352ms, proxy.ts: 18ms, application-code: 80ms)
+ GET /admin/theme-editor 200 in 484ms (next.js: 15ms, proxy.ts: 17ms, application-code: 452ms)
+ GET /?preview=true 200 in 776ms (next.js: 9ms, proxy.ts: 6ms, application-code: 761ms)
+ POST /admin/theme-editor 200 in 1293ms (next.js: 14ms, proxy.ts: 30ms, application-code: 1250ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 668ms ..//actions/sections.ts
+ GET /breeds 200 in 391ms (next.js: 8ms, proxy.ts: 13ms, application-code: 370ms)
+ GET /admin 200 in 793ms (next.js: 45ms, proxy.ts: 10ms, application-code: 739ms)
+ GET /admin/theme-editor 200 in 66ms (next.js: 18ms, proxy.ts: 10ms, application-code: 38ms)
+ GET /?preview=true 200 in 1257ms (next.js: 7ms, proxy.ts: 7ms, application-code: 1243ms)
+ POST /admin/theme-editor 200 in 757ms (next.js: 10ms, proxy.ts: 13ms, application-code: 733ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 681ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 682ms (next.js: 9ms, proxy.ts: 15ms, application-code: 658ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 609ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 482ms (next.js: 10ms, proxy.ts: 11ms, application-code: 461ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 405ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 291ms (next.js: 5ms, proxy.ts: 10ms, application-code: 276ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 231ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 321ms (next.js: 7ms, proxy.ts: 13ms, application-code: 301ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 243ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 623ms (next.js: 10ms, proxy.ts: 10ms, application-code: 604ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 552ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 420ms (next.js: 4ms, proxy.ts: 39ms, application-code: 377ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 341ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 317ms (next.js: 5ms, proxy.ts: 11ms, application-code: 302ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 250ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 470ms (next.js: 11ms, proxy.ts: 10ms, application-code: 450ms)
+  └─ ƒ saveSectionContent("32191fc4-4b2e-40a6-9d6b-baa82e90efa6", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"blocks":["[Object]","[Object]"],"...":"24 items not stringified"}) in 389ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 619ms (next.js: 11ms, proxy.ts: 22ms, application-code: 586ms)
+  └─ ƒ saveSectionContent("32191fc4-4b2e-40a6-9d6b-baa82e90efa6", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"blocks":["[Object]","[Object]"],"...":"25 items not stringified"}) in 522ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 329ms (next.js: 7ms, proxy.ts: 26ms, application-code: 297ms)
+  └─ ƒ saveSectionContent("32191fc4-4b2e-40a6-9d6b-baa82e90efa6", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"blocks":["[Object]","[Object]"],"...":"25 items not stringified"}) in 251ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 604ms (next.js: 5ms, proxy.ts: 28ms, application-code: 571ms)
+  └─ ƒ saveSectionContent("32191fc4-4b2e-40a6-9d6b-baa82e90efa6", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"blocks":["[Object]","[Object]"],"...":"25 items not stringified"}) in 526ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 428ms (next.js: 4ms, proxy.ts: 30ms, application-code: 394ms)
+  └─ ƒ saveSectionContent("32191fc4-4b2e-40a6-9d6b-baa82e90efa6", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"blocks":["[Object]","[Object]"],"...":"25 items not stringified"}) in 344ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 461ms (next.js: 11ms, proxy.ts: 14ms, application-code: 436ms)
+  └─ ƒ saveSectionContent("32191fc4-4b2e-40a6-9d6b-baa82e90efa6", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"blocks":["[Object]","[Object]"],"...":"25 items not stringified"}) in 356ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 551ms (next.js: 19ms, proxy.ts: 20ms, application-code: 513ms)
+  └─ ƒ saveSectionContent("32191fc4-4b2e-40a6-9d6b-baa82e90efa6", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"blocks":["[Object]","[Object]"],"...":"25 items not stringified"}) in 426ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 662ms (next.js: 6ms, proxy.ts: 15ms, application-code: 640ms)
+  └─ ƒ saveSectionContent("32191fc4-4b2e-40a6-9d6b-baa82e90efa6", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"blocks":["[Object]","[Object]"],"...":"25 items not stringified"}) in 576ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 730ms (next.js: 6ms, proxy.ts: 11ms, application-code: 713ms)
+  └─ ƒ saveSectionContent("32191fc4-4b2e-40a6-9d6b-baa82e90efa6", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"blocks":["[Object]"],"...":"25 items not stringified"}) in 564ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 598ms (next.js: 6ms, proxy.ts: 29ms, application-code: 562ms)
+  └─ ƒ saveSectionContent("32191fc4-4b2e-40a6-9d6b-baa82e90efa6", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"blocks":[],"...":"25 items not stringified"}) in 497ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 595ms (next.js: 9ms, proxy.ts: 6ms, application-code: 580ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 528ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 511ms (next.js: 16ms, proxy.ts: 28ms, application-code: 466ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 380ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 472ms (next.js: 8ms, proxy.ts: 22ms, application-code: 442ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 388ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 326ms (next.js: 8ms, proxy.ts: 12ms, application-code: 306ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 253ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 603ms (next.js: 11ms, proxy.ts: 12ms, application-code: 580ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 528ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 327ms (next.js: 9ms, proxy.ts: 14ms, application-code: 304ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 250ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 453ms (next.js: 10ms, proxy.ts: 11ms, application-code: 433ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 357ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 1021ms (next.js: 9ms, proxy.ts: 18ms, application-code: 995ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 940ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 433ms (next.js: 9ms, proxy.ts: 15ms, application-code: 408ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 352ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 977ms (next.js: 9ms, proxy.ts: 7ms, application-code: 961ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 890ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 1487ms (next.js: 11ms, proxy.ts: 18ms, application-code: 1457ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 637ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 486ms (next.js: 6ms, proxy.ts: 6ms, application-code: 474ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 413ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 970ms (next.js: 21ms, proxy.ts: 18ms, application-code: 930ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 878ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 685ms (next.js: 10ms, proxy.ts: 22ms, application-code: 653ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 577ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 682ms (next.js: 8ms, proxy.ts: 14ms, application-code: 659ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 608ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 421ms (next.js: 10ms, proxy.ts: 11ms, application-code: 400ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 355ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 330ms (next.js: 4ms, proxy.ts: 7ms, application-code: 318ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 273ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 685ms (next.js: 14ms, proxy.ts: 25ms, application-code: 646ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 598ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 555ms (next.js: 14ms, proxy.ts: 31ms, application-code: 509ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 451ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 446ms (next.js: 9ms, proxy.ts: 16ms, application-code: 421ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 360ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 724ms (next.js: 8ms, proxy.ts: 15ms, application-code: 701ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 618ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 313ms (next.js: 11ms, proxy.ts: 8ms, application-code: 294ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 241ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 338ms (next.js: 16ms, proxy.ts: 9ms, application-code: 313ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 264ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 356ms (next.js: 16ms, proxy.ts: 31ms, application-code: 309ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 264ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 913ms (next.js: 5ms, proxy.ts: 14ms, application-code: 894ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 818ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 469ms (next.js: 13ms, proxy.ts: 12ms, application-code: 445ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 366ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 776ms (next.js: 49ms, proxy.ts: 46ms, application-code: 681ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 587ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 609ms (next.js: 23ms, proxy.ts: 16ms, application-code: 571ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 520ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 314ms (next.js: 4ms, proxy.ts: 27ms, application-code: 284ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 240ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 325ms (next.js: 8ms, proxy.ts: 12ms, application-code: 304ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 258ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 629ms (next.js: 14ms, proxy.ts: 11ms, application-code: 605ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 537ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 328ms (next.js: 6ms, proxy.ts: 15ms, application-code: 306ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 254ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 445ms (next.js: 12ms, proxy.ts: 13ms, application-code: 420ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 373ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 726ms (next.js: 14ms, proxy.ts: 12ms, application-code: 699ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 633ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 317ms (next.js: 7ms, proxy.ts: 11ms, application-code: 299ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 249ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 784ms (next.js: 13ms, proxy.ts: 13ms, application-code: 757ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 689ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 428ms (next.js: 6ms, proxy.ts: 9ms, application-code: 413ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 367ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 535ms (next.js: 7ms, proxy.ts: 11ms, application-code: 517ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 446ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 403ms (next.js: 8ms, proxy.ts: 9ms, application-code: 386ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 303ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 449ms (next.js: 7ms, proxy.ts: 14ms, application-code: 428ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 379ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 659ms (next.js: 8ms, proxy.ts: 9ms, application-code: 641ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 587ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 667ms (next.js: 15ms, proxy.ts: 14ms, application-code: 639ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 585ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 425ms (next.js: 9ms, proxy.ts: 11ms, application-code: 405ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 361ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 433ms (next.js: 5ms, proxy.ts: 12ms, application-code: 416ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 364ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 619ms (next.js: 7ms, proxy.ts: 8ms, application-code: 604ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 557ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 652ms (next.js: 9ms, proxy.ts: 13ms, application-code: 630ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 577ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 324ms (next.js: 7ms, proxy.ts: 9ms, application-code: 307ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 265ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 518ms (next.js: 10ms, proxy.ts: 12ms, application-code: 496ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 423ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 468ms (next.js: 14ms, proxy.ts: 9ms, application-code: 445ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 378ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 495ms (next.js: 13ms, proxy.ts: 11ms, application-code: 471ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 373ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 336ms (next.js: 10ms, proxy.ts: 9ms, application-code: 318ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 249ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 607ms (next.js: 9ms, proxy.ts: 25ms, application-code: 573ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 512ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 624ms (next.js: 13ms, proxy.ts: 9ms, application-code: 601ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 544ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 484ms (next.js: 21ms, proxy.ts: 15ms, application-code: 448ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 392ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 910ms (next.js: 15ms, proxy.ts: 9ms, application-code: 886ms)
+  └─ ƒ saveSectionContent("48877c3c-5bd0-418f-907e-d596df865314", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_background_color":"#400707","...":"29 items not stringified"}) in 819ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 658ms (next.js: 17ms, proxy.ts: 15ms, application-code: 627ms)
+  └─ ƒ saveSectionContent("2c62f2ff-8b79-4cab-a338-e915a1c40507", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"accent_color":"gold-glitter","...":"18 items not stringified"}) in 573ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 635ms (next.js: 23ms, proxy.ts: 17ms, application-code: 595ms)
+  └─ ƒ saveSectionContent("2c62f2ff-8b79-4cab-a338-e915a1c40507", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"accent_color":"gold-glitter","...":"18 items not stringified"}) in 538ms ..//actions/sections.ts
+ GET /breeds 200 in 622ms (next.js: 7ms, proxy.ts: 10ms, application-code: 604ms)
+ GET /admin 200 in 617ms (next.js: 8ms, proxy.ts: 6ms, application-code: 604ms)
+ GET /admin/dogs 200 in 95ms (next.js: 43ms, proxy.ts: 6ms, application-code: 45ms)
+ GET /admin 200 in 614ms (next.js: 5ms, proxy.ts: 6ms, application-code: 603ms)
+ GET /admin/theme-editor 200 in 41ms (next.js: 4ms, proxy.ts: 7ms, application-code: 31ms)
+ GET /?preview=true 200 in 1228ms (next.js: 10ms, proxy.ts: 8ms, application-code: 1210ms)
+ POST /admin/theme-editor 200 in 791ms (next.js: 11ms, proxy.ts: 26ms, application-code: 754ms)
+  └─ ƒ saveSectionContent("2c62f2ff-8b79-4cab-a338-e915a1c40507", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"accent_color":"gold-glitter","...":"18 items not stringified"}) in 670ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 319ms (next.js: 8ms, proxy.ts: 16ms, application-code: 294ms)
+  └─ ƒ saveSectionContent("2c62f2ff-8b79-4cab-a338-e915a1c40507", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"accent_color":"gold-glitter","...":"18 items not stringified"}) in 238ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 343ms (next.js: 9ms, proxy.ts: 11ms, application-code: 323ms)
+  └─ ƒ saveSectionContent("2c62f2ff-8b79-4cab-a338-e915a1c40507", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"accent_color":"gold-glitter","...":"18 items not stringified"}) in 279ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 438ms (next.js: 9ms, proxy.ts: 63ms, application-code: 367ms)
+  └─ ƒ saveSectionContent("2c62f2ff-8b79-4cab-a338-e915a1c40507", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"accent_color":"gold-glitter","...":"18 items not stringified"}) in 291ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 334ms (next.js: -3049µs, proxy.ts: 25ms, application-code: 312ms)
+  └─ ƒ saveSectionContent("2c62f2ff-8b79-4cab-a338-e915a1c40507", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"accent_color":"gold-glitter","...":"18 items not stringified"}) in 261ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 603ms (next.js: 7ms, proxy.ts: 6ms, application-code: 590ms)
+  └─ ƒ saveSectionContent("2c62f2ff-8b79-4cab-a338-e915a1c40507", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"accent_color":"gold-glitter","...":"18 items not stringified"}) in 537ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 1038ms (next.js: 132ms, proxy.ts: 48ms, application-code: 858ms)
+  └─ ƒ saveSectionContent("2c62f2ff-8b79-4cab-a338-e915a1c40507", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"accent_color":"gold-glitter","...":"18 items not stringified"}) in 436ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 592ms (next.js: 12ms, proxy.ts: 7ms, application-code: 573ms)
+  └─ ƒ saveSectionContent("2c62f2ff-8b79-4cab-a338-e915a1c40507", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"accent_color":"gold-glitter","...":"18 items not stringified"}) in 521ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 486ms (next.js: 46ms, proxy.ts: 17ms, application-code: 423ms)
+  └─ ƒ saveSectionContent("2c62f2ff-8b79-4cab-a338-e915a1c40507", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"accent_color":"gold-glitter","...":"18 items not stringified"}) in 381ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 297ms (next.js: 5ms, proxy.ts: 9ms, application-code: 284ms)
+  └─ ƒ saveSectionContent("2c62f2ff-8b79-4cab-a338-e915a1c40507", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"accent_color":"gold-glitter","...":"18 items not stringified"}) in 242ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 294ms (next.js: 4ms, proxy.ts: 13ms, application-code: 277ms)
+  └─ ƒ saveSectionContent("2c62f2ff-8b79-4cab-a338-e915a1c40507", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"accent_color":"gold-glitter","...":"18 items not stringified"}) in 234ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 296ms (next.js: 3ms, proxy.ts: 12ms, application-code: 281ms)
+  └─ ƒ saveSectionContent("2c62f2ff-8b79-4cab-a338-e915a1c40507", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"accent_color":"gold-glitter","...":"18 items not stringified"}) in 243ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 320ms (next.js: 16ms, proxy.ts: 13ms, application-code: 291ms)
+  └─ ƒ saveSectionContent("2c62f2ff-8b79-4cab-a338-e915a1c40507", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"accent_color":"gold-glitter","...":"18 items not stringified"}) in 248ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 341ms (next.js: 5ms, proxy.ts: 10ms, application-code: 327ms)
+  └─ ƒ saveSectionContent("2c62f2ff-8b79-4cab-a338-e915a1c40507", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"accent_color":"gold-glitter","...":"18 items not stringified"}) in 284ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 319ms (next.js: 3ms, proxy.ts: 8ms, application-code: 308ms)
+  └─ ƒ saveSectionContent("2c62f2ff-8b79-4cab-a338-e915a1c40507", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"accent_color":"gold-glitter","...":"18 items not stringified"}) in 262ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 623ms (next.js: 7ms, proxy.ts: 11ms, application-code: 605ms)
+  └─ ƒ saveSectionContent("2c62f2ff-8b79-4cab-a338-e915a1c40507", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"accent_color":"gold-glitter","...":"18 items not stringified"}) in 556ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 411ms (next.js: 4ms, proxy.ts: 9ms, application-code: 399ms)
+  └─ ƒ saveSectionContent("2c62f2ff-8b79-4cab-a338-e915a1c40507", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"accent_color":"gold-glitter","...":"18 items not stringified"}) in 354ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 426ms (next.js: 4ms, proxy.ts: 9ms, application-code: 413ms)
+  └─ ƒ saveSectionContent("2c62f2ff-8b79-4cab-a338-e915a1c40507", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"accent_color":"gold-glitter","...":"18 items not stringified"}) in 370ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 486ms (next.js: 4ms, proxy.ts: 6ms, application-code: 476ms)
+  └─ ƒ saveSectionContent("2c62f2ff-8b79-4cab-a338-e915a1c40507", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"accent_color":"gold-glitter","...":"18 items not stringified"}) in 437ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 574ms (next.js: 13ms, proxy.ts: 10ms, application-code: 550ms)
+  └─ ƒ saveSectionContent("2c62f2ff-8b79-4cab-a338-e915a1c40507", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"accent_color":"gold-glitter","...":"18 items not stringified"}) in 500ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 391ms (next.js: 7ms, proxy.ts: 10ms, application-code: 374ms)
+  └─ ƒ saveSectionContent("2c62f2ff-8b79-4cab-a338-e915a1c40507", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"accent_color":"gold-glitter","...":"18 items not stringified"}) in 335ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 577ms (next.js: 11ms, proxy.ts: 10ms, application-code: 556ms)
+  └─ ƒ saveSectionContent("2c62f2ff-8b79-4cab-a338-e915a1c40507", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"accent_color":"gold-glitter","...":"18 items not stringified"}) in 514ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 607ms (next.js: 10ms, proxy.ts: 14ms, application-code: 583ms)
+  └─ ƒ saveSectionContent("2c62f2ff-8b79-4cab-a338-e915a1c40507", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"accent_color":"gold-glitter","...":"18 items not stringified"}) in 542ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 452ms (next.js: 5ms, proxy.ts: 11ms, application-code: 437ms)
+  └─ ƒ saveSectionContent("2c62f2ff-8b79-4cab-a338-e915a1c40507", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"accent_color":"gold-glitter","...":"18 items not stringified"}) in 382ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 589ms (next.js: 5ms, proxy.ts: 13ms, application-code: 571ms)
+  └─ ƒ saveSectionContent("2c62f2ff-8b79-4cab-a338-e915a1c40507", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"accent_color":"gold-glitter","...":"18 items not stringified"}) in 527ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 478ms (next.js: 39ms, proxy.ts: 14ms, application-code: 425ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 370ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 821ms (next.js: 9ms, proxy.ts: 19ms, application-code: 793ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 713ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 754ms (next.js: 3ms, proxy.ts: 10ms, application-code: 740ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 691ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 591ms (next.js: 6ms, proxy.ts: 7ms, application-code: 578ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 532ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 626ms (next.js: 8ms, proxy.ts: 11ms, application-code: 607ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 544ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 455ms (next.js: 7ms, proxy.ts: 13ms, application-code: 435ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 379ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 635ms (next.js: 15ms, proxy.ts: 17ms, application-code: 603ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 555ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 601ms (next.js: 7ms, proxy.ts: 9ms, application-code: 585ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 537ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 321ms (next.js: 4ms, proxy.ts: 8ms, application-code: 310ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 254ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 414ms (next.js: 6ms, proxy.ts: 11ms, application-code: 397ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 342ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 607ms (next.js: 7ms, proxy.ts: 12ms, application-code: 588ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 544ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 315ms (next.js: 9ms, proxy.ts: 10ms, application-code: 297ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 253ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 422ms (next.js: 9ms, proxy.ts: 10ms, application-code: 402ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 351ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 625ms (next.js: 4ms, proxy.ts: 12ms, application-code: 609ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 527ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 1028ms (next.js: 7ms, proxy.ts: 17ms, application-code: 1005ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 954ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 419ms (next.js: 6ms, proxy.ts: 11ms, application-code: 402ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 350ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 343ms (next.js: 8ms, proxy.ts: 12ms, application-code: 322ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 265ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 708ms (next.js: 13ms, proxy.ts: 12ms, application-code: 683ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 632ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 440ms (next.js: 3ms, proxy.ts: 7ms, application-code: 430ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 374ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 640ms (next.js: 8ms, proxy.ts: 17ms, application-code: 615ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 565ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 644ms (next.js: 46ms, proxy.ts: 12ms, application-code: 585ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 527ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 632ms (next.js: 6ms, proxy.ts: 8ms, application-code: 619ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 576ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 477ms (next.js: 7ms, proxy.ts: 16ms, application-code: 454ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 416ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 767ms (next.js: 7ms, proxy.ts: 6ms, application-code: 753ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 680ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 459ms (next.js: 10ms, proxy.ts: 9ms, application-code: 440ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 387ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 427ms (next.js: 4ms, proxy.ts: 8ms, application-code: 416ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 355ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 619ms (next.js: 7ms, proxy.ts: 9ms, application-code: 603ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 531ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 595ms (next.js: 7ms, proxy.ts: 8ms, application-code: 580ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 531ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 313ms (next.js: 8ms, proxy.ts: 28ms, application-code: 277ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 237ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 608ms (next.js: 9ms, proxy.ts: 10ms, application-code: 588ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 533ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 437ms (next.js: 4ms, proxy.ts: 9ms, application-code: 424ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 375ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 557ms (next.js: 10ms, proxy.ts: 15ms, application-code: 533ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 401ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 454ms (next.js: 18ms, proxy.ts: 16ms, application-code: 420ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 362ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 650ms (next.js: 12ms, proxy.ts: 27ms, application-code: 610ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 536ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 746ms (next.js: 3ms, proxy.ts: 9ms, application-code: 734ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 676ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 343ms (next.js: 11ms, proxy.ts: 12ms, application-code: 320ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 270ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 472ms (next.js: 3ms, proxy.ts: 7ms, application-code: 461ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 402ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 549ms (next.js: 6ms, proxy.ts: 10ms, application-code: 532ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 481ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 762ms (next.js: 15ms, proxy.ts: 9ms, application-code: 737ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 690ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 478ms (next.js: 4ms, proxy.ts: 11ms, application-code: 463ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 402ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 655ms (next.js: 7ms, proxy.ts: 12ms, application-code: 636ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 590ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 478ms (next.js: 4ms, proxy.ts: 8ms, application-code: 465ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 410ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 500ms (next.js: 10ms, proxy.ts: 18ms, application-code: 472ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 414ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 546ms (next.js: 11ms, proxy.ts: 15ms, application-code: 520ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 472ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 658ms (next.js: 7ms, proxy.ts: 9ms, application-code: 641ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 596ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 672ms (next.js: 6ms, proxy.ts: 6ms, application-code: 659ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 610ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 549ms (next.js: 8ms, proxy.ts: 11ms, application-code: 530ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 471ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 650ms (next.js: 11ms, proxy.ts: 7ms, application-code: 632ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 575ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 650ms (next.js: 6ms, proxy.ts: 10ms, application-code: 635ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 591ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 501ms (next.js: 9ms, proxy.ts: 9ms, application-code: 483ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 424ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 937ms (next.js: 8ms, proxy.ts: 10ms, application-code: 919ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 600ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 536ms (next.js: 9ms, proxy.ts: 16ms, application-code: 511ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 454ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 864ms (next.js: 31ms, proxy.ts: 66ms, application-code: 767ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 607ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 475ms (next.js: 13ms, proxy.ts: 8ms, application-code: 454ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 404ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 491ms (next.js: 7ms, proxy.ts: 11ms, application-code: 473ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 412ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 577ms (next.js: 21ms, proxy.ts: 21ms, application-code: 535ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 468ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 666ms (next.js: 20ms, proxy.ts: 28ms, application-code: 618ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 573ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 511ms (next.js: 4ms, proxy.ts: 12ms, application-code: 495ms)
+  └─ ƒ saveSectionContent("e81b8eb3-ea64-4973-a742-c705a4459c39", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"accent_color":"gold-glitter","...":"12 items not stringified"}) in 446ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 444ms (next.js: 6ms, proxy.ts: 13ms, application-code: 426ms)
+  └─ ƒ saveSectionContent("32191fc4-4b2e-40a6-9d6b-baa82e90efa6", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"blocks":["[Object]"],"...":"25 items not stringified"}) in 361ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 323ms (next.js: 7ms, proxy.ts: 11ms, application-code: 305ms)
+  └─ ƒ saveSectionContent("32191fc4-4b2e-40a6-9d6b-baa82e90efa6", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"blocks":["[Object]"],"...":"25 items not stringified"}) in 248ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 352ms (next.js: 40ms, proxy.ts: 12ms, application-code: 300ms)
+  └─ ƒ saveSectionContent("32191fc4-4b2e-40a6-9d6b-baa82e90efa6", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"blocks":["[Object]"],"...":"25 items not stringified"}) in 225ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 809ms (next.js: 8ms, proxy.ts: 10ms, application-code: 791ms)
+  └─ ƒ saveSectionContent("28a473dd-7509-4fdf-8870-94f42338f341", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"blocks":["[Object]"],"...":"1 item not stringified"}) in 733ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 607ms (next.js: 8ms, proxy.ts: 10ms, application-code: 589ms)
+  └─ ƒ saveSectionContent("28a473dd-7509-4fdf-8870-94f42338f341", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"blocks":[],"...":"1 item not stringified"}) in 527ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 424ms (next.js: 6ms, proxy.ts: 13ms, application-code: 405ms)
+  └─ ƒ saveSectionContent("28a473dd-7509-4fdf-8870-94f42338f341", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"blocks":[],"...":"2 items not stringified"}) in 355ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 273ms (next.js: 4ms, proxy.ts: 13ms, application-code: 257ms)
+  └─ ƒ saveSectionContent("28a473dd-7509-4fdf-8870-94f42338f341", {"__device_variants":{"desktop":"[Object]","mobile":{}},"__device_variants_meta":{"desktopTouched":true,"mobileTouched":false},"blocks":[],"...":"3 items not stringified"}) in 223ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 594ms (next.js: 6ms, proxy.ts: 12ms, application-code: 575ms)
+  └─ ƒ saveSectionContent("28a473dd-7509-4fdf-8870-94f42338f341", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"blocks":[],"...":"3 items not stringified"}) in 532ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 286ms (next.js: 7ms, proxy.ts: 7ms, application-code: 273ms)
+  └─ ƒ saveSectionContent("28a473dd-7509-4fdf-8870-94f42338f341", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"blocks":[],"...":"3 items not stringified"}) in 229ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 595ms (next.js: 10ms, proxy.ts: 8ms, application-code: 578ms)
+  └─ ƒ saveSectionContent("28a473dd-7509-4fdf-8870-94f42338f341", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"blocks":[],"...":"3 items not stringified"}) in 515ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 279ms (next.js: 7ms, proxy.ts: 11ms, application-code: 261ms)
+  └─ ƒ saveSectionContent("28a473dd-7509-4fdf-8870-94f42338f341", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"blocks":[],"...":"3 items not stringified"}) in 226ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 592ms (next.js: 7ms, proxy.ts: 9ms, application-code: 576ms)
+  └─ ƒ saveSectionContent("28a473dd-7509-4fdf-8870-94f42338f341", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"blocks":[],"...":"3 items not stringified"}) in 530ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 709ms (next.js: 7ms, proxy.ts: 9ms, application-code: 694ms)
+  └─ ƒ saveSectionContent("28a473dd-7509-4fdf-8870-94f42338f341", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"blocks":[],"...":"3 items not stringified"}) in 651ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 772ms (next.js: 8ms, proxy.ts: 8ms, application-code: 756ms)
+  └─ ƒ saveSectionContent("091e238f-e5c9-45ef-bf4f-08d9d3e4f45d", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_color":"gold","...":"47 items not stringified"}) in 710ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 643ms (next.js: 8ms, proxy.ts: 15ms, application-code: 621ms)
+  └─ ƒ saveSectionContent("091e238f-e5c9-45ef-bf4f-08d9d3e4f45d", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"accent_color":"gold","...":"47 items not stringified"}) in 570ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 456ms (next.js: 4ms, proxy.ts: 12ms, application-code: 440ms)
+  └─ ƒ saveSectionContent("ea5c8340-3052-4273-897d-790d205967b8", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"badge_text":"","...":"5 items not stringified"}) in 396ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 586ms (next.js: 7ms, proxy.ts: 12ms, application-code: 566ms)
+  └─ ƒ saveSectionContent("ea5c8340-3052-4273-897d-790d205967b8", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileFieldTouched":"[Object]","mobileTouched":true},"badge_text":"","...":"5 items not stringified"}) in 519ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 672ms (next.js: 9ms, proxy.ts: 10ms, application-code: 653ms)
+  └─ ƒ saveSectionContent("ea5c8340-3052-4273-897d-790d205967b8", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockStructureTouched":true,"mobileFieldTouched":"[Object]","...":"1 item not stringified"},"badge_text":"","...":"5 items not stringified"}) in 611ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 324ms (next.js: 8ms, proxy.ts: 14ms, application-code: 302ms)
+  └─ ƒ saveSectionContent("ea5c8340-3052-4273-897d-790d205967b8", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockSettingTouched":"[Object]","mobileBlockStructureTouched":true,"...":"2 items not stringified"},"badge_text":"","...":"5 items not stringified"}) in 258ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 286ms (next.js: 7ms, proxy.ts: 9ms, application-code: 270ms)
+  └─ ƒ saveSectionContent("ea5c8340-3052-4273-897d-790d205967b8", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockSettingTouched":"[Object]","mobileBlockStructureTouched":true,"...":"2 items not stringified"},"badge_text":"","...":"5 items not stringified"}) in 233ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 571ms (next.js: 19ms, proxy.ts: 11ms, application-code: 541ms)
+  └─ ƒ saveSectionContent("ea5c8340-3052-4273-897d-790d205967b8", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockSettingTouched":"[Object]","mobileBlockStructureTouched":true,"...":"2 items not stringified"},"badge_text":"","...":"5 items not stringified"}) in 496ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 305ms (next.js: 7ms, proxy.ts: 13ms, application-code: 284ms)
+  └─ ƒ saveSectionContent("ea5c8340-3052-4273-897d-790d205967b8", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockSettingTouched":"[Object]","mobileBlockStructureTouched":true,"...":"2 items not stringified"},"badge_text":"","...":"5 items not stringified"}) in 247ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 404ms (next.js: 10ms, proxy.ts: 11ms, application-code: 382ms)
+  └─ ƒ saveSectionContent("ea5c8340-3052-4273-897d-790d205967b8", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockSettingTouched":"[Object]","mobileBlockStructureTouched":true,"...":"2 items not stringified"},"badge_text":"","...":"5 items not stringified"}) in 338ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 289ms (next.js: 10ms, proxy.ts: 6ms, application-code: 272ms)
+  └─ ƒ saveSectionContent("ea5c8340-3052-4273-897d-790d205967b8", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockSettingTouched":"[Object]","mobileBlockStructureTouched":true,"...":"2 items not stringified"},"badge_text":"","...":"5 items not stringified"}) in 234ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 292ms (next.js: 6ms, proxy.ts: 12ms, application-code: 274ms)
+  └─ ƒ saveSectionContent("ea5c8340-3052-4273-897d-790d205967b8", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockSettingTouched":"[Object]","mobileBlockStructureTouched":true,"...":"2 items not stringified"},"badge_text":"","...":"5 items not stringified"}) in 233ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 281ms (next.js: 7ms, proxy.ts: 8ms, application-code: 266ms)
+  └─ ƒ saveSectionContent("ea5c8340-3052-4273-897d-790d205967b8", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockSettingTouched":"[Object]","mobileBlockStructureTouched":true,"...":"2 items not stringified"},"badge_text":"","...":"5 items not stringified"}) in 227ms ..//actions/sections.ts
+ POST /admin/theme-editor 200 in 408ms (next.js: 7ms, proxy.ts: 6ms, application-code: 395ms)
+  └─ ƒ saveSectionContent("ea5c8340-3052-4273-897d-790d205967b8", {"__device_variants":{"desktop":"[Object]","mobile":"[Object]"},"__device_variants_meta":{"desktopTouched":true,"mobileBlockSettingTouched":"[Object]","mobileBlockStructureTouched":true,"...":"2 items not stringified"},"badge_text":"","...":"5 items not stringified"}) in 348ms ..//actions/sections.ts

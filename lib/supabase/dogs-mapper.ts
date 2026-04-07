@@ -18,6 +18,7 @@ type ProjectRow = {
   long_description: string | null;
   characteristics: Record<string, unknown> | null;
   health_info: Record<string, unknown> | null;
+  faqs: any[] | null;
   tags: string[] | null;
   featured: boolean | null;
   created_at: string;
@@ -107,7 +108,7 @@ export async function getDogs(): Promise<Dog[]> {
                 kciRegistered: health.kci_registered ?? false,
                 parentsCertified: health.parents_certified ?? false
              },
-             faqs: [],
+             faqs: project.faqs || [],
              tags: project.tags || [],
              featured: project.featured || false,
              createdAt: project.created_at,

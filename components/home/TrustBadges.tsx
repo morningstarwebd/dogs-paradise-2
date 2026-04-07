@@ -1,13 +1,23 @@
 'use client';
 
-import type { CSSProperties, ReactNode } from 'react';
+import type { CSSProperties } from 'react';
 import { motion } from 'motion/react';
-import GlassCard from '@/components/ui/GlassCard';
 import MobileCarousel from '@/components/ui/MobileCarousel';
 import { fadeUpVariant, staggerContainer } from '@/lib/animations';
-import { Award, BadgeCheck, FileCheck, ShieldCheck, Star, Stethoscope } from 'lucide-react';
+import {
+  Award,
+  BadgeCheck,
+  Briefcase,
+  FileCheck,
+  GraduationCap,
+  ShieldCheck,
+  Star,
+  Stethoscope,
+  ThumbsUp,
+} from 'lucide-react';
 import { InlineEditable } from '@/components/admin/InlineEditable';
 import { buildSectionStyle, resolveColorToken } from '@/lib/gradient-style';
+import { cn } from '@/lib/utils';
 
 type RawBlock = {
   id?: string;
@@ -17,61 +27,51 @@ type RawBlock = {
 
 type BadgeItem = {
   id: string;
-  icon: ReactNode;
+  iconName: string;
   title: string;
   subtitle: string;
-  color: string;
   blockId?: string;
   titleKey: string;
   subtitleKey: string;
   iconKey: string;
 };
 
-const iconMap = {
-  ShieldCheck: <ShieldCheck size={32} />,
-  Stethoscope: <Stethoscope size={32} />,
-  FileCheck: <FileCheck size={32} />,
-  Award: <Award size={32} />,
-  BadgeCheck: <BadgeCheck size={32} />,
-  Star: <Star size={32} />,
+const iconComponents = {
+  ShieldCheck,
+  Stethoscope,
+  FileCheck,
+  Award,
+  BadgeCheck,
+  Star,
+  GraduationCap,
+  Briefcase,
+  ThumbsUp,
 };
 
 const fallbackBadges = [
   {
-    icon: iconMap.ShieldCheck,
-    title: 'Transparent Paperwork',
-    subtitle: 'Clear puppy-by-puppy guidance',
-    color: '#8f452b',
+    iconName: 'ShieldCheck',
+    title: 'Health First',
+    subtitle: 'Every pup undergoes a 15-point clinical screening by our elite veterinary panel.',
+    color: '#0f766e',
   },
   {
-    icon: iconMap.Stethoscope,
-    title: 'Vet Checked Puppies',
-    subtitle: 'Health-first handover process',
-    color: '#1d5c56',
+    iconName: 'GraduationCap',
+    title: 'KCI Lineage',
+    subtitle: 'Authentic registration papers and heritage tracking for every certified breed.',
+    color: '#6d28d9',
   },
   {
-    icon: iconMap.FileCheck,
-    title: 'Health Records Shared',
-    subtitle: 'Vaccination and care updates',
-    color: '#7a5d2f',
+    iconName: 'Briefcase',
+    title: 'Secure Transit',
+    subtitle: 'White-glove, climate-controlled delivery service to your doorstep.',
+    color: '#2563eb',
   },
   {
-    icon: iconMap.Award,
-    title: 'Champion Lines Available',
-    subtitle: 'Select premium litters',
-    color: '#aa6122',
-  },
-  {
-    icon: iconMap.BadgeCheck,
-    title: 'After-Pickup Support',
-    subtitle: 'Guidance beyond booking day',
-    color: '#2d6670',
-  },
-  {
-    icon: iconMap.Star,
-    title: '4.9 Google Rated',
-    subtitle: 'Trusted by local families',
-    color: '#c29328',
+    iconName: 'ThumbsUp',
+    title: 'Ethical Source',
+    subtitle: 'Rigorous audits ensure every partner breeder exceeds international welfare codes.',
+    color: '#b45309',
   },
 ];
 
@@ -79,25 +79,79 @@ function toText(value: unknown, fallback: string): string {
   return typeof value === 'string' && value.trim() ? value : fallback;
 }
 
-function resolveIcon(value: unknown) {
-  if (typeof value === 'string' && value in iconMap) {
-    return iconMap[value as keyof typeof iconMap];
+function toNumber(value: unknown, fallback: number): number {
+  if (typeof value === 'number' && !Number.isNaN(value)) return value;
+  if (typeof value === 'string') {
+    const parsed = Number(value);
+    if (!Number.isNaN(parsed)) return parsed;
   }
-  return iconMap.ShieldCheck;
+  return fallback;
+}
+
+function toBoolean(value: unknown, fallback: boolean): boolean {
+  if (typeof value === 'boolean') return value;
+  if (typeof value === 'string') {
+    const normalized = value.trim().toLowerCase();
+    if (normalized === 'true') return true;
+    if (normalized === 'false') return false;
+  }
+  return fallback;
+}
+
+function clamp(value: number, min: number, max: number): number {
+  return Math.min(max, Math.max(min, value));
+}
+
+function toRgba(hexOrColor: string, alpha: number): string {
+  const hex = hexOrColor.trim().replace('#', '');
+  if (/^[0-9a-fA-F]{3}$/.test(hex)) {
+    const r = parseInt(hex[0] + hex[0], 16);
+    const g = parseInt(hex[1] + hex[1], 16);
+    const b = parseInt(hex[2] + hex[2], 16);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  }
+  if (/^[0-9a-fA-F]{6}$/.test(hex)) {
+    const r = parseInt(hex.slice(0, 2), 16);
+    const g = parseInt(hex.slice(2, 4), 16);
+    const b = parseInt(hex.slice(4, 6), 16);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  }
+  return `rgba(15, 23, 42, ${alpha})`;
+}
+
+function resolveIconName(value: unknown): string {
+  if (typeof value === 'string' && value in iconComponents) {
+    return value;
+  }
+  return 'ShieldCheck';
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
+function isTrustBadgeType(value: unknown): boolean {
+  if (typeof value !== 'string') return false;
+  const normalized = value.trim().toLowerCase();
+  return normalized === 'trust_badge' || normalized === 'trust-badge';
+}
+
+function renderIcon(iconName: string, size: number) {
+  const Icon = iconComponents[iconName as keyof typeof iconComponents] || ShieldCheck;
+  return <Icon size={size} />;
 }
 
 function buildBadgeItems(blocks: RawBlock[]): BadgeItem[] {
   return blocks
-    .filter((block) => block?.type === 'trust_badge' && block.settings)
+    .filter((block) => isTrustBadgeType(block?.type))
     .map((block, index) => {
-      const settings = block.settings as Record<string, unknown>;
+      const settings = isRecord(block.settings) ? block.settings : {};
       const fallback = fallbackBadges[index % fallbackBadges.length];
       return {
         id: block.id || `trust_badge_${index}`,
-        icon: resolveIcon(settings.icon),
+        iconName: resolveIconName(settings.icon),
         title: toText(settings.title, fallback.title),
         subtitle: toText(settings.subtitle, fallback.subtitle),
-        color: toText(settings.color, fallback.color),
         blockId: block.id,
         titleKey: 'title',
         subtitleKey: 'subtitle',
@@ -110,18 +164,48 @@ function BadgeCard({
   badge,
   sectionId,
   isEditorMode,
-  textColor,
+  globalIconColor,
+  cardBgColor,
+  cardBorderColor,
+  cardRadius,
+  titleTextStyle,
+  subtitleTextStyle,
+  titleTextColor,
+  subtitleTextColor,
+  iconChipBgColor,
+  iconChipSize,
+  iconChipRadius,
+  iconSize,
 }: {
   badge: BadgeItem;
   sectionId?: string;
   isEditorMode?: boolean;
-  textColor?: string;
+  globalIconColor?: string;
+  cardBgColor: string;
+  cardBorderColor: string;
+  cardRadius: number;
+  titleTextStyle: CSSProperties;
+  subtitleTextStyle: CSSProperties;
+  titleTextColor: string;
+  subtitleTextColor: string;
+  iconChipBgColor: string;
+  iconChipSize: number;
+  iconChipRadius: number;
+  iconSize: number;
 }) {
-  const textStyle = textColor ? { color: textColor } : undefined;
+  const resolvedIconColor = resolveColorToken(globalIconColor, '#0f172a') || '#0f172a';
+  const resolvedIconChipBg = iconChipBgColor || toRgba(resolvedIconColor, 0.12);
 
   return (
-    <GlassCard hover className="h-full p-5 text-center">
-      <div className="relative z-10">
+    <article
+      className="h-full border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_40px_rgba(15,23,42,0.08)]"
+      style={{
+        backgroundColor: cardBgColor,
+        borderColor: cardBorderColor,
+        borderRadius: `${cardRadius}px`,
+      }}
+    >
+      <div className="relative z-10 text-left">
         <InlineEditable
           isEditorMode={isEditorMode}
           sectionId={sectionId}
@@ -129,13 +213,19 @@ function BadgeCard({
           editType="text"
           blockId={badge.blockId}
           as="div"
-          className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl"
+          className="mb-6 inline-flex"
         >
           <div
-            className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl"
-            style={{ background: `${badge.color}14`, color: badge.color }}
+            className="inline-flex items-center justify-center"
+            style={{
+              width: `${iconChipSize}px`,
+              height: `${iconChipSize}px`,
+              borderRadius: `${iconChipRadius}px`,
+              background: resolvedIconChipBg,
+              color: resolvedIconColor,
+            }}
           >
-            {badge.icon}
+            {renderIcon(badge.iconName, iconSize)}
           </div>
         </InlineEditable>
         <InlineEditable
@@ -145,29 +235,54 @@ function BadgeCard({
           editType="text"
           blockId={badge.blockId}
           as="p"
-          className="mb-1 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-primary)]"
+          className="mb-4 font-bold leading-tight"
+          containerMode
         >
-          <span style={textStyle}>{badge.title}</span>
+          <span style={{ ...titleTextStyle, color: titleTextColor }}>{badge.title}</span>
         </InlineEditable>
         <InlineEditable
           isEditorMode={isEditorMode}
           sectionId={sectionId}
           propKey={badge.subtitleKey}
-          editType="text"
+          editType="textarea"
           blockId={badge.blockId}
           as="p"
-          className="text-[11px] text-[var(--text-tertiary)]"
+          className="leading-relaxed"
+          containerMode
         >
-          <span style={textStyle}>{badge.subtitle}</span>
+          <span style={{ ...subtitleTextStyle, color: subtitleTextColor }}>{badge.subtitle}</span>
         </InlineEditable>
       </div>
-    </GlassCard>
+    </article>
   );
 }
 
 export default function TrustBadges({
+  eyebrow_text = 'Trusted and Transparent',
+  eyebrow_text_size_px = 12,
+  eyebrow_text_color = '#6b7280',
   heading = 'Built on Trust & Transparency',
+  heading_text_size_px = 46,
+  heading_text_color = '#0f172a',
   subheading = 'Proof points that matter for responsible adoption.',
+  subheading_text_size_px = 16,
+  subheading_text_color = '#475569',
+  icon_color_global = '#ea728c',
+  card_bg_color = '#f8f5ef',
+  card_border_color = '#e6e0d8',
+  card_radius_px = 24,
+  card_title_text_size_px = 16,
+  card_title_text_color = '#0f172a',
+  card_subtitle_text_size_px = 14,
+  card_subtitle_text_color = '#475569',
+  icon_chip_bg_color,
+  icon_chip_size_px = 82,
+  icon_size_px = 34,
+  icon_chip_radius_px = 22,
+  mobile_layout_mode = 'carousel',
+  mobile_vertical_gap_px = 14,
+  carousel_autoplay_enabled = true,
+  carousel_autoplay_interval_ms = 2800,
   blocks = [],
   sectionId,
   isEditorMode = false,
@@ -178,8 +293,31 @@ export default function TrustBadges({
   section_margin_top,
   section_margin_bottom,
 }: {
+  eyebrow_text?: string;
+  eyebrow_text_size_px?: number | string;
+  eyebrow_text_color?: string;
   heading?: string;
+  heading_text_size_px?: number | string;
+  heading_text_color?: string;
   subheading?: string;
+  subheading_text_size_px?: number | string;
+  subheading_text_color?: string;
+  icon_color_global?: string;
+  card_bg_color?: string;
+  card_border_color?: string;
+  card_radius_px?: number | string;
+  card_title_text_size_px?: number | string;
+  card_title_text_color?: string;
+  card_subtitle_text_size_px?: number | string;
+  card_subtitle_text_color?: string;
+  icon_chip_bg_color?: string;
+  icon_chip_size_px?: number | string;
+  icon_size_px?: number | string;
+  icon_chip_radius_px?: number | string;
+  mobile_layout_mode?: string;
+  mobile_vertical_gap_px?: number | string;
+  carousel_autoplay_enabled?: boolean | string;
+  carousel_autoplay_interval_ms?: number | string;
   blocks?: RawBlock[];
   sectionId?: string;
   isEditorMode?: boolean;
@@ -196,10 +334,9 @@ export default function TrustBadges({
       ? blockBadges
       : fallbackBadges.map((badge, index) => ({
           id: `legacy_trust_badge_${index}`,
-          icon: badge.icon,
+          iconName: badge.iconName,
           title: badge.title,
           subtitle: badge.subtitle,
-          color: badge.color,
           titleKey: `trust_badge_${index}_title`,
           subtitleKey: `trust_badge_${index}_subtitle`,
           iconKey: `trust_badge_${index}_icon`,
@@ -207,28 +344,101 @@ export default function TrustBadges({
 
   const sectionStyle: CSSProperties = buildSectionStyle({
     background: section_bg_color,
+    backgroundFallback: '#f4f4f5',
     text: section_text_color,
     paddingTop: section_padding_top,
     paddingBottom: section_padding_bottom,
     marginTop: section_margin_top,
     marginBottom: section_margin_bottom,
   });
-  const sectionTextColor = resolveColorToken(section_text_color);
+  const sectionTextColor = resolveColorToken(section_text_color, '#0f172a') || '#0f172a';
+  const eyebrowTextColor = resolveColorToken(eyebrow_text_color, '#6b7280') || '#6b7280';
+  const headingTextColor = resolveColorToken(heading_text_color, sectionTextColor) || sectionTextColor;
+  const subheadingTextColor = resolveColorToken(subheading_text_color, '#475569') || '#475569';
+  const globalIconColor = resolveColorToken(icon_color_global, '#ea728c') || '#ea728c';
+  const cardBgColor = resolveColorToken(card_bg_color, '#f8f5ef') || '#f8f5ef';
+  const cardBorderColor = resolveColorToken(card_border_color, '#e6e0d8') || '#e6e0d8';
+  const cardTitleTextColor = resolveColorToken(card_title_text_color, headingTextColor) || headingTextColor;
+  const cardSubtitleTextColor = resolveColorToken(card_subtitle_text_color, subheadingTextColor) || subheadingTextColor;
+  const iconChipBgColor = resolveColorToken(icon_chip_bg_color);
+
+  const eyebrowSizeDesktop = clamp(toNumber(eyebrow_text_size_px, 12), 9, 24);
+  const eyebrowSizeMobile = clamp(Math.round(eyebrowSizeDesktop * 0.95), 9, eyebrowSizeDesktop);
+  const headingSizeDesktop = clamp(toNumber(heading_text_size_px, 46), 20, 84);
+  const headingSizeMobile = clamp(Math.round(headingSizeDesktop * 0.68), 18, headingSizeDesktop);
+  const subheadingSizeDesktop = clamp(toNumber(subheading_text_size_px, 16), 11, 32);
+  const subheadingSizeMobile = clamp(Math.round(subheadingSizeDesktop * 0.95), 11, subheadingSizeDesktop);
+  const cardTitleSizeDesktop = clamp(toNumber(card_title_text_size_px, 16), 11, 34);
+  const cardTitleSizeMobile = clamp(Math.round(cardTitleSizeDesktop * 0.95), 11, cardTitleSizeDesktop);
+  const cardSubtitleSizeDesktop = clamp(toNumber(card_subtitle_text_size_px, 14), 10, 28);
+  const cardSubtitleSizeMobile = clamp(Math.round(cardSubtitleSizeDesktop * 0.95), 10, cardSubtitleSizeDesktop);
+  const cardRadius = clamp(toNumber(card_radius_px, 24), 8, 48);
+  const iconChipSize = clamp(toNumber(icon_chip_size_px, 82), 40, 140);
+  const iconSize = clamp(toNumber(icon_size_px, 34), 14, 70);
+  const iconChipRadius = clamp(toNumber(icon_chip_radius_px, 22), 8, 48);
+  const mobileLayoutMode = toText(mobile_layout_mode, 'carousel').toLowerCase() === 'vertical' ? 'vertical' : 'carousel';
+  const mobileVerticalGap = clamp(toNumber(mobile_vertical_gap_px, 14), 8, 32);
+  const carouselAutoPlayEnabled = toBoolean(carousel_autoplay_enabled, true);
+  const carouselAutoPlayInterval = clamp(toNumber(carousel_autoplay_interval_ms, 2800), 1200, 10000);
+
+  const eyebrowTextStyle: CSSProperties = {
+    fontSize: `clamp(${eyebrowSizeMobile}px, calc(${eyebrowSizeMobile - 1}px + 0.2vw), ${eyebrowSizeDesktop}px)`,
+  };
+  const headingTextStyle: CSSProperties = {
+    fontSize: `clamp(${headingSizeMobile}px, calc(${headingSizeMobile - 4}px + 1vw), ${headingSizeDesktop}px)`,
+  };
+  const subheadingTextStyle: CSSProperties = {
+    fontSize: `clamp(${subheadingSizeMobile}px, calc(${subheadingSizeMobile - 1}px + 0.25vw), ${subheadingSizeDesktop}px)`,
+  };
+  const cardTitleTextStyle: CSSProperties = {
+    fontSize: `clamp(${cardTitleSizeMobile}px, calc(${cardTitleSizeMobile - 1}px + 0.2vw), ${cardTitleSizeDesktop}px)`,
+  };
+  const cardSubtitleTextStyle: CSSProperties = {
+    fontSize: `clamp(${cardSubtitleSizeMobile}px, calc(${cardSubtitleSizeMobile - 1}px + 0.2vw), ${cardSubtitleSizeDesktop}px)`,
+  };
+
+  const renderBadgeCard = (badge: BadgeItem) => {
+    return (
+      <BadgeCard
+        key={badge.id}
+        badge={badge}
+        sectionId={sectionId}
+        isEditorMode={isEditorMode}
+        globalIconColor={globalIconColor}
+        cardBgColor={cardBgColor}
+        cardBorderColor={cardBorderColor}
+        cardRadius={cardRadius}
+        titleTextStyle={cardTitleTextStyle}
+        subtitleTextStyle={cardSubtitleTextStyle}
+        titleTextColor={cardTitleTextColor}
+        subtitleTextColor={cardSubtitleTextColor}
+        iconChipBgColor={iconChipBgColor || ''}
+        iconChipSize={iconChipSize}
+        iconChipRadius={iconChipRadius}
+        iconSize={iconSize}
+      />
+    );
+  };
 
   return (
     <section className="section-shell-tight relative overflow-hidden" id="trust-badges" style={sectionStyle}>
-      <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--color-border)] to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--color-border)] to-transparent" />
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 mx-auto h-40 max-w-4xl rounded-full blur-3xl"
+        style={{ background: toRgba(cardTitleTextColor, 0.1) }}
+      />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-10 text-center"
+          className="mx-auto mb-12 max-w-3xl text-center"
         >
-          <p className="mb-2 text-xs uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
-            Trusted and Transparent
+          <p
+            className="mb-3 font-semibold uppercase tracking-[0.26em]"
+            style={{ ...eyebrowTextStyle, color: eyebrowTextColor }}
+          >
+            {eyebrow_text}
           </p>
           <InlineEditable
             isEditorMode={isEditorMode}
@@ -236,7 +446,9 @@ export default function TrustBadges({
             propKey="heading"
             editType="text"
             as="h2"
-            className="heading-card text-gradient"
+            className="font-display font-bold leading-tight"
+            style={{ ...headingTextStyle, color: headingTextColor }}
+            containerMode
           >
             {heading}
           </InlineEditable>
@@ -246,39 +458,48 @@ export default function TrustBadges({
             propKey="subheading"
             editType="textarea"
             as="p"
-            className="mt-2 text-sm text-[var(--text-tertiary)]"
+            className="mx-auto mt-3 max-w-2xl leading-relaxed"
+            style={{ ...subheadingTextStyle, color: subheadingTextColor }}
+            containerMode
           >
             {subheading}
           </InlineEditable>
         </motion.div>
 
-        <MobileCarousel autoPlay autoPlayInterval={2500} itemWidth="small">
-          {badges.map((badge) => (
-            <BadgeCard
-              key={badge.id}
-              badge={badge}
-              sectionId={sectionId}
-              isEditorMode={isEditorMode}
-              textColor={sectionTextColor}
-            />
-          ))}
-        </MobileCarousel>
+        {mobileLayoutMode === 'vertical' ? (
+          <div className="lg:hidden grid" style={{ rowGap: `${mobileVerticalGap}px` }}>
+            {badges.map((badge) => renderBadgeCard(badge))}
+          </div>
+        ) : (
+          <MobileCarousel
+            autoPlay={carouselAutoPlayEnabled}
+            autoPlayInterval={carouselAutoPlayInterval}
+            itemWidth="full"
+            itemClassName="px-0.5"
+          >
+            {badges.map((badge) => renderBadgeCard(badge))}
+          </MobileCarousel>
+        )}
 
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
-          className="hidden gap-4 lg:grid lg:grid-cols-6"
+          className={cn(
+            'hidden gap-6 lg:grid',
+            badges.length >= 4
+              ? 'lg:grid-cols-4'
+              : badges.length === 3
+                ? 'lg:grid-cols-3'
+                : badges.length === 2
+                  ? 'lg:grid-cols-2 lg:max-w-5xl lg:mx-auto'
+                  : 'lg:grid-cols-1 lg:max-w-sm lg:mx-auto'
+          )}
         >
           {badges.map((badge) => (
             <motion.div key={badge.id} variants={fadeUpVariant}>
-              <BadgeCard
-                badge={badge}
-                sectionId={sectionId}
-                isEditorMode={isEditorMode}
-                textColor={sectionTextColor}
-              />
+              {renderBadgeCard(badge)}
             </motion.div>
           ))}
         </motion.div>

@@ -5,4 +5,5 @@ export type MultiImageUploadProps = {
     onPrimaryChange?: (index: number) => void
     folder?: string
     maxImages?: number
+    initialSearchQuery?: string
 }

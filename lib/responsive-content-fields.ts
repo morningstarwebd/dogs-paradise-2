@@ -1,6 +1,7 @@
 import {
   deepClone,
   ensureDeviceVariants,
+  getEffectiveViewportContentForEdit,
   isMobileFieldTouched,
   toPersistedContent,
 } from './responsive-content-core';
@@ -11,12 +12,7 @@ export function getViewportContent(
   viewport: EditorViewport
 ): ContentRecord {
   const { variants, meta } = ensureDeviceVariants(content);
-
-  if (viewport === 'desktop') {
-    return deepClone(variants.desktop);
-  }
-
-  return meta.mobileTouched ? deepClone(variants.mobile) : deepClone(variants.desktop);
+  return getEffectiveViewportContentForEdit(variants, meta, viewport);
 }
 
 export function setViewportContent(

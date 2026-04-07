@@ -45,11 +45,28 @@ function parseTouchMap(value: unknown): TouchMap {
   if (!isRecord(value)) return {};
   const parsed: TouchMap = {};
   for (const [key, raw] of Object.entries(value)) {
-    if (raw === true) {
+    if (raw === true || raw === 'true') {
       parsed[key] = true;
     }
   }
   return parsed;
+}
+
+function mergeContentRecords(base: ContentRecord, overrides: ContentRecord): ContentRecord {
+  const merged: ContentRecord = deepClone(base);
+
+  for (const [key, value] of Object.entries(overrides)) {
+    if (value === undefined) continue;
+    const baseValue = merged[key];
+
+    if (isRecord(baseValue) && isRecord(value)) {
+      merged[key] = mergeContentRecords(baseValue, value);
+    } else {
+      merged[key] = deepClone(value);
+    }
+  }
+
+  return merged;
 }
 
 function parseBlockSettingTouchMap(value: unknown): BlockSettingTouchMap {
@@ -64,19 +81,74 @@ function parseBlockSettingTouchMap(value: unknown): BlockSettingTouchMap {
   return parsed;
 }
 
-function inferDeviceVariantMeta(content: ContentRecord): DeviceVariantMeta {
+function areValuesEqual(left: unknown, right: unknown): boolean {
+  if (left === right) return true;
+
+  if (Array.isArray(left) && Array.isArray(right)) {
+    if (left.length !== right.length) return false;
+    for (let index = 0; index < left.length; index += 1) {
+      if (!areValuesEqual(left[index], right[index])) return false;
+    }
+    return true;
+  }
+
+  if (isRecord(left) && isRecord(right)) {
+    const leftKeys = Object.keys(left);
+    const rightKeys = Object.keys(right);
+    if (leftKeys.length !== rightKeys.length) return false;
+
+    for (const key of leftKeys) {
+      if (!Object.prototype.hasOwnProperty.call(right, key)) return false;
+      if (!areValuesEqual(left[key], right[key])) return false;
+    }
+    return true;
+  }
+
+  return false;
+}
+
+function hasLegacyMobileOverrides(
+  storedVariants: DeviceContentMap | null,
+  fallbackDesktopContent: ContentRecord
+): boolean {
+  if (!storedVariants?.mobile || !isRecord(storedVariants.mobile)) {
+    return false;
+  }
+
+  const desktopReference =
+    storedVariants.desktop && isRecord(storedVariants.desktop)
+      ? storedVariants.desktop
+      : fallbackDesktopContent;
+
+  return !areValuesEqual(storedVariants.mobile, desktopReference);
+}
+
+function inferDeviceVariantMeta(
+  content: ContentRecord,
+  legacyMobileOverridesDetected: boolean
+): DeviceVariantMeta {
   const raw = content[DEVICE_VARIANTS_META_KEY];
   if (isRecord(raw)) {
     const mobileFieldTouched = parseTouchMap(raw.mobileFieldTouched);
     const mobileBlockSettingTouched = parseBlockSettingTouchMap(raw.mobileBlockSettingTouched);
+    const hasMobileFieldTouches = Object.keys(mobileFieldTouched).length > 0;
+    const hasMobileBlockSettingTouches = Object.keys(mobileBlockSettingTouched).length > 0;
+    const hasMobileStructureTouch = raw.mobileBlockStructureTouched === true;
     const hasExplicitMobileDivergenceMeta =
-      Object.keys(mobileFieldTouched).length > 0 ||
-      Object.keys(mobileBlockSettingTouched).length > 0 ||
+      hasMobileFieldTouches ||
+      hasMobileBlockSettingTouches ||
       typeof raw.mobileBlockStructureTouched === 'boolean';
+    const inferredMobileTouchedFromMeta =
+      hasMobileFieldTouches || hasMobileBlockSettingTouches || hasMobileStructureTouch;
+    const explicitMobileTouchedValue =
+      typeof raw.mobileTouched === 'boolean' ? raw.mobileTouched : null;
 
     return {
       desktopTouched: raw.desktopTouched !== false,
-      mobileTouched: hasExplicitMobileDivergenceMeta ? raw.mobileTouched === true : false,
+      mobileTouched:
+        hasExplicitMobileDivergenceMeta
+          ? explicitMobileTouchedValue ?? inferredMobileTouchedFromMeta
+          : legacyMobileOverridesDetected && raw.mobileTouched !== false,
       mobileFieldTouched,
       mobileBlockSettingTouched,
       mobileBlockStructureTouched:
@@ -101,7 +173,10 @@ export function ensureDeviceVariants(content: ContentRecord): {
 } {
   const fallbackBase = stripDeviceMeta(content);
   const stored = getStoredDeviceVariants(content);
-  const meta = inferDeviceVariantMeta(content);
+  const meta = inferDeviceVariantMeta(
+    content,
+    hasLegacyMobileOverrides(stored, fallbackBase)
+  );
 
   return {
     variants: {
@@ -122,7 +197,9 @@ export function getEffectiveViewportContentForEdit(
   if (viewport === 'desktop') {
     return deepClone(variants.desktop);
   }
-  return meta.mobileTouched ? deepClone(variants.mobile) : deepClone(variants.desktop);
+  return meta.mobileTouched
+    ? mergeContentRecords(variants.desktop, variants.mobile)
+    : deepClone(variants.desktop);
 }
 
 export function getBlocks(content: ContentRecord): BlockInstance[] {

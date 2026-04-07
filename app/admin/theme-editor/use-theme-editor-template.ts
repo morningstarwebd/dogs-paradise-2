@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { getPageTemplate, updatePageTemplate } from '@/actions/templates';
-import type { PageTemplateSettings } from '@/types/page-template';
+import type { PageTemplateSettings, ProductTemplateBlock } from '@/types/page-template';
 import { isTemplatePage } from './theme-editor-config';
 
 type UseThemeEditorTemplateOptions = {
@@ -74,10 +74,13 @@ export function useThemeEditorTemplate({
     (category: 'layout' | 'sections' | 'styling', key: string, subKey: string | null, value: unknown) => {
       setTemplateSettings((previous) => {
         if (!previous) return previous;
+        // Don't modify sections (block array) through this path — use handleProductBlocksChange
+        if (category === 'sections') return previous;
+
         const nextSettings = { ...previous };
 
         if (!nextSettings[category]) {
-          nextSettings[category] = {} as typeof nextSettings[typeof category];
+          (nextSettings as Record<string, unknown>)[category] = {};
         }
 
         if (subKey) {
@@ -97,9 +100,27 @@ export function useThemeEditorTemplate({
     [saveTemplateSettings]
   );
 
+  // ─── Product Template: Block-level operations ─────────────────────
+
+  const handleProductBlocksChange = useCallback(
+    (blocks: ProductTemplateBlock[]) => {
+      setTemplateSettings((previous) => {
+        if (!previous) return previous;
+        const nextSettings: PageTemplateSettings = {
+          ...previous,
+          sections: blocks,
+        };
+        void saveTemplateSettings(nextSettings);
+        return nextSettings;
+      });
+    },
+    [saveTemplateSettings]
+  );
+
   return {
     templateSaveStatus,
     templateSettings,
     updateTemplateField,
+    handleProductBlocksChange,
   };
 }
